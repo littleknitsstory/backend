@@ -1,13 +1,12 @@
-'use strict';
-// import '../assets/js/app.js';
-import '../assets/scss/main.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import '../public/assets/scss/main.scss';
 
-// react
-import React from "react";
-import ReactDOM from "react-dom";
+const title = 'My Minimal React llWebpack Babel Setup';
 
-const Index = () => {
-  return <div>Hello React!</div>;
-};
+ReactDOM.render(
+  <div>{title}</div>,
+  document.getElementById('app')
+);
 
-ReactDOM.render(<Index />, document.getElementById("react"));
+module.hot.accept();
