@@ -133,8 +133,9 @@
       @include make-col(4);
     }
 }
-//
+
+//  FIXME: поиграться с медиа
 
 section {
-  @include media-breakpoint-up(xl) { margin: 0 100px  }
+  @include media-breakpoint-up(xl) { margin: 0 200px  }
 }

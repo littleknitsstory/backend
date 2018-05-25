@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import '../public/assets/scss/main.scss';
+import App from './components/App';
+import Contact from './components/Contact'
 
-function Hero() {
-    return(
-        <div>
-            <h1>REACT</h1>
-        </div>
-    );
-}
 
-ReactDOM.render(<Hero />, document.getElementById('app'));
+
+ReactDOM.render((
+    <BrowserRouter>
+        <App />
+        <Route  path="/" component={Contact} />
+    </BrowserRouter>
+), document.getElementById('app'))
