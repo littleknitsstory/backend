@@ -10,6 +10,18 @@ name = "pypi"
 django = "*"
 djangorestframework = "*"
 pillow = "*"
+dj-database-url = "*"
+python-decouple = "*"
+whitenoise = "*"
+django-allauth = "*"
+django-extensions = "*"
+django-model-utils = "*"
+django-rest-auth = "*"
+django-webpack-loader = "*"
+djangorestframework-jwt = "*"
+"psycopg2" = "*"
+"flake8" = "*"
+django-debug-toolbar = "*"
 
 
 [dev-packages]

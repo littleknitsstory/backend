@@ -38,6 +38,9 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+# Python files
+*.pyc
+__pycache__
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -126,3 +129,22 @@ out
 gen
 
 frontend/node_modules
+
+# Secret environment settings
+.env
+env
+# Node and Webpack files
+node_modules
+npm-debug.log
+webpack-stats*
+
+# Static assests
+staticfiles
+static_cdn
+media_cdn
+
+# Ignore sqlite
+db.sqlite3
+
+# Apple files
+.DS_Store

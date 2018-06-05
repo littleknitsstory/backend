@@ -19,6 +19,9 @@ export default class Test extends React.Component {
         const posts = res.data;
         this.setState({ posts });
       })
+      .catch(function(error) {
+        console.log(error);
+      })
   }
 
   render() {
