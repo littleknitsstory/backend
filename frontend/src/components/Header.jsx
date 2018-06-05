@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Background from '../images/header/hb.jpg';
 
 var sectionStyle = {
-  backgroundImage: 'url(${Background})'
+  backgroundImage: `url(${Background})`
 };
 
 class Header extends Component {

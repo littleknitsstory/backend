@@ -7,6 +7,8 @@
 
 # IntelliJ project files
 .idea
+.idea/
+
 *.iml
 out
 gen### Python template

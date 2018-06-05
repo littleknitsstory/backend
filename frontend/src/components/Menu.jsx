@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link, Route } from 'react-router-dom'
+import { Link, Router, Route, Switch } from 'react-router-dom'
 import Contact from './Contact';
 
 

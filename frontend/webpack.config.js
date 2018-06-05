@@ -3,7 +3,7 @@ const webpack = require('webpack');
 module.exports = {
     entry: [
         'react-hot-loader/patch',
-        './src/index.js'
+        './src/index.jsx'
     ],
     output: {
         path: __dirname + '/public',
@@ -11,6 +11,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
+        mode: 'development',//
         rules: [
             {
                 test: /\.(js|jsx)$/,
@@ -46,7 +47,13 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
+        port: 3000,//
+        headers: {
+       "Access-Control-Allow-Origin": "*",
+       // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+        },
         contentBase: './public',
         hot: true
-    }
+    },
+
 };

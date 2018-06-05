@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 # from rest_framework import status
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
 from .models import PostModel
 # from tags.models import Tag
@@ -15,26 +16,27 @@ from .serializers import PostSerializer
 # from .activities import submit_post
 
 
-class PostList(ListAPIView):
+# ModelViewSet ListAPIView
+class PostList(ModelViewSet):
 	queryset = PostModel.objects.all()
 	serializer_class = PostSerializer
 	
-	def get_queryset(self):
-		qs = super(PostList, self).get_queryset()
+	# def get_queryset(self):
+	# 	qs = super(PostList, self).get_queryset()
 		
-		# # Filter by tag
-		# tag = self.kwargs.get('tag')
-		# if tag:
-		# 	tag = Tag.objects.get(slug=tag)
-		# 	return qs.filter(tags=tag)
-		#
-		# # Filter by category
-		# category = self.kwargs.get('category')
-		# if category:
-		# 	category = Category.objects.get(slug=category)
-		# 	return qs.filter(category=category)
-		#
-		return qs
+	# # Filter by tag
+	# tag = self.kwargs.get('tag')
+	# if tag:
+	# 	tag = Tag.objects.get(slug=tag)
+	# 	return qs.filter(tags=tag)
+	#
+	# # Filter by category
+	# category = self.kwargs.get('category')
+	# if category:
+	# 	category = Category.objects.get(slug=category)
+	# 	return qs.filter(category=category)
+	#
+	# return qs
 
 
 # @permission_classes((IsAuthenticated,))
