@@ -15,7 +15,7 @@ export default class Blog extends Component {
                 <Header/>
                 <Menu/>
                 <Blog_header/>
-                <Test/>
+                {/*<Test/>*/}
                 <Blog_main/>
             </div>
         )

@@ -7,13 +7,7 @@ class Blog_main extends Component {
     return (
             <section>
             <div className="row">
-                <div className="blog-main">
-                    <Blog_item/>
-
-                    <div className="b-blog--item__more">
-                        <button type="button" className="" id="">Больше постов</button>
-                    </div>
-                </div>
+                <Blog_item/>
                 <div className="sidebar">
                     <div className="b-about">
                         <div className="b-about_title"><h3>ОБ АВТОРЕ</h3></div>
