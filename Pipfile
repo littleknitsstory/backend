@@ -22,6 +22,7 @@ djangorestframework-jwt = "*"
 "psycopg2" = "*"
 "flake8" = "*"
 django-debug-toolbar = "*"
+django-cors-headers = "*"
 
 
 [dev-packages]

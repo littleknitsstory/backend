@@ -1,12 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+var cors = require('cors');
 
-let axiosConfig = {
-  headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      "Access-Control-Allow-Origin": "*",
-  }
-};
 export default class Test extends React.Component {
   state = {
     posts: []
@@ -14,7 +9,7 @@ export default class Test extends React.Component {
 
   componentDidMount() {
     axios.get(`http://localhost:8000/posts/?format=json`,
-        axiosConfig)
+        cors)
       .then(res => {
         const posts = res.data;
         this.setState({ posts });

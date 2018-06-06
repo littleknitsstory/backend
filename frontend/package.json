@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack/webpack.local.js --progress --colors --mode=development --content-base option",
+    "start": "webpack-dev-server --config ./webpack/webpack.local.js --progress --colors --mode=development",
     "build-production": "webpack --config webpack/webpack.production.js --progress --colors --mode=production",
     "build-development": "webpack --config webpack/webpack.local.js --progress --colors --mode=development",
     "test": "./node_modules/karma/bin/karma start webpack/karma.config.js --log-level debug",
@@ -13,14 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "proxy": "http://localhost:8080/",
-  "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-2"
-    ]
-  },
+  "proxy": "http://localhost:8000/",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
@@ -31,6 +24,7 @@
     "deepfreeze": "^2.0.0",
     "enzyme": "^3.3.0",
     "expect": "^23.1.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
     "karma": "^2.0.2",
@@ -61,6 +55,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
+    "cors": "^2.8.4",
     "font-awesome-webpack": "0.0.5-beta.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
