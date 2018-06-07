@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'modeltranslation',
     'apps.blog',
     'apps.tags',
     'apps.shop',
@@ -118,13 +119,21 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-# STATIC_ROOT = '/static/'
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('ru', gettext('Russian')),
+    ('en', gettext('English')),
+)
+
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-
-
+# need settings storage
+MEDIA_ROOT = os.path.join(BASE_DIR, '../../storage/media')
+MEDIA_URL = '/storage/'

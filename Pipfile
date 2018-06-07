@@ -23,6 +23,7 @@ djangorestframework-jwt = "*"
 "flake8" = "*"
 django-debug-toolbar = "*"
 django-cors-headers = "*"
+django-modeltranslation = "*"
 
 
 [dev-packages]

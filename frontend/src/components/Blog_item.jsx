@@ -8,7 +8,7 @@ export default class Blog_item extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/posts/?format=json`,
+    axios.get(`http://localhost:8000/posts`,
         )
       .then(res => {
         const posts = res.data;
@@ -26,7 +26,7 @@ export default class Blog_item extends Component {
           <div className="b-blog--item">
               <div className="b-blog--item__border">
                   <div className="b-blog--item_img">
-                      <img src="" alt=""/>
+                      <img src="{posts.image_preview}" alt=""/>
                       <div className="b-blog--item_tag"><a href="#">обучение</a></div>
                   </div>
                   <div className="b-blog--item_title"><h2>{posts.title}</h2></div>

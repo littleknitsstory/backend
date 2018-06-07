@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  # Storage container
+  storage:
+    container_name: storage
+    build:
+      context: .
+      dockerfile: /storage/Dockerfile
+    volumes:
+      - ./storage/media/
+    expose:
+      - 9090

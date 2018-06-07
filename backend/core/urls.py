@@ -19,7 +19,7 @@ from rest_framework import routers
 from apps.blog import views
 
 router = routers.DefaultRouter()
-router.register(r'posts', views.PostList)
+router.register(r'posts', views.ArticleList)
 
 urlpatterns = [
 
