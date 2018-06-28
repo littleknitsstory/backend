@@ -1,3 +1,14 @@
 from django.contrib import admin
+from apps.tags.models import Tag
 
-# Register your models here.
+
+@admin.register(Tag)  # noqa
+class AdminEquipment(admin.ModelAdmin):  # noqa
+    """
+    tags
+    """
+    prepopulated_fields = {'slug': ('title',)}
+    list_display = ('title', 'slug')
+    save_as = True
+    save_on_top = True
+

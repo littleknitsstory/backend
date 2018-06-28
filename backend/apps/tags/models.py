@@ -20,3 +20,4 @@ class Tag(models.Model):
     @permalink
     def get_absolute_url(self):
         return reverse('tags_detail', args=[str(self.id)])
+    # return reverse('tags_detail', kwargs={'slug': self.slug})

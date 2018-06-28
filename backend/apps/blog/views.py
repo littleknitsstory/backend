@@ -18,25 +18,26 @@ from .serializers import ArticleSerializer
 
 # ModelViewSet ListAPIView
 class ArticleList(ModelViewSet):
-	queryset = Article.objects.all()
-	serializer_class = ArticleSerializer
+    queryset = Article.objects.prefetch_related('tags').all()
+    serializer_class = ArticleSerializer
 
-	# def get_queryset(self):
-	# 	qs = super(PostList, self).get_queryset()
 
-	# # Filter by tag
-	# tag = self.kwargs.get('tag')
-	# if tag:
-	# 	tag = Tag.objects.get(slug=tag)
-	# 	return qs.filter(tags=tag)
-	#
-	# # Filter by category
-	# category = self.kwargs.get('category')
-	# if category:
-	# 	category = Category.objects.get(slug=category)
-	# 	return qs.filter(category=category)
-	#
-	# return qs
+# def get_queryset(self):
+# 	qs = super(PostList, self).get_queryset()
+
+# # Filter by tag
+# tag = self.kwargs.get('tag')
+# if tag:
+# 	tag = Tag.objects.get(slug=tag)
+# 	return qs.filter(tags=tag)
+#
+# # Filter by category
+# category = self.kwargs.get('category')
+# if category:
+# 	category = Category.objects.get(slug=category)
+# 	return qs.filter(category=category)
+#
+# return qs
 
 
 # @permission_classes((IsAuthenticated,))

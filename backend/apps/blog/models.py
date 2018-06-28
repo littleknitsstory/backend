@@ -9,6 +9,7 @@ from apps.blog.mixin import SeoMixin
 # Generate unique slug
 from django.db.models import permalink
 from django.template.defaultfilters import slugify
+from apps.tags.models import Tag
 
 from modeltranslation.translator import translator, TranslationOptions
 
@@ -34,6 +35,8 @@ class Article(SeoMixin, models.Model):
     created_at = models.DateTimeField(blank=True, null=True)
     image_preview = models.ImageField(blank=True)
     image_alt = models.CharField(blank=True, max_length=255)
+
+    tags = models.ManyToManyField(Tag, related_name='tags')
 
     def __str__(self):
         return self.title
