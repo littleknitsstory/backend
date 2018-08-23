@@ -7,11 +7,10 @@ from django.urls import reverse
 from apps.blog.mixin import SeoMixin
 
 # Generate unique slug
-from django.db.models import permalink
 from django.template.defaultfilters import slugify
 from apps.tags.models import Tag
 
-from modeltranslation.translator import translator, TranslationOptions
+# from modeltranslation.translator import translator, TranslationOptions
 
 
 def unique_slug(title):
@@ -48,7 +47,6 @@ class Article(SeoMixin, models.Model):
 
         return super(Article, self).save(*args, **kwargs)
 
-    @permalink
     def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.id)])
         # return ('post_detail', None, {'slug': self.slug})

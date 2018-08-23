@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'modeltranslation',
+    # 'modeltranslation',
     'apps.blog',
     'apps.tags',
     'apps.shop',
@@ -119,14 +119,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
-
-gettext = lambda s: s
-LANGUAGES = (
-    ('ru', gettext('Russian')),
-    ('en', gettext('English')),
-)
+#
+# MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+#
+# gettext = lambda s: s
+# LANGUAGES = (
+#     ('ru', gettext('Russian')),
+#     ('en', gettext('English')),
+# )
 
 
 STATIC_URL = '/static/'

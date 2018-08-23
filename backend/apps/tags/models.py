@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import permalink
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
@@ -17,7 +16,6 @@ class Tag(models.Model):
             self.slug = slugify(self.title)
         super(Tag, self).save(*args, **kwargs)
 
-    @permalink
     def get_absolute_url(self):
         return reverse('tags_detail', args=[str(self.id)])
     # return reverse('tags_detail', kwargs={'slug': self.slug})
