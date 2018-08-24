@@ -1,19 +1,17 @@
 import os
+from django.conf import settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = settings.env('SECRET_KEY', default='%hq1-v75hm5w)t^)!o-!-&pn0_rnavd8qswzs(nc^xuhz8c#g4')
 SECRET_KEY = '%hq1-v75hm5w)t^)!o-!-&pn0_rnavd8qswzs(nc^xuhz8c#g4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 

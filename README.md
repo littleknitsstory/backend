@@ -1,5 +1,3 @@
-
-
 ## version
 backend:
 * Python 3.7 
@@ -15,6 +13,11 @@ other:
 * nginx
 * postgres
 
+##module 
+
+* shop
+* blog
+* lk
 
 ## start project 
 * python3 -m venv name
@@ -24,6 +27,9 @@ other:
 * manage.py migrate
 * yarn
 
+
+
+## feature
 
 
 ## Note 

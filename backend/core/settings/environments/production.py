@@ -1,4 +1,4 @@
-from .base import *
+from core.settings.environments.base import *
 
 
 # Webpack Loader by Owais Lane

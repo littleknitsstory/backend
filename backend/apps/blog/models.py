@@ -3,11 +3,15 @@ import uuid # for unique slug
 
 from django.db import models
 from django.urls import reverse
+from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+
 
 from apps.blog.mixin import SeoMixin
 
 # Generate unique slug
 from django.template.defaultfilters import slugify
+
 from apps.tags.models import Tag
 
 
@@ -26,36 +30,31 @@ def unique_slug(title):
 
 
 class Article(SeoMixin, models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=256, default="")
-    content = models.TextField(default="", null=True, blank=True)
-    created_at = models.DateTimeField(blank=True, null=True)
+    title = models.CharField(_('Title'), max_length=64)
+    slug = models.SlugField(max_length=256, default='')
+    content = models.TextField(_('Content'))
+    
     image_preview = models.ImageField(blank=True)
     image_alt = models.CharField(blank=True, max_length=255)
-
+    
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               related_name='article_user',
+                               on_delete=models.CASCADE)
+    
     tags = models.ManyToManyField(Tag, related_name='tags')
+    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
+    update_at = models.DateTimeField(_('Updated at'), auto_now=True)
 
     def __str__(self):
         return self.title
 
-    def save(self, slug="", *args, **kwargs):
+    def save(self, *args, **kwargs):
         if not self.id:
-            self.created_at = datetime.datetime.now()
-            self.slug = unique_slug(self.title)
-
+            self.slug = slugify(self.title)
         return super(Article, self).save(*args, **kwargs)
 
-    def get_absolute_url(self):
-        return reverse('post_detail', args=[str(self.id)])
-        # return ('post_detail', None, {'slug': self.slug})
-
     class Meta:
-        verbose_name = 'Пост'
-        verbose_name_plural = 'Посты'
+        verbose_name = _('Post')
+        verbose_name_plural = _('Posts')
         ordering = ('-created_at',)
 
-
-# class NewsTranslationOptions(TranslationOptions):
-#     fields = ('title', 'content',)
-#
-# translator.register(PostModel, NewsTranslationOptions)
