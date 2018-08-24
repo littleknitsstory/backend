@@ -12,6 +12,6 @@ ADD requirements.txt /project/
 RUN pip3 install -r requirements.txt
 
 RUN apk add --update bash && rm -rf /var/cache/apk/*
-ADD . /project/
+ADD ../../../backend /project/
 
 WORKDIR /project/src

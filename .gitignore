@@ -107,6 +107,7 @@ ENV/
 env.bak/
 venv.bak/
 Envs/
+Vens/
 
 # Spyder project settings
 .spyderproject
@@ -149,3 +150,4 @@ db.sqlite3
 
 # Apple files
 .DS_Store
+

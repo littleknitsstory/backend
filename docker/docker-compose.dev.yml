@@ -5,7 +5,7 @@ services:
   storage:
     container_name: storage
     build:
-      context: .
+      context: ..
       dockerfile: /storage/Dockerfile
     volumes:
       - ./storage:/storage

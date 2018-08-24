@@ -10,8 +10,6 @@ from apps.blog.mixin import SeoMixin
 from django.template.defaultfilters import slugify
 from apps.tags.models import Tag
 
-# from modeltranslation.translator import translator, TranslationOptions
-
 
 def unique_slug(title):
     uniqueid = uuid.uuid1().hex[:5]

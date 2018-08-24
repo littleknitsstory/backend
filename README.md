@@ -1,3 +1,5 @@
+
+
 ## version
 backend:
 * Python 3.7 
@@ -17,9 +19,11 @@ other:
 ## start project 
 * python3 -m venv name
 * source name/bin/activate 
-* pip3 install -r re
+* pip3 install -r requirements.txt
 * OR pipenv install && pipenv shell
-* 
+* manage.py migrate
+* yarn
+
 
 
 ## Note 
