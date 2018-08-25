@@ -11,7 +11,6 @@ class SeoMixin(models.Model):
     title_seo (char): page's title_seo
     """
     title_seo = models.CharField(_("Title"), max_length=500, blank=True, null=True)
-    # header = models.TextField(blank=True, null=True)
     keywords = models.TextField(_("Keywords"), blank=True, null=True)
     description = models.TextField(_("Description"), blank=True, null=True)
 

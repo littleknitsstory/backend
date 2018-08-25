@@ -30,9 +30,16 @@ def unique_slug(title):
 
 
 class Article(SeoMixin, models.Model):
+    
+    ENABLED = (
+        (0, _('Inactive')),
+        (1, _('Active')),
+    )
+    
     title = models.CharField(_('Title'), max_length=64)
     slug = models.SlugField(max_length=256, default='')
     content = models.TextField(_('Content'))
+    active = models.IntegerField(_('Active'), default=1, choices=ENABLED)
     
     image_preview = models.ImageField(blank=True)
     image_alt = models.CharField(blank=True, max_length=255)

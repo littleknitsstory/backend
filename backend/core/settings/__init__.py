@@ -15,6 +15,7 @@ from split_settings.tools import optional, include
 ROOT_DIR = environ.Path(__file__) - 3  # (backend/core/settings/__init__.py - 3 = backend/)
 env = environ.Env()
 env_file = str(ROOT_DIR.path('../.env'))
+# FIXME: fix .env
 print(env_file)
 env.read_env(env_file)
 print('hello', env.read_env(env_file))
