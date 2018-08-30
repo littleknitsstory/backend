@@ -22,3 +22,15 @@ class ImagesMixin(models.Model):
     pass
     # image_preview = models.ImageField(blank=True)
     # image_alt = models.CharField(blank=True, max_length=255)
+
+#
+# def upload_path(prefix, instance, filename):
+#     ext = filename.split('.')[-1]
+#     filename = "%s.%s" % (uuid.uuid4().hex[:16], ext.lower())
+#     return '{prefix}/{super_short}/{short}/{long}/{filename}'.format(
+#         prefix=prefix,
+#         super_short=filename[:1],
+#         short=filename[:4],
+#         long=filename[:8],
+#         filename=filename
+#     )
