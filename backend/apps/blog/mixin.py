@@ -6,7 +6,6 @@ class SeoMixin(models.Model):
     """Abstract model for basic seo information
     Attributes:
     description (text): description seo text field
-    header (text): page's header text
     keywords (text): seo keywords
     title_seo (char): page's title_seo
     """

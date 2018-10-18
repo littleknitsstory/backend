@@ -22,22 +22,17 @@ backend:
 * Python 3.7 
 * Django 2.1
 * DRF 3.8.2
+* redis 5.0 [hub.docker](https://hub.docker.com/_/redis/)
 
 frontend:
-* React 
-* Webpack
+* React [16.5](https://reactjs.org/versions)
+* Webpack 4.21.0
 
 other:
 * Docker 18.06.0-ce
 * Docker compose 1.22.0
-* nginx
-* postgres
-
-#### module 
-
-* shop
-* blog
-* lk
+* nginx 1.15 [hub.docker](https://hub.docker.com/_/nginx/)
+* postgres 11 [hub.docker](https://hub.docker.com/_/postgres/)
 
 ### start project 
 ```
@@ -49,8 +44,14 @@ other:
 >>> yarn && yarn run start
 ```
 
-
+```
+    docker-compose -f docker/docker-compose.dev.yml up 
+```
 
 #### feature
 
 
+|  1 |  2 | 3  |  4 | 5  |
+|----|----|----|----|----|
+|  1 | 2  |  3 | 4  | 5  |
+|  1 |  2 |  3 |   4| 5  |

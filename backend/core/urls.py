@@ -31,3 +31,4 @@ urlpatterns = [
 
 ]
 urlpatterns += router.urls
+# http://www.django-rest-framework.org/api-guide/routers/#usage

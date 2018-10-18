@@ -1,4 +1,4 @@
-{"extends": "airbnb",
+{"extends": "test_lint",
   "ecmaFeatures": {
     "jsx": true,
     "modules": true
