@@ -11,5 +11,4 @@ Pillow==5.2.0
 pytz==2018.5
 six==1.11.0
 sqlparse==0.2.4
-django-anymail>=1.2.1
 
