@@ -23,7 +23,7 @@
 
 backend:
 * Python 3.7 
-* Django 2.1
+* Django 2.1.2
 * DRF 3.8.2
 * redis 5.0 ([hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL 
