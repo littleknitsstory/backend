@@ -3,7 +3,7 @@ from apps.tags.models import Tag
 
 
 @admin.register(Tag)  # noqa
-class AdminEquipment(admin.ModelAdmin):  # noqa
+class AdminTag(admin.ModelAdmin):  # noqa
     """
     tags
     """
