@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <!---HEADER--->
+
+    {% include 'components/_header.html' %}
+
+    <!--MENU---->
+
+    {% include 'components/_menu.html' %}
+
+    <!---->
+
+    <!----blog--->
+    <section>
+        <div class="row">
+            <div class="shop">shop</div>
+
+            {% include 'components/_sidebar.html' %}
+
+        </div>
+        </div>
+    </section>
+
+
+
+
+    <!----instagram-->
+
+    {% include 'components/_instagram.html' %}
+
+    <!--footer-->
+
+    {% include 'components/_footer.html' %}
+
+{% endblock %}

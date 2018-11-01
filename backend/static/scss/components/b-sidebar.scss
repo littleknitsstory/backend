@@ -1,0 +1,14 @@
+.b-category{
+  @include border-and-shadow();
+  &--title{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  &--item{
+    border-bottom: #ebebeb 1px solid;
+    padding: 10px;
+  }
+}
+.b-banner{
+  @include border-and-shadow();
+}
