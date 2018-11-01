@@ -1,16 +1,6 @@
 {% extends "base.html" %}
 
-{% block body %}
-    <!---HEADER--->
-
-    {% include 'components/_header.html' %}
-
-    <!--MENU---->
-
-    {% include 'components/_menu.html' %}
-
-    <!---->
-
+{% block content %}
     <!----blog--->
     <section>
         <div class="row">
@@ -21,16 +11,5 @@
         </div>
         </div>
     </section>
-
-
-
-
-    <!----instagram-->
-
-    {% include 'components/_instagram.html' %}
-
-    <!--footer-->
-
-    {% include 'components/_footer.html' %}
 
 {% endblock %}
