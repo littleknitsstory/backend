@@ -9,6 +9,7 @@ git commit -m '#<number task> commit messages'
 git push origin <your branch>
 ```
 
+test_mr
 
  - Настройка flake + pre-commit hook
 ``` 
