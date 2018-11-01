@@ -1,0 +1,16 @@
+.b-subcribe{
+  background-color: lighten($main-color, 10%);
+  margin: 20px 30px;
+  border-radius: 3px;
+  &_title{
+    text-align: center;
+    padding: 20px 20px 0 20px;
+  }
+  &_form{
+    padding: 20px;
+    form, input, button{
+      width: 100% !important;
+      margin: 2px 0;
+    }
+  }
+}

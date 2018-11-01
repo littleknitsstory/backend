@@ -1,0 +1,140 @@
+.blog-container{
+    @include make-container();
+    @include margin-padding-null();
+
+}
+.row{
+    @include make-row();
+    @include margin-padding-null();
+
+}
+.blog-main{
+    @include make-col(12);
+    @include media-breakpoint-up(sm) {
+      @include make-col(12);
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
+    @include make-row();
+    @include margin-padding-null();
+
+}
+
+.blog-detail{
+    @include make-col(8);
+    @include media-breakpoint-up(sm) {
+      @include make-col(12);
+    }
+      @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
+  @include margin-padding-null();
+
+}
+
+.shop{
+   @include make-col(8);
+    @include media-breakpoint-up(sm) {
+      @include make-col(12);
+    }
+      @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
+  @include margin-padding-null();
+}
+
+.b-shop--item{
+  margin: 80px 0;
+  text-align: center;
+  h2{
+    color: $second-color;
+    font-size: 22px;
+  }
+  @include make-col-ready();
+    @include margin-padding-null();
+    @include media-breakpoint-up(sm) {
+      @include make-col(6);
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+    }
+}
+
+.sidebar{
+  @include make-col(12);
+    @include media-breakpoint-up(sm) {
+      @include make-col(12);
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+    }
+}
+
+.b-blog--item{
+  @include make-col-ready();
+  @include margin-padding-null();
+  @include media-breakpoint-up(sm) {
+      @include make-col(6);
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(6);
+    }
+}
+
+.b-bestseller--item{
+    @include make-col-ready();
+    @include margin-padding-null();
+    @include media-breakpoint-up(sm) {
+      @include make-col(6);
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(3);
+    }
+    //@include margin-padding-null();
+}
+
+
+.insta_collage{
+  position: relative;
+  @include make-row();
+  @include margin-padding-null();
+  @include media-breakpoint-up(xl) { margin: 0 }
+
+}
+.insta_collage--follow{
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+.insta_collage--item{
+    @include make-col(2);
+  img {
+    height: auto;
+    font-size: 0;
+    vertical-align: middle;
+    max-width: 100%;
+  }
+}
+
+.b-footer{
+  @include make-row();
+  @include margin-padding-null();
+
+}
+
+.b-footer--item{
+  @include make-col-ready();
+    @include margin-padding-null();
+    @include media-breakpoint-up(sm) {
+      @include make-col(4);
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+    }
+}
+//
+
+section {
+  @include media-breakpoint-up(xl) { margin: 0 100px  }
+}

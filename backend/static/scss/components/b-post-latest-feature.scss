@@ -1,0 +1,36 @@
+.b-post-latest{
+  @include border-and-shadow();
+  img{
+    max-width: 100%;
+  }
+  h3{
+
+  }
+  &--item{
+      padding: 20px;
+      @include make-row();
+    &_img{
+      @include make-col(4);
+    }
+    &_content{
+      @include make-col(8);
+      padding: 10px;
+      margin: auto;
+    }
+    &_time{
+      margin-top: 10px;
+      font-size: 13px;
+      color: darkgrey;
+    }
+  }
+}
+
+
+    //content: "";
+    //background-color: rgb(142, 151, 159);
+    //display: inline-block;
+    //width: 300px;
+    //height: 2px;
+    //position: absolute;
+    //right: 100%;
+    //top: 50%;

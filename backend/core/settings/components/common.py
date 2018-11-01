@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.tags',
     'apps.shop',
+    'sass_processor',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,5 @@ STATICFILES_DIRS = (
 # need settings storage
 MEDIA_ROOT = os.path.join(BASE_DIR, '../../storage/media')
 MEDIA_URL = '/storage/'
+
+
