@@ -5,26 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-    <!---HEADER--->
-
     {% include 'components/_header.html' %}
-
-    <!--MENU---->
-
     {% include 'components/_menu.html' %}
-
-    {% block content %}
-    {% endblock %}
-
-    <!----instagram-->
-
+    {% block content %}{% endblock %}
     {% include 'components/_instagram.html' %}
-
-    <!--footer-->
-
     {% include 'components/_footer.html' %}
 </body>
 </html>
