@@ -137,4 +137,4 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, '../../storage/media')
 MEDIA_URL = '/storage/'
 
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static/scss')
+SASS_PRECISION = 8
