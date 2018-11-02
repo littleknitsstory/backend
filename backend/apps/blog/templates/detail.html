@@ -12,18 +12,10 @@
   <title>Blog App</title>
 </head>
 <body>
-  <section class="header">
-        Blog App
-  </section>
-  <h1>The 4 Random Articles</h1>
-    {% if articles %}
-      {% for article in articles %}
-        <p>
-          <a href="{% url 'blog:detail' article.slug %}">{{ article.title }}</a>
-        </p>
-      {% endfor%}
-    {% else %}
-        <p>There is no task available.</p>
-    {% endif %}
+  <h1>{{ article.title }}</h1>
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+  <p>Created: <i>{{ article.author }}</i></p>
+  <p>Date: <i>{{ article.created_at }}</i></p> 
+  <p>{{ article.content }}</p>
 </body>
 </html>
