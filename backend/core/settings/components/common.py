@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.tags',
     'apps.shop',
+    'apps.menu',
     'sass_processor',
 ]
 
