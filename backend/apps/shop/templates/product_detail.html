@@ -1,6 +1,8 @@
 {% if object %}
     Название: {{ object.title }} <br>
     Описание: {{ object.description }} <br>
+    Цена: {{ object.price }} <br>
+    Статус: {% if object.active %} В наличии {% else %} Отсутствует в продаже {% endif %} <br>
 {% else %}
     <p>No product is available.</p>
 {% endif %}
