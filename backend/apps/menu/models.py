@@ -30,9 +30,9 @@ class MenuItems(MPTTModel):
     )
     name = models.CharField(max_length=200, verbose_name=_('Name'), default='')
     url = models.CharField(max_length=200, verbose_name=_('Link'))
-    menu = models.ForeignKey(Menu, related_name='menu', verbose_name=_('Menu type'))
+    menu = models.ForeignKey(Menu, related_name='menu', verbose_name=_('Menu type'), on_delete=models.PROTECT)
     target = models.CharField(max_length=10, choices=LINK_TARGET_CHOICES, null=True, blank=True)
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', on_delete=models.CASCADE)
     ordering = models.IntegerField(default=0, verbose_name=_('Sort'))
     active = models.BooleanField(default=False)
 

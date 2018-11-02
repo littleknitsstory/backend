@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'apps.shop',
     'apps.menu',
     'sass_processor',
+    'mptt',
 ]
 
 MIDDLEWARE = [
