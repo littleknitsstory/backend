@@ -20,7 +20,7 @@
     {% if articles %}
       {% for article in articles %}
         <p>
-          <a href="{% url 'blog:detail' article.slug %}">{{ article.title }}</a>
+          <a href="{% url 'blog:blog-detail' article.slug %}">{{ article.title }}</a>
         </p>
       {% endfor%}
     {% else %}
