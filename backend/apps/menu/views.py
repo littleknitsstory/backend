@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-def menu_index(request):
-    return render(request, 'components/_menu.html')
+
+class MenuView(TemplateView):
+
+    template_name='components/_menu.html'
