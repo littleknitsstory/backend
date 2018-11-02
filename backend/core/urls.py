@@ -12,6 +12,7 @@ urlpatterns = [
     path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     path('', include('apps.blog.urls')),
+    path('menu/', include('apps.menu.urls')),
     # path('/shop', include('shop.urls')),
 
 ]
