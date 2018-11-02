@@ -5,8 +5,8 @@ from . import views
 
 app_name = 'blog'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('<slug:slug>/', views.DetailView.as_view(), name='detail'),
+    path('', views.ListView.as_view(), name='blog-list'),
+    path('blog/<slug:slug>/', views.DetailView.as_view(), name='blog-detail'),
     # path(r'^posts/$', PostList.as_view(), name='post_list'),
     
     # List posts
