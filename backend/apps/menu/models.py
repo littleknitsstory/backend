@@ -13,7 +13,7 @@ class Menu(models.Model):
     )
     slug = models.CharField(max_length=100, verbose_name=_('Slug'), unique=True)
     hint = models.CharField(max_length=100, verbose_name=_('Hint'))
-    active = models.BooleanField()
+    active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.slug
