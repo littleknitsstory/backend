@@ -22,4 +22,4 @@ class CategoryProductsListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         category = Category.objects.filter(slug=self.kwargs['slug']).first()
-        return Product.objects.filter(category=category)
+        return Product.objects.filter(category=category, active=True)

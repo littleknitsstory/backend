@@ -1,7 +1,13 @@
 {% if object_list %}
     <ul>
     {% for product in object_list %}
-        <li>{{ product.title }}</li>
+        <li>
+          {{ product.title }} <br>
+          {{ product.description }} <br>
+          {{ product.price }} <br>
+          {{ product.category }} <br>
+          {{ product.tags }} <br>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
