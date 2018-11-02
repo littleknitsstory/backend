@@ -1,9 +1,8 @@
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import DetailView, TemplateView
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Article
 from .serializers import ArticleSerializer
-
 
 # ModelViewSet ListAPIView
 class ArticleList(ModelViewSet):
