@@ -153,5 +153,4 @@ db.sqlite3
 
 # Ignore files migrations
 
-**/migrations
-!**/migrations/__init__.py
+**
