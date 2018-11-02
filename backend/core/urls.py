@@ -1,5 +1,6 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+
 # from rest_framework import routers
 # from apps.blog import urls
 
@@ -9,7 +10,7 @@ from django.urls import path, include
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     path('', include('apps.blog.urls')),
     # path('/shop', include('shop.urls')),
