@@ -13,7 +13,7 @@ urlpatterns = [
     re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     path('', include('apps.blog.urls')),
-    # path('/shop', include('shop.urls')),
+    re_path('^shop/', include('apps.shop.urls')),
 
 ]
 # urlpatterns += router.urls

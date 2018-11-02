@@ -3,7 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     title = models.CharField(max_length=50)
-    slug = models.CharField(max_length=25)
+    slug = models.CharField(max_length=25, unique=True)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -18,7 +18,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=70)
-    slug  = models.CharField(max_length=25)
+    slug = models.CharField(max_length=25, unique=True)
     description = models.TextField(null=True, blank=True)
     keywords = models.CharField(max_length=150, null=True, blank=True)
     price = models.DecimalField(

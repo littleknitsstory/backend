@@ -1,0 +1,6 @@
+{% if object %}
+    Название: {{ object.title }} <br>
+    Описание: {{ object.description }} <br>
+{% else %}
+    <p>No product is available.</p>
+{% endif %}

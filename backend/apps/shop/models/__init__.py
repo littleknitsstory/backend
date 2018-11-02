@@ -1,1 +1,1 @@
-from .product import Category
+from .product import *
