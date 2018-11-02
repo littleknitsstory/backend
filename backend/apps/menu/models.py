@@ -7,10 +7,6 @@ class Menu(models.Model):
     """
     категории меню
     """
-    STATUS = (
-        (0, 'Активен'),
-        (1, 'Не активен')
-    )
     slug = models.CharField(max_length=100, verbose_name=_('Slug'), unique=True)
     hint = models.CharField(max_length=100, verbose_name=_('Hint'))
     active = models.BooleanField(default=False)
@@ -27,10 +23,6 @@ class MenuItems(MPTTModel):
     """
     Элементы категории меню
     """
-    STATUS = (
-        (0, 'Активен'),
-        (1, 'Не активен')
-    )
     LINK_TARGET_CHOICES = (
         ('_blank', '_blank'),
         ('_top', '_top'),
@@ -42,7 +34,7 @@ class MenuItems(MPTTModel):
     target = models.CharField(max_length=10, choices=LINK_TARGET_CHOICES, null=True, blank=True)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
     ordering = models.IntegerField(default=0, verbose_name=_('Sort'))
-    status = models.IntegerField(default=0, choices=STATUS)
+    active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
