@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.tags',
     'apps.shop',
-    'sass_processor',
+    # 'sass_processor',
 ]
 
 MIDDLEWARE = [
