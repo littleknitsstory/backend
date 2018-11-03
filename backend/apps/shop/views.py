@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView
 
-from .models.product import Product, Category
+from .models.category import Category
+from .models.product import Product
 
 
 class ProductListView(ListView):
@@ -21,5 +22,6 @@ class CategoryProductsListView(ListView):
     template_name = 'category_products.html'
 
     def get_queryset(self, *args, **kwargs):
-        category = Category.objects.filter(slug=self.kwargs['slug']).first()
-        return Product.objects.filter(category=category, active=True)
+        return Product.objects.filter(
+            category__slug=self.kwargs['slug'], active=True
+        )
