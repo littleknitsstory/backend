@@ -3,6 +3,7 @@ from django.conf import settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # backend/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = settings.env('SECRET_KEY', default='%hq1-v75hm5w)t^)!o-!-&pn0_rnavd8qswzs(nc^xuhz8c#g4')
@@ -24,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'webpack_loader',
     # 'modeltranslation',
     'apps.blog',
     'apps.tags',
@@ -63,7 +65,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates/', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,12 +133,14 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATICFILES_DIRS = (os.path.join(ROOT_DIR, 'static'),)
 
-# need settings storage
-MEDIA_ROOT = os.path.join(BASE_DIR, '../../storage/media')
 MEDIA_URL = '/storage/'
+MEDIA_ROOT = os.path.join(ROOT_DIR, 'storage/media')
 
-
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'builds/',
+        'STATS_FILE': os.path.join(ROOT_DIR, './static/webpack.scss.json'),
+    }
+}

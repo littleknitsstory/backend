@@ -1,10 +1,12 @@
 from django.urls import path
 from django.views.generic import TemplateView
 
-from . import views
+from .views import BlogListView, BlogDetailView
 
+app_name = 'blog'
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('', BlogListView.as_view(), name='blog-list'),
+    path('blog/<slug:slug>/', BlogDetailView.as_view(), name='blog-detail'),
     # path(r'^posts/$', PostList.as_view(), name='post_list'),
     
     # List posts
