@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="row">
+            <div class="shop">
+                <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
+                <h4>Список товаров:</h4>
+
+                    {% if object_list %}
+                        <ul>
+                            {% for product in object_list %}
+                                <li><a href="{{ product.slug }}/ ">{{ product.title }}</a></li><br>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No products are available.</p>
+                    {% endif %}
+            </div>
+            {% include 'components/_sidebar.html' %}
+        </div>
+    </section>
+
+{% endblock %}
