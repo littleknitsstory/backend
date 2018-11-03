@@ -151,7 +151,3 @@ db.sqlite3
 # Apple files
 .DS_Store
 
-# Ignore files migrations
-
-**/migrations
-!**/migrations/__init__.py
