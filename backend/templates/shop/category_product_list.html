@@ -10,11 +10,12 @@
                     <div class="row">
 
                         {% for product in object_list %}
-                            Название: {{ product.title }} <br>
-                            Описание: {{ product.description }} <br>
-                            Цена: {{ product.price }} руб.<br>
-                            Ключевые слова: {{ product.keywords }} <br>
-                            <br>
+                            <a href="/shop/products/{{ product.slug }}/">
+                                Название: {{ product.title }} <br>
+                                Описание: {{ product.description }} <br>
+                                Цена: {{ product.price }} руб.<br>
+                                Ключевые слова: {{ product.keywords }} <br>
+                            </a>
                         {% endfor %}
                     </div>
 
