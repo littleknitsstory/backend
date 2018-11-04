@@ -9,7 +9,7 @@ class SeoMixin(models.Model):
     keywords (text): seo keywords
     title_seo (char): page's title_seo
     """
-    title_seo = models.CharField(_("Title"), max_length=500, blank=True, null=True)
+    title_seo = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
     keywords = models.TextField(_("Keywords"), blank=True, null=True)
     description = models.TextField(_("Description"), blank=True, null=True)
 
