@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'apps.tags',
     'apps.shop',
     'apps.menu',
+    'apps.subscribe',
     'sass_processor',
     'mptt',
 ]
@@ -65,7 +66,6 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
         'DIRS': ['templates/', ],
         'APP_DIRS': True,
         'OPTIONS': {
