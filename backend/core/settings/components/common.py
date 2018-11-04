@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'apps.shop',
     'apps.menu',
     'apps.subscribe',
-    'sass_processor',
     'mptt',
 ]
 
