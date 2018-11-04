@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
 
@@ -15,6 +17,8 @@ urlpatterns = [
     path('', include('apps.blog.urls')),
     path('shop/', include('apps.shop.urls')),
 
-]
+# TODO MEDIA_URL is empty here - fix it!
+] + static('/storage/media/', document_root=settings.MEDIA_ROOT)
+
 # urlpatterns += router.urls
 # http://www.django-rest-framework.org/api-guide/routers/#usage

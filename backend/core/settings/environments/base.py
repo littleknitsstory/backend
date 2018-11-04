@@ -105,4 +105,5 @@ STATICFILES_DIRS = (
 
 # need settings storage
 MEDIA_ROOT = os.path.join(BASE_DIR, '../../storage/../../../../storage/media')
-MEDIA_URL = '/storage/'
+MEDIA_URL = '/storage/media/'
+
