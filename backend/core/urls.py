@@ -14,6 +14,8 @@ urlpatterns = [
 
     path('', include('apps.blog.urls')),
     path('shop/', include('apps.shop.urls')),
+    path('menu/', include('apps.menu.urls')),
+    path('subscribe/', include('apps.subscribe.urls')),
 
 ]
 # urlpatterns += router.urls
