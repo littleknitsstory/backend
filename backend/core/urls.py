@@ -13,6 +13,7 @@ urlpatterns = [
 
     path('', include('apps.blog.urls')),
     path('menu/', include('apps.menu.urls')),
+    path('subscribe/', include('apps.subscribe.urls')),
     # path('/shop', include('shop.urls')),
 
 ]
