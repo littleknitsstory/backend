@@ -1,13 +1,14 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include
 
-# from rest_framework import routers
-# from apps.blog import urls
+from rest_framework import routers
 
-# router = routers.DefaultRouter()
-# router.register(r'posts', views.ArticleList)
+from apps.blog.views import ArticleList
+
+router = routers.DefaultRouter()
+router.register(r'posts', ArticleList)
 
 urlpatterns = [
 
@@ -16,9 +17,10 @@ urlpatterns = [
 
     path('', include('apps.blog.urls')),
     path('shop/', include('apps.shop.urls')),
+    path('subscribe/', include('apps.subscribe.urls')),
 
 # TODO MEDIA_URL is empty here - fix it!
 ] + static('/storage/media/', document_root=settings.MEDIA_ROOT)
 
-# urlpatterns += router.urls
+urlpatterns += router.urls
 # http://www.django-rest-framework.org/api-guide/routers/#usage

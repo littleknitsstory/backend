@@ -1,27 +1,37 @@
+{% load menu_tag %}
+{% load mptt_tags %}
 <nav>
-    <div class="menu-container">
-      <div class="b-menu">
-          <div class="b-menu__socia">
-              <ul>
-                  <li><a href="#"><i class="fab fa-vk"></i></a></li>
-                  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                  <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-              </ul>
-          </div>
-          <div class="b-menu__cart"><span><i class="fas fa-cart-plus"></i></span></div>
-      </div>
-      <div class="b-menu-absolute">
-          <div class="b-menu__item">
-              <ul>
-                  <li><a href="#">БЛОГ</a></li>
-                  <li><a href="#">МАГАЗИН</a></li>
-                  <li><a href="#">АВТОРЫ</a></li>
-                  <li><a href="#">ПОРТФОЛИО</a></li>
-                  <li><a href="#">КОНТАКТЫ</a></li>
-              </ul>
-          </div>
-
-      </div>
+    <div class="b-menu">
+        <div class="b-menu-social">
+            <ul>
+                <li><a href="#"><i class="fab fa-vk"></i></a></li>
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+            </ul>
+        </div>
+        <div class="b-menu-link">
+          {% menu_bar 'top-menu' as top_menu %}
+          <ul class="nav">
+            {% recursetree top_menu.nodes %}
+            <li class="item">
+                <a {% if node.url != '<none>' %}href="{{ node.url }}"{% endif %}>{{ node.name }}</a>
+                {% if not node.is_leaf_node %}
+                <div class="sub">
+                    <ul>{{ children }}</ul>
+                </div>
+                {% endif %}
+            </li>
+            {% endrecursetree %}
+          </ul>
+        </div>
+        <div class="b-menu-bucket">
+            <ul>
+                <li><span><i class="fas fa-cart-plus"></i></span></li>
+                <li><span><i class="fas fa-cart-plus"></i></span></li>
+                <li><span><i class="fas fa-cart-plus"></i></span></li>
+                <li><span><i class="fas fa-cart-plus"></i></span></li>
+            </ul>
+        </div>
     </div>
 </nav>

@@ -8,7 +8,7 @@ git clone -b develop https://github.com/63phc/lks.git
 ```
 python3 -m venv name
 source name/bin/activate 
-pip3 install -r requirements.txt
+pip3 install -r backend/requirements/local.txt
 ```
 - or through pipenv:
 ```
@@ -41,9 +41,11 @@ yarn && yarn run start
 
 ```
 # inside backend
+python manage.py makemigration
 python manage.py migrate
+python manage.py migrate --run-syncdb
 python manage.py createsuperuser
-python manage.py collectstatic
+python manage.py loaddata _backups/*.json
 ```
 
 ### Running
