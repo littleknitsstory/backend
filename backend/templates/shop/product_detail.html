@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="row">
+            <div class="shop">
+                <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
+                <h4>Характеристики товара:</h4>
+
+                {% if object %}
+                    Название: {{ object.title }} <br>
+                    Описание: {{ object.description }} <br>
+                    Цена: {{ object.price }} <br>
+                    Ключевые слова: {{ object.keywords }}
+                {% else %}
+                    <p>No product is available.</p>
+                {% endif %}
+            </div>
+
+            {% include 'components/_sidebar.html' %}
+        </div>
+    </section>
+{% endblock %}

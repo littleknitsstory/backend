@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="b-blog">
+            <div class="row">
+                <div class="shop">
+                    <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
+                    <h4>Категория "{{ category }}":</h4>
+                    <div class="row">
+
+                        {% for product in object_list %}
+                            <a href="/shop/products/{{ product.slug }}/">
+                                Название: {{ product.title }} <br>
+                                Описание: {{ product.description }} <br>
+                                Цена: {{ product.price }} руб.<br>
+                                Ключевые слова: {{ product.keywords }} <br>
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+                {% include 'components/_sidebar.html' %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
