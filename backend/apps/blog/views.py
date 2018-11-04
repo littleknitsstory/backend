@@ -21,4 +21,4 @@ class BlogListView(TemplateView):
 
 class BlogDetailView(DetailView):
     model = Article
-    template_name = 'detail.html'
+    template_name = 'blog/detail.html'

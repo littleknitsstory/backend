@@ -7,9 +7,9 @@ class Menu(models.Model):
     """
     категории меню
     """
-    slug = models.CharField(max_length=100, verbose_name=_('Slug'), unique=True)
-    hint = models.CharField(max_length=100, verbose_name=_('Hint'))
-    active = models.BooleanField(default=False)
+    slug = models.CharField(_('Slug'), max_length=100, unique=True)
+    hint = models.CharField(_('Hint'), max_length=100)
+    active = models.BooleanField(_('Active'), default=False)
 
     def __str__(self):
         return self.slug
@@ -28,13 +28,13 @@ class MenuItems(MPTTModel):
         ('_top', '_top'),
         ('_parent', '_parent'),
     )
-    name = models.CharField(max_length=200, verbose_name=_('Name'), default='')
-    url = models.CharField(max_length=200, verbose_name=_('Link'))
-    menu = models.ForeignKey(Menu, related_name='menu', verbose_name=_('Menu type'), on_delete=models.PROTECT)
+    name = models.CharField(_('Name'), max_length=200, default='')
+    url = models.CharField(_('Link'), max_length=200)
+    menu = models.ForeignKey('Menu', related_name='menu', verbose_name=_('Menu type'), on_delete=models.PROTECT)
     target = models.CharField(max_length=10, choices=LINK_TARGET_CHOICES, null=True, blank=True)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', on_delete=models.CASCADE)
-    ordering = models.IntegerField(default=0, verbose_name=_('Sort'))
-    active = models.BooleanField(default=False)
+    ordering = models.IntegerField(_('Sort'), default=0)
+    active = models.BooleanField(_('Active'), default=False)
 
     def __str__(self):
         return self.name
