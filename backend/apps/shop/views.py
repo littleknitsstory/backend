@@ -17,7 +17,7 @@ class ProductDetailView(DetailView):
     template_name = 'shop/product_detail.html'
 
 
-class ProductsListView(ListView):
+class CategoryProductsListView(ListView):
     model = Category
     template_name = 'shop/category_product_list.html'
 
@@ -27,7 +27,7 @@ class ProductsListView(ListView):
         ).prefetch_related('category', 'tags')
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(ProductsListView, self).get_context_data(**kwargs)
+        context = super(CategoryProductsListView, self).get_context_data(**kwargs)
         context['category'] = Category.objects.get(
             slug=self.kwargs['slug']
         ).title
