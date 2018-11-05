@@ -17,6 +17,7 @@ urlpatterns = [
     path('', include('apps.blog.urls')),
     path('shop/', include('apps.shop.urls')),
     path('subscribe/', include('apps.subscribe.urls')),
+    path('autors', include('django.contrib.auth.urls')),
 
  ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
