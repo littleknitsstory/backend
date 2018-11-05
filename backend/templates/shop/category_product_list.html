@@ -9,20 +9,32 @@
                     <h4>Категория "{{ category }}":</h4>
                     <div class="row">
 
-                        {% for product in object_list %}
-                            <a href="/shop/products/{{ product.slug }}/">
-                                Название: {{ product.title }} <br>
-                                Фото: <img src="{{ host }}/storage/media/{{ product.image }}" width="150px" height="150px"> <br>
-                                Описание: {{ product.description }} <br>
-                                Цена: {{ product.price }} руб.<br>
-                                Ключевые слова: {{ product.keywords }} <br>
-                                Image alt: {{ product.image_alt }} <br>
-                                Категории: {% for item_category in product.category.all %} {{ item_category.title }} {% endfor %} <br>
-                                Теги: {% for item_tag in product.tags.all %} {{ item_tag.title }} {% endfor %} <br>
-                                Запись создана: {{ product.created_at }} <br>
-                                Запись обновлена: {% if product.updated_at %}{{ product.updated_at }}{% else %}&mdash;{% endif %} <br>
+                        {% for object in object_list %}
+                            <div class="b-shop--item">
+                                <div class="b-bestseller--item__border">
+                                    <div class="b-bestseller--item_img">
+                                        <img src="{{ host }}{{ media_url}}{{ object.image }}" alt="">
+                                    </div>
+                                    <div class="b-bestseller--item_title">{{ object.title }}</div>
+                                    <div class="b-bestseller--item_category">
+                                        {% for item_category in object.category.all %}
+                                            <a href="{%  url 'category' item_category.slug %}">{{ item_category.title }}</a>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="b-bestseller--item_prise">$ {{ object.price }}.00</div>
+                                    <div class="b-bestseller--item_cart"><i class="fas fa-cart-plus"></i> &nbsp;<a href="#">add to cart</a></div>
+                                </div>
+                            </div>
+                            
+                            <div hidden>
+                                Описание: {{ object.description }} <br>
+                                Ключевые слова: {{ object.keywords }} <br>
+                                Image alt: {{ object.image_alt }} <br>
+                                Теги: {% for item_tag in object.tags.all %} {{ item_tag.title }} {% endfor %} <br>
+                                Запись создана: {{ object.created_at }} <br>
+                                Запись обновлена: {% if object.updated_at %}{{ object.updated_at }}{% else %}&mdash;{% endif %} <br>
                                 <br>
-                            </a>
+                            </div>
                         {% endfor %}
                     </div>
 

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.views.generic import ListView, DetailView
 
 from .models.category import Category
@@ -9,7 +10,14 @@ class ProductListView(ListView):
     template_name = 'shop/product_list.html'
 
     def get_queryset(self):
-        return Product.objects.all()
+        return Product.objects.all().prefetch_related('category', 'tags')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductListView, self).get_context_data(**kwargs)
+        context['host'] = self.request.META['wsgi.url_scheme'] \
+                          + '://' + self.request.META['HTTP_HOST']
+        context['media_url'] = settings.MEDIA_URL
+        return context
 
 
 class ProductDetailView(DetailView):
@@ -20,6 +28,7 @@ class ProductDetailView(DetailView):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         context['host'] = self.request.META['wsgi.url_scheme'] \
                           + '://' + self.request.META['HTTP_HOST']
+        context['media_url'] = settings.MEDIA_URL
         return context
 
 
@@ -39,5 +48,6 @@ class CategoryProductsListView(ListView):
         ).title
         context['host'] = self.request.META['wsgi.url_scheme'] \
                           + '://' + self.request.META['HTTP_HOST']
+        context['media_url'] = settings.MEDIA_URL
         return context
 
