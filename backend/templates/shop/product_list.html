@@ -8,11 +8,22 @@
                 <h4>Список товаров:</h4>
 
                     {% if object_list %}
-                        <ul>
-                            {% for product in object_list %}
-                                <li><a href="{{ product.slug }}/ ">{{ product.title }}</a></li><br>
-                            {% endfor %}
-                        </ul>
+                        {% for product in object_list %}
+                            <a href="/shop/products/{{ product.slug }}/">
+                                Название: {{ product.title }} <br>
+                                Фото: <img src="{{ host }}/storage/media/{{ product.image }}" width="150px" height="150px"> <br>
+                                Описание: {{ product.description }} <br>
+                                Цена: {{ product.price }} руб.<br>
+                                Ключевые слова: {{ product.keywords }} <br>
+                                Image alt: {{ product.image_alt }} <br>
+                                Категории: {% for item_category in product.category.all %} {{ item_category.title }} {% endfor %} <br>
+                                Теги: {% for item_tag in product.tags.all %} {{ item_tag.title }} {% endfor %} <br>
+                                Запись создана: {{ product.created_at }} <br>
+                                Запись обновлена: {% if product.updated_at %}{{ product.updated_at }}{% else %}&mdash;{% endif %} <br>
+                                <br>
+                            </a>
+                        {% endfor %}
+
                     {% else %}
                         <p>No products are available.</p>
                     {% endif %}
