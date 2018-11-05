@@ -23,12 +23,12 @@ cp .env.expamle .env
 # or create .env with params
 DJANGO_ENV=development
 SECRET_KEY=YOUR_SECRET_KEY
-POSTGRES_USER=user_db
-POSTGRES_DB=test_db
-POSTGRES_PASSWORD=pass_db
-POSTGRES_HOST=db
-POSTGRES_PORT=5432
-PGDATA=/var/lib/postgresql/data/pgdata
+# POSTGRES_USER=user_db
+# POSTGRES_DB=test_db
+# POSTGRES_PASSWORD=pass_db
+# POSTGRES_HOST=db
+# POSTGRES_PORT=5432
+# PGDATA=/var/lib/postgresql/data/pgdata
 
 ```
 - OLD frontend
