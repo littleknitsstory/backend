@@ -16,6 +16,12 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'shop/product_detail.html'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context['host'] = self.request.META['wsgi.url_scheme'] \
+                          + '://' + self.request.META['HTTP_HOST']
+        return context
+
 
 class CategoryProductsListView(ListView):
     model = Category
