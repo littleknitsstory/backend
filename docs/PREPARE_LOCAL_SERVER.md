@@ -21,6 +21,7 @@ pipenv shell
 ```
 cp .env.expamle .env
 # or create .env with params
+DJANGO_ENV=development
 SECRET_KEY=YOUR_SECRET_KEY
 POSTGRES_USER=user_db
 POSTGRES_DB=test_db
