@@ -7,6 +7,7 @@ from .models.product import Product
 
 class ProductListView(ListView):
     model = Product
+    paginate_by = 6
     template_name = 'shop/product_list.html'
 
     def get_queryset(self):
@@ -34,6 +35,7 @@ class ProductDetailView(DetailView):
 
 class CategoryProductsListView(ListView):
     model = Category
+    paginate_by = 1
     template_name = 'shop/category_product_list.html'
 
     def get_queryset(self, *args, **kwargs):
