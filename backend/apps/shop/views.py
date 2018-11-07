@@ -4,10 +4,12 @@ from django.views.generic import ListView, DetailView
 from .models.category import Category
 from .models.product import Product
 
+PAGINATION_BY = 6
+
 
 class ProductListView(ListView):
     model = Product
-    paginate_by = 6
+    paginate_by = PAGINATION_BY
     template_name = 'shop/product_list.html'
 
     def get_queryset(self):
@@ -15,9 +17,6 @@ class ProductListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
-        context['host'] = self.request.META['wsgi.url_scheme'] \
-                          + '://' + self.request.META['HTTP_HOST']
-        context['media_url'] = settings.MEDIA_URL
         return context
 
 
@@ -27,15 +26,12 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
-        context['host'] = self.request.META['wsgi.url_scheme'] \
-                          + '://' + self.request.META['HTTP_HOST']
-        context['media_url'] = settings.MEDIA_URL
         return context
 
 
 class CategoryProductsListView(ListView):
     model = Category
-    paginate_by = 1
+    paginate_by = PAGINATION_BY
     template_name = 'shop/category_product_list.html'
 
     def get_queryset(self, *args, **kwargs):
@@ -48,8 +44,5 @@ class CategoryProductsListView(ListView):
         context['category'] = Category.objects.get(
             slug=self.kwargs['slug']
         ).title
-        context['host'] = self.request.META['wsgi.url_scheme'] \
-                          + '://' + self.request.META['HTTP_HOST']
-        context['media_url'] = settings.MEDIA_URL
         return context
 
