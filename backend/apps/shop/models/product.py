@@ -5,6 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 class Product(models.Model):
     title = models.CharField(_('Title'), max_length=120)
     slug = models.CharField(_('Slug'), max_length=120, unique=True)
+    image = models.ImageField(_('Image'), blank=True, null=True)
+    image_alt = models.CharField(max_length=120, blank=True, null=True)
     description = models.TextField(_('Description'), null=True, blank=True)
     keywords = models.CharField(_('Keywords'), max_length=120, null=True, blank=True)
     price = models.IntegerField(_('Price'), null=True, blank=True)
