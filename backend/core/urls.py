@@ -16,7 +16,7 @@ urlpatterns = [
 
     path('', include('apps.blog.urls')),
     path('shop/', include('apps.shop.urls')),
-    path('subscribe/', include('apps.subscribe.urls')),
+    path('subscribe/', include('apps.subscribe.urls', namespace='subscribe')),
 
  ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

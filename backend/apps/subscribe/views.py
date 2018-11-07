@@ -1,18 +1,22 @@
-from django.shortcuts import render
 from django.views import View
 from .forms import SubscribeForm
+from django.http import JsonResponse
+from django.views.generic.base import TemplateView
+from django.urls import reverse_lazy
+
+class SuccessSubscribe(TemplateView):
+    template_name = 'subscribe/success_subscribe.html'
 
 
-class ViewSubscribe(View):
-    form_class = SubscribeForm
-    initial = {'key': 'value'}
+class AjaxSubscribe(View):
+    def post(self, request):
+        form = SubscribeForm(request.POST)
+        if form.is_valid():
+            url = reverse_lazy('subscribe:success_subscribe')
+            form.save()
+            response_dict = {'response': 'succsess', 'url': url}
+            return JsonResponse(response_dict)
+        response_dict = {'response': 'Вы уже подписаны.'}
+        return JsonResponse(response_dict)
 
-    def get(self, request):
-        form = self.form_class(initial=self.initial)
-        if request.GET.get('email'):
-            form = self.form_class(request.GET)
-            if form.is_valid():
-                form.save()
-                return render(request, 'subscribe/success_subscribe.html')
-        return render(request, 'components/_sidebar.html', {'form': form})
 
