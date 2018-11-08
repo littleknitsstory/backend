@@ -1,5 +1,5 @@
-from django.conf import settings
-from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, DetailView, CreateView
 
 from .models.category import Category
 from .models.product import Product
@@ -46,3 +46,12 @@ class CategoryProductsListView(ListView):
         ).title
         return context
 
+
+class ProductCreateView(LoginRequiredMixin, CreateView):
+    model = Product
+    login_url = '/login/'
+    fields = [
+        'title', 'slug', 'image', 'image_alt', 'description',
+        'keywords', 'price', 'active', 'category', 'tags'
+    ]
+    template_name = 'shop/product_form.html'

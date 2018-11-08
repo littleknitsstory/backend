@@ -17,7 +17,7 @@
                                     <div class="b-bestseller--item_title">{{ object.title }}</div>
                                     <div class="b-bestseller--item_category">
                                         {% for item_category in object.category.all %}
-                                            <a href="{%  url 'category' item_category.slug %}">{{ item_category.title }}</a>
+                                            <a href="{%  url 'shop:category' item_category.slug %}">{{ item_category.title }}</a>
                                         {% endfor %}
                                     </div>
                                     <div class="b-bestseller--item_prise">$ {{ object.price }}.00</div>
@@ -28,7 +28,6 @@
                                 Описание: {{ object.description }} <br>
                                 Ключевые слова: {{ object.keywords }} <br>
                                 Image alt: {{ object.image_alt }} <br>
-                                Категории: {% for item_category in object.category.all %} {{ item_category.title }} {% endfor %} <br>
                                 Теги: {% for item_tag in object.tags.all %} {{ item_tag.title }} {% endfor %} <br>
                                 Запись создана: {{ object.created_at }} <br>
                                 Запись обновлена: {% if object.updated_at %}{{ object.updated_at }}{% else %}&mdash;{% endif %} <br>

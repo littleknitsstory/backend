@@ -18,7 +18,7 @@
                                     <div class="b-bestseller--item_title">{{ object.title }}</div>
                                     <div class="b-bestseller--item_category">
                                         {% for item_category in object.category.all %}
-                                            <a href="{%  url 'category' item_category.slug %}">{{ item_category.title }}</a>
+                                            <a href="{%  url 'shop:category' item_category.slug %}">{{ item_category.title }}</a>
                                         {% endfor %}
                                     </div>
                                     <div class="b-bestseller--item_prise">$ {{ object.price }}.00</div>
