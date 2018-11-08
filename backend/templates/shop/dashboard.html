@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="row">
+            <div class="shop">
+                <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
+                <h4>Панель управления товарами</h4>
+
+                    {% if object_list %}
+                        {% for object in object_list %}
+                            <div class="b-shop--item">
+                                <div class="b-bestseller--item__border">
+                                    <div class="b-bestseller--item_img">
+                                        <img src="{{ object.image.url }}" alt="">
+                                    </div>
+                                    <div class="b-bestseller--item_title">{{ object.title }}</div>
+                                    <div class="b-bestseller--item_price">$ {{ object.price }}.00</div>
+                                </div>
+                            </div>
+                            <a href="{% url 'shop:product_delete' object.slug %}">Удалить</a>
+                            <a href="{% url 'shop:product_edit' object.slug %}">Изменить</a>
+                        {% endfor %}
+
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if page_obj.has_previous %}
+                                    <a href="?page=1">&laquo; </a>
+                                    <a href="?page={{ page_obj.previous_page_number }}">&#8592;</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+                                </span>
+
+                                {% if page_obj.has_next %}
+                                    <a href="?page={{ page_obj.next_page_number }}">&#8594;</a>
+                                    <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    {% else %}
+                        <p>No products are available.</p>
+                    {% endif %}
+            </div>
+            {% include 'components/_sidebar.html' %}
+        </div>
+    </section>
+
+{% endblock %}
