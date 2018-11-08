@@ -17,7 +17,7 @@ const Subcribe = ((formID = $('#ajax-form-subscribe')) => {
       type: 'post',
       data: data,
       success: function (data) {
-        if (data["response"]=="succsess") {
+        if (data["response"]=="success") {
           document.location.href = data["url"];
         } else {
           console.log("Вы уже подписаны.");

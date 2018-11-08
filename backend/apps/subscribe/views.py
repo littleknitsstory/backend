@@ -14,7 +14,7 @@ class AjaxSubscribe(View):
         if form.is_valid():
             url = reverse_lazy('subscribe:success_subscribe')
             form.save()
-            response_dict = {'response': 'succsess', 'url': url}
+            response_dict = {'response': 'success', 'url': url}
             return JsonResponse(response_dict)
         response_dict = {'response': 'Вы уже подписаны.'}
         return JsonResponse(response_dict)
