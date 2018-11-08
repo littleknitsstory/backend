@@ -77,4 +77,5 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
 
 class ProductDashboardView(LoginRequiredMixin, ListView):
     model = Product
+    paginate_by = 6
     template_name = 'shop/dashboard.html'
