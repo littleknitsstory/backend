@@ -6,7 +6,7 @@
             <div class="shop">
                 <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
                 <h4>Панель управления товарами</h4>
-
+                    <button onclick="location.href='{% url 'shop:product_create' %}'" type="button">&oplus; Добавить товар</button>
                     {% if object_list %}
                         {% for object in object_list %}
                             <div class="b-shop--item">
@@ -18,10 +18,10 @@
                                     <div class="b-bestseller--item_price">$ {{ object.price }}.00</div>
                                 </div>
                             </div>
-                            <a href="{% url 'shop:product_delete' object.slug %}">Удалить</a>
-                            <a href="{% url 'shop:product_edit' object.slug %}">Изменить</a>
+                            <button style="float:right" onclick="location.href='{% url 'shop:product_delete' object.slug %}'" type="button">&#215;</button>
+                            <button style="float:right" onclick="location.href='{% url 'shop:product_edit' object.slug %}'" type="button">&#9998;</button>
                         {% endfor %}
-
+                        <button onclick="location.href='{% url 'shop:product_create' %}'" type="button">&oplus; Добавить товар</button>
                         <div class="pagination">
                             <span class="step-links">
                                 {% if page_obj.has_previous %}
