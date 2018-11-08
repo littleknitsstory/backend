@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from .models.category import Category
 from .models.product import Product
@@ -48,6 +48,16 @@ class CategoryProductsListView(ListView):
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
+    model = Product
+    login_url = '/login/'
+    fields = [
+        'title', 'slug', 'image', 'image_alt', 'description',
+        'keywords', 'price', 'active', 'category', 'tags'
+    ]
+    template_name = 'shop/product_form.html'
+
+
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     login_url = '/login/'
     fields = [
