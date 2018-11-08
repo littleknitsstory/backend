@@ -18,10 +18,11 @@
   <div class="b-subcribe">
       <div class="b-subcribe_title">Узнайте об интересных и эксклюзивных обновлениях первыми</div>
       <div class="b-subcribe_form">
-          <form class="form-inline">
+          <form class="form-inline" id="ajax-form-subscribe">
             {% csrf_token %}
-              {{ form }}
-              <button type="submit" class="" id="">Подписаться</button>
+            {{ form_subscribe.non_field_errors }}
+              {{ form_subscribe }}
+              <button type="submit" class="" id="submit_btn">Подписаться</button>
           </form>
       </div>
   </div>

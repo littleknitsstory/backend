@@ -15,9 +15,8 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     path('', include('apps.blog.urls')),
-    path('shop/', include('apps.shop.urls', namespace='shop')),
     path('subscribe/', include('apps.subscribe.urls')),
-
+    path('shop/', include('apps.shop.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
