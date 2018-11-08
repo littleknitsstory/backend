@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -15,6 +16,9 @@ class Product(models.Model):
     tags = models.ManyToManyField('tags.Tag', related_name='product_tags')
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
     update_at = models.DateTimeField(_('Updated at'), auto_now=True)
+
+    def get_absolute_url(self):
+        return reverse(viewname='shop:main')
 
     class Meta:
         verbose_name = _('Product')
