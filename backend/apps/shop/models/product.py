@@ -18,7 +18,7 @@ class Product(models.Model):
     update_at = models.DateTimeField(_('Updated at'), auto_now=True)
 
     def get_absolute_url(self):
-        return reverse(viewname='shop1:main')
+        return reverse(viewname='shop:main')
 
     class Meta:
         verbose_name = _('Product')

@@ -10,6 +10,9 @@
                     {{ form.as_p }}
                     <input type="submit" value="{% if object %}Обновить{% else %}Создать{% endif %}">
                 </form>
+                {% if object %}
+                    <button onclick="location.href='{% url 'shop:product_delete' object.slug %}'" type="button">Удалить товар</button>
+                {% endif %}
             </div>
         </div>
     </section>

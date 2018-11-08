@@ -15,7 +15,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     path('', include('apps.blog.urls')),
-    path('shop/', include('apps.shop.urls', namespace='shop1')),
+    path('shop/', include('apps.shop.urls', namespace='shop')),
     path('subscribe/', include('apps.subscribe.urls')),
 
 ]

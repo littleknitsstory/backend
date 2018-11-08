@@ -1,5 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, \
+    DeleteView
 
 from .models.category import Category
 from .models.product import Product
@@ -65,3 +67,8 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         'keywords', 'price', 'active', 'category', 'tags'
     ]
     template_name = 'shop/product_form.html'
+
+
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
+    model = Product
+    success_url = reverse_lazy('shop:main')
