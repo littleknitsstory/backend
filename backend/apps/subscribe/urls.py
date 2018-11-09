@@ -1,6 +1,9 @@
 from django.urls import path
-from .views import ViewSubscribe
+from .views import AjaxSubscribe, SuccessSubscribe
+
+app_name = 'subscribe'
 
 urlpatterns = [
-    path('', ViewSubscribe.as_view(), name='subscribe')
+    path('ajax/', AjaxSubscribe.as_view(), name='ajax_subscribe'),
+    path('success/', SuccessSubscribe.as_view(), name='success_subscribe'),
 ]

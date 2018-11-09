@@ -3,6 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from .models import Article
 from .serializers import ArticleSerializer
+from apps.subscribe.forms import SubscribeForm
 
 
 class ArticleList(ModelViewSet):
@@ -16,6 +17,7 @@ class BlogListView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(BlogListView, self).get_context_data(**kwargs)
         context['articles'] = Article.objects.all().order_by('?')[:4]
+        context['form_subscribe'] = SubscribeForm()
         return context
 
 

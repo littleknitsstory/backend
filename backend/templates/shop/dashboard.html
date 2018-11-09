@@ -5,8 +5,8 @@
         <div class="row">
             <div class="shop">
                 <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
-                <h4>Список товаров:</h4>
-
+                <h4>Панель управления товарами</h4>
+                    <button onclick="location.href='{% url 'shop:product_create' %}'" type="button">&oplus; Добавить товар</button>
                     {% if object_list %}
                         {% for object in object_list %}
                             <div class="b-shop--item">
@@ -15,25 +15,14 @@
                                         <img src="{{ object.image.url }}" alt="">
                                     </div>
                                     <div class="b-bestseller--item_title">{{ object.title }}</div>
-                                    <div class="b-bestseller--item_category">
-                                        {% for item_category in object.category.all %}
-                                            <a href="{%  url 'shop:category' item_category.slug %}">{{ item_category.title }}</a>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="b-bestseller--item_prise">$ {{ object.price }}.00</div>
-                                    <div class="b-bestseller--item_cart"><i class="fas fa-cart-plus"></i> &nbsp;<a href="#">add to cart</a></div>
+                                    <div class="b-bestseller--item_price">$ {{ object.price }}.00</div>
                                 </div>
                             </div>
-                            <div hidden>
-                                Описание: {{ object.description }} <br>
-                                Ключевые слова: {{ object.keywords }} <br>
-                                Image alt: {{ object.image_alt }} <br>
-                                Теги: {% for item_tag in object.tags.all %} {{ item_tag.title }} {% endfor %} <br>
-                                Запись создана: {{ object.created_at }} <br>
-                                Запись обновлена: {% if object.updated_at %}{{ object.updated_at }}{% else %}&mdash;{% endif %} <br>
-                            </div>
+                            <button title="Удалить товар" onclick="location.href='{% url 'shop:product_delete' object.slug %}'" type="button">&#215;</button>
+                            <button title="Редактировать товар" onclick="location.href='{% url 'shop:product_edit' object.slug %}'" type="button">&#9998;</button>
                         {% endfor %}
-
+                        <br><br>
+                        <button onclick="location.href='{% url 'shop:product_create' %}'" type="button">&oplus; Добавить товар</button>
                         <div class="pagination">
                             <span class="step-links">
                                 {% if page_obj.has_previous %}
