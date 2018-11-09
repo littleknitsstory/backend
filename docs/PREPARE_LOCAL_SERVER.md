@@ -1,36 +1,41 @@
 ### Project Install 
 
-- clone project: 
+#### Clone project: 
 ```
 git clone -b develop https://github.com/63phc/lks.git
 ```
-- create env
+#### Create env
+- VirtualEnv
 ```
 python3 -m venv name
 source name/bin/activate 
-pip3 install -r requirements.txt
+pip3 install -r backend/requirements/local.txt
 ```
-- or through pipenv:
+- Or through pipenv:
 ```
 pip3 install pipenv
 pipenv install
 pipenv shell
 ```
 
+#### Env File
 - edit .env.example file with your params
 ```
 cp .env.expamle .env
-# or create .env with params
+```
+- or create .env with params
+```
+DJANGO_ENV=development
 SECRET_KEY=YOUR_SECRET_KEY
-POSTGRES_USER=user_db
-POSTGRES_DB=test_db
-POSTGRES_PASSWORD=pass_db
-POSTGRES_HOST=db
-POSTGRES_PORT=5432
-PGDATA=/var/lib/postgresql/data/pgdata
+# POSTGRES_USER=user_db
+# POSTGRES_DB=test_db
+# POSTGRES_PASSWORD=pass_db
+# POSTGRES_HOST=db
+# POSTGRES_PORT=5432
+# PGDATA=/var/lib/postgresql/data/pgdata
 
 ```
-- OLD frontend
+#### OLD frontend
 ```
 # inside frontend
 yarn && yarn run start
@@ -41,9 +46,11 @@ yarn && yarn run start
 
 ```
 # inside backend
+python manage.py makemigration
 python manage.py migrate
+python manage.py migrate --run-syncdb
 python manage.py createsuperuser
-python manage.py collectstatic
+python manage.py loaddata _backups/*.json
 ```
 
 ### Running

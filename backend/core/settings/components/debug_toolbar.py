@@ -1,4 +1,3 @@
-
 def toolbar(request):
     return True
 

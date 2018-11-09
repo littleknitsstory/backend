@@ -8,6 +8,10 @@ class Tag(models.Model):
     slug = models.SlugField(max_length=64, default="")
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
     update_at = models.DateTimeField(_('Updated at'), auto_now=True)
+    
+    class Meta:
+        verbose_name = _('Tag')
+        verbose_name_plural = _('Tags')
 
     def __str__(self):
         return self.title

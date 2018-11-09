@@ -3,22 +3,24 @@ from rest_framework.viewsets import ModelViewSet
 
 from .models import Article
 from .serializers import ArticleSerializer
+from apps.subscribe.forms import SubscribeForm
 
-# ModelViewSet ListAPIView
+
 class ArticleList(ModelViewSet):
     queryset = Article.objects.prefetch_related('tags').all()
     serializer_class = ArticleSerializer
 
 
-class ListView(TemplateView):
-    template_name = 'index.html'
+class BlogListView(TemplateView):
+    template_name = 'blog/list.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ListView, self).get_context_data(**kwargs)
+        context = super(BlogListView, self).get_context_data(**kwargs)
         context['articles'] = Article.objects.all().order_by('?')[:4]
+        context['form_subscribe'] = SubscribeForm()
         return context
 
 
-class DetailView(DetailView):
+class BlogDetailView(DetailView):
     model = Article
-    template_name = 'detail.html'
+    template_name = 'blog/detail.html'

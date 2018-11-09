@@ -1,19 +1,13 @@
 import os
-from django.conf import settings
+from decouple import config
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # backend/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = settings.env('SECRET_KEY', default='%hq1-v75hm5w)t^)!o-!-&pn0_rnavd8qswzs(nc^xuhz8c#g4')
-SECRET_KEY = '%hq1-v75hm5w)t^)!o-!-&pn0_rnavd8qswzs(nc^xuhz8c#g4'
+SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['*']
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,11 +18,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'webpack_loader',
     # 'modeltranslation',
     'apps.blog',
     'apps.tags',
     'apps.shop',
     'apps.reviews',
+    'apps.menu',
+    'apps.subscribe',
+    'django_mptt_admin',
+    'mptt',
 ]
 
 MIDDLEWARE = [
@@ -43,8 +42,6 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
@@ -61,7 +58,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates/', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,19 +72,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-# Password validation
-# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -129,13 +113,15 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-#STATICFILES_DIRS = (
-#    os.path.join(BASE_DIR, 'static'),
-#)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (os.path.join(ROOT_DIR, 'static'),)
 
-# need settings storage
-MEDIA_ROOT = os.path.join(BASE_DIR, '../../storage/media')
 MEDIA_URL = '/storage/'
+MEDIA_ROOT = os.path.join(ROOT_DIR, '../storage/media')
 
-
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'builds/',
+        'STATS_FILE': os.path.join(ROOT_DIR, './static/webpack.scss.json'),
+    }
+}
