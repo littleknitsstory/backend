@@ -5,9 +5,12 @@ from django.conf.urls.static import static
 from rest_framework import routers
 
 from apps.blog.views import ArticleList
+from apps.shop.api import ProductAPIViewSet
+
 
 router = routers.DefaultRouter()
 router.register(r'posts', ArticleList)
+router.register(r'api/shop', ProductAPIViewSet)
 
 urlpatterns = [
 
