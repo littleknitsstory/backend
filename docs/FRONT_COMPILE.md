@@ -13,12 +13,12 @@ yarn
 
 
 ### FOR STYLE SCSS
-- second - write code  
+- write code  
   - html (ex. ```backend/templates/contacts/contacts.html```)
      ```
      {% extends 'base.html' %}
      {% block content %}
-     <form action="" style="b-contacts">
+     <form action="" class="b-contacts">
        {{ form }}
      </form>
      {% endblock %}
@@ -48,15 +48,10 @@ yarn run build-scss-for-django
 ```
 # example for frontend/src/components/ContactForm/index.js:
 import $ from 'jquery';
-
-
 const ContactForm = ((formID = $('#ajax-form-contact-form')) => {
   // HERE WRITE JS CODE
-
 })();
-
 export default ContactForm;
-
 ```
 - include this file in ```frontend/src/build.scss.js```
 
