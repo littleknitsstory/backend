@@ -3,12 +3,17 @@
 {% block content %}
     <section>
         <div class="row">
-            <div class="shop">
+            <div class="shop b-blog">
                 <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
-                <h4>Форма отправки сообщения администрации сайта:{% endif %}:</h4>
-                <form method="post" enctype="multipart/form-data">{% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" value="Отправить">
+                <h4>Форма отправки сообщения администрации сайта:</h4>
+                <form class="form-group" method="post" enctype="multipart/form-data">{% csrf_token %}
+                    {{ form.name.label }} <br>
+                    {{ form.name }} <br><br>
+                    {{ form.email.label }} <br>
+                    {{ form.email }} <br><br>
+                    {{ form.feedback.label }} <br>
+                    {{ form.feedback }} <br>
+                    <input class="button button-form" type="submit" value="Отправить">
                 </form>
             </div>
         </div>
