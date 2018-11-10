@@ -18,8 +18,8 @@
                                     <div class="b-bestseller--item_price">$ {{ object.price }}.00</div>
                                 </div>
                             </div>
-                            <button onclick="location.href='{% url 'shop:product_delete' object.slug %}'" type="button">&#215;</button>
-                            <button onclick="location.href='{% url 'shop:product_edit' object.slug %}'" type="button">&#9998;</button>
+                            <button title="Удалить товар" onclick="location.href='{% url 'shop:product_delete' object.slug %}'" type="button">&#215;</button>
+                            <button title="Редактировать товар" onclick="location.href='{% url 'shop:product_edit' object.slug %}'" type="button">&#9998;</button>
                         {% endfor %}
                         <br><br>
                         <button onclick="location.href='{% url 'shop:product_create' %}'" type="button">&oplus; Добавить товар</button>
