@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class Menu(models.Model):
     """
-    категории меню
+    Category menu
     """
     slug = models.CharField(_('Slug'), max_length=100, unique=True)
     hint = models.CharField(_('Hint'), max_length=100)
@@ -21,7 +21,7 @@ class Menu(models.Model):
 
 class MenuItems(MPTTModel):
     """
-    Элементы категории меню
+    Item menu
     """
     LINK_TARGET_CHOICES = (
         ('_blank', '_blank'),

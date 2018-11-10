@@ -1,14 +1,11 @@
 from django.contrib import admin
 from apps.tags.models import Tag
+from core.mixin import AdminBaseMixin
 
 
 @admin.register(Tag)  # noqa
-class AdminTag(admin.ModelAdmin):  # noqa
+class AdminTag(AdminBaseMixin):  # noqa
     """
-    tags
+    Tags admin
     """
-    prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title', 'slug')
-    save_as = True
-    save_on_top = True
-
+    pass
