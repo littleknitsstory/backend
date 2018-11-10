@@ -22,7 +22,7 @@
                                 {{ item.content| truncatewords:15 }}
                             </div>
                             <div class="b-blog--item_button">
-                                <button onclick="location.href='blog/{{ item.slug }}';" type="button">Подробней</button>
+                                <button onclick="location.href='{% url 'blog:blog-detail' slug=item.slug %}';" type="button">Подробней</button>
                             </div>
                             <div class="tags--item">
                               {% for tag in item.tags.all %}
