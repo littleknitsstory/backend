@@ -17,6 +17,7 @@ urlpatterns = [
     path('', include('apps.blog.urls')),
     path('subscribe/', include('apps.subscribe.urls')),
     path('shop/', include('apps.shop.urls')),
+    path('contacts/', include('apps.contacts.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

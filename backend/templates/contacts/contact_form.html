@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="row">
+            <div class="shop">
+                <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
+                <h4>Форма отправки сообщения администрации сайта:{% endif %}:</h4>
+                <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Отправить">
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}
