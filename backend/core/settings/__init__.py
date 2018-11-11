@@ -18,6 +18,8 @@ base_settings = [
     'components/common.py',  # standard django settings
     'components/debug_toolbar.py',  # django debug toolbar
     'components/database.py',  # postgres
+    'components/social.py',  # social auth
+    'components/webpack.py',  # webpack
 
     # Select the right env:
     'environments/%s.py' % CONFIG_NAME,

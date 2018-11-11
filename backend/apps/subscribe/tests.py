@@ -10,7 +10,6 @@ class TestSubscribe(TestCase):
         self.client = Client()
         Subscribe.objects.create(email='fortest@test.com')
 
-
     def test_app_in_settings(self):
         self.assertTrue('apps.subscribe' in settings.INSTALLED_APPS)
 
@@ -27,6 +26,3 @@ class TestSubscribe(TestCase):
         data = response.json()
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['response'], 'Вы уже подписаны.')
-
-
-
