@@ -2,13 +2,13 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
+from core.mixin import SeoMixin
 
-class Tag(models.Model):
+
+class Tag(SeoMixin):
     title = models.CharField(_('Title'), max_length=64)
-    slug = models.SlugField(max_length=64, default="")
-    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
-    update_at = models.DateTimeField(_('Updated at'), auto_now=True)
-    
+    slug = models.SlugField(_('Slug'), max_length=64, unique=True)
+
     class Meta:
         verbose_name = _('Tag')
         verbose_name_plural = _('Tags')
@@ -20,4 +20,3 @@ class Tag(models.Model):
         if not self.id:
             self.slug = slugify(self.title)
         super(Tag, self).save(*args, **kwargs)
-

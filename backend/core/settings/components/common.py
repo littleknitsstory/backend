@@ -6,8 +6,11 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SECRET_KEY = config('SECRET_KEY')
 
+PAGINATION_BY = 4
+
 DEBUG = True
 ALLOWED_HOSTS = ['*']
+LOGIN_REDIRECT_URL = 'dashboard:list'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,15 +22,19 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'webpack_loader',
+    'django_extensions',
+    'django_mptt_admin',
+    'mptt',
     # 'modeltranslation',
+    'social_django',
     'apps.blog',
     'apps.tags',
     'apps.shop',
     'apps.reviews',
     'apps.menu',
+    'apps.users',
     'apps.subscribe',
-    'django_mptt_admin',
-    'mptt',
+    'apps.dashboard',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -113,15 +122,8 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(ROOT_DIR, '../storage/static')
 STATICFILES_DIRS = (os.path.join(ROOT_DIR, 'static'),)
 
 MEDIA_URL = '/storage/'
 MEDIA_ROOT = os.path.join(ROOT_DIR, '../storage/media')
-
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'builds/',
-        'STATS_FILE': os.path.join(ROOT_DIR, './static/webpack.scss.json'),
-    }
-}

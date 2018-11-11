@@ -9,104 +9,37 @@
         </div>
             <div class="row">
                 <div class="blog-main">
+                  <div class="blog-main">
+                    {% for item in object_list %}
                     <div class="b-blog--item">
                         <div class="b-blog--item__border">
                             <div class="b-blog--item_img">
                                 <img src="http://via.placeholder.com/150" alt="">
                                 <div class="b-blog--item_tag"><a href="#">обучение</a></div>
                             </div>
-                            <div class="b-blog--item_title"><h2>Простые и легкие DIY цветочные горшки</h2></div>
+                            <div class="b-blog--item_title"><h2>{{ item.title }}</h2></div>
                             <div class="b-blog--item_description">
-                                Не следует, однако забывать, что реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании системы обучения кадров, соответствует насущным потребностям.
+                                {{ item.content| truncatewords:15 }}
                             </div>
                             <div class="b-blog--item_button">
-                                <button onclick="location.href='detail.html';" type="button">Подробней</button>
+                                <button onclick="location.href='{% url 'blog:blog-detail' slug=item.slug %}';" type="button">Подробней</button>
+                            </div>
+                            <div class="tags--item">
+                              {% for tag in item.tags.all %}
+                              <a href="{% url 'tags:tags-list' slug=tag.slug %}">{{ tag }}</a>
+                              {% endfor %}
                             </div>
                         </div>
                     </div>
-                    <div class="b-blog--item">
-                        <div class="b-blog--item__border">
-                            <div class="b-blog--item_img">
-                                <img src="http://via.placeholder.com/150" alt="">
-                                <div class="b-blog--item_tag"><a href="#">обучение</a></div>
-                            </div>
-                            <div class="b-blog--item_title"><h2>Простые и легкие DIY цветочные горшки</h2></div>
-                            <div class="b-blog--item_description">
-                                Не следует, однако забывать, что реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании системы обучения кадров, соответствует насущным потребностям.
-                            </div>
-                            <div class="b-blog--item_button">
-                                <button onclick="location.href='detail.html';" type="button">Подробней</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="b-blog--item">
-                        <div class="b-blog--item__border">
-                            <div class="b-blog--item_img">
-                                <img src="http://via.placeholder.com/150" alt="">
-                                <div class="b-blog--item_tag"><a href="#">обучение</a></div>
-                            </div>
-                            <div class="b-blog--item_title"><h2>Простые и легкие DIY цветочные горшки</h2></div>
-                            <div class="b-blog--item_description">
-                                Не следует, однако забывать, что реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании системы обучения кадров, соответствует насущным потребностям.
-                            </div>
-                            <div class="b-blog--item_button">
-                                <button onclick="location.href='detail.html';" type="button">Подробней</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="b-blog--item">
-                        <div class="b-blog--item__border">
-                            <div class="b-blog--item_img">
-                                <img src="http://via.placeholder.com/150" alt="">
-                                <div class="b-blog--item_tag"><a href="#">обучение</a></div>
-                            </div>
-                            <div class="b-blog--item_title"><h2>Простые и легкие DIY цветочные горшки</h2></div>
-                            <div class="b-blog--item_description">
-                                Не следует, однако забывать, что реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании системы обучения кадров, соответствует насущным потребностям.
-                            </div>
-                            <div class="b-blog--item_button">
-                                <button onclick="location.href='detail.html';" type="button">Подробней</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="b-blog--item">
-                        <div class="b-blog--item__border">
-                            <div class="b-blog--item_img">
-                                <img src="http://via.placeholder.com/150" alt="">
-                                <div class="b-blog--item_tag"><a href="#">обучение</a></div>
-                            </div>
-                            <div class="b-blog--item_title"><h2>Простые и легкие DIY цветочные горшки</h2></div>
-                            <div class="b-blog--item_description">
-                                Не следует, однако забывать, что реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании системы обучения кадров, соответствует насущным потребностям.
-                            </div>
-                            <div class="b-blog--item_button">
-                                <button onclick="location.href='detail.html';" type="button">Подробней</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="b-blog--item">
-                        <div class="b-blog--item__border">
-                            <div class="b-blog--item_img">
-                                <img src="http://via.placeholder.com/150" alt="">
-                                <div class="b-blog--item_tag"><a href="#">обучение</a></div>
-                            </div>
-                            <div class="b-blog--item_title"><h2>Простые и легкие DIY цветочные горшки</h2></div>
-                            <div class="b-blog--item_description">
-                                Не следует, однако забывать, что реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании системы обучения кадров, соответствует насущным потребностям.
-                            </div>
-                            <div class="b-blog--item_button">
-                                <button onclick="location.href='detail.html';" type="button">Подробней</button>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                     <div class="b-blog--item__more">
                         <button type="button" class="" id="">Больше постов</button>
                     </div>
-                </div>
+                  </div>
 
                 {% include 'components/_sidebar.html' %}
 
-        </div>
+              </div>
             </div>
         </div>
     </section>
