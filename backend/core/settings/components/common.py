@@ -6,6 +6,8 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SECRET_KEY = config('SECRET_KEY')
 
+PAGINATION_BY = 4
+
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
