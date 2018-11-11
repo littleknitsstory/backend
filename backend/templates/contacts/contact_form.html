@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="row">
+            <div class="shop b-blog">
+                <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
+                <h4>Форма отправки сообщения администрации сайта:</h4>
+                <form class="form-group" method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <table>{{ form.as_table }}</table>
+                    <!-- {{ form.name.label }} <br>
+                    {{ form.name }} <br><br>
+                    {{ form.email.label }} <br>
+                    {{ form.email }} <br><br>
+                    {{ form.feedback.label }} <br>
+                    {{ form.feedback }} <br>
+                    {{ form.captcha }} <br> -->
+                  <p class="captcha">{{ form.captcha }}</p>
+                    <input class="button button-form" type="submit" value="Отправить">
+
+                </form>
+                <button class='js-captcha-refresh'>Refresh</button>
+            </div>
+        </div>
+    </section>
+  <script type="text/javascript"  >
+  $('.js-captcha-refresh').click(function(){
+    $form = $(this).parents('form');
+
+    $.getJSON($(this).data('url'), {}, function(json) {
+        // This should update your captcha image src and captcha hidden input
+    });
+
+    return false;
+  });
+  $('.captcha').click(function () {
+    $.getJSON("/captcha/refresh/", function (result) {
+        $('.captcha').attr('src', result['image_url']);
+        $('#id_captcha_0').val(result['key'])
+    });
+
+
+  });
+</script>
+
+{% endblock %}

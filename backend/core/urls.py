@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from django.conf.urls.static import static
 from rest_framework import routers
 
@@ -16,11 +16,10 @@ urlpatterns = [
     path('', include('apps.blog.urls')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-
+    path('captcha/', include('captcha.urls')),
     path('social/', include('social_django.urls', namespace='social')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
-
     path('shop/', include('apps.shop.urls', namespace='shop')),
     path('subscribe/', include('apps.subscribe.urls', namespace='subscribe')),
     path('tags/', include('apps.tags.urls')),
