@@ -1,11 +1,12 @@
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from django.urls import reverse
 from .forms import ReviewForm
 import datetime
 
-from .models import Review, Product
+from .models import Review
+
 
 class ListView(TemplateView):
     template_name = 'reviews.html'
@@ -19,7 +20,7 @@ class ListView(TemplateView):
 def add_review(request):
     form = ReviewForm(request.POST)
     if form.is_valid():
-        product =form.cleaned_data('product')
+        product = form.cleaned_data('product')
         rating = form.cleaned_data['rating']
         comment = form.cleaned_data['comment']
         user_name = form.cleaned_data['user_name']

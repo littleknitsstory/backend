@@ -19,9 +19,10 @@ urlpatterns = [
 
     path('social/', include('social_django.urls', namespace='social')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
 
-    path('shop/', include('apps.shop.urls')),
-    path('subscribe/', include('apps.subscribe.urls')),
+    path('shop/', include('apps.shop.urls', namespace='blog')),
+    path('subscribe/', include('apps.subscribe.urls', namespace='subscribe')),
 
 ]
 

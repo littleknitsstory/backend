@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from core.mixin import SeoMixin
 
 
-class Category(SeoMixin, models.Model):
+class Category(SeoMixin):
     title = models.CharField(_('Title'), max_length=120)
     slug = models.CharField(_('Slug'), max_length=120, unique=True)
 

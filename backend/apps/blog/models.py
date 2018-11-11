@@ -15,8 +15,9 @@ class Article(SeoMixin, ImagesMixin):
     active = models.BooleanField(_('Active'), default=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                related_name='article_user',
-                               on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tag, related_name='tags')
+                               on_delete=models.CASCADE,
+                               blank=True)
+    tags = models.ManyToManyField(Tag, related_name='article_tags', blank=True)
 
     def __str__(self):
         return self.title

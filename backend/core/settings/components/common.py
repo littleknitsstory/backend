@@ -8,6 +8,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = True
 ALLOWED_HOSTS = ['*']
+LOGIN_REDIRECT_URL = 'dashboard:list'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,6 +20,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'webpack_loader',
+    'django_extensions',
     'django_mptt_admin',
     'mptt',
     # 'modeltranslation',
@@ -30,6 +32,7 @@ INSTALLED_APPS = [
     'apps.menu',
     'apps.users',
     'apps.subscribe',
+    'apps.dashboard',
 ]
 
 MIDDLEWARE = [
