@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.subscribe',
     'apps.dashboard',
+    'apps.slider',
 ]
 
 MIDDLEWARE = [

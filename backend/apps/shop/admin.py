@@ -6,12 +6,12 @@ from .models.product import Product
 
 
 @admin.register(Category)
-class CategoryAdmin(AdminBaseMixin, admin.ModelAdmin):
+class CategoryAdmin(AdminBaseMixin):
     list_display = ['title', 'slug', 'description', 'created_at', 'update_at']
 
 
 @admin.register(Product)
-class ProductAdmin(AdminBaseMixin, admin.ModelAdmin):
+class ProductAdmin(AdminBaseMixin):
     list_display = [
         'title', 'slug', 'description', 'keywords', 'price', 'active',
         'created_at', 'update_at'

@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
 
+
 class SuccessSubscribe(TemplateView):
     template_name = 'subscribe/success_subscribe.html'
 
@@ -18,5 +19,3 @@ class AjaxSubscribe(View):
             return JsonResponse(response_dict)
         response_dict = {'response': 'Вы уже подписаны.'}
         return JsonResponse(response_dict)
-
-
