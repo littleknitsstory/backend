@@ -19,7 +19,7 @@ urlpatterns = [
     # path('captcha/', include('captcha.urls')),
     path('social/', include('social_django.urls', namespace='social')),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
+    path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
     path('shop/', include('apps.shop.urls', namespace='shop')),
     path('subscribe/', include('apps.subscribe.urls', namespace='subscribe')),
     path('tags/', include('apps.tags.urls')),
