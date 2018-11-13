@@ -8,13 +8,12 @@
             <h1>Блог по вязанию</h1>
         </div>
             <div class="row">
-                <div class="blog-main">
                   <div class="blog-main">
                     {% for item in object_list %}
                     <div class="b-blog--item">
                         <div class="b-blog--item__border">
                             <div class="b-blog--item_img">
-                                <img src="http://via.placeholder.com/150" alt="">
+                                <img src="http://via.placeholder.com/250" alt="">
                                 <div class="b-blog--item_tag"><a href="#">обучение</a></div>
                             </div>
                             <div class="b-blog--item_title"><h2>{{ item.title }}</h2></div>
@@ -36,10 +35,8 @@
                         <button type="button" class="" id="">Больше постов</button>
                     </div>
                   </div>
-
                 {% include 'components/_sidebar.html' %}
 
-              </div>
             </div>
         </div>
     </section>

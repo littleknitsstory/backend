@@ -16,7 +16,8 @@ class Article(SeoMixin, ImagesMixin):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                related_name='article_user',
                                on_delete=models.CASCADE,
-                               blank=True)
+                               blank=True,
+                               null=True)
     tags = models.ManyToManyField(Tag, related_name='article_tags', blank=True)
 
     def __str__(self):
@@ -28,6 +29,6 @@ class Article(SeoMixin, ImagesMixin):
         return super(Article, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = _('Post')
-        verbose_name_plural = _('Posts')
+        verbose_name = _('Article')
+        verbose_name_plural = _('Articles')
         ordering = ('-created_at',)
