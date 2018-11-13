@@ -115,11 +115,16 @@ USE_TZ = True
 #
 # MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 #
-# gettext = lambda s: s
-# LANGUAGES = (
-#     ('ru', gettext('Russian')),
-#     ('en', gettext('English')),
-# )
+
+gettext = lambda s: s  # noqa
+
+LANGUAGES = (
+    ('ru', gettext('Russian')),
+    ('en', gettext('English')),
+)
+
+LOCALE_PATHS = (
+    ROOT_DIR + '/apps/locale', )
 
 
 STATIC_URL = '/static/'

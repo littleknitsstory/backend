@@ -1,0 +1,187 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-13 11:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/blog/models.py:12 apps/shop/models/category.py:8
+#: apps/shop/models/product.py:10 apps/slider/models.py:9
+#: apps/tags/models.py:10
+msgid "Title"
+msgstr ""
+
+#: apps/blog/models.py:13 apps/menu/models.py:10 apps/shop/models/category.py:9
+#: apps/shop/models/product.py:11 apps/tags/models.py:11
+msgid "Slug"
+msgstr ""
+
+#: apps/blog/models.py:14
+msgid "Content"
+msgstr ""
+
+#: apps/blog/models.py:15 apps/menu/models.py:12 apps/menu/models.py:37
+#: apps/shop/models/product.py:13 apps/slider/models.py:11
+msgid "Active"
+msgstr ""
+
+#: apps/blog/models.py:31
+msgid "Post"
+msgstr ""
+
+#: apps/blog/models.py:32
+msgid "Posts"
+msgstr ""
+
+#: apps/feedback/models.py:7 apps/menu/models.py:31
+msgid "Name"
+msgstr ""
+
+#: apps/feedback/models.py:8 apps/subscribe/models.py:6
+msgid "Email"
+msgstr ""
+
+#: apps/feedback/models.py:9 apps/feedback/models.py:12
+msgid "Feedback"
+msgstr ""
+
+#: apps/feedback/models.py:13
+msgid "Feedbacks"
+msgstr ""
+
+#: apps/menu/models.py:11
+msgid "Hint"
+msgstr ""
+
+#: apps/menu/models.py:18
+msgid "Type"
+msgstr ""
+
+#: apps/menu/models.py:19
+msgid "Types"
+msgstr ""
+
+#: apps/menu/models.py:32 apps/slider/models.py:13
+msgid "Link"
+msgstr ""
+
+#: apps/menu/models.py:33
+msgid "Menu type"
+msgstr ""
+
+#: apps/menu/models.py:36
+msgid "Sort"
+msgstr ""
+
+#: apps/menu/models.py:46
+msgid "Menu item"
+msgstr ""
+
+#: apps/menu/models.py:47
+msgid "Menu items"
+msgstr ""
+
+#: apps/shop/models/category.py:12 apps/shop/models/product.py:15
+msgid "Category"
+msgstr ""
+
+#: apps/shop/models/category.py:13
+msgid "Categories"
+msgstr ""
+
+#: apps/shop/models/product.py:12
+msgid "Price"
+msgstr ""
+
+#: apps/shop/models/product.py:18 apps/tags/models.py:15
+msgid "Tags"
+msgstr ""
+
+#: apps/shop/models/product.py:21
+msgid "Product"
+msgstr ""
+
+#: apps/shop/models/product.py:22
+msgid "Products"
+msgstr ""
+
+#: apps/slider/models.py:10
+msgid "Span"
+msgstr ""
+
+#: apps/slider/models.py:12
+msgid "Ordering"
+msgstr ""
+
+#: apps/slider/models.py:16
+msgid "Slider"
+msgstr ""
+
+#: apps/slider/models.py:17
+msgid "Sliders"
+msgstr ""
+
+#: apps/subscribe/models.py:7 core/mixin.py:20
+msgid "Created at"
+msgstr ""
+
+#: apps/subscribe/models.py:8
+msgid "Hidden"
+msgstr ""
+
+#: apps/subscribe/models.py:11
+msgid "Subscribe"
+msgstr ""
+
+#: apps/subscribe/models.py:12
+msgid "Subscribers"
+msgstr ""
+
+#: apps/tags/models.py:14
+msgid "Tag"
+msgstr ""
+
+#: core/mixin.py:16
+msgid "Title Seo"
+msgstr ""
+
+#: core/mixin.py:17
+msgid "Keywords"
+msgstr ""
+
+#: core/mixin.py:18
+msgid "Description"
+msgstr ""
+
+#: core/mixin.py:21
+msgid "Updated at"
+msgstr ""
+
+#: core/mixin.py:34
+msgid "Images"
+msgstr ""
+
+#: core/mixin.py:35
+msgid "Images Alt"
+msgstr ""
+
+#: core/settings/components/common.py:122
+msgid "Russian"
+msgstr ""
+
+#: core/settings/components/common.py:123
+msgid "English"
+msgstr ""
