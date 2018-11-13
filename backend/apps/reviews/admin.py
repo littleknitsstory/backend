@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, Review
+from .models import Review
 
 
 class ReviewAdmin(admin.ModelAdmin):
@@ -10,5 +10,4 @@ class ReviewAdmin(admin.ModelAdmin):
     search_fields = ['comment']
 
 
-admin.site.register(Product)
 admin.site.register(Review, ReviewAdmin)

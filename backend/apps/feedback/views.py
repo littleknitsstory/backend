@@ -1,13 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 
-from .forms import ContactForm
-from .models import Contact
+from .forms import FeedbackForm
+from .models import Feedback
 
 
 class ContactCreateView(LoginRequiredMixin, CreateView):
-    model = Contact
-    form_class = ContactForm
+    model = Feedback
+    form_class = FeedbackForm
     fields = ['name', 'email', 'feedback', 'captcha']
-    template_name = 'contacts/contact_form.html'
-
+    template_name = 'feedback/contact_form.html'
