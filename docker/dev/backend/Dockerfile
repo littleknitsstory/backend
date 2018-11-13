@@ -12,13 +12,14 @@ RUN apk update && \
 RUN apk add --no-cache jpeg-dev zlib-dev
 
 
-ADD requirements.txt /backend/
-RUN pip3 install -r requirements.txt
+#ADD backend/requirements/ /backend/
 
 ## bash for dev mode
 RUN apk add --update bash && rm -rf /var/cache/apk/*
 
 ADD ./backend /backend/
+RUN pip3 install -r requirements/local.txt
+
 
 #WORKDIR /backend
-
+EXPOSE 8000
