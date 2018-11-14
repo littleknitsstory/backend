@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.contacts',
     'apps.dashboard',
     'apps.slider',
+    'captcha',
 ]
 
 MIDDLEWARE = [

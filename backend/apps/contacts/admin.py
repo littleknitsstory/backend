@@ -1,5 +1,6 @@
 from django.contrib import admin
 from apps.contacts.models import Subscribe
+from apps.contacts.models import Feedback
 
 
 class SubscribeAdmin(admin.ModelAdmin):
@@ -13,3 +14,12 @@ class SubscribeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Subscribe, SubscribeAdmin)
+
+
+
+
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'feedback', 'created_at']
+
+
+admin.site.register(Feedback, FeedbackAdmin)

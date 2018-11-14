@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 
-from .forms import FeedbackForm
-from .models import Feedback
+from apps.contacts.forms.feedback import FeedbackForm
+from apps.contacts.models.feedback import Feedback
 
 
 class ContactCreateView(LoginRequiredMixin, CreateView):
