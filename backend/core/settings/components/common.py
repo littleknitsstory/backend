@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'apps.reviews',
     'apps.menu',
     'apps.users',
-    'apps.subscribe',
+    # 'apps.subscribe',
+    'apps.contacts',
     'apps.dashboard',
     'apps.slider',
 ]

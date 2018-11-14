@@ -3,7 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from .models import Article
 from .serializers import ArticleSerializer
-from apps.subscribe.forms import SubscribeForm
+from apps.contacts.forms.subscribe import SubscribeForm
 from django.conf import settings
 
 
