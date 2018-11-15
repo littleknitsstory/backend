@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="b-blog">
+            <div class="b-blog--header">
+            <h2>АВТОРСКИЙ</h2>
+            <h1>Блог по вязанию</h1>
+        </div>
+            <div class="row">
+                <div class="blog-main">
+                  <div class="blog-main">
+                    {% for item in object_list %}
+                    <div class="b-blog--item">
+                        <div class="b-blog--item__border">
+                            <div class="b-blog--item_title"><h2>{{ item.user_name }}</h2></div>
+                            <div class="b-blog--item_description">
+                                {{ item.comment }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                {% include 'components/_sidebar.html' %}
+
+              </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -6,7 +6,6 @@ from django.db import models
 class Feedback(ModelMixin):
     """ Feedback model """
     name = models.CharField(_('Name'), max_length=120)
-    email = models.EmailField(_('Email'))
     feedback = models.TextField(_('Feedback'))
 
     class Meta:

@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Subscribe(ModelMixin):
-    email = models.EmailField(_('Email'))
+
     hidden = models.CharField(_('Hidden'), max_length=200)
 
     class Meta:

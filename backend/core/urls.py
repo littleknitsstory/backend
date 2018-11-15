@@ -24,6 +24,7 @@ urlpatterns = [
     path('subscribe/', include('apps.contacts.urls.subscribe', namespace='subscribe')),
     path('tags/', include('apps.tags.urls')),
     path('feedback/', include('apps.contacts.urls.feedback')),
+    path('temp/', include('apps.contacts.urls.reviews')),
 
 ]
 
