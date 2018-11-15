@@ -10,9 +10,9 @@ install:
 #script:
 #  - docker-compose run -e DJANGO_SETTINGS_MODULE=djangodocker.settings.testing --no-deps --rm app py.test
 
-deploy:
-  - provider: script
-    script: bash docker/deploy.sh
-    on:
-      branch: master
-    skip_cleanup: true
+#deploy:
+#  - provider: script
+#    script: bash docker/deploy.sh
+#    on:
+#      branch: master
+#    skip_cleanup: true

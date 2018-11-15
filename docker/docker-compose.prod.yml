@@ -27,7 +27,7 @@ services:
     container_name: phc_lks_backend
     env_file:
       - ./dev/.env
-    command: /run_project.sh
+#    command: /run_project.sh
     links:
       - postgresql
       - redis
