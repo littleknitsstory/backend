@@ -23,7 +23,7 @@ services:
       - main
 
   backend:
-    image: 63phc/lks:lates
+    image: 63phc/lks:latest
     container_name: phc_lks_backend
     env_file:
       - ./dev/.env
