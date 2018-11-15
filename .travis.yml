@@ -1,18 +1,30 @@
 sudo: required
-
 services:
   - docker
 
-install:
-  - docker-compose -f docker/docker-compose.prod.yml pull
-#  - docker-compose -f docker/docker-compose.dev.yml build
+before_script:
+  - docker-compose -f docker/docker-compose.prod.yml pull || true
 
-#script:
-#  - docker-compose run -e DJANGO_SETTINGS_MODULE=djangodocker.settings.testing --no-deps --rm app py.test
+script:
 
-#deploy:
-#  - provider: script
-#    script: bash docker/deploy.sh
-#    on:
-#      branch: master
-#    skip_cleanup: true
+  - docker build -t 63phc/lks:latest -f docker/dev/backend/Dockerfile .
+  - docker-compose -f docker/docker-compose.dev.yml up
+
+after_script:
+  - docker images
+
+before_develop:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+
+develop:
+  provider: script
+  script: docker push 63phc/lks:latest
+  on:
+    branch: develop
+
+deploy:
+  - provider: script
+    script: bash docker/deploy.sh
+    on:
+      branch: master
+    skip_cleanup: true
