@@ -1,12 +1,11 @@
 sudo: required
-dist: trusty
 
 services:
   - docker
 
 install:
-  - docker-compose -f docker/docker-compose.dev.yml pull
-  - docker-compose -f docker/docker-compose.dev.yml build
+  - docker-compose -f docker/docker-compose.prod.yml pull
+#  - docker-compose -f docker/docker-compose.dev.yml build
 
 #script:
 #  - docker-compose run -e DJANGO_SETTINGS_MODULE=djangodocker.settings.testing --no-deps --rm app py.test

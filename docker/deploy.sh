@@ -3,13 +3,14 @@
 set -e;
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "$DIR/.."
+
+#cd "$DIR/$BUILD_ENV/backend"
 
 image_tag="latest";
-image_full_name="63phc/lks:$image_tag";
+image_full_name="$DOCKER_REPO:$image_tag";
 
 echo "Building image '$image_full_name'";
-docker build . -t "$image_full_name";
+docker build -t "$image_full_name" -f "$DIR/$BUILD_ENV/backend/Dockerfile" .;
 
 echo "Authenticating";
 echo "$DOCKER_PASS" | docker login -u="$DOCKER_USERNAME" --password-stdin;
