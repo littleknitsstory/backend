@@ -4,6 +4,7 @@ from apps.contacts.forms.subscribe import SubscribeForm
 from django.http import JsonResponse
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
+import json
 
 
 class SuccessSubscribe(TemplateView):
