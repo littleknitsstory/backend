@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from django.conf import settings
-from apps.subscribe.models import Subscribe
+from apps.contacts.models import Subscribe
 from django.urls import reverse_lazy
 
 
@@ -11,7 +11,7 @@ class TestSubscribe(TestCase):
         Subscribe.objects.create(email='fortest@test.com')
 
     def test_app_in_settings(self):
-        self.assertTrue('apps.subscribe' in settings.INSTALLED_APPS)
+        self.assertTrue('apps.contacts' in settings.INSTALLED_APPS)
 
     def test_subscribe_with_right_email(self):
         url = reverse_lazy('subscribe:ajax_subscribe')
