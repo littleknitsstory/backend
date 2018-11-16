@@ -7,6 +7,9 @@ from rest_framework import routers
 from apps.blog.views import ArticleList
 from apps.shop.api import ProductAPIViewSet
 
+from apps.blog.views import error_404
+
+
 
 router = routers.DefaultRouter()
 router.register(r'api/posts', ArticleList)
@@ -31,6 +34,9 @@ urlpatterns = [
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += router.urls
+
+
+handler404 = error_404
 
 # urlpatterns += [
 #     path('google5e682b3d95e1b8ef.html', TemplateView.as_view(template_name='google-auth.html')),
