@@ -12,12 +12,13 @@ class Feedback(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        super(Feedback, self).save(
+        result = super(Feedback, self).save(
             force_insert, force_update, using, update_fields
         )
         send_message(
             "Новое обращение к администрации сайта:\n" + self.feedback
         )
+        return result
 
     class Meta:
         verbose_name = _('Feedback')
