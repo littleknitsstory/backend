@@ -8,7 +8,7 @@ import json
 
 
 class SuccessSubscribe(TemplateView):
-    template_name = 'subscribe/success_subscribe.html'
+    template_name = 'contacts/success_subscribe.html'
 
 
 class AjaxSubscribe(View):
