@@ -28,10 +28,6 @@ class BlogDetailView(DetailView):
     template_name = 'blog/detail.html'
 
 
-# def handler404(request, exception, template_name="httpresponse/404.html"):
-#     response = render_to_response("httpresponse/404.html")
-#     response.status_code = 404
-#     return response
 
 def error_404(request, exception):
     return render(request, 'httpresponse/404.html', status=404)
