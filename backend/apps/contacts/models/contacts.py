@@ -10,6 +10,3 @@ class Contact(ModelMixin):
     class Meta:
         verbose_name = _('Contact')
         verbose_name_plural = _('Contacts')
-
-    def __str__(self):
-        return self.user_name

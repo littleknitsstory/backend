@@ -17,7 +17,8 @@ class TestSubscribe(TestCase):
         url = reverse_lazy('subscribe:ajax_subscribe')
         response = self.client.post(
             url,
-            {'csrfmiddlewaretoken': 'SCnkSPN1xCtYQzofKUKOwKocQLakxw4Bh87yBCvwsMpEzXlj184g5sZehV5ousYt', 'email': 'test@test.com'},
+            {'csrfmiddlewaretoken': 'SCnkSPN1xCtYQzofKUKOwKocQLakxw4Bh87yBCvwsMpEzXlj184g5sZehV5ousYt',
+             'email': 'test@test.com'},
             format='json',
             HTTP_X_REQUESTED_WITH='XMLHttpRequest'
         )
@@ -29,7 +30,8 @@ class TestSubscribe(TestCase):
         url = reverse_lazy('subscribe:ajax_subscribe')
         response = self.client.post(
             url,
-            {'csrfmiddlewaretoken': 'SCnkSPN1xCtYQzofKUKOwKocQLakxw4Bh87yBCvwsMpEzXlj184g5sZehV5ousYt', 'email': 'fortest@test.com'},
+            {'csrfmiddlewaretoken': 'SCnkSPN1xCtYQzofKUKOwKocQLakxw4Bh87yBCvwsMpEzXlj184g5sZehV5ousYt',
+             'email': 'fortest@test.com'},
             format='json',
             HTTP_X_REQUESTED_WITH='XMLHttpRequest'
         )

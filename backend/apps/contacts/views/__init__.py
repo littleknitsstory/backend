@@ -1,1 +1,1 @@
-from .subscribe import *
+from .subscribe import *  # noqa

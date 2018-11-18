@@ -10,6 +10,3 @@ class Subscribe(ModelMixin):
     class Meta:
         verbose_name = _('Subscribe')
         verbose_name_plural = _('Subscribers')
-
-    def __str__(self):
-        return self.email

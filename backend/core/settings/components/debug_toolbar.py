@@ -20,10 +20,8 @@ DEBUG_TOOLBAR_PANELS = [
 ]
 
 
-
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
     'SHOW_TOOLBAR_CALLBACK': toolbar,
     'JQUERY_URL': ''
 }
-

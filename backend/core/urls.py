@@ -10,7 +10,6 @@ from apps.shop.api import ProductAPIViewSet
 from apps.blog.views import error_404
 
 
-
 router = routers.DefaultRouter()
 router.register(r'api/posts', ArticleList)
 router.register(r'api/shop', ProductAPIViewSet)

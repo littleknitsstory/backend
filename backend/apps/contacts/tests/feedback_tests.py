@@ -31,4 +31,3 @@ class TestFeedback(TestCase):
             'feedback': ['Это поле обязательно.'],
             'captcha': ['Это поле обязательно.']
         })
-
