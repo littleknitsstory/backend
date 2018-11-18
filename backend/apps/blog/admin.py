@@ -6,4 +6,12 @@ from core.mixin import AdminBaseMixin
 
 @admin.register(Article)
 class ArticleAdmin(AdminBaseMixin):
-    pass
+    filter_horizontal = ('tags',)
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'active', 'content', 'image_preview', 'author', 'tags')
+        }),
+        ('SEO', {
+            'fields': ('title_seo', 'keywords', 'description', 'image_alt')
+        }),
+    )

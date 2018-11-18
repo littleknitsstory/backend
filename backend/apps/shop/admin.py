@@ -16,3 +16,12 @@ class ProductAdmin(AdminBaseMixin):
         'title', 'slug', 'description', 'keywords', 'price', 'active',
         'created_at', 'update_at'
     ]
+    filter_horizontal = ('tags', 'category')
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'active', 'price', 'image_preview', 'author', 'tags', 'category')
+        }),
+        ('SEO', {
+            'fields': ('title_seo', 'keywords', 'description', 'image_alt')
+        }),
+    )

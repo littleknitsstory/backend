@@ -4,6 +4,30 @@
 ```
 git clone -b develop https://github.com/63phc/lks.git
 ```
+### Docker setup
+ - Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers) 
+ - edit docker/dev/.env file with your params
+
+```
+cp docker/dev/.env.example .env
+docker-compose -f docker/docker-compose.dev.yml build
+docker-compose -f docker/docker-compose.dev.yml run backend python manage.py makemigrations
+docker-compose -f docker/docker-compose.dev.yml run backend python manage.py migrate
+docker-compose -f docker/docker-compose.dev.yml up
+```
+ - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
+
+* only postgres
+
+```
+docker-compose -f docker/docker-compose.dev.yml up postgresql
+# in .env:6
+POSTGRES_HOST=localhost
+# AND GO Local setup
+```
+
+
+### Local setup
 #### Create env
 - VirtualEnv
 ```
@@ -30,15 +54,11 @@ SECRET_KEY=YOUR_SECRET_KEY
 # POSTGRES_USER=user_db
 # POSTGRES_DB=test_db
 # POSTGRES_PASSWORD=pass_db
-# POSTGRES_HOST=db
+# POSTGRES_HOST=postgresql # for docker
+# POSTGRES_HOST=localhost  # for local
 # POSTGRES_PORT=5432
 # PGDATA=/var/lib/postgresql/data/pgdata
 
-```
-#### OLD frontend
-```
-# inside frontend
-yarn && yarn run start
 ```
 
 ### Prepare project
@@ -61,13 +81,9 @@ python manage.py loaddata _backups/*.json
 python manage.py runserver
 ```
 
-### Docker setup
- - Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers) 
- - edit docker/dev/.env file with your params
 
+#### OLD frontend
 ```
-cp docker/dev/.env.example .env
-docker-compose -f docker/docker-compose.dev.yml build
-docker-compose -f docker/docker-compose.dev.yml up
+# inside frontend
+yarn && yarn run start
 ```
- - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)

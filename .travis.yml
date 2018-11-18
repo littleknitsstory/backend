@@ -1,0 +1,32 @@
+sudo: required
+language: ruby
+
+services:
+  - docker
+
+before_script:
+  - docker-compose -f docker/docker-compose.prod.yml pull || true
+
+script:
+  - docker-compose -f docker/docker-compose.prod.yml pull || true
+#  - docker build -t 63phc/lks:latest -f docker/dev/backend/Dockerfile .
+#  - docker-compose -f docker/docker-compose.dev.yml up
+
+after_script:
+  - docker images
+
+before_develop:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+
+develop:
+  provider: script
+  script: docker push $DOCKER_IMAGES:latest
+  on:
+    branch: develop
+
+deploy:
+  - provider: script
+    script: bash docker/deploy.sh
+    on:
+      branch: master
+    skip_cleanup: true

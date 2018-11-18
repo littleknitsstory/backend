@@ -6,11 +6,12 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SECRET_KEY = config('SECRET_KEY')
 
-PAGINATION_BY = 4
+PAGINATION_BY = 6
 
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 LOGIN_REDIRECT_URL = 'dashboard:list'
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'apps.slider',
     'captcha',
 ]
+
+# AUTH_USER_MODEL = 'apps.users'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -115,11 +118,16 @@ USE_TZ = True
 #
 # MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 #
-# gettext = lambda s: s
-# LANGUAGES = (
-#     ('ru', gettext('Russian')),
-#     ('en', gettext('English')),
-# )
+
+gettext = lambda s: s  # noqa
+
+LANGUAGES = (
+    ('ru', gettext('Russian')),
+    ('en', gettext('English')),
+)
+
+LOCALE_PATHS = (
+    ROOT_DIR + '/apps/locale', )
 
 
 STATIC_URL = '/static/'

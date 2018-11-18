@@ -1,9 +1,12 @@
+{% load slider_tag %}
+{% get_slider as slider %}
+{% for item in slider %}
 <header>
-  <div class="b-header" >
-    <!--style="background-image: url(img/header/hb.jpg);">-->
+  <div class="b-header" style="background-image: url('{{ item.image_preview.url }}');">
     <div class="b-header--title">
-      <span>LITTLE KNITS STORY</span>
-      <p>блог и магазин для вязания</p>
+      <span>{{ item.title }}</span>
+      <p>{{ item.sub_title }}</p>
     </div>
   </div>
 </header>
+{% endfor %}

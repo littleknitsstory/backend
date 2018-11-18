@@ -10,5 +10,5 @@ sleep 3
 echo "Running project..."
 python manage.py runserver 0.0.0.0:8000
 
-exec $cmd
+exec ${cmd}
 

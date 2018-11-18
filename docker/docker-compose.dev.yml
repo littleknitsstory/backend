@@ -24,12 +24,13 @@ services:
       context: ..
       dockerfile: docker/dev/backend/Dockerfile
     container_name: phc_lks_backend
-#    volumes:
-#      - ../../backend:/backend
-    env_file: ./dev/.env
-#    working_dir: /home/blog/backend
-    command: python manage.py runserver
-#    command: /run_project.sh
+    volumes:
+      - ./../backend:/backend
+      - ./../storage:/storage
+    env_file:
+      - ./dev/.env
+    command: python manage.py runserver 0:8000
+#    command: bash ./dev/backend/run.sh
     links:
       - postgresql
       - redis
