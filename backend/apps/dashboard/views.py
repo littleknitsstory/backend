@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from apps.blog.models import Article
 from apps.shop.models import Product
@@ -22,3 +22,7 @@ class DashboardListView(LoginRequiredMixin, ListView):
         context['products'] = Product.objects.all()
 
         return context
+
+
+class DashboardDetailView(DetailView):
+    pass

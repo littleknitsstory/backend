@@ -7,6 +7,9 @@ from rest_framework import routers
 from apps.blog.views import ArticleList
 from apps.shop.api import ProductAPIViewSet
 
+from apps.blog.views import error_404
+
+
 
 router = routers.DefaultRouter()
 router.register(r'api/posts', ArticleList)
@@ -16,19 +19,24 @@ urlpatterns = [
     path('', include('apps.blog.urls')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    # path('captcha/', include('captcha.urls')),
+    path('captcha/', include('captcha.urls')),
     path('social/', include('social_django.urls', namespace='social')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
+    # path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
     path('shop/', include('apps.shop.urls', namespace='shop')),
-    path('subscribe/', include('apps.subscribe.urls', namespace='subscribe')),
+    path('subscribe/', include('apps.contacts.urls.subscribe', namespace='subscribe')),
     path('tags/', include('apps.tags.urls')),
+    path('feedback/', include('apps.contacts.urls.feedback')),
+    path('temp/', include('apps.contacts.urls.reviews')),
 
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += router.urls
+
+
+handler404 = error_404
 
 # urlpatterns += [
 #     path('google5e682b3d95e1b8ef.html', TemplateView.as_view(template_name='google-auth.html')),

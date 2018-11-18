@@ -31,12 +31,12 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.tags',
     'apps.shop',
-    'apps.reviews',
     'apps.menu',
     'apps.users',
-    'apps.subscribe',
+    'apps.contacts',
     'apps.dashboard',
     'apps.slider',
+    'captcha',
 ]
 
 # AUTH_USER_MODEL = 'apps.users'

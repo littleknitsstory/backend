@@ -1,9 +1,9 @@
 from django.views.generic import DetailView, ListView
 from rest_framework.viewsets import ModelViewSet
-
+from django.shortcuts import render_to_response, render
 from .models import Article
 from .serializers import ArticleSerializer
-from apps.subscribe.forms import SubscribeForm
+from apps.contacts.forms.subscribe import SubscribeForm
 from django.conf import settings
 
 
@@ -26,3 +26,8 @@ class BlogListView(ListView):
 class BlogDetailView(DetailView):
     model = Article
     template_name = 'blog/detail.html'
+
+
+
+def error_404(request, exception):
+    return render(request, 'httpresponse/404.html', status=404)
