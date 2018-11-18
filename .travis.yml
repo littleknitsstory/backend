@@ -20,7 +20,7 @@ before_develop:
 
 develop:
   provider: script
-  script: docker push 63phc/lks:latest
+  script: docker push $DOCKER_IMAGES:latest
   on:
     branch: develop
 

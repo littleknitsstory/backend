@@ -14,7 +14,15 @@ docker-compose -f docker/docker-compose.dev.yml build
 docker-compose -f docker/docker-compose.dev.yml run backend python manage.py makemigrations
 docker-compose -f docker/docker-compose.dev.yml run backend python manage.py migrate
 docker-compose -f docker/docker-compose.dev.yml up
+```
 
+* only postgres
+
+```
+docker-compose -f docker/docker-compose.dev.yml up postgresql
+# in .env:6
+POSTGRES_HOST=localhost
+./manage.py runserver
 ```
  - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
 
@@ -46,7 +54,8 @@ SECRET_KEY=YOUR_SECRET_KEY
 # POSTGRES_USER=user_db
 # POSTGRES_DB=test_db
 # POSTGRES_PASSWORD=pass_db
-# POSTGRES_HOST=db
+# POSTGRES_HOST=postgresql # for docker
+# POSTGRES_HOST=localhost  # for local
 # POSTGRES_PORT=5432
 # PGDATA=/var/lib/postgresql/data/pgdata
 
