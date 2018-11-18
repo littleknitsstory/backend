@@ -16,7 +16,7 @@
                                 {% if item.image_preview %}
                                     <img src="{{ item.image_preview.url }}" alt="{{ item.image_alt }}">
                                 {% else %}
-                                    <img src="http://via.placeholder.com/250" alt="">
+                                    <img src="http://placehold.it/250" alt="">
                                 {% endif %}
                                 {% for tag in item.tags.all %}
                                     <div class="b-blog--item_tag">

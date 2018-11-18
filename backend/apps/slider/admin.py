@@ -1,11 +1,9 @@
 from django.contrib import admin
 
 from apps.slider.models import Slider
+from core.mixin import AdminBaseMixin
 
 
 @admin.register(Slider)
-class SliderAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title', 'slug')
-    save_as = True
-    save_on_top = True
+class SliderAdmin(AdminBaseMixin):
+    pass

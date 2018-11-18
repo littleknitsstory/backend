@@ -9,7 +9,7 @@ class Slider(ImagesMixin):
 
     title = models.CharField(_('Title'), max_length=120)
     slug = models.CharField(_('Slug'), max_length=120, unique=True)
-    span = models.CharField(_('Span'), max_length=120, blank=True)
+    sub_title = models.CharField(_('Sub Title'), max_length=120, blank=True)
     active = models.BooleanField(_('Active'), default=True)
     ordering = models.IntegerField(_('Ordering'))
     link = models.URLField(_('Link'), blank=True)
