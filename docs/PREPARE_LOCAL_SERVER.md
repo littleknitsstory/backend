@@ -15,6 +15,7 @@ docker-compose -f docker/docker-compose.dev.yml run backend python manage.py mak
 docker-compose -f docker/docker-compose.dev.yml run backend python manage.py migrate
 docker-compose -f docker/docker-compose.dev.yml up
 ```
+ - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
 
 * only postgres
 
@@ -22,9 +23,8 @@ docker-compose -f docker/docker-compose.dev.yml up
 docker-compose -f docker/docker-compose.dev.yml up postgresql
 # in .env:6
 POSTGRES_HOST=localhost
-./manage.py runserver
+# AND GO Local setup
 ```
- - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
 
 
 ### Local setup
@@ -80,17 +80,6 @@ python manage.py loaddata _backups/*.json
 # inside backend
 python manage.py runserver
 ```
-
-### Docker setup
- - Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers) 
- - edit docker/dev/.env file with your params
-
-```
-cp docker/dev/.env.example .env
-docker-compose -f docker/docker-compose.dev.yml build
-docker-compose -f docker/docker-compose.dev.yml up
-```
- - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
 
 
 #### OLD frontend

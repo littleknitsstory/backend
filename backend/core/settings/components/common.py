@@ -12,6 +12,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 LOGIN_REDIRECT_URL = 'dashboard:list'
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'apps.dashboard',
     'apps.slider',
 ]
+
+# AUTH_USER_MODEL = 'apps.users'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

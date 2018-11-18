@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
+
+from django.conf import settings
 from core.mixin import SeoMixin, ImagesMixin
 
 
@@ -16,6 +18,11 @@ class Product(SeoMixin, ImagesMixin):
                                       related_name='product_categories',
                                       blank=True)
     tags = models.ManyToManyField('tags.Tag', verbose_name=_('Tags'), related_name='product_tags', blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               related_name='product_user',
+                               on_delete=models.CASCADE,
+                               blank=True,
+                               null=True)
 
     class Meta:
         verbose_name = _('Product')
