@@ -9,7 +9,7 @@ before_script:
 
 script:
   - docker-compose -f docker/docker-compose.prod.yml pull || true
-#  - docker build -t 63phc/lks:latest -f docker/dev/backend/Dockerfile .
+  - docker build -t 63phc/lks:latest -f docker/dev/backend/Dockerfile .
 #  - docker-compose -f docker/docker-compose.dev.yml up
 
 after_script:
