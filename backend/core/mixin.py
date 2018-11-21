@@ -13,7 +13,7 @@ class SeoMixin(models.Model):
         created_at: info created
         update_at: info update
     """
-    title_seo = models.CharField(_("Title Seo"), max_length=500, blank=True)
+    title_seo = models.CharField(_("Title Seo"), max_length=500, null=True, blank=True)
     keywords = models.TextField(_("Keywords"), blank=True)
     description = models.TextField(_("Description"), blank=True)
 
