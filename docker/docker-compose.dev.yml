@@ -44,6 +44,17 @@ services:
       - "8000:8000"
       - "0.0.0.0:7777:22"
 
+  pgadmin:
+    container_name: phc_lks_pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - "5050:5050"
+    env_file:
+      - ./dev/.env
+    depends_on:
+      - postgresql
+
+
   # Frontend container (static React files, index.html and bundle.js, served with nginx)
 #  frontend:
 #    build: ./frontend

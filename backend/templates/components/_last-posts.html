@@ -1,0 +1,18 @@
+{% load last_posts_tags %}
+{% last_posts as posts %}
+<div class="b-post-latest">
+      <div class="row">
+          <h3>Последнии посты</h3>
+      </div>
+        {% for post in posts %}
+      <div class="b-post-latest--item">
+          <div class="b-post-latest--item_img">
+              <img src="http://via.placeholder.com/150" alt="">
+          </div>
+          <div class="b-post-latest--item_content">
+              <div class="b-post-latest--item_title"><a href="">{{ post.title }}</a></div>
+              <div class="b-post-latest--item_time">{{ post.created_at }}</div>
+          </div>
+      </div>
+        {% endfor %}
+</div>
