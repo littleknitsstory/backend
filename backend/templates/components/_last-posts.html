@@ -1,0 +1,34 @@
+{% load last_posts_tags %}
+<div class="b-post-latest">
+      <div class="row">
+          <h3>Последнии посты</h3>
+      </div>
+        {% for post in  last_posts_tags %}
+      <div class="b-post-latest--item">
+          <div class="b-post-latest--item_img">
+              <img src="http://via.placeholder.com/150" alt="">
+          </div>
+          <div class="b-post-latest--item_content">
+              <div class="b-post-latest--item_title"><a href="">{{ post.title }}</a></div>
+              <div class="b-post-latest--item_time">{{ post.created_at }}</div>
+          </div>
+      </div>
+      <!--<div class="b-post-latest&#45;&#45;item">-->
+          <!--<div class="b-post-latest&#45;&#45;item_img">-->
+              <!--<img src="http://via.placeholder.com/150" alt="">-->
+          <!--</div>-->
+          <!--<div class="b-post-latest&#45;&#45;item_content">-->
+              <!--<div class="b-post-latest&#45;&#45;item_title"><a href="">Как научится вязать закрытыми глазами</a></div>-->
+              <!--<div class="b-post-latest&#45;&#45;item_time">написано Декабрь 6, 2016</div>-->
+          <!--</div>-->
+      <!--</div>-->
+      <!--<div class="b-post-latest&#45;&#45;item">-->
+          <!--<div class="b-post-latest&#45;&#45;item_img">-->
+              <!--<img src="http://via.placeholder.com/150" alt="">-->
+          <!--</div>-->
+          <!--<div class="b-post-latest&#45;&#45;item_content">-->
+              <!--<div class="b-post-latest&#45;&#45;item_title"><a href="">How to Wrap 15 Gifts In 3 Minutes</a></div>-->
+              <!--<div class="b-post-latest&#45;&#45;item_time">on December 6, 2016</div>-->
+          <!--</div>-->
+      <!--</div>-->
+</div>
