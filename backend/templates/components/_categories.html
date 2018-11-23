@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+ {% load categories_tags %}
+ {% categories_products as categories%}
+  <div class="b-category">
+      <div class="b-category--title"><h3>Категории</h3></div>
+      {% for category in categories %}
+      <div class="b-category--item"><a href="{% url 'shop:category' slug=category.slug %}">{{ category }}</a></div>
+      {% endfor %}
+  </div>
