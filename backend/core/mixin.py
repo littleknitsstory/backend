@@ -13,9 +13,9 @@ class SeoMixin(models.Model):
         created_at: info created
         update_at: info update
     """
-    title_seo = models.CharField(_("Title Seo"), max_length=500, null=True, blank=True)
-    keywords = models.TextField(_("Keywords"), blank=True)
-    description = models.TextField(_("Description"), blank=True)
+    title_seo = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
+    keywords = models.TextField(_("Keywords"), blank=True, null=True)
+    description = models.TextField(_("Description"), blank=True, null=True)
 
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
     update_at = models.DateTimeField(_('Updated at'), auto_now=True)
