@@ -1,30 +1,43 @@
 {% load most_popular_tags %}
 {% most_popular_products as products %}
 <!----bestseller-->
+{% if products %}
 <section>
-        <div class="b-bestseller">
-            <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
-            <h3>ПОПУЛЯРНОЕ</h3>
+    <div class="b-bestseller">
+        <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
+        <h3>ПОПУЛЯРНОЕ</h3>
 
-        <div class="row">
-            {% for product in products %}
-            <div class="b-bestseller--item">
-               <div class="b-bestseller--item__border">
-                    <div class="b-bestseller--item_img">
-                    <img src="http://via.placeholder.com/150" alt="">
-                </div>
-                <div class="b-bestseller--item_title">{{ product.title }}</div>
-                <div class="b-bestseller--item_category"><a href="">{{ product.category }}</a></div>
-                <div class="b-bestseller--item_prise">{{ product.price }}</div>
-                   <div class="b-bestseller--item_cart"><i class="fas fa-cart-plus"></i> &nbsp;<a href="#">add to cart</a></div>
-               </div>
+    <div class="row">
+        {% for object in products %}
+        <div class="b-bestseller--item">
+           <div class="b-bestseller--item__border">
+            <div class="b-bestseller--item_img">
+            {% if object.image_preview %}
+                <img src="{{ object.image_preview.url }}" alt="{{ object.image_alt }}">
+            {% else %}
+                <img src="http://placehold.it/250" alt="">
+            {% endif %}
             </div>
-            {% endfor %}
+            <div class="b-bestseller--item_title">{{ object.title }}</div>
+            <div class="b-bestseller--item_category">
+                {% for item in object.category.all %}
+                    <a href="{% url 'shop:category' slug=item.slug %}">
+                        {{ item.title }}
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="b-bestseller--item_prise">{{ object.price }} </div>
+               <div class="b-bestseller--item_cart"><i class="fas fa-cart-plus"></i> &nbsp;<a href="#">add to cart</a></div>
+           </div>
         </div>
-        <div class="row">
-            <div class="b-bestseller--more">
-                <button type="button" class="" id="">Больше товаров</button>
-            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="b-bestseller--more">
+            <button type="button" class="" id="">Больше товаров</button>
         </div>
-            </div>
-    </section>
+    </div>
+        </div>
+</section>
+{% else %}
+{% endif %}
