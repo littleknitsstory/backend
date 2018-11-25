@@ -1,8 +1,11 @@
- {% load categories_tags %}
- {% categories_products as categories%}
+{% load categories_tags %}
+{% categories_products as categories%}
+{% if categories %}
   <div class="b-category">
       <div class="b-category--title"><h3>Категории</h3></div>
-      {% for category in categories %}
-      <div class="b-category--item"><a href="{% url 'shop:category' slug=category.slug %}">{{ category }}</a></div>
+      {% for object in categories %}
+        <div class="b-category--item"><a href="{% url 'shop:category' slug=object.slug %}">{{ object.title }}</a></div>
       {% endfor %}
   </div>
+{% else %}
+{% endif %}

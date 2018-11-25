@@ -1,18 +1,28 @@
 {% load last_posts_tags %}
 {% last_posts as posts %}
+{% if posts %}
 <div class="b-post-latest">
       <div class="row">
           <h3>Последнии посты</h3>
       </div>
-        {% for post in posts %}
+    {% for object in posts %}
       <div class="b-post-latest--item">
           <div class="b-post-latest--item_img">
-              <img src="http://via.placeholder.com/150" alt="">
+              {% if object.image_preview %}
+                <img src="{{ object.image_preview.url }}" alt="{{ object.image_alt }}">
+                {% else %}
+                <img src="http://placehold.it/250" alt="">
+              {% endif %}
           </div>
           <div class="b-post-latest--item_content">
-              <div class="b-post-latest--item_title"><a href="">{{ post.title }}</a></div>
-              <div class="b-post-latest--item_time">{{ post.created_at }}</div>
+              <div class="b-post-latest--item_title">
+                  <a href="{% url 'blog:blog-detail' slug=object.slug %}">{{ object.title }}</a>
+              </div>
+              <div class="b-post-latest--item_time">{{ object.created_at }}</div>
           </div>
       </div>
-        {% endfor %}
+    {% endfor %}
 </div>
+{% else %}
+
+{% endif %}
