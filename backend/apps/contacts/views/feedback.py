@@ -8,5 +8,5 @@ from django.urls import reverse_lazy
 class FeedbackCreateView(CreateView):
     model = Feedback
     form_class = FeedbackForm
-    template_name = 'contacts/feedback.html'
+    template_name = 'contacts/contacts.html'
     success_url = reverse_lazy('blog:blog-list')
