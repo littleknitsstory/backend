@@ -2,6 +2,8 @@
 
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks.git)
 [![TravisCI](https://travis-ci.com/63phc/lks.svg?branch=develop)]()
+[![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
+
 
 * main development in the [development](https://github.com/63phc/lks/tree/develop) branch
 * project releases in the master branch
