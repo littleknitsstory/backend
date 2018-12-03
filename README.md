@@ -2,7 +2,7 @@
 [![TravisCI](https://travis-ci.com/63phc/lks.svg?branch=develop)]()
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![Requirements Status](https://requires.io/github/63phc/lks/requirements.svg?branch=develop)](https://requires.io/github/63phc/lks/requirements/?branch=develop)
-
+[![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 
 * main development in the [development](https://github.com/63phc/lks/tree/develop) branch
 * project releases in the master branch
