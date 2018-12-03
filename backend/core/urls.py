@@ -21,12 +21,13 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('social/', include('social_django.urls', namespace='social')),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
+    path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
     path('shop/', include('apps.shop.urls', namespace='shop')),
-    path('subscribe/', include('apps.contacts.urls.subscribe', namespace='subscribe')),
     path('tags/', include('apps.tags.urls')),
-    path('feedback/', include('apps.contacts.urls.feedback')),
-    path('temp/', include('apps.contacts.urls.reviews')),
+
+    path('subscribe/', include('apps.contacts.urls.subscribe', namespace='subscribe')),
+    path('contacts/', include('apps.contacts.urls.feedback')),
+    path('reviews/', include('apps.contacts.urls.reviews')),
 
 ]
 
