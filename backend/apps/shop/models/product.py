@@ -6,11 +6,15 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from core.mixin import SeoMixin, ImagesMixin
 
+from ckeditor.fields import RichTextField
+
 
 class Product(SeoMixin, ImagesMixin):
     """ Product model """
     title = models.CharField(_('Title'), max_length=120)
     slug = models.CharField(_('Slug'), max_length=120, unique=True)
+    # description = models.CharField(_('Description'), max_length=200)
+    description = RichTextField(_('Description'), max_length=200)
     price = models.IntegerField(_('Price'), null=True, blank=True)
     active = models.BooleanField(_('Active'), default=True)
     category = models.ManyToManyField('Category',
@@ -34,6 +38,10 @@ class Product(SeoMixin, ImagesMixin):
     @staticmethod
     def get_absolute_url():
         return reverse('shop:main')
+
+    @property
+    def get_price(self):
+        return self.price
 
     def save(self, *args, **kwargs):
         if not self.id:

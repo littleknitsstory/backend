@@ -27,7 +27,7 @@ urlpatterns = [
     path('tags/', include('apps.tags.urls')),
     path('feedback/', include('apps.contacts.urls.feedback')),
     path('temp/', include('apps.contacts.urls.reviews')),
-
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

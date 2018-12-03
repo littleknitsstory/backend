@@ -1,43 +1,262 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <section>
-        <div class="row">
-            <div class="shop">
-                <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
-                <h4>Характеристики товара:</h4>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+<script src="//yastatic.net/share2/share.js"></script>
 
-                {% if object %}
-                    <div class="b-shop--item">
-                        <div class="b-bestseller--item__border">
-                            <div class="b-bestseller--item_img">
-                                <img src="{{ object.image.url }}" alt="">
+<section>
+
+<style>
+a {
+    color: #9c27b0
+}
+
+a:focus,
+a:hover {
+    color: #89229b;
+    text-decoration: none
+}
+
+a:active,
+a:focus,
+button::-moz-focus-inner,
+button:active,
+button:focus,
+button:hover,
+input[type=reset]::-moz-focus-inner,
+input[type=button]::-moz-focus-inner,
+input[type=submit]::-moz-focus-inner,
+input[type=file]>input[type=button]::-moz-focus-inner,
+select::-moz-focus-inner {
+    outline: 0!important
+}
+
+button.btn {
+    background-color: #e91e63;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    padding: 12px 30px;
+    margin: 10px 1px;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    will-change: box-shadow, transform;
+    transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1)
+}
+
+.btn.btn-rose {
+    box-shadow: 0 2px 2px 0 rgba(233, 30, 99, .14), 0 3px 1px -2px rgba(233, 30, 99, .2), 0 1px 5px 0 rgba(233, 30, 99, .12)
+}
+
+
+.btn.btn-rose:active,
+.btn.btn-rose:focus,
+.btn.btn-rose:hover {
+    box-shadow: 0 14px 26px -12px rgba(233, 30, 99, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(233, 30, 99, .2)
+}
+
+.btn:active,
+.btn:active:focus,
+.btn:focus {
+    outline: 0
+}
+
+.btn.btn-round {
+    border-radius: 30px
+}
+
+h2 {
+    font-size: 2.6em
+}
+
+
+.main-price {
+    font-size: 1.825em;
+    line-height: 1.4em;
+    margin: 20px 0 10px
+}
+
+.panel-title {
+    line-height: 1.55em;
+    font-size: 1.3em;
+}
+
+.title {
+    font-weight: 700;
+    font-family: "Roboto Slab", "Times New Roman", serif
+    font-size: 2.6em
+}
+
+.title,
+.title a {
+    color: #3C4858;
+    text-decoration: none
+}
+
+h2.title {
+    margin-bottom: 30px
+}
+
+.panel,
+.panel .panel-heading {
+    background-color: transparent
+}
+
+.panel {
+    border: 0;
+    box-shadow: none
+}
+
+.panel .panel-heading {
+    border-bottom: 1px solid #ddd;
+    padding: 25px 10px 5px 0
+}
+
+.panel .panel-heading .panel-title {
+    font-size: 15px;
+    font-weight: bolder
+}
+
+.panel .panel-heading a {
+    color: #3C4858
+}
+
+.panel .panel-heading a:active,
+.panel .panel-heading a:hover,
+.panel .panel-heading a[aria-expanded=true] {
+    color: #9c27b0
+}
+
+.panel .panel-heading a.expanded i,
+.panel .panel-heading a[aria-expanded=true] i {
+    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=2);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+
+.panel .panel-heading i {
+    float: right
+}
+
+.panel .panel-body {
+    border: 0;
+    padding: 15px 0 5px
+}
+
+.panel.panel-default .panel-heading+.panel-collapse .panel-body {
+    border: 0
+}
+
+.main {
+    position: relative;
+    z-index: 3
+    background-color: #E5E5E5;
+    color: #3C4858;
+    top: 100px;
+    padding-bottom: 30px;
+}
+
+.main-raised {
+    margin: -60px 30px 0;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)
+}
+
+.tab-content {
+position: relative;
+top: 15px;
+}
+
+.share {
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+}
+
+.ya-share2 {
+width: 100%;
+}
+
+</style>
+
+    <div class="row">
+        <div class="shop">
+            <h2>МАГАЗИН УНИКАЛЬНЫХ РУЧНЫХ ИЗДЕЛИЙ</h2>
+    {% if object %}
+        <div class="main main-raised main-product">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="tab-content">
+                        <div class="tab-pane" id="product-page1">
+                            {% if object.image_preview %}
+                                <img src="{{ object.image_preview.url }}" alt="{{ object.image_alt }}">
+                            {% else %}
+                                <img src="http://placehold.it/250" alt="">
+                            {% endif %}
+                            <div class="author">
+                                <h4>Автор: {{ object.author }}</h4>
                             </div>
-                            <div class="b-bestseller--item_title">{{ object.title }}</div>
-                            <div class="b-bestseller--item_category">
-                                {% for item_category in object.category.all %}
-                                    <a href="{%  url 'category' item_category.slug %}">{{ item_category.title }}</a>
-                                {% endfor %}
-                            </div>
-                            <div class="b-bestseller--item_prise">$ {{ object.price }}.00</div>
-                            <div class="b-bestseller--item_cart"><i class="fas fa-cart-plus"></i> &nbsp;<a href="#">add to cart</a></div>
                         </div>
                     </div>
-                    <div hidden>
-                        Описание: {{ object.description }} <br>
-                        Ключевые слова: {{ object.keywords }}
-                        Image alt: {{ product.image_alt }} <br>
-                        Категории: {% for item_category in object.category.all %} {{ item_category.title }} {% endfor %} <br>
-                        Теги: {% for item_tag in object.tags.all %} {{ item_tag.title }} {% endfor %} <br>
-                        Запись создана: {{ object.created_at }} <br>
-                        Запись обновлена: {% if object.updated_at %}{{ product.updated_at }}{% else %}&mdash;{% endif %} <br>
-                    </div>
-                {% else %}
-                    <p>No product is available.</p>
-                {% endif %}
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <h2 class="title"> {{ object.title }} </h2>
+                    <h3 class="main-price">{{ object.get_price }}.00</h3>
+                    <div id="acordeon">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-border panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    {% for item_category in object.category.all %}
+                                        <h4 class="panel-title">
+                                        <a href="{%  url 'shop:category' item_category.slug %}">{{ item_category.title }}</a>
+                                        </h4>
+                                    {% endfor %}
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <p>{{ object.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                        <div class="row text-right">
+                            <a href="http://cookingfoodsworld.blogspot.in/" target="_blank"><button class="btn btn-rose btn-round">Add to Cart <i class="fas fa-shopping-cart"></i></button></a>
+                        </div>
+                        <div class="share">
+                            <div class="temp-share">
+                                <h4>Поделиться: </h4>
+                            </div>
+                            <div class="ya-share2" data-services="vkontakte,facebook,telegram"></div>
+                        </div>
+                </div>
             </div>
-
-            {% include 'components/_sidebar.html' %}
         </div>
-    </section>
+        <div hidden>
+            Описание: {{ object.description }} <br>
+            Ключевые слова: {{ object.keywords }}
+            Image alt: {{ product.image_alt }} <br>
+            Категории: {% for item_category in object.category.all %} {{ item_category.title }} {% endfor %} <br>
+            Теги: {% for item_tag in object.tags.all %} {{ item_tag.title }} {% endfor %} <br>
+            Запись создана: {{ object.created_at }} <br>
+            Запись обновлена: {% if object.updated_at %}{{ product.updated_at }}{% else %}&mdash;{% endif %} <br>
+        </div>
+    {% else %}
+        <p>No product is available.</p>
+            {% endif %}
+        </div>
+
+        {% include 'components/_sidebar.html' %}
+
+    </div>
+</section>
+
 {% endblock %}
