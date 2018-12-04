@@ -13,7 +13,7 @@ class Product(SeoMixin, ImagesMixin):
     """ Product model """
     title = models.CharField(_('Title'), max_length=120)
     slug = models.CharField(_('Slug'), max_length=120, unique=True)
-    description = RichTextField(_('Description'), max_length=200)
+    specification = RichTextField(_('Specification'))
     price = models.IntegerField(_('Price'), null=True, blank=True)
     active = models.BooleanField(_('Active'), default=True)
     category = models.ManyToManyField('Category',
