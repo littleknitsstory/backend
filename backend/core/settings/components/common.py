@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.dashboard',
     'apps.slider',
     'captcha',
+    'rest_framework_swagger',
 ]
 
 # AUTH_USER_MODEL = 'apps.users'
