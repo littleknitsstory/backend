@@ -28,11 +28,10 @@ urlpatterns = [
     path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
     path('shop/', include('apps.shop.urls', namespace='shop')),
     path('tags/', include('apps.tags.urls')),
-
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('subscribe/', include('apps.contacts.urls.subscribe', namespace='subscribe')),
     path('contacts/', include('apps.contacts.urls.feedback')),
     path('reviews/', include('apps.contacts.urls.reviews')),
-
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
