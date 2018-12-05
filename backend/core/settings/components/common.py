@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'captcha',
     'ckeditor',
     'ckeditor_uploader',
+    'rest_framework_swagger',
 ]
 
 # AUTH_USER_MODEL = 'apps.users'

@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from rest_framework import routers
+from rest_framework_swagger.views import get_swagger_view
 
 from apps.blog.views import ArticleList
 from apps.shop.api import ProductAPIViewSet
@@ -14,8 +15,11 @@ router = routers.DefaultRouter()
 router.register(r'api/posts', ArticleList)
 router.register(r'api/shop', ProductAPIViewSet)
 
+schema_view = get_swagger_view(title='Shop API')
+
 urlpatterns = [
     path('', include('apps.blog.urls')),
+    path('api/docs/', schema_view),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('captcha/', include('captcha.urls')),
