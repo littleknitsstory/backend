@@ -24,7 +24,6 @@ urlpatterns = [
     path('', include('apps.blog.urls')),
     path('api/docs/', schema_view),
     path('api/menu/<int:pk>/', MenuAPICRUD.as_view()),
-    path('api/docs/', schema_view),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('captcha/', include('captcha.urls')),
