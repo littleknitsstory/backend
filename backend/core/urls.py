@@ -7,6 +7,8 @@ from rest_framework_swagger.views import get_swagger_view
 
 from apps.blog.views import ArticleList
 from apps.shop.api import ProductAPIViewSet
+from apps.menu.viewsets import MenuAPIViewSet
+from apps.menu.viewsets import MenuAPICRUD
 
 from apps.blog.views import error_404
 
@@ -14,11 +16,14 @@ from apps.blog.views import error_404
 router = routers.DefaultRouter()
 router.register(r'api/posts', ArticleList)
 router.register(r'api/shop', ProductAPIViewSet)
+router.register(r'api/menu', MenuAPIViewSet)
 
 schema_view = get_swagger_view(title='Shop API')
 
 urlpatterns = [
     path('', include('apps.blog.urls')),
+    path('api/docs/', schema_view),
+    path('api/menu/<int:pk>/', MenuAPICRUD.as_view()),
     path('api/docs/', schema_view),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
