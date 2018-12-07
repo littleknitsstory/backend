@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'apps.dashboard',
     'apps.slider',
     'captcha',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
 ]
 
 # AUTH_USER_MODEL = 'apps.users'
@@ -50,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 REST_FRAMEWORK = {
