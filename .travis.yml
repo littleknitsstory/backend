@@ -19,10 +19,10 @@ before_develop:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 
 develop:
-  provider: script
-  script: docker push $DOCKER_IMAGES:latest
-  on:
-    branch: develop
+  - provider: script
+    script: docker push $DOCKER_IMAGES:latest
+    on:
+      branch: develop
 
 deploy:
   - provider: script

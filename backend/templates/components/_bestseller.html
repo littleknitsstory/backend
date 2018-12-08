@@ -18,7 +18,7 @@
                 <img src="http://placehold.it/250" alt="">
             {% endif %}
             </div>
-            <div class="b-bestseller--item_title">{{ object.title }}</div>
+            <div class="b-bestseller--item_title"><a href="{% url 'shop:product_detail' object.slug %}">{{ object.title }}</a></div>
             <div class="b-bestseller--item_category">
                 {% for item in object.category.all %}
                     <a href="{% url 'shop:category' slug=item.slug %}">
