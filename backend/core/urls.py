@@ -5,8 +5,8 @@ from django.conf.urls.static import static
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 
-from apps.blog.views import ArticleList
-from apps.shop.api import ProductAPIViewSet
+from apps.blog.viewsets import ArticleList, ArticleAPICRUD
+from apps.shop.viewsets import ProductAPIViewSet, ProductAPICRUD, CategoryAPIViewSet, CategoryAPICRUD
 
 from apps.blog.views import error_404
 
@@ -14,12 +14,16 @@ from apps.blog.views import error_404
 router = routers.DefaultRouter()
 router.register(r'api/posts', ArticleList)
 router.register(r'api/shop', ProductAPIViewSet)
+router.register(r'api/shop/category/', CategoryAPIViewSet)
 
 schema_view = get_swagger_view(title='Shop API')
 
 urlpatterns = [
     path('', include('apps.blog.urls')),
     path('api/docs/', schema_view),
+    path('api/posts/<int:pk>', ArticleAPICRUD),
+    path('api/shop/<int:pk>', ProductAPICRUD),
+    path('api/shop/category/<int:pk>', CategoryAPICRUD),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('captcha/', include('captcha.urls')),
