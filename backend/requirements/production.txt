@@ -3,7 +3,7 @@
 -r base.txt
 
 # WSGI Handler
-gunicorn==19.6.0
+gunicorn==19.9.0
 
 # Email backend
 django-anymail>=1.2.1
