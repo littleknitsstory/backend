@@ -7,8 +7,6 @@ from rest_framework_swagger.views import get_swagger_view
 
 from apps.blog.viewsets import ArticleList, ArticleAPICRUD
 from apps.shop.viewsets import ProductAPIViewSet, ProductAPICRUD, CategoryAPIViewSet, CategoryAPICRUD
-from apps.blog.views import ArticleList
-from apps.shop.api import ProductAPIViewSet
 from apps.menu.viewsets import MenuAPIViewSet, MenuAPICRUD
 from apps.blog.views import error_404
 
@@ -23,26 +21,32 @@ schema_view = get_swagger_view(title='Shop API')
 
 urlpatterns = [
     path('', include('apps.blog.urls')),
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
+    path('shop/', include('apps.shop.urls', namespace='shop')),
+    path('tags/', include('apps.tags.urls')),
+    path('subscribe/', include('apps.contacts.urls.subscribe', namespace='subscribe')),
+    path('contacts/', include('apps.contacts.urls.feedback')),
+    path('reviews/', include('apps.contacts.urls.reviews')),
+    # libs
+    path('pages/', include('django.contrib.flatpages.urls')),
+    path('captcha/', include('captcha.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('social/', include('social_django.urls', namespace='social')),
+
+]
+
+urlsapi = [
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/docs/', schema_view),
     path('api/posts/<int:pk>', ArticleAPICRUD),
     path('api/shop/<int:pk>', ProductAPICRUD),
     path('api/shop/category/<int:pk>', CategoryAPICRUD),
     path('api/menu/<int:pk>/', MenuAPICRUD.as_view()),
-    path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('captcha/', include('captcha.urls')),
-    path('social/', include('social_django.urls', namespace='social')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
-    path('shop/', include('apps.shop.urls', namespace='shop')),
-    path('tags/', include('apps.tags.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('subscribe/', include('apps.contacts.urls.subscribe', namespace='subscribe')),
-    path('contacts/', include('apps.contacts.urls.feedback')),
-    path('reviews/', include('apps.contacts.urls.reviews')),
-    path('pages/', include('django.contrib.flatpages.urls')),
 ]
 
+urlpatterns += urlsapi
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += router.urls
