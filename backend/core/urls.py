@@ -32,6 +32,7 @@ urlpatterns = [
     path('subscribe/', include('apps.contacts.urls.subscribe', namespace='subscribe')),
     path('contacts/', include('apps.contacts.urls.feedback')),
     path('reviews/', include('apps.contacts.urls.reviews')),
+    path('pages/', include('django.contrib.flatpages.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
