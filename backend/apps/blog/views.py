@@ -2,14 +2,9 @@ from django.views.generic import DetailView, ListView
 from rest_framework.viewsets import ModelViewSet
 from django.shortcuts import render
 from .models import Article
-from .serializers import ArticleSerializer
+from .serializer import ArticleSerializer
 from apps.contacts.forms.subscribe import SubscribeForm
 from django.conf import settings
-
-
-class ArticleList(ModelViewSet):
-    queryset = Article.objects.prefetch_related('tags').all()
-    serializer_class = ArticleSerializer
 
 
 class BlogListView(ListView):
