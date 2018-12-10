@@ -8,12 +8,13 @@ before_script:
   - docker-compose -f docker/docker-compose.prod.yml pull || true
 
 script:
-  - docker-compose -f docker/docker-compose.prod.yml pull || true
+#  - docker-compose -f docker/docker-compose.prod.yml pull || true
   - docker build -t 63phc/lks:latest -f docker/dev/backend/Dockerfile .
-#  - docker-compose -f docker/docker-compose.dev.yml up
+  - docker-compose -f docker/docker-compose.dev.yml up
 
 after_script:
   - docker images
+  - docker ps
 
 before_develop:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"

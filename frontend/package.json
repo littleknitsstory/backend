@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack/webpack.scss.js --progress --colors --mode=development",
+    "start": "webpack-dev-server --config webpack/webpack.scss.js --progress --colors --mode=development",
     "build-production": "webpack --config webpack/webpack.production.js --progress --colors --mode=production",
     "build-development": "webpack --config webpack/webpack.local.js --progress --colors --mode=development",
     "build-scss-for-django": "webpack --config webpack/webpack.scss.js --progress --colors --mode=development",
