@@ -24,7 +24,15 @@ class BlogDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(BlogDetailView, self).get_context_data(**kwargs)
         context['more_posts'] = Article.objects.all().order_by('?')[:3]
-        context['next_previews'] = Article.objects.all().exclude(title=context['object']).order_by('?')[:2]
+        object_post = context['object']
+        last_post = Article.objects.latest('id')
+        if object_post.id == 1:
+            context['next_preview'] = Article.objects.get(id=2)
+        elif object_post.id == last_post.id:
+            context['previous_preview'] = Article.objects.get(id=(last_post.id - 1))
+        else:
+            context['next_preview'] = Article.objects.get(id=(object_post.id + 1))
+            context['previous_preview'] = Article.objects.get(id=(object_post.id - 1))
         return context
 
 

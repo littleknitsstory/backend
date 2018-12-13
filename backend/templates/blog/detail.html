@@ -26,14 +26,12 @@
                         Автор: <a href="{% url 'blog:author-list' author=object.author %}">{{ object.author }}</a>
                     </div>
                     <div class="b-blog--detail">
-                        {% for item in next_previews %}
-                            {% if forloop.first %}
-                                <h4>Предыдущий пост: </h4> <a href="{% url 'blog:blog-detail' slug=item.slug %}">{{ item.title }}</a>
-                            {% endif %}
-                            {% if forloop.last %}
-                                <h4>Следующий пост: </h4> <a href="{% url 'blog:blog-detail' slug=item.slug %}">{{ item.title }}</a>
-                            {% endif %}
-                        {% endfor %}
+                        {% if previous_preview %}
+                            <h4>Предыдущий пост: </h4> <a href="{% url 'blog:blog-detail' slug=previous_preview.slug %}">{{ previous_preview.title }}</a>
+                        {% endif %}
+                        {% if next_preview %}
+                            <h4>Следующий пост: </h4> <a href="{% url 'blog:blog-detail' slug=next_preview.slug %}">{{ next_preview.title }}</a>
+                        {% endif %}
                     </div>
                     <div class="b-blog--detail">
                         <h2>Другие посты</h2>
