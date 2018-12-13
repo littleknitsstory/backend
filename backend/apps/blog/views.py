@@ -11,6 +11,16 @@ class BlogListView(ListView):
     template_name = 'blog/list.html'
     paginate_by = settings.PAGINATION_BY
 
+    def get_queryset(self, **kwargs):
+        try:
+            if self.kwargs['author']:
+                author = User.objects.get(username=self.kwargs['author'])
+                queryset = Article.objects.filter(author=author.id)
+                return queryset
+        except KeyError:
+            queryset = super(BlogListView, self).get_queryset(**kwargs)
+            return queryset
+
     def get_context_data(self, **kwargs):
         context = super(BlogListView, self).get_context_data(**kwargs)
         context['form_subscribe'] = SubscribeForm()
@@ -34,17 +44,6 @@ class BlogDetailView(DetailView):
             context['next_preview'] = Article.objects.get(id=(object_post.id + 1))
             context['previous_preview'] = Article.objects.get(id=(object_post.id - 1))
         return context
-
-
-class AuthorListView(ListView):
-    model = Article
-    template_name = 'blog/list.html'
-    paginate_by = settings.PAGINATION_BY
-
-    def get_queryset(self, **kwargs):
-        author = User.objects.get(username=self.kwargs['author'])
-        queryset = Article.objects.filter(author=author.id)
-        return queryset
 
 
 def error_404(request):  # FIXME почему это тут?
