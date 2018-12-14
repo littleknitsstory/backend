@@ -25,7 +25,7 @@ def watermark_text(input_image_path, output_image_path, text, pos):
         fill=black,
         font=font
     )
-    photo.show()
+    # photo.show()  # just to show the result picture when you test it
     photo.save(output_image_path)
 
 
