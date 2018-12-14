@@ -53,7 +53,7 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     login_url = '/login/'
     fields = [
-        'title', 'slug', 'image', 'image_alt', 'description',
+        'title', 'slug', 'image_preview', 'image_alt', 'description',
         'keywords', 'price', 'active', 'category', 'tags'
     ]
     template_name = 'shop/product_form.html'
@@ -63,7 +63,7 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     login_url = '/login/'
     fields = [
-        'title', 'slug', 'image', 'image_alt', 'description',
+        'title', 'slug', 'image_preview', 'image_alt', 'description',
         'keywords', 'price', 'active', 'category', 'tags'
     ]
     template_name = 'shop/product_form.html'
