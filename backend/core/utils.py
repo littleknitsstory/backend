@@ -1,6 +1,4 @@
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 
 def watermark_text(input_image_path, output_image_path, text, pos):
