@@ -8,7 +8,7 @@
                     <div class="b-blog--detail">
                         <div class="b-blog--detail_tag">
                           {% for tag in object.tags.all %}
-                          <a href="">{{ tag }}</a>
+                              <a href="{% url 'tags:tags-list' slug=tag.slug %}">{{ tag }}</a>
                           {% endfor %}
                         </div>
                         <div class="b-blog--detail_title"><h1>{{ object.title }}</h1></div>
@@ -16,16 +16,12 @@
                         <div class="b-blog--detail_img">
                             <img src="http://via.placeholder.com/150" alt="">
                         </div>
-                        <div class="b-blog--detail_content">
-                            <p>
-                              {{ object.content }}
-                            </p></div>
+                        <div class="b-blog--detail_content"><p>{{ object.content }}</p></div>
                     </div>
-                <div class="blog-detail">
-                    <div class="b-blog--detail">
-                        Автор: <a href="{% url 'blog:author-list' author=object.author %}">{{ object.author }}</a>
-                    </div>
-                    <div class="b-blog--detail">
+                <div class="row">
+                    Автор: <a href="{% url 'blog:author-list' author=object.author %}">{{ object.author }}</a>
+                </div>
+                    <div class="row">
                         {% if previous_preview %}
                             <h4>Предыдущий пост: </h4> <a href="{% url 'blog:blog-detail' slug=previous_preview.slug %}">{{ previous_preview.title }}</a>
                         {% endif %}
@@ -33,7 +29,7 @@
                             <h4>Следующий пост: </h4> <a href="{% url 'blog:blog-detail' slug=next_preview.slug %}">{{ next_preview.title }}</a>
                         {% endif %}
                     </div>
-                    <div class="b-blog--detail">
+                    <div class="row">
                         <h2>Другие посты</h2>
                     {% for post in more_posts %}
                         <hr>
@@ -44,13 +40,6 @@
                     {% endfor %}
                     </div>
                 </div>
-                    <br><br><br><br>
-                    <div>next previews</div>
-                    <div>about autor</div>
-                    <div>more post</div>
-                    <div>comments</div>
-                </div>
-
                 {% include 'components/_sidebar.html' %}
 
         </div>

@@ -1,13 +1,13 @@
 'use strict';
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack/webpack.scss');
+const config = require('./webpack/webpack.local');
 
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
     inline: true,
-    contentBase: '../../backend/static/builds/',
+    contentBase: './public',
     historyApiFallback: true,
     headers: {"Access-Control-Allow-Origin": "*"}
 }).listen(3000, '0.0.0.0', function (err, result) {
