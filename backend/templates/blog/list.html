@@ -10,6 +10,7 @@
             <div class="row">
                 <div class="blog-main">
                     {% for item in object_list %}
+                    <a href="{% url 'blog:blog-detail' slug=item.slug %}">
                     <div class="b-blog--item">
                         <div class="b-blog--item__border">
                             <div class="b-blog--item_img">
@@ -24,16 +25,16 @@
                                     </div>
                                 {% endfor %}
                             </div>
-                            <div class="b-blog--item_title"><h2>{{ item.title }}</h2></div>
+                            <div class="b-blog--item_title"><a href="{% url 'blog:blog-detail' slug=item.slug %}"><h2>{{ item.title }}</h2></a></div>
                             <div class="b-blog--item_description">
                                 {{ item.content| truncatewords:15 }}
                             </div>
                             <div class="b-blog--item_button">
                                 <button onclick="location.href='{% url 'blog:blog-detail' slug=item.slug %}';" type="button">Подробней</button>
                             </div>
-
                         </div>
                     </div>
+                    </a>
                     {% endfor %}
                     <div class="b-blog--item__more">
                         <button type="button" class="" id="">Больше постов</button>

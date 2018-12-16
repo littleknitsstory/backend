@@ -11,8 +11,8 @@
                           <a href="">{{ tag }}</a>
                           {% endfor %}
                         </div>
-                        <div class="b-blog--detail_title"><h1>{{ obhect.title }}</h1></div>
-                        <div class="b-blog--detail_by"><span>by <a href="">{{ object.author }}</a> {{ object.created_at }}</span></div>
+                        <div class="b-blog--detail_title"><h1>{{ object.title }}</h1></div>
+                        <div class="b-blog--detail_by"><span>by <a href="{% url 'blog:author-list' author=object.author %}">{{ object.author }}</a> {{ object.created_at }}</span></div>
                         <div class="b-blog--detail_img">
                             <img src="http://via.placeholder.com/150" alt="">
                         </div>
@@ -21,7 +21,29 @@
                               {{ object.content }}
                             </p></div>
                     </div>
-
+                <div class="blog-detail">
+                    <div class="b-blog--detail">
+                        Автор: <a href="{% url 'blog:author-list' author=object.author %}">{{ object.author }}</a>
+                    </div>
+                    <div class="b-blog--detail">
+                        {% if previous_preview %}
+                            <h4>Предыдущий пост: </h4> <a href="{% url 'blog:blog-detail' slug=previous_preview.slug %}">{{ previous_preview.title }}</a>
+                        {% endif %}
+                        {% if next_preview %}
+                            <h4>Следующий пост: </h4> <a href="{% url 'blog:blog-detail' slug=next_preview.slug %}">{{ next_preview.title }}</a>
+                        {% endif %}
+                    </div>
+                    <div class="b-blog--detail">
+                        <h2>Другие посты</h2>
+                    {% for post in more_posts %}
+                        <hr>
+                        <div class="b-blog--detail_title"><a href="{% url 'blog:blog-detail' slug=post.slug %}"><h1>{{ post.title }}</h1></a></div>
+                        <div class="b-blog--detail_img">
+                            <img src="http://via.placeholder.com/150" alt="">
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
                     <br><br><br><br>
                     <div>next previews</div>
                     <div>about autor</div>
