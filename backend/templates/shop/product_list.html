@@ -9,36 +9,30 @@
                 <div class="row">
                     {% if object_list %}
                         {% for object in object_list %}
-                            <div class="b-shop--item">
-                                <div class="b-bestseller--item__border">
-                                    <div class="b-bestseller--item_img">
-                                        {% if object.image_preview %}
-                                        <img src="{{ object.image_preview.url }}" alt="{{ object.image_alt }}">
-                                        {% else %}
-                                        <img src="http://placehold.it/250" alt="">
-                                        {% endif %}
+                            <a href="{% url 'shop:product_detail' object.slug %}">
+                                <div class="b-shop--item">
+                                    <div class="b-bestseller--item__border">
+                                        <div class="b-bestseller--item_img">
+                                            {% if object.image_preview %}
+                                            <img src="{{ object.image_preview.url }}" alt="{{ object.image_alt }}">
+                                            {% else %}
+                                            <img src="http://placehold.it/250" alt="">
+                                            {% endif %}
+                                        </div>
+                                        <div class="b-bestseller--item_title">{{ object.title }}</div>
+                                        <div class="b-bestseller--item_category">
+                                            {% for item_category in object.category.all %}
+                                                <a href="{%  url 'shop:category' item_category.slug %}">{{ item_category.title }}</a>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="b-bestseller--item_prise">$ {{ object.price }}.00</div>
+                                        <div class="b-bestseller--item_cart"><i class="fas fa-cart-plus"></i> &nbsp;<a href="#">add to cart</a></div>
                                     </div>
-                                    <div class="b-bestseller--item_title">{{ object.title }}</div>
-                                    <div class="b-bestseller--item_category">
-                                        {% for item_category in object.category.all %}
-                                            <a href="{%  url 'shop:category' item_category.slug %}">{{ item_category.title }}</a>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="b-bestseller--item_prise">$ {{ object.price }}.00</div>
-                                    <div class="b-bestseller--item_cart"><i class="fas fa-cart-plus"></i> &nbsp;<a href="#">add to cart</a></div>
                                 </div>
-                            </div>
-                            <div hidden>
-                                Описание: {{ object.description }} <br>
-                                Ключевые слова: {{ object.keywords }} <br>
-                                Image alt: {{ object.image_alt }} <br>
-                                Теги: {% for item_tag in object.tags.all %} {{ item_tag.title }} {% endfor %} <br>
-                                Запись создана: {{ object.created_at }} <br>
-                                Запись обновлена: {% if object.updated_at %}{{ object.updated_at }}{% else %}&mdash;{% endif %} <br>
-                            </div>
+                            </a>
+
                         {% endfor %}
                         </div>
-
                         <div class="pagination">
                             <span class="step-links">
                                 {% if page_obj.has_previous %}

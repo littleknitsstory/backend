@@ -57,7 +57,7 @@
       @include make-col(6);
     }
     @include media-breakpoint-up(lg) {
-      @include make-col(4);
+      @include make-col(6);
     }
 }
 
