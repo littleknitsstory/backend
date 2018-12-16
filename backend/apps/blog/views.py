@@ -12,13 +12,13 @@ class BlogListView(ListView):
     paginate_by = settings.PAGINATION_BY
 
     def get_queryset(self, **kwargs):
+        queryset = super(BlogListView, self).get_queryset(**kwargs)
         try:
             if self.kwargs['author']:
                 author = User.objects.get(username=self.kwargs['author'])
                 queryset = Article.objects.filter(author=author.id)
                 return queryset
         except KeyError:
-            queryset = super(BlogListView, self).get_queryset(**kwargs)
             return queryset
 
     def get_context_data(self, **kwargs):
@@ -36,6 +36,7 @@ class BlogDetailView(DetailView):
         context['more_posts'] = Article.objects.all().order_by('?')[:3]
         object_post = context['object']
         last_post = Article.objects.latest('id')
+        # FIXME: поправить вывод крайних постов
         if object_post.id == 1:
             context['next_preview'] = Article.objects.get(id=2)
         elif object_post.id == last_post.id:
