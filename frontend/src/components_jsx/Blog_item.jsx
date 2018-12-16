@@ -8,7 +8,7 @@ export default class Blog_item extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/posts`,
+    axios.get(`http://localhost:8000/api/posts`,
         )
       .then(res => {
         const posts = res.data;
