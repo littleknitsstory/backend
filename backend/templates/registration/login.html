@@ -32,6 +32,7 @@
 
                 <input type="submit" value="login">
                 <input type="hidden" name="next" value="{{ next }}">
+                <button onclick="location.href='{% url 'django_registration_register' %}';" type="button">Регистрация</button>
             </form>
 
             {# Assumes you setup the password_reset view in your URLconf #}

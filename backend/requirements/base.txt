@@ -35,4 +35,6 @@ six==1.11.0
 sqlparse==0.2.4
 urllib3==1.24.1
 django-ckeditor==5.6.1
-
+django-registration==3.0
+python-http-client==3.1.0
+sendgrid==5.6.0
