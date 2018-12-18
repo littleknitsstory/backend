@@ -18,7 +18,7 @@ User = get_user_model()
 class RegistrationViews(RegistrationView):
 
     form_class = RegistrationForm
-    success_url = reverse_lazy('django_registration_complete')
+    success_url = reverse_lazy('django-registration-complete')
 
     def register(self, form):
         new_user = form.save()
@@ -32,6 +32,10 @@ class RegistrationViews(RegistrationView):
             user=new_user,
             request=self.request
         )
-        mail = SendEmail('admin@lks.ru', form.cleaned_data['email'], 'Спасибо за регистрацию', 'Спасибо что зарегистрировались на нашем сайте!')
+        from_email = 'admin@lks.ru'
+        to_email = form.cleaned_data['email']
+        subject = 'Спасибо за регистрацию'
+        content = '<div style="color: grey;"><h1>Hello</h1></div>'
+        mail = SendEmail(from_email, to_email, subject, content)
         mail.send()
         return new_user
