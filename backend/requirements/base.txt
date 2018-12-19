@@ -18,6 +18,7 @@ django-webpack-loader==0.6.0
 djangorestframework==3.8.2
 extensions==0.4
 idna==2.7
+logging==0.4.9.6
 Markdown==2.6.11
 mccabe==0.6.1
 oauthlib==2.1.0

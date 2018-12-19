@@ -1,3 +1,4 @@
+import logging
 import os
 from decouple import config
 
@@ -154,3 +155,8 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     },
 }
+
+# use loggin.error('message') or loggin.info('message') to write into the log
+logging.basicConfig(
+    filename=os.path.join(ROOT_DIR, 'lks_backend.log'), level=logging.DEBUG
+)
