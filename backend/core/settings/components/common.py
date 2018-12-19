@@ -154,3 +154,5 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     },
 }
+
+
