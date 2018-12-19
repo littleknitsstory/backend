@@ -4,12 +4,13 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
+from django.views.generic import TemplateView
 
 from apps.blog.viewsets import ArticleList, ArticleAPICRUD
 from apps.shop.viewsets import ProductAPIViewSet, ProductAPICRUD, CategoryAPIViewSet, CategoryAPICRUD
 from apps.menu.viewsets import MenuAPIViewSet, MenuAPICRUD
 from apps.blog.views import error_404
-
+from apps.users.views import RegistrationViews
 
 router = routers.DefaultRouter()
 router.register(r'api/posts', ArticleList)
@@ -23,6 +24,11 @@ urlpatterns = [
     path('', include('apps.blog.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/register/', RegistrationViews.as_view(), name='django_registration_register'),
+    path('accounts/register/complete/', TemplateView.as_view(
+        template_name='django_registration/registration_complete.html'
+    ), name='django-registration-complete'),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
     path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
     path('shop/', include('apps.shop.urls', namespace='shop')),
     path('tags/', include('apps.tags.urls')),

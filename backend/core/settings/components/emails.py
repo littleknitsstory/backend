@@ -1,9 +1,7 @@
-EMAIL_BACKEND = 'mailer.backend.DbBackend'
+from decouple import config
 
-EMAIL_USE_TLS = False
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 2525
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = ''
-# SENDGRID_PASSWORD = '2H6ScE491gp'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+SENDGRID_API_KEY = config('SENDGRID_API_KEY')

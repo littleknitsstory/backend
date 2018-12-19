@@ -1,4 +1,3 @@
-import logging
 import os
 from decouple import config
 
@@ -156,10 +155,4 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-# use loggin.error('message') or loggin.info('message') just to write into
-# the log, but more efficient to use separated logger in every module:
-# logger = getLogger(__name__)
-# logger.info(string), .warning(string) and so on
-logging.basicConfig(
-    filename=os.path.join(ROOT_DIR, 'lks_backend.log'), level=logging.DEBUG
-)
+

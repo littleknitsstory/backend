@@ -20,6 +20,7 @@ base_settings = [
     'components/database.py',  # postgres
     'components/social.py',  # social auth
     'components/webpack.py',  # webpack
+    'components/emails.py',  # emails
 
     # Select the right env:
     'environments/%s.py' % CONFIG_NAME,
