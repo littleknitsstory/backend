@@ -21,6 +21,7 @@ base_settings = [
     'components/social.py',  # social auth
     'components/webpack.py',  # webpack
     'components/emails.py',  # emails
+    'components/logger.py',  # logging
 
     # Select the right env:
     'environments/%s.py' % CONFIG_NAME,
