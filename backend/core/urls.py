@@ -43,7 +43,7 @@ urlpatterns = [
 
 ]
 
-urlsapi = [
+urls_api = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/docs/', schema_view),
     path('api/posts/<int:pk>', ArticleAPICRUD),
@@ -52,7 +52,7 @@ urlsapi = [
     path('api/menu/<int:pk>/', MenuAPICRUD.as_view()),
 ]
 
-urlpatterns += urlsapi
+urlpatterns += urls_api
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += router.urls

@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django_registration import signals
 from django_registration.views import RegistrationView
 from django_registration.forms import RegistrationForm
-from .send_mail import SendEmail
+from core.utils.send_mail import SendEmail
 
 
 class ProfileView(View):

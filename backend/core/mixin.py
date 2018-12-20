@@ -1,10 +1,8 @@
 from django.contrib import admin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from .utils import watermark_text
 
-WATERMARK_TEXT = "\u00A9 Little Knits Story"
-WATERMARK_POSITION = (5, 5)  # x, y
+from core.utils.watermark import watermark_text
 
 
 class SeoMixin(models.Model):
@@ -41,12 +39,12 @@ class ImagesMixin(models.Model):
     class Meta:
         abstract = True
 
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        super(ImagesMixin, self).save(force_insert=False, force_update=False,
-                                      using=None, update_fields=None)
-        watermark_text(self.image_preview.path, self.image_preview.path,
-                       WATERMARK_TEXT, WATERMARK_POSITION)
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        super(ImagesMixin, self).save(
+            force_insert=False, force_update=False,
+            using=None, update_fields=None
+        )
+        watermark_text(self.image_preview.path, self.image_preview.path)
 
 
 class AdminBaseMixin(admin.ModelAdmin):
