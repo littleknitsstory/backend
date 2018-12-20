@@ -7,22 +7,23 @@ from .models.product import Product
 
 @admin.register(Category)
 class CategoryAdmin(AdminBaseMixin):
-    list_display = ['title', 'slug', 'description', 'created_at', 'update_at']
+    list_display = ['title', 'slug', 'meta_description', 'created_at', 'update_at']
 
 
 @admin.register(Product)
 class ProductAdmin(AdminBaseMixin):
     list_display = [
-        'title', 'slug', 'specification', 'keywords', 'price', 'active',
+        'title', 'slug', 'meta_description', 'meta_keywords', 'price', 'is_active',
         'created_at', 'update_at'
     ]
     filter_horizontal = ('tags', 'category')
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'specification', 'active', 'price', 'image_preview', 'author', 'tags', 'category')
+            'fields': ('title', 'slug', 'description', 'is_active', 'price', 'sale',
+                       'image_preview', 'author', 'tags', 'category')
         }),
         ('SEO', {
-            'fields': ('title_seo', 'keywords', 'description', 'image_alt')
+            'fields': ('title_seo', 'meta_keywords', 'meta_description', 'image_alt')
         }),
     )
 

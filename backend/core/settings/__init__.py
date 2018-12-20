@@ -22,6 +22,8 @@ base_settings = [
     'components/webpack.py',  # webpack
     'components/emails.py',  # emails
     'components/logger.py',  # logging
+    'components/ckeditor.py',  # ckeditor
+
 
     # Select the right env:
     'environments/%s.py' % CONFIG_NAME,
