@@ -53,7 +53,8 @@ services:
       - ./dev/.env
     depends_on:
       - postgresql
-      -
+
+
   # Storage container
   storage:
     container_name: phc_lks_storage
