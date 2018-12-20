@@ -24,7 +24,7 @@
 
 backend:
 * Python 3.7 
-* Django 2.1.2
+* Django 2.1.4
 * DRF 3.8.2
 * redis 5.0 ([hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL 11 ([hub.docker](https://hub.docker.com/_/postgres/))
@@ -34,6 +34,7 @@ backend:
 frontend:
 * React [16.5](https://reactjs.org/versions)
 * Webpack 4.21.0
+* Node 8 ([hub.docker](https://hub.docker.com/_/node/))
 
 other:
 * Docker 18.06.0-ce

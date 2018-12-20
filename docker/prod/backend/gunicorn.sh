@@ -1,14 +1,14 @@
  #!/bin/bash
- NAME="<project>"
- DIR=/home/<username>/<project>/
- USER= "<username>"
- GROUP= "<groupname>"
+ NAME="Little knits story"
+ DIR=/home/lks_user/lks/
+ USER= "lks"
+ GROUP= "lks"
  WORKERS=3
- BIND=unix:/home/<username>/<project>/run/gunicorn.sock
+ BIND=unix:/home/lks_user/lks/run/gunicorn.sock
  DJANGO_SETTINGS_MODULE=backend.settings
  DJANGO_WSGI_MODULE=backend.wsgi
  LOG_LEVEL=error
- ENV=/home/<username>/.local/share/virtualenvs/<pipenv_generate_name>/bin/activate
+ ENV=/home/lks_user/.local/share/virtualenvs/<pipenv_generate_name>/bin/activate
  cd ${DIR}
  source ${ENV}
  export DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
