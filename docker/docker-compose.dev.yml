@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
 
@@ -53,38 +53,15 @@ services:
       - ./dev/.env
     depends_on:
       - postgresql
-
-
-  # Frontend container (static React files, index.html and bundle.js, served with nginx)
-#  frontend:
-#    build: ./frontend
-#    volumes:
-#      - ./frontend:/home/blog/frontend
-#    container_name: phc_lks_frontend
-##    working_dir: /home/blog/frontend
-#    links:
-#      - backend
-#
-#  nginx:
-#    build: ./nginx
-#    container_name: phc_lks_nginx
-#    links:
-#      - backend
-#      - frontend
-#    ports:
-#      - '80:80'
-
-#version: '2'
-#
-#services:
-#  # Storage container
-#  storage:
-#    container_name: storage
-#    build:
-#      context: ..
-#      dockerfile: /docker/dev/storage/Dockerfile
-#    volumes:
-#      - ./storage:/storage
-#      - ./storage/nginx.conf:/etc/nginx/conf.d/default.conf
-#    ports:
-#      - "3001:80"
+      -
+  # Storage container
+  storage:
+    container_name: phc_lks_storage
+    build:
+      context: ..
+      dockerfile: docker/dev/storage/Dockerfile
+    volumes:
+      - ./storage:/storage
+      - ./storage/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "3001:80"

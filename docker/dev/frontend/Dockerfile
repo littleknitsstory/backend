@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:8-alpine
 
 RUN rm -rf /data/www/* || true
 
