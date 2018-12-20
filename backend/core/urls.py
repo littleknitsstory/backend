@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 from django.views.generic import TemplateView
+import grappelli
 
 from apps.blog.viewsets import ArticleList, ArticleAPICRUD
 from apps.shop.viewsets import ProductAPIViewSet, ProductAPICRUD, CategoryAPIViewSet, CategoryAPICRUD
@@ -22,9 +23,10 @@ schema_view = get_swagger_view(title='Shop API')
 
 urlpatterns = [
     path('', include('apps.blog.urls')),
+    path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/register/', RegistrationViews.as_view(), name='django_registration_register'),
+    path('accounts/register/', RegistrationViews.as_view(), name='django-registration-register'),
     path('accounts/register/complete/', TemplateView.as_view(
         template_name='django_registration/registration_complete.html'
     ), name='django-registration-complete'),
