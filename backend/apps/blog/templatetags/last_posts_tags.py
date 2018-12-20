@@ -6,4 +6,4 @@ register = template.Library()
 
 @register.simple_tag(name='last_posts')
 def last_posts():
-    return Article.objects.all().order_by('-created_at')[:3]
+    return Article.objects.all()[:3]

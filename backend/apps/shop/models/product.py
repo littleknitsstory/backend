@@ -4,6 +4,8 @@ from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from django.conf import settings
+from djmoney.models.fields import MoneyField
+
 from core.mixin import SeoMixin, ImagesMixin
 
 from ckeditor.fields import RichTextField
@@ -13,9 +15,10 @@ class Product(SeoMixin, ImagesMixin):
     """ Product model """
     title = models.CharField(_('Title'), max_length=120)
     slug = models.CharField(_('Slug'), max_length=120, unique=True)
-    specification = RichTextField(_('Specification'))
-    price = models.IntegerField(_('Price'), null=True, blank=True)
-    active = models.BooleanField(_('Active'), default=True)
+    description = RichTextField(_('Description'))
+    price = MoneyField(_('Price'), null=True, blank=True, max_digits=14, decimal_places=2, default_currency='RU')
+    sale = MoneyField(_('Sale'), null=True, blank=True, max_digits=14, decimal_places=2, default_currency='RU')
+    is_active = models.BooleanField(_('Active'), default=True)
     category = models.ManyToManyField('Category',
                                       verbose_name=_('Category'),
                                       related_name='product_categories',

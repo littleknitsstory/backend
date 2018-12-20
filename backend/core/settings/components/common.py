@@ -1,5 +1,8 @@
 import os
 from decouple import config
+from django.core.validators import RegexValidator
+from django.utils.translation import ugettext_lazy as _
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # backend/
@@ -12,7 +15,6 @@ PAGINATION_BY = 6
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 LOGIN_REDIRECT_URL = 'dashboard:list'
-
 
 INSTALLED_APPS = [
     'grappelli',
@@ -30,6 +32,17 @@ INSTALLED_APPS = [
     'mptt',
     # 'modeltranslation',
     'social_django',
+    'captcha',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
+    'ckeditor',
+    'ckeditor_uploader',
+    'rest_framework_swagger',
+    'optimized_image',
+    'phonenumber_field',
+    'djmoney',
+
+    # Apps project
     'apps.blog',
     'apps.tags',
     'apps.shop',
@@ -38,15 +51,7 @@ INSTALLED_APPS = [
     'apps.contacts',
     'apps.dashboard',
     'apps.slider',
-    'captcha',
-    'django.contrib.sites',
-    'django.contrib.flatpages',
-    'ckeditor',
-    'ckeditor_uploader',
-    'rest_framework_swagger',
 ]
-
-# AUTH_USER_MODEL = 'apps.users'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +64,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.email.EmailAuth',
+    'social_core.backends.vk.VKOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_USER_MODEL = 'users.User'
+USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -145,13 +161,8 @@ STATICFILES_DIRS = (os.path.join(ROOT_DIR, 'static'),)
 MEDIA_URL = '/storage/'
 MEDIA_ROOT = os.path.join(ROOT_DIR, '../storage/media')
 
-CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+PHONE_REGEX = r'^(\+7)+([0-9]){10}$'
+PHONE_VALIDATOR = RegexValidator(regex=PHONE_REGEX,
+                                 message=_('Enter the number in the format +79991234567.'))
 
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_IMAGE_BACKEND = "pillow"
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': None,
-    },
-}
+OPTIMIZED_IMAGE_METHOD = 'pillow'

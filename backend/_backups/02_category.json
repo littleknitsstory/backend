@@ -1,1 +1,1 @@
-[{"model": "shop.category", "pk": 1, "fields": {"title_seo": "Title Seo Category", "keywords": "Title Seo Category", "description": "Title Seo Category", "created_at": "2018-11-18T16:02:58.981Z", "update_at": "2018-11-18T16:02:58.981Z", "title": "Category", "slug": "category"}}]
+[{"model": "shop.category", "pk": 1, "fields": {"title_seo": "Title Seo Category", "meta_keywords": "Title Seo Category", "meta_description": "Title Seo Category", "created_at": "2018-11-18T16:02:58.981Z", "update_at": "2018-11-18T16:02:58.981Z", "title": "Category", "slug": "category"}}]

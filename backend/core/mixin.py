@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from optimized_image.fields import OptimizedImageField
 
 from core.utils.watermark import watermark_text
 
@@ -15,9 +16,9 @@ class SeoMixin(models.Model):
         created_at: info created
         update_at: info update
     """
-    title_seo = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
-    keywords = models.TextField(_("Keywords"), blank=True, null=True)
-    description = models.TextField(_("Description"), blank=True, null=True)
+    title_seo = models.CharField(_('Title Seo'), max_length=500, blank=True, null=True)
+    meta_keywords = models.TextField(_('Keywords'), blank=True, null=True)
+    meta_description = models.TextField(_('Description'), blank=True, null=True)
 
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
     update_at = models.DateTimeField(_('Updated at'), auto_now=True)
@@ -33,18 +34,18 @@ class ImagesMixin(models.Model):
         image_preview: path images
         image_alt (char): image_alt for <img>
     """
-    image_preview = models.ImageField(_('Images'), blank=True)
+    image_preview = OptimizedImageField(_('Images'), blank=True)
     image_alt = models.CharField(_('Images Alt'), blank=True, max_length=255)
 
     class Meta:
         abstract = True
 
-    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        super(ImagesMixin, self).save(
-            force_insert=False, force_update=False,
-            using=None, update_fields=None
-        )
-        watermark_text(self.image_preview.path, self.image_preview.path)
+    # def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+    #     super(ImagesMixin, self).save(
+    #         force_insert=False, force_update=False,
+    #         using=None, update_fields=None
+    #     )
+    #     watermark_text(self.image_preview.path, self.image_preview.path)
 
 
 class AdminBaseMixin(admin.ModelAdmin):

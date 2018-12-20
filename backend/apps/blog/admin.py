@@ -9,9 +9,9 @@ class ArticleAdmin(AdminBaseMixin):
     filter_horizontal = ('tags',)
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'active', 'content', 'image_preview', 'author', 'tags')
+            'fields': ('title', 'slug', 'is_active', 'content', 'image_preview', 'author', 'tags')
         }),
         ('SEO', {
-            'fields': ('title_seo', 'keywords', 'description', 'image_alt')
+            'fields': ('title_seo', 'meta_keywords', 'meta_description', 'image_alt')
         }),
     )
