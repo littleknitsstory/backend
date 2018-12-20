@@ -1,6 +1,8 @@
 import sendgrid
-from sendgrid.helpers.mail import *
 from django.conf import settings
+from sendgrid.helpers.mail.content import Content
+from sendgrid.helpers.mail.email import Email
+from sendgrid.helpers.mail.mail import Mail
 
 
 class SendEmail:

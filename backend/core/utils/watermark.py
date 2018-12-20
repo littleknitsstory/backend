@@ -1,7 +1,11 @@
 from PIL import Image, ImageDraw, ImageFont
 
 
-def watermark_text(input_image_path, output_image_path, text, pos):
+WATERMARK_TEXT = "\u00A9 Little Knits Story"
+WATERMARK_POSITION = (5, 5)  # x, y
+
+
+def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT, pos=WATERMARK_POSITION):
     """
     It print the text right on the input image
     :param input_image_path:
