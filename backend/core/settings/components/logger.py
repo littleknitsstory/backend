@@ -1,6 +1,6 @@
 import os
 
-from backend.core.settings.components.common import ROOT_DIR
+from django.conf import settings
 import logging
 from logging import config
 
@@ -14,7 +14,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'verbose',
-            'filename': os.path.join(ROOT_DIR, 'debug.log'),
+            'filename': os.path.join(settings.ROOT_DIR, 'debug.log'),
         },
     },
     'formatters': {
