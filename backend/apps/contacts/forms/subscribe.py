@@ -9,7 +9,7 @@ class SubscribeForm(ModelForm):
         fields = ['email']
 
         widgets = {
-            'email': EmailInput(attrs={'class': 'form-control b-subcribe_form__input', 'id': 'email-data'})
+            'email': EmailInput(attrs={'class': 'form-control b-subcribe_form__input', 'id': 'email-data', 'placeholder': 'Адрес почты'})
         }
 
     def clean(self):
