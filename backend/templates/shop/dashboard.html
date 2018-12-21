@@ -15,7 +15,7 @@
                                         <img src="{{ object.image.url }}" alt="">
                                     </div>
                                     <div class="b-bestseller--item_title">{{ object.title }}</div>
-                                    <div class="b-bestseller--item_price">$ {{ object.price }}</div>
+                                    <div class="b-bestseller--item_price">{{ object.price }}</div>
                                 </div>
                             </div>
                             <button title="Удалить товар" onclick="location.href='{% url 'shop:product_delete' object.slug %}'" type="button">&#215;</button>

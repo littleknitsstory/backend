@@ -25,7 +25,7 @@
                                             <a href="{%  url 'shop:category' item_category.slug %}">{{ item_category.title }}</a>
                                         {% endfor %}
                                     </div>
-                                    <div class="b-bestseller--item_prise">$ {{ object.price }}</div>
+                                    <div class="b-bestseller--item_prise">{{ object.price }}</div>
                                     <div class="b-bestseller--item_cart"><i class="fas fa-cart-plus"></i> &nbsp;<a href="#">add to cart</a></div>
                                 </div>
                             </div>
