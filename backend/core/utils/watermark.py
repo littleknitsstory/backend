@@ -25,7 +25,7 @@ def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT, pos
     drawing = ImageDraw.Draw(photo)
 
     font_color = (200, 200, 200)
-    font = ImageFont.truetype("FreeSans.ttf", 40)
+    font = ImageFont.truetype(FONT, 40)
     drawing.text(
         pos, text,
         fill=font_color,
