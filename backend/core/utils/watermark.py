@@ -1,8 +1,10 @@
 from PIL import Image, ImageDraw, ImageFont
-
+from decouple import config
 
 WATERMARK_TEXT = "\u00A9 Little Knits Story"
 WATERMARK_POSITION = (5, 5)  # x, y
+IMAGE_SIZE = (500, 500)
+FONT = config('WATERMARK_FONT')
 
 
 def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT, pos=WATERMARK_POSITION):
@@ -16,12 +18,14 @@ def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT, pos
     :return:
     """
     photo = Image.open(input_image_path)
+    # resizing
+    photo.thumbnail(IMAGE_SIZE, Image.ANTIALIAS)
 
     # make the image editable
     drawing = ImageDraw.Draw(photo)
 
-    font_color = (200, 200, 200)  # font color
-    font = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 40)
+    font_color = (200, 200, 200)
+    font = ImageFont.truetype("FreeSans.ttf", 40)
     drawing.text(
         pos, text,
         fill=font_color,
