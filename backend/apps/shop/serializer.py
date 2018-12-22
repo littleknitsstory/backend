@@ -7,7 +7,8 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
-
+        # Указать все явно поля
+        # Поля со связями вывести полностью
         lookup_field = 'slug'
 
 
