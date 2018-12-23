@@ -3,8 +3,6 @@ from decouple import config
 
 WATERMARK_TEXT = "\u00A9 Little Knits Story"
 WATERMARK_POSITION = (5, 5)  # x, y
-IMAGE_SIZE = (500, 500)
-FONT = config('WATERMARK_FONT')
 
 
 def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT, pos=WATERMARK_POSITION):

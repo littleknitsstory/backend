@@ -168,8 +168,3 @@ PHONE_VALIDATOR = RegexValidator(regex=PHONE_REGEX,
                                  message=_('Enter the number in the format +79991234567.'))
 
 OPTIMIZED_IMAGE_METHOD = 'pillow'
-
-
-# django-fluent-comments
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
-COMMENTS_APP = 'fluent_comments'
