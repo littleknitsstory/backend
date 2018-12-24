@@ -1,7 +1,6 @@
-{% extends "base.html" %}
+{% extends "comments/base.html" %}
 
 {% load comments static %}
-
 {% block content %}
     <section>
         <div class="b-blog">
@@ -23,10 +22,8 @@
                 <div class="row">
                     Автор: <a href="{% url 'blog:author-list' author=object.author %}">{{ object.author }}</a>
                 </div>
-                <div class="b-blog-comments">
-                    {% render_comment_list for object %}
-                    {% render_comment_form for object %}
-                </div>
+                {% render_comment_list for object %}
+                {% render_comment_form for object %}
                 <div class="row">
                     {% if previous_preview %}
                         <h4>Предыдущий пост: </h4> <a href="{% url 'blog:blog-detail' slug=previous_preview.slug %}">{{ previous_preview.title }}</a>
