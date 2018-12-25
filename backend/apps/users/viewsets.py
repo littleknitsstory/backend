@@ -4,5 +4,6 @@ from .models import User
 
 
 class UserAPIViewSet(ReadOnlyModelViewSet):
+    """ User viewset """
     queryset = User.objects.all()
     serializer_class = UserSerializer

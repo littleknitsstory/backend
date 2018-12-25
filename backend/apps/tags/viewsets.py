@@ -4,5 +4,6 @@ from .models import Tag
 
 
 class TagsAPIViewSet(ModelViewSet):
+    """ Tags viewset """
     queryset = Tag.objects.all()
     serializer_class = TagsSerializer

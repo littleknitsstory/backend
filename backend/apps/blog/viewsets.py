@@ -4,6 +4,7 @@ from .models import Article
 
 
 class ArticleList(ModelViewSet):
+    """ Posts viewset """
     queryset = Article.objects.prefetch_related('tags').all()
     serializer_class = ArticleSerializer
 
