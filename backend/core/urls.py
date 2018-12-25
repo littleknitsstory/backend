@@ -39,15 +39,13 @@ urlpatterns = [
 urls_api = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/docs/', schema_view),
-    path('api/', include('apps.shop.urls')),
-    path('api/', include('apps.blog.urls')),
-    path('api/', include('apps.menu.urls')),
-    path('api/', include('apps.slider.urls')),
-    path('api/', include('apps.tags.urls')),  # конфликт адресов, выводится html страница
-    path('api/', include('apps.contacts.urls.feedback')),  # конфликт адресов, выводится html страница
-    path('api/', include('apps.contacts.urls.reviews')),  # конфликт адресов, выводится html страница
-    path('api/', include('apps.contacts.urls.contacts')),  # конфликт адресов, выводится html страница
-    path('api/', include('apps.users.urls'))  # конфликт адресов, выводится html страница
+    path('api/', include('apps.shop.routes')),
+    path('api/', include('apps.blog.routes')),
+    path('api/', include('apps.menu.routes')),
+    path('api/', include('apps.slider.routes')),
+    path('api/', include('apps.tags.routes')),
+    path('api/', include('apps.contacts.routes')),
+    path('api/', include('apps.users.routes'))
 ]
 
 urlpatterns += urls_api

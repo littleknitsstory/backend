@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import TagsList
-from rest_framework import routers
-from .viewsets import TagsAPIViewSet
+
 
 app_name = 'tags'
 
@@ -10,7 +9,3 @@ urlpatterns = [
 
     ]
 
-router_tags = routers.DefaultRouter()
-router_tags.register(r'tag', TagsAPIViewSet)
-
-urlpatterns += router_tags.urls
