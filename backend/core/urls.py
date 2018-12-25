@@ -2,7 +2,6 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
-from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 from django.views.generic import TemplateView
 import grappelli
@@ -43,6 +42,12 @@ urls_api = [
     path('api/', include('apps.shop.urls')),
     path('api/', include('apps.blog.urls')),
     path('api/', include('apps.menu.urls')),
+    path('api/', include('apps.slider.urls')),
+    path('api/', include('apps.tags.urls')),  # конфликт адресов, выводится html страница
+    path('api/', include('apps.contacts.urls.feedback')),  # конфликт адресов, выводится html страница
+    path('api/', include('apps.contacts.urls.reviews')),  # конфликт адресов, выводится html страница
+    path('api/', include('apps.contacts.urls.contacts')),  # конфликт адресов, выводится html страница
+    path('api/', include('apps.users.urls'))  # конфликт адресов, выводится html страница
 ]
 
 urlpatterns += urls_api
