@@ -11,9 +11,10 @@ const Subcribe = ((formID = $('#ajax-form-subscribe')) => {
     var csrf_token = $('#ajax-form-subscribe [name="csrfmiddlewaretoken"]').val();
     data["csrfmiddlewaretoken"] = csrf_token;
     data["email"] = email;
-    var url = 'subscribe/ajax/';
+    var url = '/subscribe/ajax/';
+    var host = $(location).attr('host');
     $.ajax({
-      url: url,
+      url: 'http://' + host + url,
       type: 'post',
       data: data,
       success: function (data) {

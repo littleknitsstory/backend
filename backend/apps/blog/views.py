@@ -1,7 +1,6 @@
 from django.views.generic import DetailView, ListView, View
 from django.shortcuts import render
 from .models import Article
-from apps.contacts.forms.subscribe import SubscribeForm
 from django.conf import settings
 from django.contrib.auth.models import User
 
@@ -20,11 +19,6 @@ class BlogListView(ListView):
                 return queryset
         except KeyError:
             return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super(BlogListView, self).get_context_data(**kwargs)
-        context['form_subscribe'] = SubscribeForm()
-        return context
 
 
 class BlogDetailView(DetailView):

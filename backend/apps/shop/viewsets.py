@@ -9,7 +9,7 @@ from django.http import Http404
 class ProductAPIViewSet(ModelViewSet):
     queryset = Product.objects.prefetch_related('category', 'tags').all()
     serializer_class = ProductSerializer
-
+    # ModelViewSet уже дает весь КРУД
 
 class ProductAPICRUD(APIView):
     queryset = Product.objects.all()

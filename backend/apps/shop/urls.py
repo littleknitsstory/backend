@@ -6,6 +6,7 @@ from .views import ProductListView, ProductDetailView, \
 
 app_name = 'shop'
 
+# https://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/#using-routers
 urlpatterns = [
     path('', ProductListView.as_view(), name='main'),
     path('dashboard/', ProductDashboardView.as_view(), name='dashboard'),
