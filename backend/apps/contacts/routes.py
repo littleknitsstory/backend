@@ -1,20 +1,12 @@
 from rest_framework import routers
-from apps.contacts.viewsets import ContactAPIViewSet
-from apps.contacts.viewsets import FeedbackAPIViewSet
-from apps.contacts.viewsets import ReviewAPIViewSet
+from apps.contacts.viewsets import ContactAPIViewSet, FeedbackAPIViewSet, ReviewAPIViewSet
 
 
 urlpatterns = []
 
-router_contact = routers.DefaultRouter()
-router_contact.register(r'contact', ContactAPIViewSet)
+router = routers.DefaultRouter()
+router.register(r'contact', ContactAPIViewSet)
+router.register(r'feedback', FeedbackAPIViewSet)
+router.register(r'reviews', ReviewAPIViewSet)
 
-router_feedback = routers.DefaultRouter()
-router_feedback.register(r'feedback', FeedbackAPIViewSet)
-
-router_reviews = routers.DefaultRouter()
-router_reviews.register(r'reviews', ReviewAPIViewSet)
-
-urlpatterns += router_reviews.urls
-urlpatterns += router_feedback.urls
-urlpatterns += router_contact.urls
+urlpatterns += router.urls
