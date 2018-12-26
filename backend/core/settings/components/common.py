@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'optimized_image',
     'phonenumber_field',
     'djmoney',
+    # 'threadedcomments',
     'fluent_comments',  # must be before django_comments
     'crispy_forms',
     'django_comments',

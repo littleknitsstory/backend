@@ -23,7 +23,7 @@ schema_view = get_swagger_view(title='Shop API')
 
 urlpatterns = [
     path('', include('apps.blog.urls')),
-    path('blog/comments/', include('fluent_comments.urls')),
+    path('blog/comments/', include('fluent_comments.urls')), 
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
