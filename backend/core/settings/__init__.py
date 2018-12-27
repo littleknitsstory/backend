@@ -23,6 +23,7 @@ base_settings = [
     'components/emails.py',  # emails
     'components/logger.py',  # logging
     'components/ckeditor.py',  # ckeditor
+    'components/comments.py',  # blog comments
 
 
     # Select the right env:
