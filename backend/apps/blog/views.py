@@ -1,8 +1,9 @@
-from django.views.generic import DetailView, ListView, View
+from django.views.generic import DetailView, ListView
 from django.shortcuts import render
 from .models import Article
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 
 
 class BlogListView(ListView):
@@ -20,6 +21,12 @@ class BlogListView(ListView):
         except KeyError:
             return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super(BlogListView, self).get_context_data(**kwargs)
+        context['crumb_title'] = 'Блог'
+        context['crumb_url'] = reverse_lazy('blog:blog-list')
+        return context
+
 
 class BlogDetailView(DetailView):
     model = Article
@@ -27,6 +34,8 @@ class BlogDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogDetailView, self).get_context_data(**kwargs)
+        context['crumb_title'] = 'Блог'
+        context['crumb_url'] = reverse_lazy('blog:blog-list')
         context['more_posts'] = Article.objects.all().order_by('?')[:3]
         object_post = context['object']
         last_post = Article.objects.latest('id')
