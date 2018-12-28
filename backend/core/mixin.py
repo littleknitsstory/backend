@@ -40,12 +40,12 @@ class ImagesMixin(models.Model):
     class Meta:
         abstract = True
 
-    # def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-    #     super(ImagesMixin, self).save(
-    #         force_insert=False, force_update=False,
-    #         using=None, update_fields=None
-    #     )
-    #     watermark_text(self.image_preview.path, self.image_preview.path)
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        super(ImagesMixin, self).save(
+            force_insert=False, force_update=False,
+            using=None, update_fields=None
+        )
+        watermark_text(self.image_preview.path, self.image_preview.path)
 
 
 class AdminBaseMixin(admin.ModelAdmin):

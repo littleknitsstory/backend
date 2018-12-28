@@ -1,11 +1,11 @@
 from PIL import Image, ImageDraw, ImageFont
 
+from core.settings.components.watermark import WATERMARK_TEXT, \
+    WATERMARK_POSITION, IMAGE_SIZE
 
-WATERMARK_TEXT = "\u00A9 Little Knits Story"
-WATERMARK_POSITION = (5, 5)  # x, y
 
-
-def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT, pos=WATERMARK_POSITION):
+def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT,
+        pos=WATERMARK_POSITION, FONT=None):
     """
     It print the text right on the input image
     :param input_image_path:
@@ -16,12 +16,14 @@ def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT, pos
     :return:
     """
     photo = Image.open(input_image_path)
+    # resizing
+    photo.thumbnail(IMAGE_SIZE, Image.ANTIALIAS)
 
     # make the image editable
     drawing = ImageDraw.Draw(photo)
 
-    font_color = (200, 200, 200)  # font color
-    font = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 40)
+    font_color = (200, 200, 200)
+    font = ImageFont.truetype(FONT, 40)
     drawing.text(
         pos, text,
         fill=font_color,

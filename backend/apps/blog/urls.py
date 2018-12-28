@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import BlogListView, BlogDetailView, AjaxBlogListView
 
+
 app_name = 'blog'
 
 urlpatterns = [

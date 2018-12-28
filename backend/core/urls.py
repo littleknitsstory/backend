@@ -2,27 +2,19 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
-from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 from django.views.generic import TemplateView
 import grappelli
 
-from apps.blog.viewsets import ArticleList, ArticleAPICRUD
-from apps.shop.viewsets import ProductAPIViewSet, ProductAPICRUD, CategoryAPIViewSet, CategoryAPICRUD
-from apps.menu.viewsets import MenuAPIViewSet, MenuAPICRUD
 from apps.blog.views import error_404
 from apps.users.views import RegistrationViews
 
-router = routers.DefaultRouter()
-router.register(r'api/posts', ArticleList)
-router.register(r'api/shop', ProductAPIViewSet)
-router.register(r'api/shop/category/', CategoryAPIViewSet)
-router.register(r'api/menu', MenuAPIViewSet)
 
 schema_view = get_swagger_view(title='Shop API')
 
 urlpatterns = [
     path('', include('apps.blog.urls')),
+    path('blog/comments/', include('fluent_comments.urls')), 
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -48,16 +40,18 @@ urlpatterns = [
 urls_api = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/docs/', schema_view),
-    path('api/posts/<int:pk>', ArticleAPICRUD),
-    path('api/shop/<int:pk>', ProductAPICRUD),
-    path('api/shop/category/<int:pk>', CategoryAPICRUD),
-    path('api/menu/<int:pk>/', MenuAPICRUD.as_view()),
+    path('api/', include('apps.shop.routes')),
+    path('api/', include('apps.blog.routes')),
+    path('api/', include('apps.menu.routes')),
+    path('api/', include('apps.slider.routes')),
+    path('api/', include('apps.tags.routes')),
+    path('api/', include('apps.contacts.routes')),
+    path('api/', include('apps.users.routes'))
 ]
 
 urlpatterns += urls_api
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += router.urls
 
 
 handler404 = error_404
