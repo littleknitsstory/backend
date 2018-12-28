@@ -1,5 +1,7 @@
+from django.core import serializers
+from django.http import HttpResponse
 from django.views.generic import DetailView, ListView, View
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from .models import Article
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -19,6 +21,10 @@ class BlogListView(ListView):
                 return queryset
         except KeyError:
             return queryset
+
+
+class AjaxBlogListView(BlogListView):
+    template_name = 'blog/components/list_part.html'
 
 
 class BlogDetailView(DetailView):
@@ -43,3 +49,13 @@ class BlogDetailView(DetailView):
 
 def error_404(request):  # FIXME почему это тут?
     return render(request, 'httpresponse/404.html', status=404)  # noqa
+
+
+def get_more_posts_api(request):
+    articles = Article.objects.all()
+    if request.is_ajax():
+        data = serializers.serialize('json', articles)
+        return HttpResponse(data, 'json')
+        # return HttpResponse(articles)
+    else:
+        return HttpResponse("It's meant for ajax requests only!")
