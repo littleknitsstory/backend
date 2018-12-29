@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-const Blog = ((formID = $('#posts')) => {
+const Blog-more = ((more_porst_ID = $('#posts')) => {
     $(document).ready(function(){
         $("#more-posts").click(function() {
         var endpoint = '/blog/moreposts/';
@@ -52,4 +52,4 @@ const Blog = ((formID = $('#posts')) => {
     })
 })();
  
-export default Blog;
+export default Blog-more;

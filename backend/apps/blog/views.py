@@ -49,13 +49,3 @@ class BlogDetailView(DetailView):
 
 def error_404(request):  # FIXME почему это тут?
     return render(request, 'httpresponse/404.html', status=404)  # noqa
-
-
-def get_more_posts_api(request):
-    articles = Article.objects.all()
-    if request.is_ajax():
-        data = serializers.serialize('json', articles)
-        return HttpResponse(data, 'json')
-        # return HttpResponse(articles)
-    else:
-        return HttpResponse("It's meant for ajax requests only!")
