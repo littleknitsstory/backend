@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-const Blog-more = ((more_porst_ID = $('#posts')) => {
+const Blogmore = ((more_porst_ID = $('#posts')) => {
     $(document).ready(function(){
         $("#more-posts").click(function() {
         var endpoint = '/blog/moreposts/';
@@ -52,4 +52,4 @@ const Blog-more = ((more_porst_ID = $('#posts')) => {
     })
 })();
  
-export default Blog-more;
+export default Blogmore;
