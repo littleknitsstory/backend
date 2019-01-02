@@ -1,5 +1,7 @@
+from django.core import serializers
+from django.http import HttpResponse
 from django.views.generic import DetailView, ListView, View
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from .models import Article
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -19,6 +21,10 @@ class BlogListView(ListView):
                 return queryset
         except KeyError:
             return queryset
+
+
+class AjaxBlogListView(BlogListView):
+    template_name = 'blog/components/list_part.html'
 
 
 class BlogDetailView(DetailView):
