@@ -5,13 +5,12 @@ REDIS_PASSWORD = ''
 
 CACHES = {
     'default': {
-        'BACKEND': 'redis_cache.RedisCache',
+        'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': [
-            '{}:{}'.format(REDIS_HOST, REDIS_PORT)
+            'redis://{}:{}/1'.format(REDIS_HOST, REDIS_PORT)
         ],
         'OPTIONS': {
-            'DB': 1,
-            'PARSER_CLASS': 'redis.connection.HiredisParser',
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
             'CONNECTION_POOL_CLASS': 'redis.BlockingConnectionPool',
             'CONNECTION_POOL_CLASS_KWARGS': {
                 'max_connections': 50,

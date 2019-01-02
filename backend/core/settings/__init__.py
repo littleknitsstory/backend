@@ -24,6 +24,7 @@ base_settings = [
     'components/logger.py',  # logging
     'components/ckeditor.py',  # ckeditor
     'components/comments.py',  # blog comments
+    'components/cache.py',  # config django-redis
 
 
     # Select the right env:
