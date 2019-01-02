@@ -6,18 +6,15 @@ http {
 
     sendfile on;
 
-    upstream backend {
-        server backend:8000;
-    }
     upstream storage {
         server storage:3363;
     }
 
     server {
-        listen 80;
+        listen 3363;
 
         location / {
-            proxy_pass         http://backend;
+            proxy_pass         http://storage;
             proxy_redirect     off;
             proxy_set_header   Host $host;
             proxy_set_header   X-Real-IP $remote_addr;

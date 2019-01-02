@@ -8,9 +8,9 @@ before_script:
   - docker-compose -f docker/docker-compose.prod.yml pull || true
 
 script:
-  - docker build -t 63phc/lks:latest -f docker/dev/backend/Dockerfile .
+  - docker build -t 63phc/lks:dev -f docker/dev/backend/Dockerfile .
 
 after_script:
   - docker images
   - docker ps
-  - docker push $DOCKER_IMAGES:latest
+  - docker push $DOCKER_IMAGES:dev
