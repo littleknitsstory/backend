@@ -2,67 +2,81 @@ version: '3'
 
 services:
 
-  redis:
-    image: redis:5.0-rc6-alpine
-    container_name: phc_lks_redis
-    env_file:
-    - ./dev/.env
+  nginx:
+    container_name: phc_lks_nginx
+    image: nginx:1.15.8-alpine
+    restart: always
+    volumes:
+      - ./dev/nginx/nginx.conf.nginx:/etc/nginx/nginx.conf
     ports:
-    - "6379:6379"
-
-  postgresql:
-    image: postgres:11-alpine
-    container_name: phc_lks_postgres
-    env_file: dev/.env
-#    volumes:
-#      - ./pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+      - "8080:80"
 
   backend:
     build:
       context: ..
       dockerfile: docker/dev/backend/Dockerfile
+    restart: always
     container_name: phc_lks_backend
     volumes:
-      - ./../backend:/backend
-      - ./../storage:/storage
+      - ../backend:/backend
+      - ../storage:/storage
     env_file:
       - ./dev/.env
-    command: python manage.py runserver 0:8000
-#    command: bash ./dev/backend/run.sh
-    links:
-      - postgresql
-      - redis
     depends_on:
       - postgresql
       - redis
-    expose:
-      - 22
-      - 8000
     ports:
       - "8000:8000"
-      - "0.0.0.0:7777:22"
+      - "7777:2263"
 
-  pgadmin:
-    container_name: phc_lks_pgadmin
-    image: dpage/pgadmin4
-    ports:
-      - "5050:5050"
-    env_file:
-      - ./dev/.env
-    depends_on:
-      - postgresql
-
-
-  # Storage container
   storage:
     container_name: phc_lks_storage
-    build:
-      context: ..
-      dockerfile: docker/dev/storage/Dockerfile
+    image: nginx:1.15.8-alpine
+    restart: always
     volumes:
-      - ./storage:/storage
-      - ./storage/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ../storage:/storage
+      - ./dev/storage/nginx.conf.nginx:/etc/nginx/nginx.conf
     ports:
-      - "3001:80"
+      - "3363:3363"
+
+#  frontend:
+#    build:
+#      context: ..
+#      dockerfile: docker/dev/frontend/Dockerfile
+#    container_name: phc_lks_frontend
+#    ports:
+#      - "3000:3000"
+
+
+  redis:
+    image: redis:5.0-rc6-alpine
+    container_name: phc_lks_redis
+    env_file:
+      - ./dev/.env
+    ports:
+      - "6379:6379"
+
+  postgresql:
+    image: postgres:11.1-alpine
+    container_name: phc_lks_postgres
+    env_file: dev/.env
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+#  pgadmin:
+#    container_name: phc_lks_pgadmin
+#    image: dpage/pgadmin4
+#    env_file:
+#      - ./dev/.env
+#    depends_on:
+#      - postgresql
+#    ports:
+#      - "5050:5050"
+
+networks:
+  backend:
+
+volumes:
+  pgdata:

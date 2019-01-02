@@ -9,11 +9,11 @@ RUN apk update && \
     apk add postgresql-dev
 
 RUN apk add --no-cache jpeg-dev zlib-dev
-
-#ADD backend/requirements/ /backend/
-
 RUN apk add --update bash && rm -rf /var/cache/apk/*
 
-#ADD ./backend/ /backend/
-COPY ./backend/ /backend/
-RUN pip3 install -r requirements/local.txt
+ADD ./backend/ /backend/
+
+RUN pip3 install -r requirements/development.txt
+
+RUN chmod +x ./entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]
