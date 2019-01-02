@@ -49,6 +49,13 @@ urls_api = [
     path('api/', include('apps.users.routes'))
 ]
 
+if settings.DEBUG:
+    import debug_toolbar
+    url_toolbar = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ]
+
+urlpatterns += url_toolbar
 urlpatterns += urls_api
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
