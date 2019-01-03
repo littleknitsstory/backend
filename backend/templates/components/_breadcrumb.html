@@ -30,12 +30,5 @@
                 <meta itemprop="position" content="3">
             </li>
         {% endif %}
-        {% if form %}
-            <li class="category" itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-                <a href="{{ form.get_absolute_url }}" itemprop="item"><span itemprop="name">{{ form.get_app_name }}</span></a>
-                <span>/ </span>
-                <meta itemprop="position" content="2">
-            </li>
-        {% endif %}
     </ul>
 </div>
