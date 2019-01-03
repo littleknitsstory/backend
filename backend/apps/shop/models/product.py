@@ -1,5 +1,5 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
@@ -37,9 +37,17 @@ class Product(SeoMixin, ImagesMixin):
     def __str__(self):
         return self.title
 
-    @staticmethod
-    def get_absolute_url():
-        return reverse('shop:main')
+    @property
+    def get_absolute_url(self):
+        return reverse_lazy('shop:main')
+
+    @property
+    def get_custom_url(self):
+        return reverse_lazy('shop:product_detail', kwargs={'slug': self.slug})
+
+    @property
+    def get_app_name(self):
+        return 'Магазин'
 
     @property
     def get_price(self):

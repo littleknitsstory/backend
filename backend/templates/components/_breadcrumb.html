@@ -11,16 +11,30 @@
             <span>/ </span>
             <meta itemprop="position" content="1">
         </li>
-        <li class="category" itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-            <a href="{{ crumb_url }}" itemprop="item"><span itemprop="name">{{ crumb_title }}</span></a>
-            <span>/ </span>
-            <meta itemprop="position" content="2">
-        </li>
-        {% if object.title %}
+        {% if object_list %}
+            <li class="category" itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                <a href="{{ object_list.first.get_absolute_url }}" itemprop="item"><span itemprop="name">{{ object_list.first.get_app_name }}</span></a>
+                <span>/ </span>
+                <meta itemprop="position" content="2">
+            </li>
+        {% endif %}
+        {% if object %}
+            <li class="category" itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                <a href="{{ object.get_absolute_url }}" itemprop="item"><span itemprop="name">{{ object.get_app_name }}</span></a>
+                <span>/ </span>
+                <meta itemprop="position" content="2">
+            </li>
             <li class="product" itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-                <a href="{% url 'blog:blog-detail' slug=object.slug %}" itemprop="item"><span itemprop="name">{{ object.title }}</span></a>
+                <a href="{{ object.get_custom_url }}" itemprop="item"><span itemprop="name">{{ object.title }}</span></a>
                 <span>/ </span>
                 <meta itemprop="position" content="3">
+            </li>
+        {% endif %}
+        {% if form %}
+            <li class="category" itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                <a href="{{ form.get_absolute_url }}" itemprop="item"><span itemprop="name">{{ form.get_app_name }}</span></a>
+                <span>/ </span>
+                <meta itemprop="position" content="2">
             </li>
         {% endif %}
     </ul>
