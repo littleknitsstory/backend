@@ -2,6 +2,7 @@ from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.urls import reverse_lazy
 
 from django.template.defaultfilters import slugify
 from core.mixin import SeoMixin, ImagesMixin
@@ -23,6 +24,18 @@ class Article(SeoMixin, ImagesMixin):
 
     def __str__(self):
         return self.title
+
+    @property
+    def get_absolute_url(self):
+        return reverse_lazy('blog:blog-list')
+
+    @property
+    def get_custom_url(self):
+        return reverse_lazy('blog:blog-detail', kwargs={'slug': self.slug})
+
+    @property
+    def get_app_name(self):
+        return 'Блог'
 
     def save(self, *args, **kwargs):
         if not self.id:

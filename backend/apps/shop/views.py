@@ -15,7 +15,7 @@ class ProductListView(ListView):
     template_name = 'shop/product_list.html'
 
     def get_queryset(self):
-        return Product.objects.all().prefetch_related('category', 'tags')
+        return Product.objects.all().prefetch_related('category', 'tags').order_by('id')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
