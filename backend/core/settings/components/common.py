@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django_mptt_admin',
     'mptt',
     # 'modeltranslation',
+    'debug_toolbar',
     'social_django',
     'captcha',
     'django.contrib.sites',
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 

@@ -1,5 +1,7 @@
 from django.views.generic import DetailView, ListView
 from django.shortcuts import render
+from django.core import serializers
+from django.http import HttpResponse
 from .models import Article
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -23,6 +25,10 @@ class BlogListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(BlogListView, self).get_context_data(**kwargs)
         return context
+
+
+class AjaxBlogListView(BlogListView):
+    template_name = 'blog/components/list_part.html'
 
 
 class BlogDetailView(DetailView):
