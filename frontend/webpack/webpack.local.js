@@ -12,7 +12,7 @@ config.entry = {
   ]
 
 };
-
+config.mode = 'development';
 config.devtool = 'inline-sourcemap';
 config.output = {
   path: path.join(__dirname, '../public'),

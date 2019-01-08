@@ -6,13 +6,12 @@ from django_registration import signals
 from django_registration.views import RegistrationView
 from django_registration.forms import RegistrationForm
 from core.utils.send_mail import SendEmail
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 class ProfileView(View):
     pass
-
-
-User = get_user_model()
 
 
 class RegistrationViews(RegistrationView):

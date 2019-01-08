@@ -1,45 +1,84 @@
 
-
-
-    {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
-        {% else %}
-        <p>Please login to see this page.</p>
-        {% endif %}
-    {% endif %}
-
+{% extends 'layouts/auth.html' %}
+{% block content %}{% csrf_token %}
 
     <section>
-        <div class="a-login">
-            <form method="post" action="{% url 'login' %}">
-                {% csrf_token %}
-                <table>
-                    <tr>
-                        <td>{{ form.username.label_tag }}</td>
-                        <td>{{ form.username }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ form.password.label_tag }}</td>
-                        <td>{{ form.password }}</td>
-                    </tr>
-                </table>
+       <div class="login">
+           <div class="b-login">
+               <div class="b-login__header">
+                   LITTLE KNITS STORY
+               </div>
+               <hr>
+               <div class="b-login__header">
+                   LOGIN WITH:
+               </div>
+               <hr>
+               <div class="b-login__social-buttons">
+                    <div class="social_login">
+                        <a href="#" class="google">
+                            <i class="fab fa-google"></i>
+                            <span>Login with Google</span>
+                        </a>
+                        <a href="#" class="fb">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Login with Facebook</span>
+                        </a>
+                        <a href="#" class="vk">
+                            <i class="fab fa-vk"></i>
+                            <span>Login with Vk</span>
+                        </a>
+                        <a href="#" class="inst">
+                            <i class="fab fa-instagram"></i>
+                            <span>Login with Instagram</span>
+                        </a>
 
-                <input type="submit" value="login">
-                <input type="hidden" name="next" value="{{ next }}">
-                <button onclick="location.href='{% url 'django-registration-register' %}';" type="button">Регистрация</button>
-            </form>
+                    </div>
+               </div>
+               <hr>
+               <div class="b-login__header">
+                   OR:
+               </div>
+               <hr>
+               <div class="b-login__form">
+                    <form id="login-form" method="post" action="{% url 'login' %}">
+                        <div class="b-login__form-fields">
+                            <div class="b-login__form-fields__username">{{ form.username }}</div>
+                            <div class="b-login__form-fields__password">{{ form.password }}</div>
+                        </div>
+                        <div class="b-login__form-button">
+                            <div class="b-login__form-button__login">
+                                <a href="#" id="login-button">Логин</a>
+                            </div>
+                            <div class="b-login__form-button__registration">
+                                <a href="{% url 'django-registration-register' %}">Регистрация</a>
+                            </div>
+                        </div>
+                    </form>
+               </div>
+               <hr>
+                <div class="b-login__term">
+                    <a href="#">term</a> <a href="#">cond</a>
+                </div>
+               <div class="b-login__password_reset">
+                    <a href="{% url 'password_reset' %}">Lost password?</a>
+               </div>
+           </div>
 
-            {# Assumes you setup the password_reset view in your URLconf #}
-            <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-            <p><a href="{% url "social:begin" "vk-oauth2" %}">vk</a></p>
-        </div>
+       </div>
     </section>
 
 
+{% endblock %}
 
+{#    {% if form.errors %}#}
+{#        <p>Your username and password didn't match. Please try again.</p>#}
+{#    {% endif %}#}
+{##}
+{#    {% if next %}#}
+{#        {% if user.is_authenticated %}#}
+{#        <p>Your account doesn't have access to this page. To proceed,#}
+{#        please login with an account that has access.</p>#}
+{#        {% else %}#}
+{#        <p>Please login to see this page.</p>#}
+{#        {% endif %}#}
+{#    {% endif %}#}

@@ -1,3 +1,6 @@
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard:list'
+
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 SOCIAL_AUTH_RAISE_EXCEPTIONS = True
@@ -11,11 +14,13 @@ SOCIAL_AUTH_VK_OAUTH2_SCOPE = [
   'email',
 ]
 
-
 AUTHENTICATION_BACKENDS = (
+    'social_core.backends.email.EmailAuth',
     'social_core.backends.vk.VKOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
