@@ -1,6 +1,6 @@
 {
   "name": "lks_frontend",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^3.0.0",
     "mocha": "^5.2.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.11.0",
     "react-bootstrap": "^0.32.1",
     "react-cookie": "^2.1.6",
     "react-fontawesome": "^1.6.1",
@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "bootstrap": "^4.1.1",
+    "bootstrap": "^4.2.1",
     "cors": "^2.8.4",
     "font-awesome-webpack": "0.0.5-beta.2",
     "jquery": "^3.3.1",

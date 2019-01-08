@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Background from '../images/header/hb.jpg';
+import Background from '../../public/img/header/hb.jpg';
 
 var sectionStyle = {
   backgroundImage: `url(${Background})`

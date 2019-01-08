@@ -1,0 +1,16 @@
+- step:
+    # set KUBERNETES_USERNAME and KUBERNETES_PASSWORD as environment variables
+    # and is running on the Kubernetes cluster. Use the following command locally to run the image before setting the deployment:
+    # kubectl run <app-name> --image=<my.dockerhub.username>/<image-name>:latest
+    name: Deploy to Kubernetes
+    deployment: test   # set to test, staging or production
+    # trigger: manual  # uncomment to have a manual step
+    image: atlassian/pipelines-kubectl
+    script:
+      # Configure kubectl
+      - kubectl config set-cluster <cluster-name> --server=<kubernetes-host> --certificate-authority=<path.to.ca>
+      - kubectl config set-credentials <username> --username=$KUBERNETES_USERNAME --password=$KUBERNETES_PASSWORD
+      - kubectl config set-context <context> --cluster=<cluster-name> --user=<username>
+      - kubectl config use-context <context>
+      # Update the deployment to use the new Docker image
+      - kubectl set image deployment/<app-name> <app-name>=<image-name>:$BUILD_NUMBER

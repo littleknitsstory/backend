@@ -23,7 +23,6 @@ LOGGING = {
         },
         'warning_email': {
             'level': 'WARNING',
-            # TODO email handler
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },

@@ -1,0 +1,20 @@
+{% load render_bundle from webpack_loader %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+</head>
+<body>
+    {% include 'components/_header.html' %}
+    {% include 'components/_menu.html' %}
+    {% block content %}{% endblock %}
+    {% include 'components/_bestseller.html' %}
+    {% include 'components/_instagram.html' %}
+    {% include 'components/_footer.html' %}
+    {% render_bundle 'main' 'js' %}
+
+</body>
+</html>

@@ -14,7 +14,6 @@ PAGINATION_BY = 6
 
 DEBUG = True
 ALLOWED_HOSTS = ['*']
-LOGIN_REDIRECT_URL = 'dashboard:list'
 
 INSTALLED_APPS = [
     'grappelli',
@@ -70,16 +69,9 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.email.EmailAuth',
-    'social_core.backends.vk.VKOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
+# AUTH_USER_MODEL = 'auth.User'
 AUTH_USER_MODEL = 'users.User'
-USER_MODEL = 'users.User'
+# USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -129,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
