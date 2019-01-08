@@ -1,7 +1,7 @@
+from django.views.generic import DetailView, ListView
+from django.shortcuts import render
 from django.core import serializers
 from django.http import HttpResponse
-from django.views.generic import DetailView, ListView, View
-from django.shortcuts import render, render_to_response
 from .models import Article
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -21,6 +21,10 @@ class BlogListView(ListView):
                 return queryset
         except KeyError:
             return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogListView, self).get_context_data(**kwargs)
+        return context
 
 
 class AjaxBlogListView(BlogListView):
