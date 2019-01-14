@@ -1,7 +1,12 @@
-FROM node:8-alpine
+FROM node:alpine
 
-COPY ./frontend /frontend
-
+RUN mkdir /frontend
 WORKDIR frontend
 
+ADD ./frontend/package.json /frontend/package.json
+
 RUN yarn
+
+ADD ./frontend /frontend/
+
+RUN yarn run server

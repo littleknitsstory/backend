@@ -39,13 +39,13 @@ services:
     ports:
       - "3363:3363"
 
-#  frontend:
-#    build:
-#      context: ..
-#      dockerfile: docker/dev/frontend/Dockerfile
-#    container_name: phc_lks_frontend
-#    ports:
-#      - "3000:3000"
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/dev/frontend/Dockerfile
+    container_name: phc_lks_frontend
+    ports:
+      - "3000:3000"
 
 
   redis:

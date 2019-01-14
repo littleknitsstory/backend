@@ -1,16 +1,25 @@
-sudo: required
-language: ruby
+image: docker:stable
 
 services:
   - docker
 
-before_script:
-  - docker-compose -f docker/docker-compose.prod.yml pull || true
+stages:
+  - deploy
 
-script:
-  - docker build -t 63phc/lks:dev -f docker/dev/backend/Dockerfile .
+before_script:
+    - apk add --no-cache rsync openssh
+    - apk add --update python py-pip python-dev && pip install docker-compose
+    - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+
+deploy_dev:
+    stage: deploy
+    script:
+        - docker-compose -f docker/docker-compose.dev.yml build
+        - docker-compose -f docker/compose-build.yml push
+        - chmod +x deploy.sh
+        - source ./docker/deploy.sh
+    only:
+        - develop
 
 after_script:
-  - docker images
   - docker ps
-  - docker push $DOCKER_IMAGES:dev
