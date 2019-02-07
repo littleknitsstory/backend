@@ -7,19 +7,33 @@ services:
     image: nginx:1.15.8-alpine
     restart: always
     volumes:
-      - ./dev/nginx/nginx.conf.nginx:/etc/nginx/nginx.conf
+      - ./storage:/storage
+      - ./dev/nginx.conf.nginx:/etc/nginx/nginx.conf/default
     ports:
-      - "8080:80"
+      - "80:8000"
+
+  redis:
+    image: redis:5.0-rc6-alpine
+    container_name: phc_lks_redis
+    env_file: ./dev/.env
+    ports:
+      - "6379:6379"
+
+  postgresql:
+    image: postgres:11.1-alpine
+    container_name: phc_lks_postgres
+    env_file: ./dev/.env
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
   backend:
-    build:
-      context: ..
-      dockerfile: docker/dev/backend/Dockerfile
-    restart: always
+    build: {context: ../, dockerfile: docker/dev/backend/Dockerfile}
     container_name: phc_lks_backend
     volumes:
-      - ../backend:/backend
-      - ../storage:/storage
+      - ./backend:/backend
+      - ./storage:/storage
     env_file:
       - ./dev/.env
     depends_on:
@@ -28,55 +42,3 @@ services:
     ports:
       - "8000:8000"
       - "7777:2263"
-
-  storage:
-    container_name: phc_lks_storage
-    image: nginx:1.15.8-alpine
-    restart: always
-    volumes:
-      - ../storage:/storage
-      - ./dev/storage/nginx.conf.nginx:/etc/nginx/nginx.conf
-    ports:
-      - "3363:3363"
-
-  frontend:
-    build:
-      context: ..
-      dockerfile: docker/dev/frontend/Dockerfile
-    container_name: phc_lks_frontend
-    ports:
-      - "3000:3000"
-
-
-  redis:
-    image: redis:5.0-rc6-alpine
-    container_name: phc_lks_redis
-    env_file:
-      - ./dev/.env
-    ports:
-      - "6379:6379"
-
-  postgresql:
-    image: postgres:11.1-alpine
-    container_name: phc_lks_postgres
-    env_file: dev/.env
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
-#  pgadmin:
-#    container_name: phc_lks_pgadmin
-#    image: dpage/pgadmin4
-#    env_file:
-#      - ./dev/.env
-#    depends_on:
-#      - postgresql
-#    ports:
-#      - "5050:5050"
-
-networks:
-  backend:
-
-volumes:
-  pgdata:

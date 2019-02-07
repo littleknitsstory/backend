@@ -15,7 +15,7 @@ ADD ./backend/ /backend/
 
 RUN pip3 install -r requirements/development.txt
 
-ADD docker/dev/backend/entrypoint.sh /entrypoint.sh
+ADD ./docker/dev/backend/entrypoint.sh /entrypoint.sh
 
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]

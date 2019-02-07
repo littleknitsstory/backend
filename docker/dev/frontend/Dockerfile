@@ -1,12 +1,12 @@
-FROM node:alpine
+FROM node:lts-alpine as frontend
 
-RUN mkdir /frontend
-WORKDIR frontend
-
-ADD ./frontend/package.json /frontend/package.json
-
+ADD package.json package.json
 RUN yarn
+ADD . ./
+RUN yarn run build:dev
 
-ADD ./frontend /frontend/
-
-RUN yarn run server
+FROM nginx:alpine
+ADD nginx.conf.nginx /etc/nginx/conf.d/default.conf
+COPY --from=frontend /build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

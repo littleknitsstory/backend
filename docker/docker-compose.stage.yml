@@ -5,25 +5,24 @@ services:
   redis:
     image: redis:5.0-rc6-alpine
     container_name: phc_lks_redis
-    env_file:
-      - ./prod/.env
+    restart: always
+    env_file: ./prod/.env
     ports:
       - "6379:6379"
 
   postgresql:
     image: postgres:11.1-alpine
     container_name: phc_lks_postgres
-    env_file: dev/.env
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    restart: always
+    env_file: ./prod/.env
+    volumes: ./pgdata:/var/lib/postgresql/data
 
   backend:
     container_name: phc_lks_backend
-    image: 63phc/lks:prod
+    image: 63phc/lks:latest
+    restart: always
     volumes:
-      - ../storage:/storage
+      - ./storage:/storage
     env_file:
       - ./prod/.env
     links:
@@ -33,24 +32,14 @@ services:
       - postgresql
       - redis
     ports:
-      - "8000:80"
+      - "8000:8000"
       - "7777:22"
 
-  pgadmin:
-    container_name: phc_lks_pgadmin
-    image: dpage/pgadmin4
-    env_file:
-      - ./prod/.env
-    depends_on:
-      - postgresql
-    ports:
-      - "5050:5050"
-
-  storage:
+  nginx:
     container_name: phc_lks_storage
     image: nginx:1.15.8-alpine
     volumes:
-      - ../storage:/storage
-      - ./prod/storage/nginx.conf.nginx:/etc/nginx/nginx.conf
+      - ./storage:/storage
+      - ./nginx.conf.nginx:/etc/nginx/nginx.conf/default
     ports:
-      - "3363:3363"
+      - "80:6363"

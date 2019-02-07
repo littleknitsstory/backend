@@ -1,24 +1,37 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -e
 
-set -e;
+echo ">>>>>>> copying a correct compose file <<<<<<<"
+scp -o "StrictHostKeyChecking no" docker/docker-compose.${PROJECT_PROFILE}.yml \
+    ${REMOTE_USER}@${REMOTE_HOST}:${PROJECT_DIR}/${PROJECT_PROFILE}/docker-compose.yml
 
-echo 'DEPLOY FILE'
+echo ">>>>>>> copying a environment file <<<<<<<"
+scp -o "StrictHostKeyChecking no" docker/${PROJECT_PROFILE}/.env \
+    ${REMOTE_USER}@${REMOTE_HOST}:${PROJECT_DIR}/${PROJECT_PROFILE}/.env
 
-#DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-#
-##cd "$DIR/$BUILD_ENV/backend"
-#
-#image_tag="latest";
-#image_full_name="$DOCKER_REPO:$image_tag";
-#
-#echo "Building image '$image_full_name'";
-#docker build -t "$image_full_name" -f "$DIR/$BUILD_ENV/backend/Dockerfile" .;
-#
-#echo "Authenticating";
-#echo "$DOCKER_PASS" | docker login -u="$DOCKER_USERNAME" --password-stdin;
-#
-#echo "Pushing image '$image_full_name'";
-#docker push "$image_full_name";
-#echo "Push finished!";
+echo ">>>>>>> copying a nginx conf file <<<<<<<"
+scp -o "StrictHostKeyChecking no" docker/${PROJECT_PROFILE}/nginx.conf.nginx \
+    ${REMOTE_USER}@${REMOTE_HOST}:${PROJECT_DIR}/${PROJECT_PROFILE}/nginx.conf.nginx
 
-exit 0;
+COMPOSE_OPTS="-f ./docker-compose.yml -p LKS_${PROJECT_PROFILE}"
+
+#    docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+#    echo $DOCKER_PASSWORD | docker login registry.gitlab.com --username=$DOCKER_LOGIN --password-stdin
+
+echo ">>>>>>> starting containers on the remote server <<<<<<<"
+ssh ${REMOTE_USER}@${REMOTE_HOST} -o "StrictHostKeyChecking no" << EOF
+    cd ${PROJECT_DIR}/${PROJECT_PROFILE}
+
+    echo ">>>>>>> docker-compose pull/down/up <<<<<<<"
+    docker-compose ${COMPOSE_OPTS} pull
+    docker-compose ${COMPOSE_OPTS} down
+    docker-compose ${COMPOSE_OPTS} up -d
+
+    echo ">>>>>>> Remove trash <<<<<<<"
+    docker volume ls -qf dangling=true | xargs -r docker volume rm
+    docker images --filter "dangling=true" -q --no-trunc | xargs -r docker rmi
+    docker images | grep "none" | awk '/ / { print $3 }' | xargs -r docker rmi
+EOF
+
+echo "Done!"
+exit 0

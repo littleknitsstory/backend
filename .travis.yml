@@ -1,25 +1,49 @@
-image: docker:stable
+sudo: required
+# образ на котором основывается виртуальная машина в travis CI
+dist: trusty
+# язык команд в .travis.yml
+language: bash
+# подключенный сервис
+services: docker
 
-services:
-  - docker
+env:
+  # Подключаем docker compose
+  - DOCKER_COMPOSE_VERSION=1.17.1
 
-stages:
-  - deploy
+before_install:
+  # Расшивфовка закодированного файлв с ssh private ключом (смотри доку)
+  - openssl aes-256-cbc -K $encrypted_f62d2b68659c_key -iv $encrypted_f62d2b68659c_iv -in id_rsa.enc -out id_rsa -d
+  # Устанавливаем docker compose
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 
 before_script:
-    - apk add --no-cache rsync openssh
-    - apk add --update python py-pip python-dev && pip install docker-compose
-    - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+  # Логинимся в docker hub
+  - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
 
-deploy_dev:
-    stage: deploy
-    script:
-        - docker-compose -f docker/docker-compose.dev.yml build
-        - docker-compose -f docker/compose-build.yml push
-        - chmod +x deploy.sh
-        - source ./docker/deploy.sh
-    only:
-        - develop
+script:
+  # Билдим и пушим докер контейнеры (настроить расположение docker-compose файлов для своего проекта)
+  - docker-compose -f docker/docker-compose.build.yml build
+  - docker-compose -f docker/docker-compose.build.yml push
 
-after_script:
-  - docker ps
+before_deploy:
+  # Добавляем приватный ssh ключ
+  - mkdir -p ~/.ssh
+  - SSH_PRIVATE_KEY=$(cat id_rsa)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  - chmod 700 ~/.ssh/id_rsa
+  - eval "$(ssh-agent -s)"
+  - ssh-add ~/.ssh/id_rsa
+  - ssh-keyscan -H 'travis-ci.com' >> ~/.ssh/known_hosts
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  # Даем права на исполнение скрипта для деплоя
+  - chmod +x deploy.sh
+
+# Блок для деплоя (только master ветка гита), запускаем скрипт деплоя и передаем в него атрибуты
+deploy:
+  provider: script
+  script: REMOTE_HOST=$REMOTE_HOST REMOTE_USER=lks PROJECT_DIR=/home/lks PROJECT_PROFILE=stage bash ./docker/deploy.sh
+  on:
+    branch: stage
