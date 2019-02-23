@@ -1,5 +1,6 @@
 # virtual environments
 venv
+Vens
 
 # Python files
 *.pyc
@@ -10,6 +11,7 @@ __pycache__
 
 # Secret environment settings
 .env
+.env.example
 env
 
 # Node and Webpack files

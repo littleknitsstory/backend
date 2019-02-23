@@ -1,13 +1,12 @@
+from decouple import config
 
-REDIS_HOST = 'localhost'
-REDIS_PORT = '6379'
-REDIS_PASSWORD = ''
+REDIS_PASSWORD = config('REDIS_PASSWORD')
 
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': [
-            'redis://{}:{}/1'.format(REDIS_HOST, REDIS_PORT)
+            'redis://{}:{}/1'.format(config('REDIS_HOST'), config('REDIS_PORT'))
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
@@ -22,5 +21,5 @@ CACHES = {
     },
 }
 
-if REDIS_PASSWORD:
-    CACHES['default']['OPTIONS']['PASSWORD'] = REDIS_PASSWORD
+# if REDIS_PASSWORD:
+#     CACHES['default']['OPTIONS']['PASSWORD'] = REDIS_PASSWORD

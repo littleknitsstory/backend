@@ -1,9 +1,6 @@
 sudo: required
-# образ на котором основывается виртуальная машина в travis CI
 dist: trusty
-# язык команд в .travis.yml
 language: bash
-# подключенный сервис
 services: docker
 
 env:
@@ -11,7 +8,7 @@ env:
   - DOCKER_COMPOSE_VERSION=1.17.1
 
 before_install:
-  # Расшивфовка закодированного файлв с ssh private ключом (смотри доку)
+  # Расшивровка закодированного файлв с ssh private ключом
   - openssl aes-256-cbc -K $encrypted_f62d2b68659c_key -iv $encrypted_f62d2b68659c_iv -in id_rsa.enc -out id_rsa -d
   # Устанавливаем docker compose
   - sudo rm /usr/local/bin/docker-compose
@@ -20,11 +17,9 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
-  # Логинимся в docker hub
   - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
 
 script:
-  # Билдим и пушим докер контейнеры (настроить расположение docker-compose файлов для своего проекта)
   - docker-compose -f docker/docker-compose.build.yml build
   - docker-compose -f docker/docker-compose.build.yml push
 
@@ -39,11 +34,11 @@ before_deploy:
   - ssh-keyscan -H 'travis-ci.com' >> ~/.ssh/known_hosts
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   # Даем права на исполнение скрипта для деплоя
-  - chmod +x deploy.sh
+  - chmod +x ./docker/deploy.sh
 
 # Блок для деплоя (только master ветка гита), запускаем скрипт деплоя и передаем в него атрибуты
 deploy:
   provider: script
-  script: REMOTE_HOST=$REMOTE_HOST REMOTE_USER=lks PROJECT_DIR=/home/lks PROJECT_PROFILE=stage bash ./docker/deploy.sh
+  script: REMOTE_HOST=$REMOTE_HOST REMOTE_USER=lks PROJECT_DIR=/home/lks PROJECT_PROFILE=dev bash ./docker/deploy.sh
   on:
-    branch: stage
+    branch: develop

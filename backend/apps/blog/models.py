@@ -5,7 +5,7 @@ from django.conf import settings
 from django.urls import reverse_lazy
 
 from django.template.defaultfilters import slugify
-from core.mixin.mixin import SeoMixin, ImagesMixin
+from core.mixins.mixin import SeoMixin, ImagesMixin
 from apps.tags.models import Tag
 
 

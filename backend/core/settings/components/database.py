@@ -1,5 +1,3 @@
-# import os
-# from django.conf import settings
 from decouple import config
 
 
@@ -13,10 +11,3 @@ DATABASES = {
         'PORT': config('POSTGRES_PORT'),
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(settings.BASE_DIR, 'db.sqlite3'),
-#     }
-# }

@@ -11,11 +11,11 @@ RUN apk update && \
 RUN apk add --no-cache jpeg-dev zlib-dev
 RUN rm -rf /var/cache/apk/*
 
-ADD ./backend/ /backend/
+ADD ./backend/ ./
 
-RUN pip3 install -r requirements/development.txt
+RUN pip3 install -r requirements/production.txt
 
-ADD ./docker/dev/backend/entrypoint.sh /entrypoint.sh
+ADD ./docker/prod/backend/entrypoint.sh ./entrypoint.sh
 
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]

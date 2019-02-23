@@ -1,8 +1,5 @@
 import os
 from decouple import config
-from django.core.validators import RegexValidator
-from django.utils.translation import ugettext_lazy as _
-
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # backend/
@@ -66,7 +63,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_panel.middleware.DebugPanelMiddleware',
+
 ]
 
 # AUTH_USER_MODEL = 'auth.User'
@@ -156,9 +155,5 @@ STATICFILES_DIRS = (os.path.join(ROOT_DIR, 'static'),)
 
 MEDIA_URL = '/storage/'
 MEDIA_ROOT = os.path.join(ROOT_DIR, '../storage/media')
-
-PHONE_REGEX = r'^(\+7)+([0-9]){10}$'
-PHONE_VALIDATOR = RegexValidator(regex=PHONE_REGEX,
-                                 message=_('Enter the number in the format +79991234567.'))
 
 OPTIMIZED_IMAGE_METHOD = 'pillow'

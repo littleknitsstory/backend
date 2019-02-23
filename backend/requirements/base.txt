@@ -1,7 +1,7 @@
 certifi==2018.11.29
 chardet==3.0.4
 defusedxml==0.5.0
-Django==2.1.4
+Django==2.1.7
 django-ckeditor==5.6.1
 django-cors-headers==2.4.0
 django-debug-toolbar==1.11
@@ -19,7 +19,7 @@ django-rest-swagger==2.2.0
 django-simple-captcha==0.5.9
 django-split-settings==0.3.0
 django-webpack-loader==0.6.0
-djangorestframework==3.9.0
+djangorestframework==3.9.1
 extensions==0.4
 idna==2.8
 Markdown==3.0.1
@@ -27,7 +27,7 @@ mccabe==0.6.1
 oauthlib==3.0.0
 phonenumbers==8.10.2
 Pillow==5.4.1
-psycopg2==2.7.6.1
+psycopg2==2.7.7
 pycodestyle==2.4.0
 pyflakes==2.0.0
 python-decouple==3.1

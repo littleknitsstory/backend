@@ -1,6 +1,16 @@
 version: '3'
 
 services:
+  nginx:
+    container_name: phc_lks_nginx
+    image: nginx:1.15.8-alpine
+    depends_on:
+      - backend
+    volumes:
+      - ./storage:/storage
+      - ./nginx.conf.nginx:/etc/nginx/nginx.d/default.conf
+    ports:
+      - "6363:80"
 
   redis:
     image: redis:5.0-rc6-alpine
@@ -8,7 +18,7 @@ services:
     restart: always
     env_file: ./prod/.env
     ports:
-      - "6379:6379"
+      - "16379:6379"
 
   postgresql:
     image: postgres:11.1-alpine
@@ -31,15 +41,3 @@ services:
     depends_on:
       - postgresql
       - redis
-    ports:
-      - "8000:8000"
-      - "7777:22"
-
-  nginx:
-    container_name: phc_lks_storage
-    image: nginx:1.15.8-alpine
-    volumes:
-      - ./storage:/storage
-      - ./nginx.conf.nginx:/etc/nginx/nginx.conf/default
-    ports:
-      - "80:6363"

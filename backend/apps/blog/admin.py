@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from apps.blog.models import Article
-from core.mixin.mixin import AdminBaseMixin
+from core.mixins.mixin import AdminBaseMixin
 
 
 @admin.register(Article)

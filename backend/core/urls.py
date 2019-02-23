@@ -14,7 +14,7 @@ schema_view = get_swagger_view(title='Shop API')
 
 urlpatterns = [
     path('', include('apps.blog.urls')),
-    path('blog/comments/', include('fluent_comments.urls')), 
+    path('blog/comments/', include('fluent_comments.urls')),
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -55,7 +55,7 @@ if settings.DEBUG:
         path('__debug__/', include(debug_toolbar.urls)),
     ]
 
-urlpatterns += url_toolbar
+# urlpatterns += url_toolbar
 urlpatterns += urls_api
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

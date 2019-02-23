@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from djmoney.models.fields import MoneyField
 
-from core.mixin.mixin import SeoMixin, ImagesMixin
+from core.mixins.mixin import SeoMixin, ImagesMixin
 
 from ckeditor.fields import RichTextField
 
