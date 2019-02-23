@@ -5,6 +5,8 @@ from optimized_image.fields import OptimizedImageField
 
 from core.utils.watermark import watermark_text
 
+# TODO: разнести по файлам
+
 
 class SeoMixin(models.Model):
     """
