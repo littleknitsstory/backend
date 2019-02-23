@@ -27,6 +27,6 @@ before_deploy:
   - chmod +x ./docker/deploy.sh
 deploy:
   provider: script
-  script: REMOTE_HOST=$REMOTE_HOST REMOTE_USER=lks PROJECT_DIR=/home/lks PROJECT_PROFILE=dev bash ./docker/deploy.sh
+  script: REMOTE_HOST=$REMOTE_HOST REMOTE_USER=lks PROJECT_DIR=/home/lks PROJECT_PROFILE=prod bash ./docker/deploy.sh
   on:
     branch: develop

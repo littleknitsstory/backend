@@ -5,7 +5,6 @@ services:
   nginx:
     container_name: phc_lks_nginx
     image: nginx:1.15.8-alpine
-    restart: always
     depends_on:
       - backend
     volumes:
