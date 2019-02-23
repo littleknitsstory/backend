@@ -6,7 +6,7 @@ scp -o "StrictHostKeyChecking no" docker/docker-compose.${PROJECT_PROFILE}.yml \
     ${REMOTE_USER}@${REMOTE_HOST}:${PROJECT_DIR}/${PROJECT_PROFILE}/docker-compose.yml
 
 echo ">>>>>>> copying a environment file <<<<<<<"
-scp -o "StrictHostKeyChecking no" docker/${PROJECT_PROFILE}/.env \
+scp -o "StrictHostKeyChecking no" docker/${PROJECT_PROFILE}/.env_file \
     ${REMOTE_USER}@${REMOTE_HOST}:${PROJECT_DIR}/${PROJECT_PROFILE}/.env
 
 echo ">>>>>>> copying a nginx conf file <<<<<<<"
