@@ -2,29 +2,21 @@ sudo: required
 dist: trusty
 language: bash
 services: docker
-
 env:
-  # Подключаем docker compose
   - DOCKER_COMPOSE_VERSION=1.17.1
-
 before_install:
-  # Расшивровка закодированного файлв с ssh private ключом
+  - openssl aes-256-cbc -K $encrypted_4d7713304c46_key -iv $encrypted_4d7713304c46_iv -in id_rsa.enc -out id_rsa -d
   - openssl aes-256-cbc -K $encrypted_f62d2b68659c_key -iv $encrypted_f62d2b68659c_iv -in id_rsa.enc -out id_rsa -d
-  # Устанавливаем docker compose
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-
 before_script:
   - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-
 script:
   - docker-compose -f docker/docker-compose.build.yml build
   - docker-compose -f docker/docker-compose.build.yml push
-
 before_deploy:
-  # Добавляем приватный ssh ключ
   - mkdir -p ~/.ssh
   - SSH_PRIVATE_KEY=$(cat id_rsa)
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
@@ -33,10 +25,7 @@ before_deploy:
   - ssh-add ~/.ssh/id_rsa
   - ssh-keyscan -H 'travis-ci.com' >> ~/.ssh/known_hosts
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-  # Даем права на исполнение скрипта для деплоя
   - chmod +x ./docker/deploy.sh
-
-# Блок для деплоя (только master ветка гита), запускаем скрипт деплоя и передаем в него атрибуты
 deploy:
   provider: script
   script: REMOTE_HOST=$REMOTE_HOST REMOTE_USER=lks PROJECT_DIR=/home/lks PROJECT_PROFILE=dev bash ./docker/deploy.sh
