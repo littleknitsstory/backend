@@ -5,8 +5,7 @@ services: docker
 env:
   - DOCKER_COMPOSE_VERSION=1.17.1
 before_install:
-#  - openssl aes-256-cbc -K $encrypted_4d7713304c46_key -iv $encrypted_4d7713304c46_iv -in id_rsa.enc -out id_rsa -d
-  - openssl aes-256-cbc -K $encrypted_f62d2b68659c_key -iv $encrypted_f62d2b68659c_iv -in id_rsa.enc -out id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_4d7713304c46_key -iv $encrypted_4d7713304c46_iv -in id_rsa.enc -out id_rsa -d
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
