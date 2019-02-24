@@ -1,13 +1,14 @@
 from PIL import Image, ImageDraw, ImageFont
 
 from core.settings.components.watermark import WATERMARK_TEXT, \
-    WATERMARK_POSITION, IMAGE_SIZE
+    WATERMARK_POSITION, IMAGE_SIZE, WATERMARK_FONT
 
 
 def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT,
-        pos=WATERMARK_POSITION, FONT=None):
+                   pos=WATERMARK_POSITION, font=WATERMARK_FONT):
     """
     It print the text right on the input image
+    :param font: path in settings
     :param input_image_path:
     :param output_image_path:
     :param text:
@@ -23,7 +24,7 @@ def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT,
     drawing = ImageDraw.Draw(photo)
 
     font_color = (200, 200, 200)
-    font = ImageFont.truetype(FONT, 40)
+    font = ImageFont.truetype(font, 40)
     drawing.text(
         pos, text,
         fill=font_color,
@@ -31,5 +32,3 @@ def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT,
     )
     # photo.show()  # just to show the result picture when you test it
     photo.save(output_image_path)
-
-

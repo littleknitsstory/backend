@@ -18,7 +18,7 @@ services:
     container_name: phc_lks_redis
     env_file: ./dev/.env
     ports:
-      - "26379:6379"
+      - "6379:6379"
 
   postgresql:
     image: postgres:11.1-alpine
@@ -26,6 +26,8 @@ services:
     env_file: ./dev/.env
     volumes:
       - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
   backend:
     build: {context: ../, dockerfile: docker/dev/backend/Dockerfile}

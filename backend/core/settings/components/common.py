@@ -13,14 +13,18 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
+    # Django Jet (admin page layout)
+    # must be defined BEFORE django.contrib.admin
+    # 'jet',
     'grappelli',
+    # Django core
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    # Plugins
     'corsheaders',
     'webpack_loader',
     'django_extensions',
@@ -42,7 +46,12 @@ INSTALLED_APPS = [
     'fluent_comments',  # must be before django_comments
     'crispy_forms',
     'django_comments',
+    # Django Rest Framework
+    'rest_framework',
+    # Swagger
+    'drf_yasg',
     # Apps project
+    'apps.api.v1',
     'apps.blog',
     'apps.tags',
     'apps.shop',

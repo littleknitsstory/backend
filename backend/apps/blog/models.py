@@ -19,8 +19,10 @@ class Article(SeoMixin, ImagesMixin):
                                related_name='article_user',
                                on_delete=models.CASCADE,
                                blank=True,
-                               null=True)
-    tags = models.ManyToManyField(Tag, related_name='article_tags', blank=True)
+                               null=True,
+                               verbose_name=_('Author')
+                               )
+    tags = models.ManyToManyField(Tag, related_name='article_tags', blank=True, verbose_name=_('Tags'))
 
     def __str__(self):
         return self.title
@@ -35,7 +37,7 @@ class Article(SeoMixin, ImagesMixin):
 
     @property
     def get_app_name(self):
-        return 'Блог'
+        return _('Blog')
 
     def save(self, *args, **kwargs):
         if not self.id:

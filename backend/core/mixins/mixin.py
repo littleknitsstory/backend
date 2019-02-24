@@ -53,7 +53,7 @@ class ImagesMixin(models.Model):
 class AdminBaseMixin(admin.ModelAdmin):
     """ Abstract model for admin """
     prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title', 'slug')
+    list_display = ('pk', 'title', 'slug')
     save_as = True
     save_on_top = True
 
