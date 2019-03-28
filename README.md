@@ -32,7 +32,7 @@ backend:
 * Celery 
 * Swagger 
 
-frontend:
+frontend: [REPO](https://github.com/63phc/lks_frontend)
 * React [16.5](https://reactjs.org/versions)
 * Webpack 4.21.0
 * Node 11.6.0 ([hub.docker](https://hub.docker.com/_/node/))
