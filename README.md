@@ -6,7 +6,7 @@
 
 * main development in the [development](https://github.com/63phc/lks/tree/develop) branch
 * project releases in the master branch
-* new front - react 
+* new front - react [REPO](https://github.com/63phc/lks_frontend)
 
 ### Project Descriptions
  This is project, blog and shop with the most modern technologies, also for testing new versions of python and django
