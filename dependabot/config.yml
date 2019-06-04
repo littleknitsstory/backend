@@ -1,0 +1,6 @@
+version: 1
+
+update_configs:
+  - package_manager: "python"
+    directory: "/python/helpers"
+    update_schedule: "live"
