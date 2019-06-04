@@ -6,6 +6,7 @@
 
 * main development in the [development](https://github.com/63phc/lks/tree/develop) branch
 * project releases in the master branch
+* new front - react [REPO](https://github.com/63phc/lks_frontend)
 
 ### Project Descriptions
  This is project, blog and shop with the most modern technologies, also for testing new versions of python and django
@@ -24,14 +25,14 @@
 
 backend:
 * Python 3.7 
-* Django 2.1.6
+* Django 2.1.6 TODO - 2.2
 * DRF 3.9.1 ([docs](https://www.django-rest-framework.org))
 * redis 5.0 ([hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL 11.1 ([hub.docker](https://hub.docker.com/_/postgres/))
 * Celery 
 * Swagger 
 
-frontend:
+frontend: [REPO](https://github.com/63phc/lks_frontend)
 * React [16.5](https://reactjs.org/versions)
 * Webpack 4.21.0
 * Node 11.6.0 ([hub.docker](https://hub.docker.com/_/node/))
