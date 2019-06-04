@@ -1,0 +1,6 @@
+version: 1
+
+update_configs:
+  - package_manager: "python"
+    directory: "./backend/requirements/development.txt"
+    update_schedule: "live"
