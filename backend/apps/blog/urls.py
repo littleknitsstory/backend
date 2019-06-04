@@ -11,13 +11,13 @@ router.register(r'posts', ArticleList)
 
 
 urlpatterns = [
-    # path('', BlogListView.as_view(), name='blog-list'),
+    path('', BlogListView.as_view(), name='blog-list'),
     path('blog/moreposts/', AjaxBlogListView.as_view()),
     path('blog/<slug:slug>/', BlogDetailView.as_view(), name='blog-detail'),
     path('blog/author/<author>/', BlogListView.as_view(), name='author-list'),
 ]
 
 urlpatterns += [
-    path('', include(router.urls)),
+    # path('', include(router.urls)),
 
 ]

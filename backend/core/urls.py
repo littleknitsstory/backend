@@ -12,7 +12,7 @@ from apps.users.views import RegistrationViews
 schema_view = get_swagger_view(title='Shop API')
 
 urlpatterns = [
-    # path('', include('apps.blog.urls')),
+    path('', include('apps.blog.urls')),
     path('blog/comments/', include('fluent_comments.urls')),
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
@@ -37,8 +37,8 @@ urlpatterns = [
 ]
 
 urls_api_v1 = [
-    path('api/', include('apps.api.v1.urls')),
-    path('api/docs/', include('apps.swagger.urls')),
+    # path('api/', include('apps.api.v1.urls')),
+    # path('api/docs/', include('apps.swagger.urls')),
 ]
 urlpatterns += urls_api_v1
 

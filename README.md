@@ -41,3 +41,6 @@ other:
 * Docker compose 1.22.0
 * nginx 1.15 ([hub.docker](https://hub.docker.com/_/nginx/))
 * postgres 11 ([hub.docker](https://hub.docker.com/_/postgres/))
+
+
+
