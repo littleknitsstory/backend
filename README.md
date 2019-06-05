@@ -1,7 +1,6 @@
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks.git)
 [![TravisCI](https://travis-ci.com/63phc/lks.svg?branch=develop)]()
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
-[![Requirements Status](https://requires.io/github/63phc/lks/requirements.svg?branch=develop)](https://requires.io/github/63phc/lks/requirements/?branch=develop)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 
 * main development in the [development](https://github.com/63phc/lks/tree/develop) branch
@@ -13,9 +12,9 @@
 
 ### Project structure
  - /backend 		- Django backend
- - /frontend        - Frontend Sources
+ ~~- /frontend        - Frontend Sources~~ (outdated, need delete)
  - /docker			- Deploy configs and scripts
- - /docs 			- Documentation 
+ ~~- /docs 			- Documentation~~ (need to transfer)
  - /storage         - Storage files
 
 ### Project Documentation
@@ -23,19 +22,21 @@
 
 #### Project versions 
 
-backend:
+backend (fresh versions):
 * Python 3.7 
-* Django 2.1.6 TODO - 2.2
-* DRF 3.9.1 ([docs](https://www.django-rest-framework.org))
+* Django 2.2.2
+* DRF 3.9.4 ([docs](https://www.django-rest-framework.org))
 * redis 5.0 ([hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL 11.1 ([hub.docker](https://hub.docker.com/_/postgres/))
 * Celery 
 * Swagger 
 
-frontend: [REPO](https://github.com/63phc/lks_frontend)
+
+~~frontend: [REPO](https://github.com/63phc/lks_frontend)
 * React [16.5](https://reactjs.org/versions)
 * Webpack 4.21.0
-* Node 11.6.0 ([hub.docker](https://hub.docker.com/_/node/))
+* Node 11.6.0 ([hub.docker](https://hub.docker.com/_/node/))~~
+(outdated, need to transfer)
 
 other:
 * Docker 18.06.0-ce
