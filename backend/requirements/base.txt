@@ -10,7 +10,7 @@ django-extensions==2.1.5
 django-filter==2.0.0
 django-fluent-comments==2.1
 django-js-asset==1.1.0
-django-money==0.14.3
+django-money==0.15
 django-mptt==0.9.1
 django-mptt-admin==0.6.0
 django-optimized-image==0.1.0
