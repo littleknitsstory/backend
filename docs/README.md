@@ -6,5 +6,5 @@
 [Read tutorial about it](GIT_FLOW.md)
 ### Useful links
 [Read tutorial about it](USEFUL_LINKS.md)
-### How compile frontend 
+### How compile frontend (OUTDATED, need transfer)
 [Read tutorial about it](FRONT_COMPILE.md)
