@@ -1,8 +1,9 @@
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks.git)
 [![TravisCI](https://travis-ci.com/63phc/lks.svg?branch=develop)]()
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks.git)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
-[![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge)](https://www.codefactor.io/repository/github/63phc/lks)
+[![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
+
 
 * main development in the [development](https://github.com/63phc/lks/tree/develop) branch
 * project releases in the master branch
