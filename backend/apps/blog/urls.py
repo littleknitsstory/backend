@@ -17,7 +17,7 @@ urlpatterns = [
     path('blog/author/<author>/', BlogListView.as_view(), name='author-list'),
 ]
 
-urlpatterns += [
-    # path('', include(router.urls)),
-
-]
+# urlpatterns += [
+#     path('', include(router.urls)),
+#
+# ]

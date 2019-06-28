@@ -125,3 +125,5 @@ out
 gen
 
 frontend/node_modules
+
+storage/static

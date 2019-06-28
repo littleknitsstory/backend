@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'apps.contacts',
     'apps.dashboard',
     'apps.slider',
+    'apps.delivery',
 ]
 
 MIDDLEWARE = [
