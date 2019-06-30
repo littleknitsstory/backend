@@ -33,7 +33,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('social/', include('social_django.urls', namespace='social')),
-    path('delivery/', include('apps.delivery.urls')),
+    path('delivery-management/', include('apps.delivery.urls')),
 
 ]
 

@@ -8,7 +8,7 @@ app_name = 'delivery'
 
 
 urlpatterns = [
-    path('pochta', DeliveryView.as_view()) #/<from_city>/<from_street>/<to_city>/<to_street>
+    path('mail-delivery', DeliveryView.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
