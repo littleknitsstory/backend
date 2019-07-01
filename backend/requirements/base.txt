@@ -27,7 +27,7 @@ mccabe==0.6.1
 oauthlib==3.0.1
 phonenumbers==8.10.2
 Pillow==6.0.0
-psycopg2==2.8.2
+psycopg2==2.8.3
 pycodestyle==2.4.0
 pyflakes==2.0.0
 python-decouple==3.1
