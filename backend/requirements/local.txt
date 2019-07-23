@@ -5,4 +5,4 @@
 django-debug-toolbar==1.11
 
 # Code linter
-flake8==3.6.0
+flake8==3.7.8
