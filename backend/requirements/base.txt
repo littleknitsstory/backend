@@ -14,7 +14,7 @@ django-money==0.15
 django-mptt==0.10.0
 django-mptt-admin==0.7.1
 django-optimized-image==0.2.0
-django-phonenumber-field==2.1.0
+django-phonenumber-field==3.0.1
 django-rest-swagger==2.2.0
 django-simple-captcha==0.5.9
 django-split-settings==0.3.0
