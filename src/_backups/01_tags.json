@@ -1,1 +1,0 @@
-[{"model": "tags.tag", "pk": 1, "fields": {"title_seo": "Seo title tag", "meta_keywords": "Seo title tag", "meta_description": "Seo title tag", "created_at": "2018-11-18T17:29:04.092Z", "update_at": "2018-11-18T17:29:04.092Z", "title": "Tag one", "slug": "tag-one"}}]

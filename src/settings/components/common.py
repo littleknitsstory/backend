@@ -15,8 +15,8 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     # Django Jet (admin page layout)
     # must be defined BEFORE django.contrib.admin
-    # 'jet',
-    'grappelli',
+    'jet',
+    # 'grappelli',
     # Django core
     'django.contrib.admin',
     'django.contrib.auth',
