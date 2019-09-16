@@ -15,7 +15,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     # Django Jet (admin page layout)
     # must be defined BEFORE django.contrib.admin
-    'jet',
+    # 'jet',
     # 'grappelli',
     # Django core
     'django.contrib.admin',
@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Plugins
     'corsheaders',
-    'webpack_loader',
     'django_extensions',
     'django_mptt_admin',
     'mptt',
@@ -40,7 +39,6 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'rest_framework_swagger',
     'optimized_image',
-    'phonenumber_field',
     'djmoney',
     # 'threadedcomments',
     'fluent_comments',  # must be before django_comments
@@ -50,16 +48,17 @@ INSTALLED_APPS = [
     'rest_framework',
     # Swagger
     'drf_yasg',
+    'core',
     # Apps project
-    'apps.api.v1',
-    'apps.blog',
-    'apps.tags',
-    'apps.shop',
-    'apps.menu',
-    'apps.users',
-    'apps.contacts',
-    'apps.dashboard',
-    'apps.slider',
+    # 'apps.api.v1',
+    # 'apps.blog',
+    # 'apps.tags',
+    # 'apps.shop',
+    # 'apps.menu',
+    # 'apps.users',
+    # 'apps.contacts',
+    # 'apps.dashboard',
+    # 'apps.slider',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +77,7 @@ MIDDLEWARE = [
 ]
 
 # AUTH_USER_MODEL = 'auth.User'
-AUTH_USER_MODEL = 'users.User'
+# AUTH_USER_MODEL = 'users.User'
 # USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
@@ -113,7 +112,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
+WSGI_APPLICATION = 'src.core.wsgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
