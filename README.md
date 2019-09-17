@@ -13,31 +13,31 @@
 ### Project Descriptions
  This is project, blog and shop with the most modern technologies, also for testing new versions of python and django
 
-
 ###  Structure
-    apps:
-        login
-        store
-        blogs
-        dashboard
-        contact
-        notification
-        delivery
-        order
+    services:
+        login         - 
+        store         -
+          order
+          bucket
+          delivery
+        blogs         - 
+          comments    - remark
 
-### Project structure
- - /backend 		- Django backend
- - /docker			- Deploy configs and scripts
- ~~- /docs 			- Documentation~~ (need to transfer)
+        dashboard     - 
+        contact       - 
+        notification  - 
+        
 
 ### Project Documentation
 [Read here](docs/README.md)
+
+#### Technology
 
 #### Project versions 
 
 backend (fresh versions):
 * Python 3.7 
-* Django 2.2.2
+* Django 3
 * DRF 3.9.4 ([docs](https://www.django-rest-framework.org))
 * redis 5.0 ([hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL 11.1 ([hub.docker](https://hub.docker.com/_/postgres/))
@@ -45,10 +45,10 @@ backend (fresh versions):
 * Swagger 
 
 
-~~frontend: [REPO](https://github.com/63phc/lks_frontend)
+frontend: [REPO](https://github.com/63phc/lks_frontend)
 * React [16.5](https://reactjs.org/versions)
 * Webpack 4.21.0
-* Node 11.6.0 ([hub.docker](https://hub.docker.com/_/node/))~~
+* Node 11.6.0 ([hub.docker](https://hub.docker.com/_/node/))
 (outdated, need to transfer)
 
 other:
@@ -56,6 +56,3 @@ other:
 * Docker compose 1.22.0
 * nginx 1.15 ([hub.docker](https://hub.docker.com/_/nginx/))
 * postgres 11 ([hub.docker](https://hub.docker.com/_/postgres/))
-
-
-
