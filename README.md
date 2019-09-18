@@ -6,15 +6,19 @@
 [![workflows](https://github.com/actions/production/workflows/Production/badge.svg)](/)
 
 
+### Project Descriptions
+ This is project, blog and shop with the most modern technologies, also for testing new versions of python and django
+
+### Project Resource
 * main development in the [development](https://github.com/63phc/lks/tree/develop) branch
 * project releases in the [master](https://github.com/63phc/lks/tree/master) branch
 * frontend-react [REPO](https://github.com/63phc/lks_frontend)
 * frontend-vue 
 
-### Project Descriptions
- This is project, blog and shop with the most modern technologies, also for testing new versions of python and django
+### Project Documentation
+[Read here](docs/README.md)
 
-###  Structure
+### Project Structure
     services:
         login         - 
         store         -
@@ -29,10 +33,7 @@
         notification  - 
         
 
-### Project Documentation
-[Read here](docs/README.md)
-
-#### Technology
+#### Project Technology
 
 #### Project versions 
 
