@@ -1,10 +1,8 @@
-[![TravisCI](https://travis-ci.com/63phc/lks.svg?branch=develop)]()
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks.git)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge)](https://www.codefactor.io/repository/github/63phc/lks)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 [![workflows](https://github.com/actions/production/workflows/Production/badge.svg)](/)
-
 
 ### Project Descriptions
  This is project, blog and shop with the most modern technologies, also for testing new versions of python and django
@@ -33,9 +31,9 @@
         notification  - 
         
 
-#### Project Technology
+### Project Technology
 
-#### Project versions 
+### Project Versions 
 
 backend (fresh versions):
 * Python 3.7.4 ([docs](https://www.python.org/doc/))
