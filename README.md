@@ -36,23 +36,22 @@
 #### Project versions 
 
 backend (fresh versions):
-* Python 3.7 
-* Django 3
+* Python 3.7.4 ([docs](https://www.python.org/doc/))
+* Django 3.0 ([docs](https://docs.djangoproject.com/en/3.0/))
 * DRF 3.9.4 ([docs](https://www.django-rest-framework.org))
 * redis 5.0 ([hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL 11.1 ([hub.docker](https://hub.docker.com/_/postgres/))
-* Celery 
-* Swagger 
-
+* Celery 4.3 ([docs](http://www.celeryproject.org/))
+* Swagger ([docs](https://swagger.io/docs/specification/about/))
 
 frontend: [REPO](https://github.com/63phc/lks_frontend)
+* Vue(?)
 * React [16.5](https://reactjs.org/versions)
-* Webpack 4.21.0
+* Webpack 4.40.2 ([docs](https://webpack.js.org/concepts/))
 * Node 11.6.0 ([hub.docker](https://hub.docker.com/_/node/))
-(outdated, need to transfer)
 
 other:
-* Docker 18.06.0-ce
-* Docker compose 1.22.0
+* Docker 19.03.2
+* Docker compose 1.24.1
 * nginx 1.15 ([hub.docker](https://hub.docker.com/_/nginx/))
 * postgres 11 ([hub.docker](https://hub.docker.com/_/postgres/))
