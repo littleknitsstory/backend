@@ -7,8 +7,9 @@
 
 
 * main development in the [development](https://github.com/63phc/lks/tree/develop) branch
-* project releases in the master branch
-* new front - react [REPO](https://github.com/63phc/lks_frontend)
+* project releases in the [master](https://github.com/63phc/lks/tree/master) branch
+* frontend-react [REPO](https://github.com/63phc/lks_frontend)
+* frontend-vue 
 
 ### Project Descriptions
  This is project, blog and shop with the most modern technologies, also for testing new versions of python and django
@@ -17,9 +18,9 @@
     services:
         login         - 
         store         -
-          order
-          bucket
-          delivery
+          order       -
+          bucket      -
+          delivery    -
         blogs         - 
           comments    - remark
 
@@ -45,8 +46,8 @@ backend (fresh versions):
 * Swagger ([docs](https://swagger.io/docs/specification/about/))
 
 frontend: [REPO](https://github.com/63phc/lks_frontend)
-* Vue(?)
-* React [16.5](https://reactjs.org/versions)
+* Vue (?)
+* React 16.9 ([docs](https://reactjs.org/versions))
 * Webpack 4.40.2 ([docs](https://webpack.js.org/concepts/))
 * Node 11.6.0 ([hub.docker](https://hub.docker.com/_/node/))
 
