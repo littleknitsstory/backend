@@ -10,6 +10,9 @@ git commit -m '#<number task> commit messages'
 git push origin <your branch>
 ```
 
+- Git flow healthy person
+[git-flow-cheatsheet](https://danielkummer.github.io/git-flow-cheatsheet/)
+
  - Settings flake + pre-commit hook
 ``` 
 sudo pip3 install flake8
