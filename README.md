@@ -11,7 +11,7 @@
 * main development in the [development](https://github.com/63phc/lks/tree/develop) branch
 * project releases in the [master](https://github.com/63phc/lks/tree/master) branch
 * frontend-react [REPO](https://github.com/63phc/lks_frontend)
-* frontend-vue 
+* frontend-vue [REPO](https://github.com/63phc/lks-vue-frontend)
 
 ### Project Documentation
 [Read here](docs/README.md)
