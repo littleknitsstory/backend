@@ -1,68 +1,13 @@
-name: Greet Everyone
-# This workflow is triggered on pushes to the repository.
-on:
-  push:
-    branches:
-      - develop
-
+name: Build and Publish Docker
+on: [push]
 jobs:
   build:
-    # Job name is Greeting
-    name: Greeting
-    # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-
-  test:
-    name: Test Greeting
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Build the stack
-        run: docker-compose up -d
-      - name: Test
-        run: |
-          docker ps
-          docker-compose ps
-          echo 'DONE'
-
-  test_docker:
-    name: Docker
-    steps:
-      Docker-Build:
-        title: Building docker image
-        type: build
-        arguments:
-          image_name: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
-          tag: master
-
-  test_docker_push:
-    name: Docker push
-    steps:
-      Push:
-        type: push
-        arguments:
-          candidate: '${{build_step_name}}'
-          tag: latest
-          image_name: codefresh/app
-          registry: my-registry
-
-  test_telegramm:
-    name: Test Telegramm Send
-    steps:
-      sendMessage:
-        type: telegram
-        arguments:
-          TELEGRAM_TOKEN: '${{TOKEN}}'
-          TELEGRAM_TO: 99999999
-          TELEGRAM_MESSAGE: 'Hello {{{userLink}}}, how are you'
-          TELEGRAM_IMAGES: 'https://codefresh.io/docs/assets/brand/codefresh-social.png'
+    - uses: actions/checkout@master
+    - name: Publish to Docker Repository
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: ispeakcode/docker-githubaction
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
