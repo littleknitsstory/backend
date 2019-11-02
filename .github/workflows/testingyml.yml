@@ -11,7 +11,7 @@ jobs:
         name: 63phc/lks
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: /.docker/Dockerfile
+        dockerfile: .docker/Dockerfile
 #        registry: docker.pkg.github.com
 
 
