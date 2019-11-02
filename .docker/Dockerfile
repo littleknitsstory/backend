@@ -1,5 +1,6 @@
 FROM python:3.7-alpine
 ENV PYTHONUNBUFFERED 1
+ARG DEV=dev
 
 RUN mkdir -p /app
 WORKDIR /app
@@ -10,12 +11,12 @@ RUN apk update && \
 RUN apk add --update bash && rm -rf /var/cache/apk/*
 
 COPY requirements/development.txt /app
-RUN pip install -r ./requirements/development.txt  #--no-cache-dir
+RUN pip install -r ./requirements/${DEV}.txt  # --no-cache-dir
 
 COPY . /app
 #ADD ./docker/dev/backend/entrypoint.sh /
 
 #RUN chmod +x /entrypoint.sh
 #ENTRYPOINT ["/entrypoint.sh"]
-ENTRYPOINT [".docker/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
 
