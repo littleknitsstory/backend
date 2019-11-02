@@ -14,19 +14,10 @@ __pycache__
 .env.example
 env
 
-# Node and Webpack files
-node_modules
-npm-debug.log
-webpack-stats*
-package-lock.json
-
 # Static assests
 staticfiles
-static_cdn
-media_cdn
-
-# Ignore sqlite
-db.sqlite3
+static
+media
 
 # Apple files
 .DS_Store

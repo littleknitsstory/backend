@@ -30,4 +30,4 @@ jobs:
         workdir: .docker
         dockerfile: Dockerfile
         buildargs: DEV
-#        registry: docker.pkg.github.com
+        registry: docker.pkg.github.com
