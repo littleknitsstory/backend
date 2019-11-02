@@ -48,17 +48,17 @@ INSTALLED_APPS = [
     'rest_framework',
     # Swagger
     'drf_yasg',
-    'core',
+    # 'core',
     # Apps project
-    # 'apps.api.v1',
-    # 'apps.blog',
-    # 'apps.tags',
-    # 'apps.shop',
-    # 'apps.menu',
-    # 'apps.users',
-    # 'apps.contacts',
-    # 'apps.dashboard',
-    # 'apps.slider',
+    'src.apps.api.v1',
+    'src.apps.blog',
+    'src.apps.tags',
+    'src.apps.shop',
+    'src.apps.menu',
+    'src.apps.users',
+    'src.apps.contacts',
+    'src.apps.dashboard',
+    'src.apps.slider',
 ]
 
 MIDDLEWARE = [

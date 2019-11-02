@@ -10,13 +10,11 @@ RUN apk update && \
     apk add postgresql-dev postgresql-client jpeg-dev zlib-dev
 RUN apk add --update bash && rm -rf /var/cache/apk/*
 
-COPY requirements/development.txt /app
-RUN pip install -r ./requirements/${DEV}.txt  # --no-cache-dir
+COPY requirements /app/requirements
+RUN pip install -r requirements/${DEV}.txt
 
 COPY . /app
-#ADD ./docker/dev/backend/entrypoint.sh /
+RUN mkdir -p /app/log/gunicorn
 
-#RUN chmod +x /entrypoint.sh
-#ENTRYPOINT ["/entrypoint.sh"]
 ENTRYPOINT ["entrypoint.sh"]
 

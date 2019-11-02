@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from optimized_image.fields import OptimizedImageField
 
-from core.utils.watermark import watermark_text
+# from src.core.utils.watermark import watermark_text
 
 # TODO: разнести по файлам
 
@@ -44,10 +44,12 @@ class ImagesMixin(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         super(ImagesMixin, self).save(
-            force_insert=False, force_update=False,
-            using=None, update_fields=None
+            force_insert=False,
+            force_update=False,
+            using=None,
+            update_fields=None
         )
-        watermark_text(self.image_preview.path, self.image_preview.path)
+        # watermark_text(self.image_preview.path, self.image_preview.path)
 
 
 class AdminBaseMixin(admin.ModelAdmin):

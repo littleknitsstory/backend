@@ -5,8 +5,8 @@ from django.conf import settings
 from django.urls import reverse_lazy
 
 from django.template.defaultfilters import slugify
-from core.mixins.mixin import SeoMixin, ImagesMixin
-from apps.tags.models import Tag
+from src.core.mixins.mixin import SeoMixin, ImagesMixin
+# from apps.tags.models import Tag
 
 
 class Article(SeoMixin, ImagesMixin):
@@ -22,7 +22,7 @@ class Article(SeoMixin, ImagesMixin):
                                null=True,
                                verbose_name=_('Author')
                                )
-    tags = models.ManyToManyField(Tag, related_name='article_tags', blank=True, verbose_name=_('Tags'))
+    # tags = models.ManyToManyField(Tag, related_name='article_tags', blank=True, verbose_name=_('Tags'))
 
     def __str__(self):
         return self.title
