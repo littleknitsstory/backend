@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.contacts.views import AjaxSubscribe, SuccessSubscribe
+from src.apps.contacts.views import AjaxSubscribe, SuccessSubscribe
 
 app_name = 'subscribe'
 

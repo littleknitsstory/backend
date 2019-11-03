@@ -1,7 +1,7 @@
 from django.views.generic import CreateView
 
-from apps.contacts.forms.feedback import FeedbackForm
-from apps.contacts.models import Feedback
+from src.apps.contacts.forms.feedback import FeedbackForm
+from src.apps.contacts.models import Feedback
 from django.urls import reverse_lazy
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.views import View
-from apps.contacts.forms.subscribe import SubscribeForm
+from src.apps.contacts.forms.subscribe import SubscribeForm
 from django.http import JsonResponse
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy

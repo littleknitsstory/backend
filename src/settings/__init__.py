@@ -8,7 +8,6 @@ base_settings = [
     'components/debug_toolbar.py',  # django debug toolbar
     'components/database.py',  # postgres
     'components/social.py',  # social auth
-    # 'components/webpack.py',  # webpack
     'components/emails.py',  # emails
     'components/logger.py',  # logging
     'components/ckeditor.py',  # ckeditor

@@ -1,6 +1,6 @@
 from django.forms import ModelForm, Textarea
 
-from apps.contacts.models import Review
+from src.apps.contacts.models import Review
 
 
 class ReviewForm(ModelForm):

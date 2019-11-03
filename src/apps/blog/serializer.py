@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
-from apps.tags.models import Tag
-from apps.users.serializer import UserSerializer
-from apps.blog.models import Article
+from src.apps.tags.models import Tag
+# from src.apps.users.serializer import UserSerializer
+from src.apps.blog.models import Article
 
 
 class TagsForArticleSerializer(serializers.ModelSerializer):
@@ -16,7 +16,7 @@ class TagsForArticleSerializer(serializers.ModelSerializer):
 
 
 class ArticleSerializer(serializers.ModelSerializer):
-    author = UserSerializer()
+    # author = UserSerializer()
     tags = TagsForArticleSerializer(many=True, read_only=True)
 
     class Meta:

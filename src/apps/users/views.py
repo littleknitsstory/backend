@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django_registration import signals
 from django_registration.views import RegistrationView
 from django_registration.forms import RegistrationForm
-from core.utils.send_mail import SendEmail
+# from src.core.utils.send_mail import SendEmail
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -35,6 +35,6 @@ class RegistrationViews(RegistrationView):
         to_email = form.cleaned_data['email']
         subject = 'Спасибо за регистрацию'
         content = '<div style="color: grey;"><h1>Hello</h1></div>'
-        mail = SendEmail(from_email, to_email, subject, content)
-        mail.send()
+        # mail = SendEmail(from_email, to_email, subject, content)
+        # mail.send()
         return new_user

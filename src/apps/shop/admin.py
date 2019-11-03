@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from core.mixins.mixin import AdminBaseMixin
+from src.core.mixins.mixin import AdminBaseMixin
 from .models.category import Category
 from .models.product import Product
 

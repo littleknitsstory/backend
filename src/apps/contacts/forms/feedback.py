@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from apps.contacts.models import Feedback
+from src.apps.contacts.models import Feedback
 from captcha.fields import CaptchaField
 
 

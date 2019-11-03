@@ -1,5 +1,5 @@
 from django.forms import ModelForm, EmailInput
-from apps.contacts.models import Subscribe
+from src.apps.contacts.models import Subscribe
 from django.core.exceptions import ValidationError
 
 

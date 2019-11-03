@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.contacts.views.reviews import ReviewsListView, CreateReview
+from src.apps.contacts.views.reviews import ReviewsListView, CreateReview
 
 
 app_name = 'reviews'
