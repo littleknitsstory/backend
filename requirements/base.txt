@@ -44,7 +44,7 @@ social-auth-app-django==3.1.0
 social-auth-core==3.2.0
 six==1.13.0
 sqlparse==0.3.0
-urllib3==1.25.6
+urllib3==1.25.7
 django-ckeditor==5.8.0
 django-registration==3.0.1
 sendgrid==6.1.0
