@@ -10,7 +10,7 @@ django-celerybeat-status==0.0.10
 django-cors-headers==3.1.1
 django-countries==5.5
 django-ckeditor==5.8.0
-django-debug-toolbar==2.0
+django-debug-toolbar==2.1
 django-environ==0.4.5
 django-extensions==2.2.5
 django-filter==2.2.0
