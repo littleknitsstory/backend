@@ -51,5 +51,5 @@ class BlogDetailView(DetailView):
         return context
 
 
-def error_404(request):  # FIXME почему это тут?
-    return render(request, 'httpresponse/404.html', status=404)  # noqa
+# def error_404(request):  # FIXME почему это тут?
+#     return render(request, 'httpresponse/404.html', status=404)  # noqa

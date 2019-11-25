@@ -1,7 +1,7 @@
 from django.contrib import admin
-from apps.contacts.models import Subscribe
-from apps.contacts.models import Feedback
-from apps.contacts.models import Review
+from src.apps.contacts.models import Subscribe
+from src.apps.contacts.models import Feedback
+from src.apps.contacts.models import Review
 
 
 class SubscribeAdmin(admin.ModelAdmin):

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from core.mixins.mixin import ImagesMixin
+from src.core.mixins.mixin import ImagesMixin
 
 
 class Slider(ImagesMixin):

@@ -16,7 +16,7 @@ INSTALLED_APPS = [
     # Django Jet (admin page layout)
     # must be defined BEFORE django.contrib.admin
     # 'jet',
-    # 'grappelli',
+    'grappelli',
     # Django core
     'django.contrib.admin',
     'django.contrib.auth',
@@ -27,8 +27,6 @@ INSTALLED_APPS = [
     # Plugins
     'corsheaders',
     'django_extensions',
-    'django_mptt_admin',
-    'mptt',
     # 'modeltranslation',
     'debug_toolbar',
     'social_django',
@@ -48,7 +46,6 @@ INSTALLED_APPS = [
     'rest_framework',
     # Swagger
     'drf_yasg',
-    # 'core',
     # Apps project
     'src.apps.api.v1',
     'src.apps.blog',
@@ -59,12 +56,14 @@ INSTALLED_APPS = [
     'src.apps.contacts',
     'src.apps.dashboard',
     'src.apps.slider',
+    # 'src.core',
+    # 'core'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -88,11 +87,11 @@ REST_FRAMEWORK = {
 
 CSRF_COOKIE_NAME = "XCSRF-Token"
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = ['*']
+# CORS_ORIGIN_WHITELIST = ['*']
 
-ROOT_URLCONF = 'core.urls'
+ROOT_URLCONF = 'src.core.urls'
 
 TEMPLATES = [
     {

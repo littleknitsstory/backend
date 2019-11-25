@@ -1,5 +1,5 @@
 from django.test import TestCase
-from apps.contacts.forms.feedback import FeedbackForm
+from src.apps.contacts.forms.feedback import FeedbackForm
 from captcha.models import CaptchaStore
 
 

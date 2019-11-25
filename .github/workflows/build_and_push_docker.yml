@@ -2,19 +2,6 @@ name: Build and Publish Docker
 on: [push]
 jobs:
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Build the stack
-        run: docker-compose up -d
-      - name: Test
-        run: |
-          docker ps
-          docker-compose ps
-          echo DONE
-
-
   build:
     runs-on: ubuntu-latest
     steps:

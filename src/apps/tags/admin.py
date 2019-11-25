@@ -1,6 +1,6 @@
 from django.contrib import admin
-from apps.tags.models import Tag
-from core.mixins.mixin import AdminBaseMixin
+from src.apps.tags.models import Tag
+from src.core.mixins.mixin import AdminBaseMixin
 
 
 @admin.register(Tag)  # noqa

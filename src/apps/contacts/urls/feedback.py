@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.contacts.views.feedback import FeedbackCreateView
+from src.apps.contacts.views.feedback import FeedbackCreateView
 
 
 app_name = 'feedback'
