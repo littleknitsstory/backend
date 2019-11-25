@@ -3,4 +3,4 @@
 -r base.txt
 
 # WSGI Handler
-gunicorn==20.0.0
+gunicorn==20.0.2
