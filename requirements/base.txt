@@ -27,7 +27,7 @@ Pillow==6.2.1
 psycopg2==2.8.4
 pycodestyle==2.5.0
 pyflakes==2.1.1
-python-decouple==3.1
+python-decouple==3.3
 python3-openid==3.1.0
 pytz==2019.3
 requests==2.22.0
