@@ -3,4 +3,4 @@
 
 # Code linter
 flake8==3.7.9
-pytest==5.2.2
+pytest==5.3.1
