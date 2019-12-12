@@ -22,7 +22,7 @@ idna==2.8
 Markdown==3.1.1
 mccabe==0.6.1
 oauthlib==3.1.0
-phonenumbers==8.11.0
+phonenumbers==8.11.1
 Pillow==6.2.1
 psycopg2==2.8.4
 pycodestyle==2.5.0
