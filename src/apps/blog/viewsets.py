@@ -6,9 +6,8 @@ from .models import Article
 class ArticleList(ModelViewSet):
     """ Posts viewset
     ```
-    Там есть типо json ниже, такой не подойдет?
     {
-        "id": 3,
+        "id": int,
         "title": "str",
         "slug": "str",
         "content": "str",
@@ -31,6 +30,6 @@ class ArticleList(ModelViewSet):
     }
     ```
     """
-    queryset = Article.objects.prefetch_related('tags').all()
+    queryset = Article.objects.filter(is_active=False).prefetch_related('tags')
     serializer_class = ArticleSerializer
     http_method_names = ['get']

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from modeltranslation.admin import TranslationAdmin
 from optimized_image.fields import OptimizedImageField
 
 # from src.core.utils.watermark import watermark_text
@@ -58,6 +59,7 @@ class AdminBaseMixin(admin.ModelAdmin):
     list_display = ('pk', 'title', 'slug')
     save_as = True
     save_on_top = True
+    # group_fieldsets = True
 
     class Meta:
         abstract = True

@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from apps.tags.serializer import TagsSerializer
+
+from apps.shop.models.order import OrderCartItem, OrderCart
 from .models import Product, Category
 
 
@@ -51,3 +53,23 @@ class ProductSerializer(serializers.ModelSerializer):
         # Поля со связями вывести полностью
         # ?read_only_fields = ('id', 'category_name')
 
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderCartItem
+        fields = ('pk', 'product', 'amount')
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    products = OrderItemSerializer(many=True)
+
+    class Meta:
+        model = OrderCart
+        fields = ('pk', 'products', 'prices', 'name', 'phone', 'address', 'comments',)
+
+    def create(self, validated_data):
+        products_data = validated_data.pop('products')
+        order = OrderCart.objects.create(**validated_data)
+        for product_data in products_data:
+            OrderCartItem.objects.create(**product_data)
+        return order

@@ -12,11 +12,11 @@ class CategoryAdmin(AdminBaseMixin):
 
 @admin.register(Product)
 class ProductAdmin(AdminBaseMixin):
-    list_display = [
+    list_display = (
         'title', 'slug', 'meta_description', 'meta_keywords', 'price', 'is_active',
         'created_at', 'update_at'
-    ]
-    filter_horizontal = ('tags', 'category')
+    )
+    filter_horizontal = ('category',)
     fieldsets = (
         (None, {
             'fields': ('title', 'slug', 'description', 'is_active', 'price', 'sale',

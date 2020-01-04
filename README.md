@@ -55,3 +55,11 @@ other:
 * Docker compose 1.24.1
 * nginx 1.15 ([hub.docker](https://hub.docker.com/_/nginx/))
 * postgres 11 ([hub.docker](https://hub.docker.com/_/postgres/))
+
+
+flake8 --install-hook git
+git config --bool flake8.strict true
+git config --bool flake8.lazy true
+
+https://github.com/davesque/django-rest-framework-simplejwt
+https://django-modeltranslation.readthedocs.io/en/latest/installation.html

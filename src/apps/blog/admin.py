@@ -1,19 +1,23 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationTabularInline, TranslationAdmin
 
-from src.apps.blog.models import Article
+from src.apps.blog.models import Article, Tag
 from src.core.mixins.mixin import AdminBaseMixin
 
 
-@admin.register(Article)
-class ArticleAdmin(AdminBaseMixin):
-    pass
-    # filter_horizontal = ('tags',)
+# class TagInline(TranslationTabularInline):
+#     model = Tag
 
-    # fieldsets = (
-    #     (None, {
-    #         'fields': ('title', 'slug', 'is_active', 'content', 'image_preview', 'author', 'tags')
-    #     }),
-    #     ('SEO', {
-    #         'fields': ('title_seo', 'meta_keywords', 'meta_description', 'image_alt')
-    #     }),
-    # )
+#
+# @admin.register(Article)
+# class ArticleAdmin(AdminBaseMixin):
+#     # filter_horizontal = ('tags',)
+#     # inlines = [TagInline, ]
+#     fieldsets = (
+#         (None, {
+#             'fields': ('title', 'slug', 'is_active', 'content', 'image_preview', 'author',)
+#         }),
+#         ('SEO', {
+#             'fields': ('title_seo', 'meta_keywords', 'meta_description', 'image_alt')
+#         }),
+#     )

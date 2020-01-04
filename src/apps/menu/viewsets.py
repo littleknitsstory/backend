@@ -5,6 +5,6 @@ from .models import MenuItems
 
 class MenuAPIViewSet(ReadOnlyModelViewSet):
     """ Menu viewset """
-    queryset = MenuItems.objects.all()
+    queryset = MenuItems.objects.filter(is_active=False)
     serializer_class = MenuItemsSerializer
 
