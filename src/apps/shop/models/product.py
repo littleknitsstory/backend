@@ -1,34 +1,48 @@
 from django.db import models
-from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
-
 from django.conf import settings
 from djmoney.models.fields import MoneyField
 
-from src.core.mixins.mixin import SeoMixin, ImagesMixin
-
+from colorful.fields import RGBColorField
+from optimized_image.fields import OptimizedImageField
 from ckeditor.fields import RichTextField
+
+from src.core.mixins.mixin import SeoMixin, ImagesMixin
 
 
 class Product(SeoMixin, ImagesMixin):
-    """ Product model """
     title = models.CharField(_('Title'), max_length=120)
+    code = models.IntegerField(verbose_name='Code product')
     slug = models.CharField(_('Slug'), max_length=120, unique=True)
+    is_active = models.BooleanField(_('Active'), default=True)
     description = RichTextField(_('Description'))
     price = MoneyField(_('Price'), null=True, blank=True, max_digits=14, decimal_places=2, default_currency='RU')
     sale = MoneyField(_('Sale'), null=True, blank=True, max_digits=14, decimal_places=2, default_currency='RU')
-    is_active = models.BooleanField(_('Active'), default=True)
-    category = models.ManyToManyField('Category',
-                                      verbose_name=_('Category'),
-                                      related_name='product_categories',
-                                      blank=True)
-    tags = models.ManyToManyField('tags.Tag', verbose_name=_('Tags'), related_name='product_tags', blank=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL,
-                               related_name='product_user',
-                               on_delete=models.CASCADE,
-                               blank=True,
-                               null=True)
+    count = models.IntegerField(verbose_name=_('Count'), blank=True, default=1)
+    type_product = models.CharField(_('Type Product'), max_length=120, null=True, blank=True)
+    material = models.CharField(_('Material'), max_length=120, null=True, blank=True)
+    included = models.CharField(_('Included'), max_length=120, null=True, blank=True)
+    height = models.IntegerField(_('Height'), null=True, blank=True)
+    weight = models.IntegerField(_('Weight'), null=True, blank=True)
+    color = models.ManyToManyField(
+        'ProductColor',
+        verbose_name=_('Colors'),
+        related_name='product_colors'
+    )
+    category = models.ManyToManyField(
+        'Category',
+        verbose_name=_('Category'),
+        related_name='product_categories',
+        blank=True
+    )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name='product_author',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
 
     class Meta:
         verbose_name = _('Product')
@@ -38,22 +52,61 @@ class Product(SeoMixin, ImagesMixin):
         return self.title
 
     @property
-    def get_absolute_url(self):
-        return reverse_lazy('shop:main')
-
-    @property
-    def get_custom_url(self):
-        return reverse_lazy('shop:product_detail', kwargs={'slug': self.slug})
-
-    @property
-    def get_app_name(self):
-        return 'Магазин'
-
-    @property
     def get_price(self):
         return self.price
 
     def save(self, *args, **kwargs):
-        if not self.id:
+        if not self.id and not self.slug:
             self.slug = slugify(self.title)
         super(Product, self).save(*args, **kwargs)
+
+
+class ProductPhoto(models.Model):
+    product = models.ForeignKey(
+        'Product',
+        verbose_name=_('Product'),
+        on_delete=models.CASCADE,
+        related_name='photo_product'
+    )
+    photo = OptimizedImageField(verbose_name=_('Image'))
+    photo_alt = models.CharField(verbose_name=_('Description image'), blank=True, max_length=255)
+
+    class Meta:
+        verbose_name = _('Product photo')
+        verbose_name_plural = _('Product photos')
+
+    def __str__(self):
+        return f'{self.product}'
+    
+
+class ProductColor(models.Model):
+    color = RGBColorField(verbose_name=_('Color'))
+
+    class Meta:
+        verbose_name = _('Product color')
+        verbose_name_plural = _('Product colors')
+
+    def __str__(self):
+        return f'{self.color}'
+
+
+class ProductSimilar(models.Model):
+    product = models.ForeignKey(
+        'Product',
+        verbose_name=_('Product'),
+        on_delete=models.CASCADE,
+        related_name='similar_product'
+    )
+    products = models.ManyToManyField(
+        'Product',
+        verbose_name=_('Products'),
+        related_name='similar_products'
+    )
+    
+    class Meta:
+        verbose_name = _('Product Similar'),
+        verbose_name_plural = _('Products Similar')
+
+    def __str__(self):
+        return f'{self.product}'
+

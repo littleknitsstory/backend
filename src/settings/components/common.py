@@ -1,116 +1,22 @@
 import os
 from decouple import config
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # backend/
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # src/
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # root/
 
 SECRET_KEY = config('SECRET_KEY')
-SITE_ID = 1
+# SITE_ID = 1
 
 PAGINATION_BY = 6
 
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = [
-    # Django Jet (admin page layout)
-    # must be defined BEFORE django.contrib.admin
-    # 'jet',
-    'grappelli',
-    # Django core
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    # Plugins
-    'corsheaders',
-    'django_extensions',
-    # 'modeltranslation',
-    'debug_toolbar',
-    'social_django',
-    'captcha',
-    'django.contrib.sites',
-    'django.contrib.flatpages',
-    'ckeditor',
-    'ckeditor_uploader',
-    'rest_framework_swagger',
-    'optimized_image',
-    'djmoney',
-    # 'threadedcomments',
-    'fluent_comments',  # must be before django_comments
-    'crispy_forms',
-    'django_comments',
-    # Django Rest Framework
-    'rest_framework',
-    # Swagger
-    'drf_yasg',
-    # Apps project
-    'src.apps.api.v1',
-    'src.apps.blog',
-    'src.apps.tags',
-    'src.apps.shop',
-    'src.apps.menu',
-    'src.apps.users',
-    'src.apps.contacts',
-    'src.apps.dashboard',
-    'src.apps.slider',
-    # 'src.core',
-    # 'core'
-]
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # 'debug_panel.middleware.DebugPanelMiddleware',
-
-]
-
-# AUTH_USER_MODEL = 'auth.User'
-# AUTH_USER_MODEL = 'users.User'
-# USER_MODEL = 'users.User'
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
-
 CSRF_COOKIE_NAME = "XCSRF-Token"
-
 # CORS_ORIGIN_ALLOW_ALL = True
-
 # CORS_ORIGIN_WHITELIST = ['*']
 
 ROOT_URLCONF = 'src.core.urls'
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/', ],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
-            ],
-        },
-    },
-]
-
 WSGI_APPLICATION = 'src.core.wsgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -128,39 +34,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-#
-# MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
-#
-
-gettext = lambda s: s  # noqa
-
-LANGUAGES = (
-    ('ru', gettext('Russian')),
-    ('en', gettext('English')),
-)
-
-LOCALE_PATHS = (
-    ROOT_DIR + '/apps/locale', )
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(ROOT_DIR, '../storage/static')
-STATICFILES_DIRS = (os.path.join(ROOT_DIR, 'static'),)
+STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
+# STATICFILES_DIRS = (os.path.join(ROOT_DIR, 'static'),)
 
-MEDIA_URL = '/storage/'
-MEDIA_ROOT = os.path.join(ROOT_DIR, '../storage/media')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(ROOT_DIR, 'media')
 
 OPTIMIZED_IMAGE_METHOD = 'pillow'
+FORMAT_TZ = "%m/%d/%Y, %H:%M:%S"
+

@@ -5,6 +5,6 @@ from .models import Slider
 
 class SliderAPIViewSet(ReadOnlyModelViewSet):
     """ Slider viewset """
-    queryset = Slider.objects.all()
+    queryset = Slider.objects.filter(is_active=True)
     serializer_class = SliderSerializer
 

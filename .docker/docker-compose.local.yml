@@ -1,0 +1,25 @@
+version: "3.0"
+
+services:
+  pg:
+    # CHECK PG VERSION
+    image: postgres:11.5-alpine
+    environment:
+      - POSTGRES_NAME=lks_pg_name
+      - POSTGRES_USER=lks_pg_user
+      - POSTGRES_DB=lks_pg_db
+      - POSTGRES_PASSWORD=lks_pg_pass
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      # CHECK PATH
+      - ./pgdata_2:/var/lib/postgresql/data/pgdata
+
+
+  redis:
+    image: redis:5.0-rc6-alpine
+    ports:
+      - "6379:6379"

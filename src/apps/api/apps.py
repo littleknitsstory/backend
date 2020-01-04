@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class ApiConfig(AppConfig):
-    name = 'src.apps.api.v1'
+    name = 'src.apps.api'

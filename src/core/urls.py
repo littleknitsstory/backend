@@ -9,7 +9,10 @@ from django.views.generic import TemplateView
 schema_view = get_swagger_view(title='Shop API')
 
 urlpatterns = [
-    path('', include('src.apps.blog.urls')),
+    # path('admin/', admin.site.urls),
+    path('api/v1/', include('src.apps.api.urls')),
+    path('anymail/', include('anymail.urls')),
+    
     # path('blog/comments/', include('fluent_comments.urls')),
     # path('grappelli/', include('grappelli.urls')),
     # path('admin/', admin.site.urls),

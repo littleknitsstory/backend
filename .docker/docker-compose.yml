@@ -1,0 +1,115 @@
+version: "3.0"
+
+services:
+
+  nginx:
+    container_name: phc_lks_nginx
+    image: nginx:1.15.8-alpine
+    depends_on:
+      - backend
+    volumes:
+      - ../storage:/storage
+      - ./dev/nginx.conf.nginx:/etc/nginx/conf.d/default.conf
+    ports:
+      - "6363:80"
+    networks:
+      - backend
+
+
+  django:
+    image: ${DJANGO_IMAGE}
+    container_name: django_${PROFILE}
+    command: ["gunicorn", "src.wsgi:application",
+              "--workers", "${GUNICORN_WORKERS}",
+              "--access-logfile", "/app/log/gunicorn/access.log",
+              "--error-logfile", "/app/log/gunicorn/error.log",
+              "--log-level", "${GUNICORN_LOG_LEVEL}",
+              "--bind", "0.0.0.0:${GUNICORN_PORT}"]
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - SMS_LOGIN=${SMS_LOGIN}
+      - SMS_PASSWORD=${SMS_PASSWORD}
+      - MAILGUN_API_KEY=${MAILGUN_API_KEY}
+      - MAILGUN_SENDER_DOMAIN=${MAILGUN_SENDER_DOMAIN}
+    volumes:
+      - ${STATIC_DIR}:/app/static
+      - ${MEDIA_DIR}:/app/media
+      - ${GUNICORN_LOG_DIR}:/app/log/gunicorn
+      - ${CELERY_LOG_DIR}:/app/log/celery
+      - ${GEOIP_DIR}:/app/geoip
+    ports:
+      - "${GUNICORN_PORT}:${GUNICORN_PORT}"
+    networks:
+      - backend
+    depends_on:
+      - postgres
+      - redis
+
+  celery:
+    image: ${DJANGO_IMAGE}
+    container_name: celery_${PROFILE}
+    entrypoint: ["/bin/sh", "-c"]
+    command: supervisord
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - SMS_LOGIN=${SMS_LOGIN}
+      - SMS_PASSWORD=${SMS_PASSWORD}
+      - MAILGUN_API_KEY=${MAILGUN_API_KEY}
+      - MAILGUN_SENDER_DOMAIN=${MAILGUN_SENDER_DOMAIN}
+    volumes:
+      - ${CELERY_LOG_DIR}:/app/log/celery
+    networks:
+      - backend
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:11-alpine
+    container_name: postgres_${PROFILE}
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    expose:
+      - "${DB_PORT}"
+    volumes:
+      - ${DB_DATA_DIR}:/var/lib/postgresql/data/pgdata
+    networks:
+      backend:
+        aliases:
+          - ${DB_HOST}
+
+  redis:
+    image: redis:5-alpine
+    container_name: redis_${PROFILE}
+    expose:
+      - "${REDIS_PORT}"
+    networks:
+      backend:
+        aliases:
+          - ${REDIS_HOST}
+
+  flower:
+    image: mher/flower
+    command: ["--app src.celery",
+              "--broker=redis://redis:6379/2",
+              "--port=${FLOWER_PORT}",
+              "--basic_auth=${FLOWER_USER}:${FLOWER_PASSWORD}"]
+    depends_on:
+      - redis
+    ports:
+      - "${FLOWER_PORT}:${FLOWER_PORT}"
+    networks:
+      - backend
+
+networks:
+  backend:

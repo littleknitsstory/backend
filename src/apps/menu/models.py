@@ -34,7 +34,7 @@ class MenuItems(MPTTModel):
     target = models.CharField(max_length=10, choices=LINK_TARGET_CHOICES, blank=True, null=True)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', on_delete=models.CASCADE)
     ordering = models.IntegerField(_('Sort'), default=0)
-    active = models.BooleanField(_('Active'), default=False)
+    is_active = models.BooleanField(_('Active'), default=False)
 
     def __str__(self):
         return self.name

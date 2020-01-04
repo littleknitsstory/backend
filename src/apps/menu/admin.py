@@ -10,9 +10,9 @@ class AdminMenu(admin.ModelAdmin):
 
 @admin.register(MenuItems)
 class AdminMenuItems(DjangoMpttAdmin):
-    list_display = ('name', 'menu', 'url', 'target', 'parent', 'ordering', 'active')
+    list_display = ('name', 'menu', 'url', 'target', 'parent', 'ordering', 'is_active')
     search_fields = ('name',)
-    list_editable = ('ordering', 'active')
+    list_editable = ('ordering', 'is_active')
     list_filter = ('menu',)
     save_as = True
     save_on_top = True

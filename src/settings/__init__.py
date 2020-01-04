@@ -7,12 +7,12 @@ base_settings = [
     'components/common.py',  # standard django settings
     'components/debug_toolbar.py',  # django debug toolbar
     'components/database.py',  # postgres
-    'components/social.py',  # social auth
+    # 'components/social.py',  # social auth
     'components/emails.py',  # emails
     'components/logger.py',  # logging
     'components/ckeditor.py',  # ckeditor
-    'components/comments.py',  # blog comments
     'components/cache.py',  # config django-redis
+    'components/*.py',
 
 
     # Select the right env:
@@ -22,4 +22,5 @@ base_settings = [
 ]
 
 # Include settings:
+# include('components/*.py')
 include(*base_settings)
