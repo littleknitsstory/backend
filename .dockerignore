@@ -19,6 +19,7 @@ __pycache__
 .env
 .env.example
 env
+.idea
 
 # Static assests
 staticfiles
