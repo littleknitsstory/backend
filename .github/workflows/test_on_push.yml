@@ -14,6 +14,8 @@ jobs:
         with:
           python-version: '3.8'
           architecture: 'x64'
+      - name: Install psycopg2-binary
+        run: pip install psycopg2-binary
       - name: Install requirements
         run: pip install -r requirements/test.txt
       - name: Run tests

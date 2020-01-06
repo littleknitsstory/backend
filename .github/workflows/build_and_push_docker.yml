@@ -1,20 +1,25 @@
 name: Build and Publish Docker
-on: [push]
-jobs:
+on:
+  push:
+    branches:
+      - 'develop'
 
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: Publish to Docker Repository
       uses: elgohr/Publish-Docker-Github-Action@2.7
       env:
         DEV: dev
+        TEST_VAR: ${{ secrets.TEST_VAR }}
       with:
         name: ${{ secrets.DOCKER_PEPO }}
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        tags: latest,${{ github.ref }}
         workdir: .docker
         dockerfile: Dockerfile
-        buildargs: DEV
+        buildargs: DEV,TEST_VAR
         registry: docker.pkg.github.com

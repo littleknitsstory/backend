@@ -1,10 +1,16 @@
 # virtual environments
 venv
-Vens
+Venv
+docs
 
 # Python files
 *.pyc
 __pycache__
+
+# point
+.pytest_cache
+.github
+.dependabot
 
 # Python Notebook dot files
 .ipynb*
