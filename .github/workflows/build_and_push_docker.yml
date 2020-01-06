@@ -15,11 +15,11 @@ jobs:
         DEV: dev
         TEST_VAR: ${{ secrets.TEST_VAR }}
       with:
-        name: ${{ secrets.DOCKER_PEPO }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        name: 63phc/lks
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
         tags: latest,${{ github.ref }}
         workdir: .docker
         dockerfile: Dockerfile
         buildargs: DEV,TEST_VAR
-        registry: docker.pkg.github.com
+#        registry: docker.pkg.github.com

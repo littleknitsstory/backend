@@ -31,7 +31,8 @@ services:
 
   backend:
     container_name: phc_lks_dev_backend
-    image: docker.pkg.github.com/63phc/lks/test_dev:0.2
+    image: 63phc/lks:latest
+#    image: docker.pkg.github.com/63phc/lks/test_dev:0.3
 #    build:
 #      context: ../
 #      dockerfile: .docker/Dockerfile
