@@ -63,5 +63,3 @@ git config --bool flake8.lazy true
 
 https://github.com/davesque/django-rest-framework-simplejwt
 https://django-modeltranslation.readthedocs.io/en/latest/installation.html
-docker tag dev docker.pkg.github.com/63phc/lks/test_dev:0.1
-docker push docker.pkg.github.com/63phc/lks/test_dev:0.1
