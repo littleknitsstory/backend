@@ -1,4 +1,5 @@
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
@@ -29,7 +30,7 @@ class Article(SeoMixin, ImagesMixin):
     """ Article model """
     title = models.CharField(_('Title'), max_length=64)
     slug = models.SlugField(_('Slug'), max_length=256, unique=True)
-    content = RichTextField(_('Content'))
+    content = RichTextUploadingField(_('Content'))
     is_active = models.BooleanField(_('Active'), default=True)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,

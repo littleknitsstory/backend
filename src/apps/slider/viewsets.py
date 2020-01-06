@@ -7,4 +7,3 @@ class SliderAPIViewSet(ReadOnlyModelViewSet):
     """ Slider viewset """
     queryset = Slider.objects.filter(is_active=True)
     serializer_class = SliderSerializer
-

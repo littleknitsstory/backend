@@ -6,11 +6,9 @@ class SliderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Slider
         fields = (
-            'id',
             'title',
             'slug',
             'sub_title',
-            'active',
             'ordering',
             'link',
             'image_preview',

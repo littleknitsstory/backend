@@ -1,42 +1,78 @@
 from rest_framework import serializers
-from apps.tags.serializer import TagsSerializer
 
-from apps.shop.models.order import OrderCartItem, OrderCart
-from .models import Product, Category
+from src.apps.shop.models import Product, Category, OrderCartItem, OrderCart, ProductColor
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class ProductSimpleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Product
+        fields = (
+            'title',
+            'slug',
+            'price',
+            'sale',
+            'author',
+            'image_preview',
+            'image_alt',
+        )
+        
+        
+class CategoryRetrieveSerializer(serializers.ModelSerializer):
+    products = serializers.SerializerMethodField()
+    
     class Meta:
         model = Category
         fields = (
-            'id',
             'title',
             'slug',
             'title_seo',
             'meta_keywords',
             'meta_description',
-            'created_at',
-            'update_at'
+            'products'
+        )
+        
+    def get_products(self, obj):
+        products = Product.objects.filter(category=obj, is_active=True)
+        return ProductSimpleSerializer(products, many=True).data
+    
+
+class CategoryListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = (
+            'title',
+            'slug',
         )
 
+class ColorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductColor
+        fields = ('color',)
 
-class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(many=True, read_only=True)
-    tags = TagsSerializer(many=True, read_only=True)
+
+class ProductRetrieveSerializer(serializers.ModelSerializer):
+    category = CategoryListSerializer(many=True, read_only=True)
+    color = ColorSerializer(read_only=True, many=True)
 
     class Meta:
         model = Product
         fields = (
-            'id',
+            'code',
             'title',
             'slug',
             'description',
             'price',
             'sale',
-            'is_active',
             'category',
-            'tags',
             'author',
+            'count',
+            'type_product',
+            'material',
+            'included',
+            'height',
+            'weight',
+            'color',
             # ImagesMixin
             'image_preview',
             'image_alt',
@@ -47,11 +83,26 @@ class ProductSerializer(serializers.ModelSerializer):
             'created_at',
             'update_at'
         )
-        lookup_field = 'slug'
 
-        # Указать все явно поля
-        # Поля со связями вывести полностью
-        # ?read_only_fields = ('id', 'category_name')
+
+class ProductListSerializer(serializers.ModelSerializer):
+    category = CategoryListSerializer(many=True, read_only=True)
+    color = ColorSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = Product
+        fields = (
+            'title',
+            'slug',
+            'description',
+            'price',
+            'sale',
+            'color',
+            'category',
+            'author',
+            'image_preview',
+            'image_alt',
+        )
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
@@ -65,7 +116,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OrderCart
-        fields = ('pk', 'products', 'prices', 'name', 'phone', 'address', 'comments',)
+        fields = ('pk', 'products', 'phone', 'address', 'comments',)
 
     def create(self, validated_data):
         products_data = validated_data.pop('products')

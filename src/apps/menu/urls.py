@@ -4,6 +4,7 @@ from .viewsets import MenuAPIViewSet
 
 menu = routers.DefaultRouter()
 menu.register(r'menu', MenuAPIViewSet)
+
 urlpatterns = [
 	path('', include(menu.urls))
 ]

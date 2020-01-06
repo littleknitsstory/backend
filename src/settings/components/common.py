@@ -6,6 +6,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SECRET_KEY = config('SECRET_KEY')
 # SITE_ID = 1
+AUTH_USER_MODEL = "account.User"
 
 PAGINATION_BY = 6
 

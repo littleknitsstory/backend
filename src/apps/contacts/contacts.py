@@ -1,11 +1,12 @@
-from .mixin import ModelMixin
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.urls import reverse_lazy
 
 
-class Contact(ModelMixin):
-
+class Contact(models.Model):
+    email = models.EmailField(_('Email'))
+    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
+    
     phone = models.CharField(max_length=12)
 
     class Meta:

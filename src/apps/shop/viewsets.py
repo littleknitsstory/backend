@@ -1,22 +1,39 @@
 from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
 
-from apps.shop.models.order import OrderCart, OrderCartItem
-from .serializer import ProductSerializer, CategorySerializer, OrderSerializer, OrderItemSerializer
-from .models import Product, Category
+from src.apps.shop.models.order import OrderCart, OrderCartItem
+from src.apps.shop.serializer import OrderSerializer, OrderItemSerializer, \
+    CategoryRetrieveSerializer, CategoryListSerializer, ProductListSerializer, ProductRetrieveSerializer
+from src.apps.shop.models import Product, Category
 
 
 class ProductViewSet(ModelViewSet):
-    """ Shop product viewset """
     queryset = Product.objects.prefetch_related('category').all()
-    serializer_class = ProductSerializer
-    # ModelViewSet уже дает весь КРУД
+    lookup_field = 'slug'
+    http_method_names = ['get']
+
+    serializer_classes = {
+        'list': ProductListSerializer,
+        'retrieve': ProductRetrieveSerializer,
+    }
+
+    def get_serializer_class(self):
+        return self.serializer_classes.get(self.action, ProductListSerializer)
 
 
 class CategoryViewSet(ModelViewSet):
-    """ Shop category viewset """
+    """Category for products"""
     queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+    http_method_names = ['get']
+    lookup_field = 'slug'
+    pagination_class = None
+    serializer_classes = {
+        'list': CategoryListSerializer,
+        'retrieve': CategoryRetrieveSerializer,
+    }
+    
+    def get_serializer_class(self):
+        return self.serializer_classes.get(self.action, CategoryListSerializer)
 
 
 class OrderViewSet(ModelViewSet):
