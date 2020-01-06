@@ -37,9 +37,9 @@
 
 backend (fresh versions):
 * Python 3.7.4 ([docs](https://www.python.org/doc/))
-* Django 3.0 ([docs](https://docs.djangoproject.com/en/3.0/))
+* Django 3.0.2 ([docs](https://docs.djangoproject.com/en/3.0/))
 * DRF 3.9.4 ([docs](https://www.django-rest-framework.org))
-* redis 5.0 ([hub.docker](https://hub.docker.com/_/redis/))
+* redis 6.0-rc1 ([hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL 11.1 ([hub.docker](https://hub.docker.com/_/postgres/))
 * Celery 4.3 ([docs](http://www.celeryproject.org/))
 * Swagger ([docs](https://swagger.io/docs/specification/about/))
@@ -53,8 +53,8 @@ frontend: [REPO](https://github.com/63phc/lks_frontend)
 other:
 * Docker 19.03.2
 * Docker compose 1.24.1
-* nginx 1.15 ([hub.docker](https://hub.docker.com/_/nginx/))
-* postgres 11 ([hub.docker](https://hub.docker.com/_/postgres/))
+* nginx 1.17.6 ([hub.docker](https://hub.docker.com/_/nginx/))
+* postgres 12.1 ([hub.docker](https://hub.docker.com/_/postgres/))
 
 
 flake8 --install-hook git
@@ -63,3 +63,5 @@ git config --bool flake8.lazy true
 
 https://github.com/davesque/django-rest-framework-simplejwt
 https://django-modeltranslation.readthedocs.io/en/latest/installation.html
+docker tag dev docker.pkg.github.com/63phc/lks/test_dev:0.1
+docker push docker.pkg.github.com/63phc/lks/test_dev:0.1

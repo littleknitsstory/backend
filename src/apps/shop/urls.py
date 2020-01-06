@@ -1,9 +1,9 @@
 from django.urls import path, include
 from src.apps.shop.viewsets import ProductViewSet, CategoryViewSet, OrderViewSet
-from rest_framework_nested import routers
+from rest_framework import routers
 
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet)
 router.register(r'categories', CategoryViewSet)
 router.register(r'orders', OrderViewSet)

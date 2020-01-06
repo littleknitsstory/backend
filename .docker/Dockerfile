@@ -11,10 +11,11 @@ RUN apk update && \
 RUN apk add --update bash && rm -rf /var/cache/apk/*
 
 COPY requirements /app/requirements
-RUN pip install -r requirements/${DEV}.txt
+#--no-cache-dir
+RUN pip install -r requirements/dev.txt
 
 COPY . /app
 RUN mkdir -p /app/log/gunicorn
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT [".docker/entrypoint.sh"]
 
