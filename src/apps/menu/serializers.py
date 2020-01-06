@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.menu.models import MenuItems, Menu
+from src.apps.menu.models import MenuItems, Menu
 
 
 class MenuSerializer(serializers.ModelSerializer):
@@ -10,7 +10,6 @@ class MenuSerializer(serializers.ModelSerializer):
             'id',
             'slug',
             'hint',
-            'active'
         )
 
 
@@ -28,6 +27,5 @@ class MenuItemsSerializer(serializers.ModelSerializer):
             'target',
             'parent',
             'ordering',
-            'active'
+            'is_active'
         )
-

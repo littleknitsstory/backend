@@ -59,7 +59,6 @@ class AdminBaseMixin(admin.ModelAdmin):
     list_display = ('pk', 'title', 'slug')
     save_as = True
     save_on_top = True
-    # group_fieldsets = True
 
     class Meta:
         abstract = True

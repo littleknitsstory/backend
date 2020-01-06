@@ -1,35 +1,17 @@
 from rest_framework.viewsets import ModelViewSet
-from .serializer import ArticleSerializer
+from .serializers import  ArticleListSerializer, ArticleRetrieveSerializer
 from .models import Article
 
 
 class ArticleList(ModelViewSet):
-    """ Posts viewset
-    ```
-    {
-        "id": int,
-        "title": "str",
-        "slug": "str",
-        "content": "str",
-        "is_active": true(boolen),
-        "author": null,
-        "tags": [
-            {
-                'id': 1,
-                'title': 'srt',
-                'slug': 'srt',
-            }
-        ],
-        "image_preview": 'str:path',
-        "image_alt": 'str',
-        "title_seo": "str",
-        "meta_keywords": "str",
-        "meta_description": "str",
-        "created_at": "2018-11-13T13:41:06.274000Z",
-        "update_at": "2018-11-13T13:41:06.274000Z"
-    }
-    ```
-    """
-    queryset = Article.objects.filter(is_active=False).prefetch_related('tags')
-    serializer_class = ArticleSerializer
+    queryset = Article.objects.filter(is_active=True).prefetch_related('tags')
     http_method_names = ['get']
+    lookup_field = 'slug'
+
+    serializer_classes = {
+        'list': ArticleListSerializer,
+        'retrieve': ArticleRetrieveSerializer,
+    }
+
+    def get_serializer_class(self):
+        return self.serializer_classes.get(self.action, ArticleListSerializer)

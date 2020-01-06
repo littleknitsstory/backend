@@ -1,15 +1,16 @@
 from django.contrib import admin
+from mptt.admin import MPTTModelAdmin
+
 from .models import Menu, MenuItems
-from django_mptt_admin.admin import DjangoMpttAdmin
 
 
 @admin.register(Menu)
 class AdminMenu(admin.ModelAdmin):
-    list_display = ('slug', 'hint', 'active')
+    list_display = ('slug', 'hint', 'is_active')
 
 
 @admin.register(MenuItems)
-class AdminMenuItems(DjangoMpttAdmin):
+class AdminMenuItems(MPTTModelAdmin):
     list_display = ('name', 'menu', 'url', 'target', 'parent', 'ordering', 'is_active')
     search_fields = ('name',)
     list_editable = ('ordering', 'is_active')

@@ -3,11 +3,10 @@ from django.contrib.postgres.fields import JSONField
 from django_countries.fields import CountryField
 
 from django.db import models
-from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from optimized_image.fields import OptimizedImageField
 
-from src.apps.users.choices import AccountTypeChoices
+from src.apps.account.choices import AccountTypeChoices
 
 
 class User(AbstractUser):
@@ -37,7 +36,6 @@ class User(AbstractUser):
     class Meta:
         verbose_name = _('User')
         verbose_name_plural = _('Users')
-        app_label = 'user_2'
 
     def get_avatar_url(self):
         try:
@@ -53,4 +51,9 @@ class User(AbstractUser):
     @property
     def vk_link(self):
         if self.vk_profile:
-            return f'https://vk.com/id{self.vk_profile.get("id")}'
+            return self.vk_profile.get("link")
+    
+    @property
+    def inst_link(self):
+        if self.inst_profile:
+            return self.inst_profile.get("link")

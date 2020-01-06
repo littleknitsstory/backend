@@ -28,7 +28,8 @@ class Product(SeoMixin, ImagesMixin):
     color = models.ManyToManyField(
         'ProductColor',
         verbose_name=_('Colors'),
-        related_name='product_colors'
+        related_name='product_colors',
+        blank=True
     )
     category = models.ManyToManyField(
         'Category',

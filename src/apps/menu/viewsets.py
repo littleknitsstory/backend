@@ -1,10 +1,8 @@
 from rest_framework.viewsets import ReadOnlyModelViewSet
-from .serializer import MenuItemsSerializer
+from .serializers import MenuItemsSerializer
 from .models import MenuItems
 
 
 class MenuAPIViewSet(ReadOnlyModelViewSet):
-    """ Menu viewset """
-    queryset = MenuItems.objects.filter(is_active=False)
+    queryset = MenuItems.objects.filter(is_active=True)
     serializer_class = MenuItemsSerializer
-

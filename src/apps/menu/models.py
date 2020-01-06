@@ -9,7 +9,7 @@ class Menu(models.Model):
     """
     slug = models.CharField(_('Slug'), max_length=100, unique=True)
     hint = models.CharField(_('Hint'), max_length=100)
-    active = models.BooleanField(_('Active'), default=False)
+    is_active = models.BooleanField(_('Active'), default=False)
 
     def __str__(self):
         return self.slug

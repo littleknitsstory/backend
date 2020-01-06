@@ -1,5 +1,7 @@
 
 INSTALLED_APPS = [
+    'modeltranslation',
+    
     # Django core
     'django.contrib.admin',
     'django.contrib.auth',
@@ -13,16 +15,17 @@ INSTALLED_APPS = [
     # Plugins
     'corsheaders',
     'django_extensions',
-    'modeltranslation',
+    'mptt',
     
     'debug_toolbar',
     'social_django',
-    'captcha',
+    # 'captcha',
     'ckeditor',
     'ckeditor_uploader',
     'optimized_image',
     'djmoney',
-    'crispy_forms',
+    'colorful',
+    # 'crispy_forms',
     
     # Django Rest Framework
     'rest_framework',
@@ -34,7 +37,8 @@ INSTALLED_APPS = [
     'src.apps.blog',
     'src.apps.shop',
     'src.apps.menu',
-    'src.apps.users',
+    'src.apps.account',
+    'src.apps.subscribe',
     # 'src.apps.contacts',
     'src.apps.slider',
 ]
