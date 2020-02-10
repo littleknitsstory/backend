@@ -42,6 +42,6 @@ sqlparse==0.3.0
 urllib3==1.25.8
 django-registration==3.1
 sendgrid==6.1.1
-django-grappelli==2.13.3
+django-grappelli==2.14.1
 django-redis==4.11.0
 drf-yasg==1.17.0
