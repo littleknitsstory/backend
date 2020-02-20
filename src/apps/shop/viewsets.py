@@ -1,8 +1,9 @@
 from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from src.apps.shop.models.order import OrderCart, OrderCartItem
-from src.apps.shop.serializer import OrderSerializer, OrderItemSerializer, \
+from src.apps.shop.serializers import OrderSerializer, OrderItemSerializer, \
     CategoryRetrieveSerializer, CategoryListSerializer, ProductListSerializer, ProductRetrieveSerializer
 from src.apps.shop.models import Product, Category
 
@@ -19,6 +20,18 @@ class ProductViewSet(ModelViewSet):
 
     def get_serializer_class(self):
         return self.serializer_classes.get(self.action, ProductListSerializer)
+    
+    
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 class CategoryViewSet(ModelViewSet):

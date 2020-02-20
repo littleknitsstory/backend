@@ -14,9 +14,12 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CSRF_COOKIE_NAME = "XCSRF-Token"
-# CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = ['*']
-
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://localhost:8080',
+]
 ROOT_URLCONF = 'src.core.urls'
 WSGI_APPLICATION = 'src.core.wsgi.application'
 
