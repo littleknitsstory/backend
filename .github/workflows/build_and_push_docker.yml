@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         tags: latest,${{ github.ref }}
-        workdir: .docker
-        dockerfile: Dockerfile
+        workdir: .
+        dockerfile: .docker/Dockerfile
         buildargs: DEV,TEST_VAR
 #        registry: docker.pkg.github.com
