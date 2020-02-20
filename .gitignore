@@ -126,3 +126,5 @@ gen
 
 frontend/node_modules
 .pytest_cache
+.DS_Store
+src/.DS_Store

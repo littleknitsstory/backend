@@ -2,7 +2,7 @@ FROM python:3.7-alpine
 ENV PYTHONUNBUFFERED 1
 ARG DEV=dev
 
-RUN mkdir -p /app
+RUN mkdir -p /app/requirements
 WORKDIR /app
 
 RUN apk update && \
