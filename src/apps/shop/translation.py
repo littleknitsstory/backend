@@ -9,5 +9,7 @@ class CategoryTranslationOptions(TranslationOptions):
     
 @register(Product)
 class ProductTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'type_product', 'material', 'included',
-              'title_seo', 'meta_keywords', 'meta_description')
+    fields = (
+        'title', 'description', 'type_product', 'material', 'included',
+        'title_seo', 'meta_keywords', 'meta_description'
+    )
