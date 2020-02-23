@@ -9,3 +9,5 @@ class UserViewSet(ReadOnlyModelViewSet):
     queryset = User.objects.filter(account_type=AccountTypeChoices.AUTHOR)
     serializer_class = UserSerializer
     pagination_class = None
+    lookup_field = 'username'
+

@@ -3,6 +3,7 @@ from rest_framework import serializers
 from src.apps.shop.models import Product, Category, OrderCartItem, OrderCart, ProductColor
 
 
+# TODO: убрать
 class ProductSimpleSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -30,11 +31,12 @@ class CategoryRetrieveSerializer(serializers.ModelSerializer):
             'meta_keywords',
             'meta_description',
             'products'
+
         )
         
     def get_products(self, obj):
-        products = Product.objects.filter(category=obj, is_active=True)
-        return ProductSimpleSerializer(products, many=True).data
+        products = Product.objects.filter(categories=obj, is_active=True)
+        return ProductListSerializer(products, many=True).data
     
 
 class CategoryListSerializer(serializers.ModelSerializer):
@@ -45,6 +47,7 @@ class CategoryListSerializer(serializers.ModelSerializer):
             'slug',
         )
 
+
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductColor
@@ -52,8 +55,8 @@ class ColorSerializer(serializers.ModelSerializer):
 
 
 class ProductRetrieveSerializer(serializers.ModelSerializer):
-    category = CategoryListSerializer(many=True, read_only=True)
-    color = ColorSerializer(read_only=True, many=True)
+    categories = CategoryListSerializer(many=True, read_only=True)
+    colors = ColorSerializer(read_only=True, many=True)
 
     class Meta:
         model = Product
@@ -64,7 +67,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
             'description',
             'price',
             'sale',
-            'category',
+            'categories',
             'author',
             'count',
             'type_product',
@@ -72,7 +75,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
             'included',
             'height',
             'weight',
-            'color',
+            'colors',
             # ImagesMixin
             'image_preview',
             'image_alt',
@@ -86,8 +89,8 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
 
 
 class ProductListSerializer(serializers.ModelSerializer):
-    category = CategoryListSerializer(many=True, read_only=True)
-    color = ColorSerializer(read_only=True, many=True)
+    categories = CategoryListSerializer(many=True, read_only=True)
+    colors = ColorSerializer(read_only=True, many=True)
 
     class Meta:
         model = Product
@@ -97,8 +100,8 @@ class ProductListSerializer(serializers.ModelSerializer):
             'description',
             'price',
             'sale',
-            'color',
-            'category',
+            'colors',
+            'categories',
             'author',
             'image_preview',
             'image_alt',

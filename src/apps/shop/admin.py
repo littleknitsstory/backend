@@ -36,11 +36,11 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
     # inlines = [ProductPhoto, ]
     group_fieldsets = True
     list_display = ('code', 'slug', 'is_active', 'update_at')
-    filter_horizontal = ('category', 'color')
+    filter_horizontal = ('categories', 'colors')
     fieldsets = (
         (_('Title'), {'fields': ('title',)}),
         (_('Main'), {'fields': ('code', 'slug', 'is_active', 'sale', 'price',
-                                'image_preview', 'author', 'category', 'color'
+                                'image_preview', 'author', 'categories', 'colors'
                                 )}),
         (_('Description'), {'fields': ('description',)}),
         (_('Feature'), {'fields': ('type_product', 'material', 'included', 'height', 'weight')}),

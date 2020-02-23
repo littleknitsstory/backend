@@ -18,7 +18,7 @@ LANGUAGES = (
     ('en', _('English')),
 )
 
-LOCALE_PATHS = (
-    ROOT_DIR + '/locale',)
-
-print(LOCALE_PATHS)
+# LOCALE_PATHS = (
+#     ROOT_DIR + '/locale',)
+#
+# print(LOCALE_PATHS)

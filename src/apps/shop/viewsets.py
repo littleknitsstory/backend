@@ -9,7 +9,7 @@ from src.apps.shop.models import Product, Category
 
 
 class ProductViewSet(ModelViewSet):
-    queryset = Product.objects.prefetch_related('category').all()
+    queryset = Product.objects.prefetch_related('categories').all()
     lookup_field = 'slug'
     http_method_names = ['get']
 

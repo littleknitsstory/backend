@@ -25,13 +25,13 @@ class Product(SeoMixin, ImagesMixin):
     included = models.CharField(_('Included'), max_length=120, null=True, blank=True)
     height = models.IntegerField(_('Height'), null=True, blank=True)
     weight = models.IntegerField(_('Weight'), null=True, blank=True)
-    color = models.ManyToManyField(
+    colors = models.ManyToManyField(
         'ProductColor',
         verbose_name=_('Colors'),
         related_name='product_colors',
         blank=True
     )
-    category = models.ManyToManyField(
+    categories = models.ManyToManyField(
         'Category',
         verbose_name=_('Category'),
         related_name='product_categories',
