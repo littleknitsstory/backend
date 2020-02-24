@@ -13,10 +13,11 @@ INSTALLED_APPS = [
     # 'django.contrib.sites',
 
     # Plugins
+    'graphene_django',
     'corsheaders',
     'django_extensions',
     'mptt',
-    
+
     'debug_toolbar',
     'social_django',
     # 'captcha',
