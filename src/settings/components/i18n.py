@@ -2,23 +2,18 @@ from django.utils.translation import ugettext_lazy as _
 
 
 LANGUAGE_CODE = 'ru'
-ADMIN_LANGUAGE_CODE = 'ru'
-
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+FORMAT_TZ = "%m/%d/%Y, %H:%M:%S"
 
-MODELTRANSLATION_LANGUAGES = ('ru', 'en')
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
-MODELTRANSLATION_TRANSLATION_REGISTRY = 'translation'
+ADMIN_LANGUAGE_CODE = 'ru'
 
 LANGUAGES = (
-    ('ru', _('Russian')),
     ('en', _('English')),
+    ('ru', _('Russian')),
 )
 
-# LOCALE_PATHS = (
-#     ROOT_DIR + '/locale',)
-#
-# print(LOCALE_PATHS)
+MODELTRANSLATION_LANGUAGES = ('ru', 'en',)
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'

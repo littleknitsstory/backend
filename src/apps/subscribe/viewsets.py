@@ -8,11 +8,6 @@ from src.apps.subscribe.serializers import SubscribeSerializer
 
 @permission_classes((AllowAny,))
 class SubscribeViewSet(ModelViewSet):
-    """
-    `
-    { "email": str}
-    `
-    """
     serializer_class = SubscribeSerializer
     queryset = Subscribe.objects.all()
     http_method_names = ['post']

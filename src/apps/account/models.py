@@ -17,12 +17,12 @@ class User(AbstractUser):
     
     phone_number = models.CharField(_('Phone number'), max_length=63, null=True, blank=True)
     country = CountryField(verbose_name=_('Country'), default=None, null=True, blank=True)
-
     city = models.CharField(_('City'), max_length=63, null=True, blank=True)
+    address = models.CharField(_('Address'), max_length=512, null=True, blank=True)
     birth_date = models.DateField(_('Birth date'), null=True, blank=True)
     
     is_email_confirmed = models.BooleanField(_('Email confirm'), default=False)
-    is_profile_full = models.BooleanField(_('Profile full'), default=True)
+    is_profile_full = models.BooleanField(_('Profile full'), default=False)
     vk_profile = JSONField(_('Vk profile'), blank=True, null=True)
     fb_profile = JSONField(_('Fb profile'), blank=True, null=True)
     inst_profile = JSONField(_('Instagram profile'), blank=True, null=True)
@@ -57,3 +57,9 @@ class User(AbstractUser):
     def inst_link(self):
         if self.inst_profile:
             return self.inst_profile.get("link")
+    
+    def get_country(self, user=None):
+        return {
+            'name': self.country.name,
+            'code': self.country.code
+        }

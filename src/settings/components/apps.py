@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     # Django Rest Framework
     'rest_framework',
     'rest_framework_swagger',
+    'rest_framework_simplejwt.token_blacklist',
     'drf_yasg',
     
     # Apps project
