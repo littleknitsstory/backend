@@ -22,4 +22,4 @@ class Query(object):
         return Tag.objects.all()
 
     def resolve_all_articles(self, info, **kwargs):
-        return Article.objects.select_related('tags').all()
+        return Article.objects.prefetch_related('tags').all()
