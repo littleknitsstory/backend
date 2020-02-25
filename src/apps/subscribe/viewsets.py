@@ -9,5 +9,5 @@ from src.apps.subscribe.serializers import SubscribeSerializer
 @permission_classes((AllowAny,))
 class SubscribeViewSet(ModelViewSet):
     serializer_class = SubscribeSerializer
-    queryset = Subscribe.objects.all()
+    queryset = Subscribe.objects.none()
     http_method_names = ['post']
