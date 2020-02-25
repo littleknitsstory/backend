@@ -61,6 +61,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = (
+            'id',
             'code',
             'title',
             'slug',
@@ -95,6 +96,7 @@ class ProductListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = (
+            'id',
             'title',
             'slug',
             'description',
