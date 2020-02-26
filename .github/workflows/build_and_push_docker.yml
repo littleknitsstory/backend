@@ -15,11 +15,23 @@ jobs:
         DEV: dev
         TEST_VAR: ${{ secrets.TEST_VAR }}
       with:
-        name: 63phc/lks
+        name: ${{ secrets.DOCKER_REPO }}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         tags: latest,${{ github.ref }}
         workdir: .
         dockerfile: .docker/Dockerfile
         buildargs: DEV,TEST_VAR
-#        registry: docker.pkg.github.com
+
+    - name: Restart and pull docker remote host
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.HOST_USERNAME }}
+        password: ${{ secrets.HOST_PASSWORD }}
+        script: |
+          cd /home/lks/dev
+          ls -al
+          docker-compose down
+          docker-compose pull
+          docker-compose up -d

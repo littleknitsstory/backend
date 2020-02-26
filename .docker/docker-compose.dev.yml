@@ -32,14 +32,9 @@ services:
   backend:
     container_name: phc_lks_dev_backend
     image: 63phc/lks:latest
-#    image: docker.pkg.github.com/63phc/lks/test_dev:0.3
-#    build:
-#      context: ../
-#      dockerfile: .docker/Dockerfile
     restart: always
     command: bash -c "
       gunicorn src.core.wsgi:application -w 2 -b 0.0.0.0:8000"
-
     volumes:
       - ./static:/app/static
       - ./media:/app/media

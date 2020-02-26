@@ -15,7 +15,7 @@ if [[ ${POSTGRES_HOST} ]]; then
 fi
 
 
-echo "RUN migrate collectstatic compilemessages"
+echo "Run migrate collectstatic and compilemessages"
 python manage.py migrate
 python manage.py collectstatic --no-input
 python manage.py compilemessages

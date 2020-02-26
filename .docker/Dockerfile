@@ -18,4 +18,3 @@ COPY . /app
 RUN mkdir -p /app/log/gunicorn
 
 ENTRYPOINT [".docker/entrypoint.sh"]
-
