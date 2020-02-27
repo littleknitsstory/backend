@@ -42,7 +42,6 @@ jobs:
         script: |
           cd ${{ secrets.PATH_BACKEND }}
           docker-compose pull
-          docker-compose up -d
 
     - name: Up -d docker remote host
       uses: appleboy/ssh-action@master
