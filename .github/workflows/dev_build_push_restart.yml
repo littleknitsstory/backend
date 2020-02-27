@@ -34,22 +34,22 @@ jobs:
           docker-compose down
 
     - name: Pull docker remote host
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.HOST_USERNAME }}
-          password: ${{ secrets.HOST_PASSWORD }}
-          script: |
-            cd ${{ secrets.PATH_BACKEND }}
-            docker-compose pull
-            docker-compose up -d
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.HOST_USERNAME }}
+        password: ${{ secrets.HOST_PASSWORD }}
+        script: |
+          cd ${{ secrets.PATH_BACKEND }}
+          docker-compose pull
+          docker-compose up -d
 
     - name: Up -d docker remote host
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.HOST_USERNAME }}
-          password: ${{ secrets.HOST_PASSWORD }}
-          script: |
-            cd ${{ secrets.PATH_BACKEND }}
-            docker-compose up -d
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.HOST_USERNAME }}
+        password: ${{ secrets.HOST_PASSWORD }}
+        script: |
+          cd ${{ secrets.PATH_BACKEND }}
+          docker-compose up -d
