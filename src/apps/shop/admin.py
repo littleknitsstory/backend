@@ -3,6 +3,7 @@ from modeltranslation.admin import TranslationAdmin
 from django.utils.translation import ugettext_lazy as _
 
 from src.core.mixins.mixin import AdminBaseMixin
+from .models import OrderCart
 from .models.category import Category
 from .models.product import Product, ProductPhoto, ProductColor
 
@@ -33,7 +34,7 @@ class ProductColorAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin, AdminBaseMixin):
-    # inlines = [ProductPhoto, ]
+    inlines = [ProductPhotoInline, ]
     group_fieldsets = True
     list_display = ('code', 'slug', 'is_active', 'update_at')
     filter_horizontal = ('categories', 'colors')
@@ -48,3 +49,11 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
     )
 
 
+@admin.register(OrderCart)
+class OrderCartAdmin(admin.ModelAdmin):
+    list_display = ('id', 'status', 'created_at')
+    filter_horizontal = ('products',)
+    fieldsets = (
+        (_('Status'), {'fields': ('status', 'created_at')}),
+        (_('Info'), {'fields': ('email', 'phone', 'address', 'comments')}),
+    )

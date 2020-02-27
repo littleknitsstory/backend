@@ -10,8 +10,8 @@ class OrderCart(models.Model):
         verbose_name=_('Products'),
         related_name='ordercart_products'
     )
-    address = models.CharField(verbose_name=_('Address'), max_length=256)
-    phone = models.CharField(verbose_name=_('Phone'), null=True, blank=True, max_length=13)
+    address = models.CharField(verbose_name=_('Address'), max_length=256, null=True, blank=True)
+    phone = models.CharField(verbose_name=_('Phone'), max_length=13, null=True, blank=True)
     email = models.EmailField(verbose_name=_('Email'))
     comments = models.CharField(verbose_name=_('Comments'), max_length=512, null=True, blank=True)
     created_at = models.DateTimeField(verbose_name=_('Created'), auto_now_add=True)

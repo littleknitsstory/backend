@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from src.apps.shop.models.product import ProductPhoto
 from src.apps.shop.models import Product, Category, OrderCartItem, OrderCart, ProductColor
 
 
@@ -54,6 +55,12 @@ class ColorSerializer(serializers.ModelSerializer):
         fields = ('color',)
 
 
+class ProductPhotoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductPhoto
+        fields = ('photo', 'photo_alt')
+
+
 class ProductRetrieveSerializer(serializers.ModelSerializer):
     categories = CategoryListSerializer(many=True, read_only=True)
     colors = ColorSerializer(read_only=True, many=True)
@@ -92,6 +99,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
 class ProductListSerializer(serializers.ModelSerializer):
     categories = CategoryListSerializer(many=True, read_only=True)
     colors = ColorSerializer(read_only=True, many=True)
+    photo_product = ProductPhotoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Product
@@ -105,6 +113,7 @@ class ProductListSerializer(serializers.ModelSerializer):
             'colors',
             'categories',
             'author',
+            'photo_product',
             'image_preview',
             'image_alt',
         )

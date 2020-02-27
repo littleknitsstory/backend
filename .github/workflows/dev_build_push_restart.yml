@@ -23,15 +23,33 @@ jobs:
         dockerfile: .docker/Dockerfile
         buildargs: DEV,TEST_VAR
 
-    - name: Restart and pull docker remote host
+    - name: Down docker remote host
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.HOST_USERNAME }}
         password: ${{ secrets.HOST_PASSWORD }}
         script: |
-          cd /home/lks/dev
-          ls -al
+          cd ${{ secrets.PATH_BACKEND }}
           docker-compose down
-          docker-compose pull
-          docker-compose up -d
+
+    - name: Pull docker remote host
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          script: |
+            cd ${{ secrets.PATH_BACKEND }}
+            docker-compose pull
+            docker-compose up -d
+
+    - name: Up -d docker remote host
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          script: |
+            cd ${{ secrets.PATH_BACKEND }}
+            docker-compose up -d
