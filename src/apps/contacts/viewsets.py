@@ -1,21 +1,11 @@
-from rest_framework.viewsets import ReadOnlyModelViewSet
-from .serializers import ReviewSerializer, FeedbackSerializer
-from .models import Review, Feedback
+from rest_framework.viewsets import  ModelViewSet
 
 
-# class ContactAPIViewSet(ReadOnlyModelViewSet):
-#     """ Contact viewset """
-#     queryset = Contact.objects.all()
-#     serializer_class = ContactSerializer
+from src.apps.contacts.serializers import ContactSerializer
+from src.apps.contacts.models import Contact
 
 
-class ReviewAPIViewSet(ReadOnlyModelViewSet):
-    """ Review viewset """
-    queryset = Review.objects.all()
-    serializer_class = ReviewSerializer
-
-
-class FeedbackAPIViewSet(ReadOnlyModelViewSet):
-    """ Feedback viewset """
-    queryset = Feedback.objects.all()
-    serializer_class = FeedbackSerializer
+class ContactsViewSet(ModelViewSet):
+    queryset = Contact.objects.none()
+    serializer_class = ContactSerializer
+    http_method_names = ['post']

@@ -6,6 +6,7 @@ from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, PasswordField
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from src.apps.account.choices import AccountTypeChoices
 from src.apps.account.models import User
 
 
@@ -68,6 +69,7 @@ class SignUpSerializer(serializers.Serializer):
             username=email.lower(),
             email=email.lower(),
             password=password,
+            account_type=AccountTypeChoices.CLIENT
         )
         user.save()
 

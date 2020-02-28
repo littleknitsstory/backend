@@ -1,37 +1,18 @@
+from django.core.validators import EmailValidator
 from rest_framework import serializers
-from .models import Review, Feedback
+
+from src.apps.contacts.models import Contact
 
 
-# class ContactSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Contact
-#         fields = (
-#             'id',
-#             'phone',
-#             'email',
-#             'created_at'
-#         )
+class ContactSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(validators=[EmailValidator()])
 
-
-class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Review
+        model = Contact
         fields = (
-            'id',
-            'user_name',
-            'comment',
-            'email',
-            'created_at'
-        )
-
-
-class FeedbackSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Feedback
-        fields = (
-            'id',
             'name',
-            'feedback',
+            'message',
+            'phone_number',
             'email',
-            'created_at'
+            'company',
         )

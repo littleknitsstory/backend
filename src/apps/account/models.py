@@ -15,7 +15,7 @@ class User(AbstractUser):
     avatar = OptimizedImageField(_('Avatar'), null=True, blank=True)
     about = models.TextField(_('About author'), max_length=633, null=True, blank=True)
     
-    phone_number = models.CharField(_('Phone number'), max_length=63, null=True, blank=True)
+    phone_number = models.CharField(_('Phone number'), max_length=13, null=True, blank=True)
     country = CountryField(verbose_name=_('Country'), default=None, null=True, blank=True)
     city = models.CharField(_('City'), max_length=63, null=True, blank=True)
     address = models.CharField(_('Address'), max_length=512, null=True, blank=True)

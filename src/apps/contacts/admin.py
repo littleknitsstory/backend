@@ -1,34 +1,8 @@
 from django.contrib import admin
-from src.apps.contacts.models import Subscribe
-from src.apps.contacts.models import Feedback
-from src.apps.contacts.models import Review
+from src.apps.contacts.models import Contact
 
 
-class SubscribeAdmin(admin.ModelAdmin):
-    readonly_fields = ('email', 'created_at', 'hidden')
-
-    def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-
-admin.site.register(Subscribe, SubscribeAdmin)
-
-
-class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'feedback', 'created_at']
-
-
-admin.site.register(Feedback, FeedbackAdmin)
-
-
-class ReviewAdmin(admin.ModelAdmin):
-    model = Review
-    list_display = ('user_name', 'comment', 'created_at')
-    list_filter = ['created_at', 'user_name']
-    search_fields = ['comment']
-
-
-admin.site.register(Review, ReviewAdmin)
+@admin.register(Contact)
+class ContactsAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'message', 'created_at']
+    fields = ['name', 'email', 'message', 'phone_number', 'company']

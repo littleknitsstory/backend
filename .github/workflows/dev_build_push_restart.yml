@@ -23,7 +23,7 @@ jobs:
         dockerfile: .docker/Dockerfile
         buildargs: DEV,TEST_VAR
 
-    - name: Down docker remote host
+    - name: Down Pull Up docker remote host
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -32,23 +32,5 @@ jobs:
         script: |
           cd ${{ secrets.PATH_BACKEND }}
           docker-compose down
-
-    - name: Pull docker remote host
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.HOST_USERNAME }}
-        password: ${{ secrets.HOST_PASSWORD }}
-        script: |
-          cd ${{ secrets.PATH_BACKEND }}
           docker-compose pull
-
-    - name: Up -d docker remote host
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.HOST_USERNAME }}
-        password: ${{ secrets.HOST_PASSWORD }}
-        script: |
-          cd ${{ secrets.PATH_BACKEND }}
           docker-compose up -d

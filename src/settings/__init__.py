@@ -22,5 +22,4 @@ base_settings = [
 ]
 
 # Include settings:
-# include('components/*.py')
 include(*base_settings)

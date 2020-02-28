@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'src.apps.menu',
     'src.apps.account',
     'src.apps.subscribe',
-    # 'src.apps.contacts',
+    'src.apps.contacts',
     'src.apps.slider',
+    'src.apps.reviews',
 ]
 

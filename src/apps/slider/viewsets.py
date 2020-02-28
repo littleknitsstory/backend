@@ -1,10 +1,11 @@
-from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework import mixins
+from rest_framework.viewsets import GenericViewSet
 from .serializer import SliderSerializer
 from .models import Slider
 
 
-class SliderAPIViewSet(ReadOnlyModelViewSet):
+class SliderAPIViewSet(mixins.ListModelMixin, GenericViewSet):
     """ Slider viewset """
     queryset = Slider.objects.filter(is_active=True)
     serializer_class = SliderSerializer
-    lookup_field = 'slug'
+    pagination_class = None

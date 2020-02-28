@@ -9,7 +9,7 @@ from src.apps.shop.models import Product, Category
 
 
 class ProductViewSet(ModelViewSet):
-    queryset = Product.objects.prefetch_related('categories').all()
+    queryset = Product.objects.filter(is_active=True).prefetch_related('categories')
     lookup_field = 'slug'
     http_method_names = ['get']
 
@@ -20,7 +20,6 @@ class ProductViewSet(ModelViewSet):
 
     def get_serializer_class(self):
         return self.serializer_classes.get(self.action, ProductListSerializer)
-    
     
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
@@ -75,4 +74,3 @@ class OrderItemViewSet(ModelViewSet):
     serializer_class = OrderItemSerializer
     queryset = OrderCartItem.objects.all()
     http_method_names = ['post']
-
