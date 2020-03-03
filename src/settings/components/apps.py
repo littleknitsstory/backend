@@ -1,5 +1,6 @@
 INSTALLED_APPS = [
     "modeltranslation",
+    
     # Django core
     "django.contrib.admin",
     "django.contrib.auth",
@@ -9,6 +10,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     # 'django.contrib.sites',
+    
     # Plugins
     "graphene_django",
     "corsheaders",
@@ -16,18 +18,18 @@ INSTALLED_APPS = [
     "mptt",
     "debug_toolbar",
     "social_django",
-    # 'captcha',
     "ckeditor",
     "ckeditor_uploader",
     "optimized_image",
     "djmoney",
     "colorful",
-    # 'crispy_forms',
+    
     # Django Rest Framework
     "rest_framework",
     "rest_framework_swagger",
     "rest_framework_simplejwt.token_blacklist",
     "drf_yasg",
+    
     # Apps project
     "src.apps.api",
     "src.apps.blog",
