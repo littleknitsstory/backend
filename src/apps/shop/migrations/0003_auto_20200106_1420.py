@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shop', '0002_ordercart_ordercartitem'),
+        ("shop", "0002_ordercart_ordercartitem"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='color',
-            field=models.ManyToManyField(blank=True, related_name='product_colors', to='shop.ProductColor', verbose_name='Colors'),
+            model_name="product",
+            name="color",
+            field=models.ManyToManyField(
+                blank=True,
+                related_name="product_colors",
+                to="shop.ProductColor",
+                verbose_name="Colors",
+            ),
         ),
     ]

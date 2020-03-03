@@ -7,38 +7,96 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shop', '0001_initial'),
+        ("shop", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='OrderCartItem',
+            name="OrderCartItem",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount', models.PositiveSmallIntegerField(default=1, verbose_name='Amount')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='ordercartitem_product', to='shop.Product', verbose_name='Product')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "amount",
+                    models.PositiveSmallIntegerField(default=1, verbose_name="Amount"),
+                ),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="ordercartitem_product",
+                        to="shop.Product",
+                        verbose_name="Product",
+                    ),
+                ),
             ],
-            options={
-                'verbose_name': 'Product',
-                'verbose_name_plural': 'Products',
-            },
+            options={"verbose_name": "Product", "verbose_name_plural": "Products",},
         ),
         migrations.CreateModel(
-            name='OrderCart',
+            name="OrderCart",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('address', models.CharField(max_length=256, verbose_name='Address')),
-                ('phone', models.CharField(blank=True, max_length=13, null=True, verbose_name='Phone')),
-                ('email', models.EmailField(max_length=254, verbose_name='Email')),
-                ('comments', models.CharField(blank=True, max_length=512, null=True, verbose_name='Comments')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created')),
-                ('status', models.CharField(choices=[('NEW', 'новый'), ('AWAITING', 'ожидает оплаты'), ('CREATING', 'изготовление'), ('SHIPPING', 'доставка'), ('COMPLETED', 'завершен')], default='NEW', max_length=14, verbose_name='Status')),
-                ('products', models.ManyToManyField(related_name='ordercart_products', to='shop.OrderCartItem', verbose_name='Products')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("address", models.CharField(max_length=256, verbose_name="Address")),
+                (
+                    "phone",
+                    models.CharField(
+                        blank=True, max_length=13, null=True, verbose_name="Phone"
+                    ),
+                ),
+                ("email", models.EmailField(max_length=254, verbose_name="Email")),
+                (
+                    "comments",
+                    models.CharField(
+                        blank=True, max_length=512, null=True, verbose_name="Comments"
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created"),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("NEW", "новый"),
+                            ("AWAITING", "ожидает оплаты"),
+                            ("CREATING", "изготовление"),
+                            ("SHIPPING", "доставка"),
+                            ("COMPLETED", "завершен"),
+                        ],
+                        default="NEW",
+                        max_length=14,
+                        verbose_name="Status",
+                    ),
+                ),
+                (
+                    "products",
+                    models.ManyToManyField(
+                        related_name="ordercart_products",
+                        to="shop.OrderCartItem",
+                        verbose_name="Products",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Order',
-                'verbose_name_plural': 'Orders',
-                'ordering': ('-created_at',),
+                "verbose_name": "Order",
+                "verbose_name_plural": "Orders",
+                "ordering": ("-created_at",),
             },
         ),
     ]

@@ -3,8 +3,6 @@ from rest_framework import routers
 from .viewsets import MenuAPIViewSet
 
 menu = routers.DefaultRouter()
-menu.register(r'menu', MenuAPIViewSet)
+menu.register(r"menu", MenuAPIViewSet)
 
-urlpatterns = [
-	path('', include(menu.urls))
-]
+urlpatterns = [path("", include(menu.urls))]

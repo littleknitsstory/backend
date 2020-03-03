@@ -19,18 +19,18 @@ from PIL import Image, ImageDraw, ImageFont
 #     """
 #     photo = Image.open(input_image_path)
 #     resizing
-    # photo.thumbnail(IMAGE_SIZE, Image.ANTIALIAS)
-    #
-    # make the image editable
-    # drawing = ImageDraw.Draw(photo)
-    #
-    # font_color = (200, 200, 200)
-    # font = ImageFont.truetype(font, 40)
-    # drawing.text(
-    #     pos, text,
-    #     fill=font_color,
-    #     font=font
-    # )
-    # photo.show()  # just to show the result picture when you test it
-    # photo.save(output_image_path)
+# photo.thumbnail(IMAGE_SIZE, Image.ANTIALIAS)
+#
+# make the image editable
+# drawing = ImageDraw.Draw(photo)
+#
+# font_color = (200, 200, 200)
+# font = ImageFont.truetype(font, 40)
+# drawing.text(
+#     pos, text,
+#     fill=font_color,
+#     font=font
+# )
+# photo.show()  # just to show the result picture when you test it
+# photo.save(output_image_path)
 #

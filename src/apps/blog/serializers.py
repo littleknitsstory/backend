@@ -8,8 +8,8 @@ class TagsForArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = (
-            'title',
-            'slug',
+            "title",
+            "slug",
         )
 
 
@@ -19,34 +19,34 @@ class ArticleListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = (
-            'title',
-            'slug',
-            'content',
-            'author',
-            'tags',
-            'image_preview',
-            'image_alt',
-            'created_at',
+            "title",
+            "slug",
+            "content",
+            "author",
+            "tags",
+            "image_preview",
+            "image_alt",
+            "created_at",
         )
 
 
 class ArticleRetrieveSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
-    
+
     class Meta:
         model = Article
         fields = (
-            'title',
-            'slug',
-            'content',
-            'is_active',
-            'author',
-            'tags',
-            'image_preview',
-            'image_alt',
-            'title_seo',
-            'meta_keywords',
-            'meta_description',
-            'created_at',
-            'update_at'
+            "title",
+            "slug",
+            "content",
+            "is_active",
+            "author",
+            "tags",
+            "image_preview",
+            "image_alt",
+            "title_seo",
+            "meta_keywords",
+            "meta_description",
+            "created_at",
+            "update_at",
         )

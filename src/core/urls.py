@@ -7,16 +7,15 @@ from graphene_django.views import GraphQLView
 from rest_framework_swagger.views import get_swagger_view
 
 
-schema_view = get_swagger_view(title='Shop API')
+schema_view = get_swagger_view(title="Shop API")
 
 urlpatterns = [
-    path('', include('src.apps.swagger.urls')),
-    path('api/v1/', include('src.apps.api.urls')),
-    path('admin/', admin.site.urls),
-    path('anymail/', include('anymail.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path("", include("src.apps.swagger.urls")),
+    path("api/v1/", include("src.apps.api.urls")),
+    path("admin/", admin.site.urls),
+    path("anymail/", include("anymail.urls")),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
     path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
-
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

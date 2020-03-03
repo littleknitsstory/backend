@@ -8,11 +8,11 @@ from src.core.mixins.mixin import AdminBaseMixin
 
 @admin.register(Slider)
 class SliderAdmin(TranslationAdmin, AdminBaseMixin):
-    list_display = ('title', 'slug', 'is_active')
+    list_display = ("title", "slug", "is_active")
     fieldsets = (
-        (_('Title'), {'fields': ('title', 'sub_title')}),
-        (_('Main'), {'fields': ('slug', 'link', 'ordering', 'image_preview', 'image_alt')}),
-        
+        (_("Title"), {"fields": ("title", "sub_title")}),
+        (
+            _("Main"),
+            {"fields": ("slug", "link", "ordering", "image_preview", "image_alt")},
+        ),
     )
-
-

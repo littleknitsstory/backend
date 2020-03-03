@@ -8,27 +8,52 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Review',
+            name="Review",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image_preview', optimized_image.fields.OptimizedImageField(blank=True, upload_to='', verbose_name='Images')),
-                ('image_alt', models.CharField(blank=True, max_length=255, verbose_name='Images Alt')),
-                ('title', models.CharField(max_length=63, verbose_name='Title')),
-                ('author', models.CharField(max_length=63, verbose_name='Author review')),
-                ('comment', models.CharField(max_length=263, verbose_name='Comment')),
-                ('email', models.EmailField(blank=True, max_length=254, null=True, verbose_name='Email')),
-                ('rating', models.PositiveSmallIntegerField(verbose_name='Rating')),
-                ('is_active', models.BooleanField(default=True, verbose_name='Active')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image_preview",
+                    optimized_image.fields.OptimizedImageField(
+                        blank=True, upload_to="", verbose_name="Images"
+                    ),
+                ),
+                (
+                    "image_alt",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Images Alt"
+                    ),
+                ),
+                ("title", models.CharField(max_length=63, verbose_name="Title")),
+                (
+                    "author",
+                    models.CharField(max_length=63, verbose_name="Author review"),
+                ),
+                ("comment", models.CharField(max_length=263, verbose_name="Comment")),
+                (
+                    "email",
+                    models.EmailField(
+                        blank=True, max_length=254, null=True, verbose_name="Email"
+                    ),
+                ),
+                ("rating", models.PositiveSmallIntegerField(verbose_name="Rating")),
+                ("is_active", models.BooleanField(default=True, verbose_name="Active")),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created at"),
+                ),
             ],
-            options={
-                'verbose_name': 'Review',
-                'verbose_name_plural': 'Reviews',
-            },
+            options={"verbose_name": "Review", "verbose_name_plural": "Reviews",},
         ),
     ]

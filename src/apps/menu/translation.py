@@ -4,4 +4,4 @@ from src.apps.menu.models import MenuItems
 
 @register(MenuItems)
 class MenuTranslationOptions(TranslationOptions):
-    fields = ('name',)
+    fields = ("name",)

@@ -9,12 +9,13 @@ from src.core.mixins.mixin import SeoMixin, ImagesMixin
 
 class Tag(SeoMixin):
     """ Tag model """
-    title = models.CharField(_('Title'), max_length=64)
-    slug = models.SlugField(_('Slug'), max_length=64, unique=True)
+
+    title = models.CharField(_("Title"), max_length=64)
+    slug = models.SlugField(_("Slug"), max_length=64, unique=True)
 
     class Meta:
-        verbose_name = _('Tag')
-        verbose_name_plural = _('Tags')
+        verbose_name = _("Tag")
+        verbose_name_plural = _("Tags")
 
     def __str__(self):
         return self.title
@@ -27,23 +28,21 @@ class Tag(SeoMixin):
 
 class Article(SeoMixin, ImagesMixin):
     """ Article model """
-    title = models.CharField(_('Title'), max_length=64)
-    slug = models.SlugField(_('Slug'), max_length=256, unique=True)
-    content = RichTextUploadingField(_('Content'))
-    is_active = models.BooleanField(_('Active'), default=True)
+
+    title = models.CharField(_("Title"), max_length=64)
+    slug = models.SlugField(_("Slug"), max_length=256, unique=True)
+    content = RichTextUploadingField(_("Content"))
+    is_active = models.BooleanField(_("Active"), default=True)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        related_name='article_user',
+        related_name="article_user",
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        verbose_name=_('Author')
+        verbose_name=_("Author"),
     )
     tags = models.ManyToManyField(
-        Tag,
-        related_name='article_tags',
-        blank=True,
-        verbose_name=_('Tags')
+        Tag, related_name="article_tags", blank=True, verbose_name=_("Tags")
     )
 
     def __str__(self):
@@ -55,6 +54,6 @@ class Article(SeoMixin, ImagesMixin):
         super(Article, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = _('Article')
-        verbose_name_plural = _('Articles')
-        ordering = ('-created_at',)
+        verbose_name = _("Article")
+        verbose_name_plural = _("Articles")
+        ordering = ("-created_at",)

@@ -7,13 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('account', '0001_initial'),
+        ("account", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='is_profile_full',
-            field=models.BooleanField(default=False, verbose_name='Profile full'),
+            model_name="user",
+            name="is_profile_full",
+            field=models.BooleanField(default=False, verbose_name="Profile full"),
         ),
     ]

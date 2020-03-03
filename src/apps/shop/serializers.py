@@ -1,64 +1,68 @@
 from rest_framework import serializers
 
 from src.apps.shop.models.product import ProductPhoto
-from src.apps.shop.models import Product, Category, OrderCartItem, OrderCart, ProductColor
+from src.apps.shop.models import (
+    Product,
+    Category,
+    OrderCartItem,
+    OrderCart,
+    ProductColor,
+)
 
 
 # TODO: убрать
 class ProductSimpleSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Product
         fields = (
-            'title',
-            'slug',
-            'price',
-            'sale',
-            'author',
-            'image_preview',
-            'image_alt',
+            "title",
+            "slug",
+            "price",
+            "sale",
+            "author",
+            "image_preview",
+            "image_alt",
         )
-        
-        
+
+
 class CategoryRetrieveSerializer(serializers.ModelSerializer):
     products = serializers.SerializerMethodField()
-    
+
     class Meta:
         model = Category
         fields = (
-            'title',
-            'slug',
-            'title_seo',
-            'meta_keywords',
-            'meta_description',
-            'products'
-
+            "title",
+            "slug",
+            "title_seo",
+            "meta_keywords",
+            "meta_description",
+            "products",
         )
-        
+
     def get_products(self, obj):
         products = Product.objects.filter(categories=obj, is_active=True)
         return ProductListSerializer(products, many=True).data
-    
+
 
 class CategoryListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = (
-            'title',
-            'slug',
+            "title",
+            "slug",
         )
 
 
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductColor
-        fields = ('color',)
+        fields = ("color",)
 
 
 class ProductPhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductPhoto
-        fields = ('photo', 'photo_alt')
+        fields = ("photo", "photo_alt")
 
 
 class ProductRetrieveSerializer(serializers.ModelSerializer):
@@ -68,31 +72,31 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = (
-            'id',
-            'code',
-            'title',
-            'slug',
-            'description',
-            'price',
-            'sale',
-            'categories',
-            'author',
-            'count',
-            'type_product',
-            'material',
-            'included',
-            'height',
-            'weight',
-            'colors',
+            "id",
+            "code",
+            "title",
+            "slug",
+            "description",
+            "price",
+            "sale",
+            "categories",
+            "author",
+            "count",
+            "type_product",
+            "material",
+            "included",
+            "height",
+            "weight",
+            "colors",
             # ImagesMixin
-            'image_preview',
-            'image_alt',
+            "image_preview",
+            "image_alt",
             # SeoMixin
-            'title_seo',
-            'meta_keywords',
-            'meta_description',
-            'created_at',
-            'update_at'
+            "title_seo",
+            "meta_keywords",
+            "meta_description",
+            "created_at",
+            "update_at",
         )
 
 
@@ -104,25 +108,25 @@ class ProductListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = (
-            'id',
-            'title',
-            'slug',
-            'description',
-            'price',
-            'sale',
-            'colors',
-            'categories',
-            'author',
-            'photo_product',
-            'image_preview',
-            'image_alt',
+            "id",
+            "title",
+            "slug",
+            "description",
+            "price",
+            "sale",
+            "colors",
+            "categories",
+            "author",
+            "photo_product",
+            "image_preview",
+            "image_alt",
         )
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderCartItem
-        fields = ('pk', 'product', 'amount')
+        fields = ("pk", "product", "amount")
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -130,10 +134,16 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OrderCart
-        fields = ('pk', 'products', 'phone', 'address', 'comments',)
+        fields = (
+            "pk",
+            "products",
+            "phone",
+            "address",
+            "comments",
+        )
 
     def create(self, validated_data):
-        products_data = validated_data.pop('products')
+        products_data = validated_data.pop("products")
         order = OrderCart.objects.create(**validated_data)
         for product_data in products_data:
             OrderCartItem.objects.create(**product_data)

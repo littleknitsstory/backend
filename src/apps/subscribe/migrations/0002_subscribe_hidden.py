@@ -6,14 +6,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('subscribe', '0001_initial'),
+        ("subscribe", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='subscribe',
-            name='hidden',
-            field=models.CharField(default='', max_length=200, verbose_name='Hidden'),
+            model_name="subscribe",
+            name="hidden",
+            field=models.CharField(default="", max_length=200, verbose_name="Hidden"),
             preserve_default=False,
         ),
     ]

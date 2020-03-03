@@ -1,16 +1,16 @@
 import telepot
 from decouple import config
 
-bot = telepot.Bot(config('TELEGRAM_BOT_TOKEN'))
-bot_name = 'shop_notificator'
-bot_username = 'shopblog_bot'
+bot = telepot.Bot(config("TELEGRAM_BOT_TOKEN"))
+bot_name = "shop_notificator"
+bot_username = "shopblog_bot"
 
 
 def get_chat_ids():
     chat_ids = set()
     update_data = bot.getUpdates()
     for data in update_data:
-        chat_ids.add(data['message']['chat']['id'])
+        chat_ids.add(data["message"]["chat"]["id"])
 
     return list(chat_ids)
 

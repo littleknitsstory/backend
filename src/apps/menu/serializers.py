@@ -7,9 +7,9 @@ class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
         fields = (
-            'id',
-            'slug',
-            'hint',
+            "id",
+            "slug",
+            "hint",
         )
 
 
@@ -20,12 +20,12 @@ class MenuItemsSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuItems
         fields = (
-            'id',
-            'name',
-            'url',
-            'menu',
-            'target',
-            'parent',
-            'ordering',
-            'is_active'
+            "id",
+            "name",
+            "url",
+            "menu",
+            "target",
+            "parent",
+            "ordering",
+            "is_active",
         )

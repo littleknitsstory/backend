@@ -1,3 +1,1 @@
-GRAPHENE = {
-    'SCHEMA': 'src.core.schema.schema'
-}
+GRAPHENE = {"SCHEMA": "src.core.schema.schema"}

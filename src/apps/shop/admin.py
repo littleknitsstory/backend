@@ -10,50 +10,74 @@ from .models.product import Product, ProductPhoto, ProductColor
 
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin, AdminBaseMixin):
-    list_display = ('title', 'slug', 'meta_description', 'created_at', 'update_at')
+    list_display = ("title", "slug", "meta_description", "created_at", "update_at")
     fieldsets = (
-        (_('Content'), {'fields': ('title',)}),
-        (_('Main'), {'fields': ('slug',)}),
-        (_('SEO'), {'fields': ('title_seo', 'meta_keywords', 'meta_description',)}),
+        (_("Content"), {"fields": ("title",)}),
+        (_("Main"), {"fields": ("slug",)}),
+        (_("SEO"), {"fields": ("title_seo", "meta_keywords", "meta_description",)}),
     )
 
 
 class ProductPhotoInline(admin.TabularInline):
     model = ProductPhoto
-    
-    
+
+
 @admin.register(ProductPhoto)
 class ProductPhotoAdmin(admin.ModelAdmin):
-    list_display = ('photo', 'photo_alt',)
+    list_display = (
+        "photo",
+        "photo_alt",
+    )
 
 
 @admin.register(ProductColor)
 class ProductColorAdmin(admin.ModelAdmin):
-    list_display = ('color',)
+    list_display = ("color",)
 
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin, AdminBaseMixin):
-    inlines = [ProductPhotoInline, ]
+    inlines = [
+        ProductPhotoInline,
+    ]
     group_fieldsets = True
-    list_display = ('code', 'slug', 'is_active', 'update_at')
-    filter_horizontal = ('categories', 'colors')
+    list_display = ("code", "slug", "is_active", "update_at")
+    filter_horizontal = ("categories", "colors")
     fieldsets = (
-        (_('Title'), {'fields': ('title',)}),
-        (_('Main'), {'fields': ('code', 'slug', 'is_active', 'sale', 'price',
-                                'image_preview', 'author', 'categories', 'colors'
-                                )}),
-        (_('Description'), {'fields': ('description',)}),
-        (_('Feature'), {'fields': ('type_product', 'material', 'included', 'height', 'weight')}),
-        (_('SEO'), {'fields': ('title_seo', 'meta_keywords', 'meta_description', 'image_alt')}),
+        (_("Title"), {"fields": ("title",)}),
+        (
+            _("Main"),
+            {
+                "fields": (
+                    "code",
+                    "slug",
+                    "is_active",
+                    "sale",
+                    "price",
+                    "image_preview",
+                    "author",
+                    "categories",
+                    "colors",
+                )
+            },
+        ),
+        (_("Description"), {"fields": ("description",)}),
+        (
+            _("Feature"),
+            {"fields": ("type_product", "material", "included", "height", "weight")},
+        ),
+        (
+            _("SEO"),
+            {"fields": ("title_seo", "meta_keywords", "meta_description", "image_alt")},
+        ),
     )
 
 
 @admin.register(OrderCart)
 class OrderCartAdmin(admin.ModelAdmin):
-    list_display = ('id', 'status', 'created_at')
-    filter_horizontal = ('products',)
+    list_display = ("id", "status", "created_at")
+    filter_horizontal = ("products",)
     fieldsets = (
-        (_('Status'), {'fields': ('status',)}),
-        (_('Info'), {'fields': ('email', 'phone', 'address', 'comments')}),
+        (_("Status"), {"fields": ("status",)}),
+        (_("Info"), {"fields": ("email", "phone", "address", "comments")}),
     )
