@@ -1,3 +1,5 @@
+import os
+
 ROOT_URLCONF = "src.core.urls"
 WSGI_APPLICATION = "src.core.wsgi.application"
 

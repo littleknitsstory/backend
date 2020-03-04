@@ -6,7 +6,6 @@ CONFIG_NAME = config("DJANGO_ENV") or "development"
 
 base_settings = [
     "components/common.py",  # standard django settings
-    "components/debug_toolbar.py",  # django debug toolbar
     "components/database.py",  # postgres
     # 'components/social.py',  # social auth
     "components/emails.py",  # emails

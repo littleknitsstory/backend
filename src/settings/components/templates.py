@@ -1,3 +1,7 @@
+import os
+
+from src.settings.components._path import BASE_DIR
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",

@@ -16,7 +16,6 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_extensions",
     "mptt",
-    "debug_toolbar",
     "social_django",
     "ckeditor",
     "ckeditor_uploader",
