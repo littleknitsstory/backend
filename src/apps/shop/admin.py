@@ -79,6 +79,6 @@ class OrderCartAdmin(admin.ModelAdmin):
     filter_horizontal = ("products",)
     fieldsets = (
         (_("Status"), {"fields": ("status", "update_at", "created_at")}),
-        (_("Info"), {"fields": ("email", "phone", "address", "comments", )}),
-        (_("Products"), {"fields": ("products", )}),
+        (_("Info"), {"fields": ("email", "phone", "address", "comments",)}),
+        (_("Products"), {"fields": ("products",)}),
     )

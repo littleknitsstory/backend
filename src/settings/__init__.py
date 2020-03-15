@@ -1,6 +1,5 @@
 from split_settings.tools import optional, include
 from decouple import config
-import os
 
 CONFIG_NAME = config("DJANGO_ENV") or "development"
 

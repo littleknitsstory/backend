@@ -8,4 +8,13 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ("title", "author", "created_at")
     list_filter = ["created_at", "author"]
     search_fields = ["comment"]
-    fields = ["title", "author", "image_preview", "image_alt", "comment", "email", "rating", "is_active"]
+    fields = [
+        "title",
+        "author",
+        "image_preview",
+        "image_alt",
+        "comment",
+        "email",
+        "rating",
+        "is_active",
+    ]

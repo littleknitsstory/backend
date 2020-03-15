@@ -14,9 +14,9 @@ jobs:
         with:
           python-version: '3.8'
           architecture: 'x64'
-#      - name: Install requirements
-#        run: pip install -r requirements/test.txt
-#      - name: Run tests
-#        run: coverage run src
-#      - name: Tests report
-#        run: coverage report
+      - name: Install requirements
+        run: pip install -r requirements/test.txt
+      - name: Run pytests
+        run: pytest
+      - name: Tests report
+        run: coverage report
