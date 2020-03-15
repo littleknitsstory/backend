@@ -10,21 +10,6 @@ from src.apps.shop.models import (
 )
 
 
-# TODO: убрать
-class ProductSimpleSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Product
-        fields = (
-            "title",
-            "slug",
-            "price",
-            "sale",
-            "author",
-            "image_preview",
-            "image_alt",
-        )
-
-
 class CategoryRetrieveSerializer(serializers.ModelSerializer):
     products = serializers.SerializerMethodField()
 
@@ -68,6 +53,7 @@ class ProductPhotoSerializer(serializers.ModelSerializer):
 class ProductRetrieveSerializer(serializers.ModelSerializer):
     categories = CategoryListSerializer(many=True, read_only=True)
     colors = ColorSerializer(read_only=True, many=True)
+    photo_product = ProductPhotoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Product
@@ -88,6 +74,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
             "height",
             "weight",
             "colors",
+            "photo_product",
             # ImagesMixin
             "image_preview",
             "image_alt",
@@ -103,12 +90,12 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
 class ProductListSerializer(serializers.ModelSerializer):
     categories = CategoryListSerializer(many=True, read_only=True)
     colors = ColorSerializer(read_only=True, many=True)
-    photo_product = ProductPhotoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Product
         fields = (
             "id",
+            "code",
             "title",
             "slug",
             "description",
@@ -117,7 +104,6 @@ class ProductListSerializer(serializers.ModelSerializer):
             "colors",
             "categories",
             "author",
-            "photo_product",
             "image_preview",
             "image_alt",
         )

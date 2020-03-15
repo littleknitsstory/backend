@@ -4,7 +4,7 @@ from .models import Article
 
 
 class ArticleList(ModelViewSet):
-    queryset = Article.objects.filter(is_active=True).prefetch_related("tags")
+    queryset = Article.objects.filter(is_active=True).prefetch_related("tags").order_by("-id")
     http_method_names = ["get"]
     lookup_field = "slug"
 

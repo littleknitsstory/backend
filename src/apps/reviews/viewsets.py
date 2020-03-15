@@ -6,7 +6,7 @@ from src.apps.reviews.serializers import ReviewSerializer
 
 
 class ReviewViewSet(mixins.ListModelMixin, GenericViewSet):
-    queryset = Review.objects.filter(is_active=True)[:5]
+    queryset = Review.objects.filter(is_active=True).order_by("-id")[:2]
     serializer_class = ReviewSerializer
     http_method_names = ["get"]
     pagination_class = None

@@ -75,9 +75,10 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
 
 @admin.register(OrderCart)
 class OrderCartAdmin(admin.ModelAdmin):
-    list_display = ("id", "status", "created_at")
+    list_display = ("id", "status", "update_at", "created_at")
     filter_horizontal = ("products",)
     fieldsets = (
-        (_("Status"), {"fields": ("status",)}),
-        (_("Info"), {"fields": ("email", "phone", "address", "comments")}),
+        (_("Status"), {"fields": ("status", "update_at", "created_at")}),
+        (_("Info"), {"fields": ("email", "phone", "address", "comments", )}),
+        (_("Products"), {"fields": ("products", )}),
     )
