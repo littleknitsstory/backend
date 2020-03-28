@@ -4,13 +4,15 @@ from decouple import config
 CONFIG_NAME = config("DJANGO_ENV") or "development"
 
 base_settings = [
+    "components/_path.py",  # standard django settings
+    "components/apps.py",  # standard django settings
+    "components/cache.py",  # standard django settings
+    "components/ckeditor.py",  # standard django settings
     "components/common.py",  # standard django settings
+    'components/cors.py',  # social auth
     "components/database.py",  # postgres
-    # 'components/social.py',  # social auth
     "components/emails.py",  # emails
     "components/logger.py",  # logging
-    "components/ckeditor.py",  # ckeditor
-    "components/cache.py",  # config django-redis
     "components/*.py",
     # Select the right env:
     "environments/%s.py" % CONFIG_NAME,

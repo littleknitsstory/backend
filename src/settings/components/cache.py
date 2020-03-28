@@ -13,6 +13,7 @@ CACHES = {
 			'CONNECTION_POOL_CLASS_KWARGS': {
 				'max_connections': 50,
 				'timeout': 20,
+				'retry_on_timeout': True
 			},
 			'MAX_CONNECTIONS': 1000,
 			'PICKLE_VERSION': -1,

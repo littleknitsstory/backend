@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from modeltranslation.admin import TranslationAdmin
 from optimized_image.fields import OptimizedImageField
 
 # from src.core.utils.watermark import watermark_text
@@ -53,7 +52,14 @@ class ImagesMixin(models.Model):
         )
         # watermark_text(self.image_preview.path, self.image_preview.path)
 
-
+    def get_image(self) -> str:
+        try:
+            image = self.image_preview.url
+        except ValueError:
+            image = None
+        return image
+    
+    
 class AdminBaseMixin(admin.ModelAdmin):
     """ Abstract model for admin """
 

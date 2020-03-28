@@ -45,15 +45,18 @@ class ColorSerializer(serializers.ModelSerializer):
 
 
 class ProductPhotoSerializer(serializers.ModelSerializer):
+    image_preview = serializers.CharField(source='get_image')
+
     class Meta:
         model = ProductPhoto
-        fields = ("photo", "photo_alt")
+        fields = ("image_preview", "image_alt")
 
 
 class ProductRetrieveSerializer(serializers.ModelSerializer):
     categories = CategoryListSerializer(many=True, read_only=True)
     colors = ColorSerializer(read_only=True, many=True)
     photo_product = ProductPhotoSerializer(many=True, read_only=True)
+    image_preview = serializers.CharField(source='get_image')
 
     class Meta:
         model = Product
@@ -90,6 +93,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
 class ProductListSerializer(serializers.ModelSerializer):
     categories = CategoryListSerializer(many=True, read_only=True)
     colors = ColorSerializer(read_only=True, many=True)
+    image_preview = serializers.CharField(source='get_image')
 
     class Meta:
         model = Product

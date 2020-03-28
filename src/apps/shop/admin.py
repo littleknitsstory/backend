@@ -25,8 +25,8 @@ class ProductPhotoInline(admin.TabularInline):
 @admin.register(ProductPhoto)
 class ProductPhotoAdmin(admin.ModelAdmin):
     list_display = (
-        "photo",
-        "photo_alt",
+        "image_preview",
+        "image_alt",
     )
 
 

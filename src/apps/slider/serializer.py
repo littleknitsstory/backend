@@ -3,6 +3,8 @@ from .models import Slider
 
 
 class SliderSerializer(serializers.ModelSerializer):
+    image_preview = serializers.CharField(source='get_image')
+
     class Meta:
         model = Slider
         fields = (

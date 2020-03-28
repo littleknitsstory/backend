@@ -104,6 +104,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     username = serializers.CharField(read_only=True)
     country = CountryField(required=False)
     email = serializers.CharField(validators=[EmailValidator()], required=False)
+    avatar = serializers.CharField(source='get_avatar_url')
 
     class Meta:
         model = User

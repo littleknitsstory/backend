@@ -78,16 +78,12 @@ class Product(SeoMixin, ImagesMixin):
         super(Product, self).save(*args, **kwargs)
 
 
-class ProductPhoto(models.Model):
+class ProductPhoto(ImagesMixin):
     product = models.ForeignKey(
         "Product",
         verbose_name=_("Product"),
         on_delete=models.CASCADE,
         related_name="photo_product",
-    )
-    photo = OptimizedImageField(verbose_name=_("Image"))
-    photo_alt = models.CharField(
-        verbose_name=_("Description image"), blank=True, max_length=255
     )
 
     class Meta:

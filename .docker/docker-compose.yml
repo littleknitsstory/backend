@@ -3,8 +3,8 @@ version: '3'
 services:
 
   nginx:
-    container_name: phc_lks_dev_nginx
-    image: nginx:1.17.6-alpine
+    container_name: phc_lks_${PROFILE}_nginx
+    image: nginx:1.17.9-alpine
     restart: always
     depends_on:
       - backend
@@ -13,25 +13,26 @@ services:
       - ./media:/media
       - ./nginx.conf.nginx:/etc/nginx/conf.d/default.conf
     ports:
-      - "26363:80"
+      - "${NGINX_PORT}:80"
 
   redis:
-    container_name: phc_lks_dev_redis
-    image: redis:6.0-rc1-alpine
+    container_name: phc_lks_${PROFILE}_redis
+    image: redis:6.0-rc2-alpine
     restart: always
     env_file: .env
+    command: redis-server --requirepass ${PROFILE}
 
   postgresql:
-    container_name: phc_lks_devt_postgres
-    image: postgres:12.1-alpine
+    container_name: phc_lks_${PROFILE}_postgres
+    image: postgres:12.2-alpine
     restart: always
     env_file: .env
     volumes:
       - ./pgdata:/var/lib/postgresql/data
 
   backend:
-    container_name: phc_lks_dev_backend
-    image: 63phc/lks:latest
+    container_name: phc_lks_${PROFILE}_backend
+    image: 63phc/lks:develop
     restart: always
     command: bash -c "
       gunicorn src.core.wsgi:application -w 2 -b 0.0.0.0:8000"
