@@ -1,4 +1,5 @@
 from django.db import models
+from django_extensions.db.fields import AutoSlugField
 from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,7 +9,7 @@ class Menu(models.Model):
     Category menu
     """
 
-    slug = models.CharField(_("Slug"), max_length=100, unique=True)
+    slug = AutoSlugField(_('slug'), populate_from='title')
     hint = models.CharField(_("Hint"), max_length=100)
     is_active = models.BooleanField(_("Active"), default=False)
 

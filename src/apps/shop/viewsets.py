@@ -17,7 +17,6 @@ class ProductViewSet(ModelViewSet):
     queryset = (
         Product.objects.filter(is_active=True)
         .prefetch_related("categories")
-        .order_by("-pk")
     )
     lookup_field = "slug"
     http_method_names = ["get"]

@@ -7,6 +7,6 @@ from .models import Slider
 class SliderAPIViewSet(mixins.ListModelMixin, GenericViewSet):
     """ Slider viewset """
 
-    queryset = Slider.objects.filter(is_active=True).order_by("-id")
+    queryset = Slider.objects.filter(is_active=True)
     serializer_class = SliderSerializer
     pagination_class = None

@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from django.template.defaultfilters import slugify
+from django_extensions.db.fields import AutoSlugField
 from src.core.mixins.mixin import SeoMixin, ImagesMixin
 
 
@@ -11,7 +11,7 @@ class Tag(SeoMixin):
     """ Tag model """
 
     title = models.CharField(_("Title"), max_length=64)
-    slug = models.SlugField(_("Slug"), max_length=64, unique=True)
+    slug = AutoSlugField(_('slug'), populate_from='title')
 
     class Meta:
         verbose_name = _("Tag")
@@ -20,17 +20,12 @@ class Tag(SeoMixin):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        if not self.id and not self.slug:
-            self.slug = slugify(self.title)
-        super(Tag, self).save(*args, **kwargs)
-
 
 class Article(SeoMixin, ImagesMixin):
     """ Article model """
 
     title = models.CharField(_("Title"), max_length=64)
-    slug = models.SlugField(_("Slug"), max_length=256, unique=True)
+    slug = AutoSlugField(_('slug'), populate_from='title')
     content = RichTextUploadingField(_("Content"))
     is_active = models.BooleanField(_("Active"), default=True)
     author = models.ForeignKey(
@@ -47,11 +42,6 @@ class Article(SeoMixin, ImagesMixin):
 
     def __str__(self):
         return self.title
-
-    def save(self, *args, **kwargs):
-        if not self.id and not self.slug:
-            self.slug = slugify(self.title)
-        super(Article, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("Article")

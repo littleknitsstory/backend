@@ -4,6 +4,9 @@ REDIS_HOST = config('REDIS_HOST')
 REDIS_PORT = config('REDIS_PORT')
 REDIS_PASSWORD = config('REDIS_PASSWORD')
 
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
 CACHES = {
 	"default": {
 		"BACKEND": "django_redis.cache.RedisCache",

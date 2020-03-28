@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django_extensions.db.fields import ShortUUIDField
 
 from src.apps.shop.choices import OrderCartStatusChoices
 
 
 class OrderCart(models.Model):
+    order_number = ShortUUIDField(_("Number order"), null=True)
     products = models.ManyToManyField(
         "OrderCartItem", verbose_name=_("Products"), related_name="ordercart_products"
     )

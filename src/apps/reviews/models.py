@@ -16,6 +16,7 @@ class Review(ImagesMixin):
     class Meta:
         verbose_name = _("Review")
         verbose_name_plural = _("Reviews")
+        ordering = ("-created_at",)
 
     def __str__(self):
         return self.author

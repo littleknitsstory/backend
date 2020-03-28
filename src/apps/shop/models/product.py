@@ -2,10 +2,11 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django_extensions.db.fields import AutoSlugField
+from django_extensions.db.models import TitleSlugDescriptionModel
 from djmoney.models.fields import MoneyField
 
 from colorful.fields import RGBColorField
-from optimized_image.fields import OptimizedImageField
 from ckeditor.fields import RichTextField
 
 from src.core.mixins.mixin import SeoMixin, ImagesMixin
@@ -13,8 +14,8 @@ from src.core.mixins.mixin import SeoMixin, ImagesMixin
 
 class Product(SeoMixin, ImagesMixin):
     title = models.CharField(_("Title"), max_length=120)
-    code = models.IntegerField(verbose_name="Code product")
-    slug = models.CharField(_("Slug"), max_length=120, unique=True)
+    code = models.IntegerField(verbose_name=_("Code product"))
+    slug = AutoSlugField(_('slug'), populate_from='title')
     is_active = models.BooleanField(_("Active"), default=True)
     description = RichTextField(_("Description"))
     price = MoneyField(
@@ -23,7 +24,7 @@ class Product(SeoMixin, ImagesMixin):
         blank=True,
         max_digits=14,
         decimal_places=2,
-        default_currency="RU",
+        default_currency="RUB",
     )
     sale = MoneyField(
         _("Sale"),
@@ -31,7 +32,7 @@ class Product(SeoMixin, ImagesMixin):
         blank=True,
         max_digits=14,
         decimal_places=2,
-        default_currency="RU",
+        default_currency="RUB",
     )
     count = models.IntegerField(verbose_name=_("Count"), blank=True, default=1)
     type_product = models.CharField(
@@ -64,6 +65,7 @@ class Product(SeoMixin, ImagesMixin):
     class Meta:
         verbose_name = _("Product")
         verbose_name_plural = _("Products")
+        ordering = ("-created_at",)
 
     def __str__(self):
         return self.title
@@ -71,11 +73,6 @@ class Product(SeoMixin, ImagesMixin):
     @property
     def get_price(self):
         return self.price
-
-    def save(self, *args, **kwargs):
-        if not self.id and not self.slug:
-            self.slug = slugify(self.title)
-        super(Product, self).save(*args, **kwargs)
 
 
 class ProductPhoto(ImagesMixin):

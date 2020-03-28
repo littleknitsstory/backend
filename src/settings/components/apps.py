@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     "ckeditor_uploader",
     "optimized_image",
     "djmoney",
+    'djmoney.contrib.exchange',
     "colorful",
     # Django Rest Framework
     "rest_framework",
