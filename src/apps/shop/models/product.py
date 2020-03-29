@@ -1,13 +1,13 @@
 from django.db import models
-from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django_extensions.db.fields import AutoSlugField
-from django_extensions.db.models import TitleSlugDescriptionModel
+from djmoney.contrib.exchange.models import convert_money
 from djmoney.models.fields import MoneyField
 
 from colorful.fields import RGBColorField
 from ckeditor.fields import RichTextField
+from modeltranslation.utils import get_language
 
 from src.core.mixins.mixin import SeoMixin, ImagesMixin
 
@@ -70,9 +70,14 @@ class Product(SeoMixin, ImagesMixin):
     def __str__(self):
         return self.title
 
-    @property
     def get_price(self):
-        return self.price
+        return convert_money(self.price, settings.LANG_EXCHANGE.get(get_language()))
+
+    def get_sale(self):
+        return convert_money(self.sale, settings.LANG_EXCHANGE.get(get_language()))
+
+    def get_currency(self):
+        return settings.LANG_EXCHANGE.get(get_language())
 
 
 class ProductPhoto(ImagesMixin):
