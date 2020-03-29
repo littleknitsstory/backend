@@ -71,13 +71,12 @@ class Product(SeoMixin, ImagesMixin):
         return self.title
 
     def get_price(self):
-        return convert_money(self.price, settings.LANG_EXCHANGE.get(get_language()))
+        if self.price:
+            return convert_money(self.price, settings.LANG_EXCHANGE.get(get_language()))
 
     def get_sale(self):
-        return convert_money(self.sale, settings.LANG_EXCHANGE.get(get_language()))
-
-    def get_currency(self):
-        return settings.LANG_EXCHANGE.get(get_language())
+        if self.sale:
+            return convert_money(self.sale, settings.LANG_EXCHANGE.get(get_language()))
 
 
 class ProductPhoto(ImagesMixin):
