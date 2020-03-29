@@ -9,7 +9,7 @@ class Menu(models.Model):
     Category menu
     """
 
-    slug = AutoSlugField(_('slug'), populate_from='title')
+    slug = AutoSlugField(_('slug'), populate_from='title', editable=True)
     hint = models.CharField(_("Hint"), max_length=100)
     is_active = models.BooleanField(_("Active"), default=False)
 

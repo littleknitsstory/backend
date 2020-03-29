@@ -7,7 +7,7 @@ from src.core.mixins.mixin import SeoMixin
 
 class Category(SeoMixin):
     title = models.CharField(_("Title"), max_length=120)
-    slug = AutoSlugField(_('slug'), populate_from='title')
+    slug = AutoSlugField(_('slug'), populate_from='title', editable=True)
 
     class Meta:
         verbose_name = _("Category")
