@@ -2,10 +2,10 @@ import os
 
 from src.settings.components._path import BASE_DIR
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "social_django.context_processors.backends",
-    "social_django.context_processors.login_redirect",
-)
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     "social_django.context_processors.backends",
+#     "social_django.context_processors.login_redirect",
+# )
 
 TEMPLATES = [
     {
@@ -19,8 +19,8 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.i18n",
-                "social_django.context_processors.backends",
-                "social_django.context_processors.login_redirect",
+                # "social_django.context_processors.backends",
+                # "social_django.context_processors.login_redirect",
             ],
         },
     },

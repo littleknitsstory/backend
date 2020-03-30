@@ -11,9 +11,9 @@ INSTALLED_APPS = [
     # 'django.contrib.sites',
     # Plugins
     # Auth2
-    "oauth2_provider",
-    "social_django",
-    "rest_framework_social_oauth2",
+    # "oauth2_provider",
+    # "social_django",
+    # "rest_framework_social_oauth2",
     "graphene_django",
     "corsheaders",
     "django_extensions",
