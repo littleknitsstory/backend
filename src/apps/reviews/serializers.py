@@ -4,7 +4,7 @@ from src.apps.reviews.models import Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    image_preview = serializers.CharField(source='get_image')
+    image_preview = serializers.CharField(source="get_image")
 
     class Meta:
         model = Review

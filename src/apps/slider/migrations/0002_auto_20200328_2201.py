@@ -7,17 +7,23 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('slider', '0001_initial'),
+        ("slider", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='slider',
-            options={'ordering': ('ordering',), 'verbose_name': 'Slider', 'verbose_name_plural': 'Sliders'},
+            name="slider",
+            options={
+                "ordering": ("ordering",),
+                "verbose_name": "Slider",
+                "verbose_name_plural": "Sliders",
+            },
         ),
         migrations.AlterField(
-            model_name='slider',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='title', verbose_name='slug'),
+            model_name="slider",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from="title", verbose_name="slug"
+            ),
         ),
     ]

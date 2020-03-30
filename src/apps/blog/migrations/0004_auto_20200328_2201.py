@@ -7,18 +7,22 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0003_del_slug'),
+        ("blog", "0003_del_slug"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='article',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='title', verbose_name='slug'),
+            model_name="article",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from="title", verbose_name="slug"
+            ),
         ),
         migrations.AlterField(
-            model_name='tag',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='title', verbose_name='slug'),
+            model_name="tag",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from="title", verbose_name="slug"
+            ),
         ),
     ]

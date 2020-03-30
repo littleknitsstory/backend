@@ -7,26 +7,24 @@ import optimized_image.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shop', '0006_add_update_at_order'),
+        ("shop", "0006_add_update_at_order"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='productphoto',
-            name='photo',
-        ),
-        migrations.RemoveField(
-            model_name='productphoto',
-            name='photo_alt',
+        migrations.RemoveField(model_name="productphoto", name="photo",),
+        migrations.RemoveField(model_name="productphoto", name="photo_alt",),
+        migrations.AddField(
+            model_name="productphoto",
+            name="image_alt",
+            field=models.CharField(
+                blank=True, max_length=255, verbose_name="Images Alt"
+            ),
         ),
         migrations.AddField(
-            model_name='productphoto',
-            name='image_alt',
-            field=models.CharField(blank=True, max_length=255, verbose_name='Images Alt'),
-        ),
-        migrations.AddField(
-            model_name='productphoto',
-            name='image_preview',
-            field=optimized_image.fields.OptimizedImageField(blank=True, upload_to='', verbose_name='Images'),
+            model_name="productphoto",
+            name="image_preview",
+            field=optimized_image.fields.OptimizedImageField(
+                blank=True, upload_to="", verbose_name="Images"
+            ),
         ),
     ]

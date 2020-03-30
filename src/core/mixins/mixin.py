@@ -58,8 +58,8 @@ class ImagesMixin(models.Model):
         except ValueError:
             image = None
         return image
-    
-    
+
+
 class AdminBaseMixin(admin.ModelAdmin):
     """ Abstract model for admin """
 

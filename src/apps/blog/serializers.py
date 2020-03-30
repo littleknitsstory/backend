@@ -15,7 +15,7 @@ class TagsForArticleSerializer(serializers.ModelSerializer):
 
 class ArticleListSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
-    image_preview = serializers.CharField(source='get_image')
+    image_preview = serializers.CharField(source="get_image")
 
     class Meta:
         model = Article
@@ -33,7 +33,7 @@ class ArticleListSerializer(serializers.ModelSerializer):
 
 class ArticleRetrieveSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
-    image_preview = serializers.CharField(source='get_image')
+    image_preview = serializers.CharField(source="get_image")
 
     class Meta:
         model = Article

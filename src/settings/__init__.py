@@ -9,7 +9,7 @@ base_settings = [
     "components/cache.py",  # standard django settings
     "components/ckeditor.py",  # standard django settings
     "components/common.py",  # standard django settings
-    'components/cors.py',  # social auth
+    "components/cors.py",  # social auth
     "components/database.py",  # postgres
     "components/emails.py",  # emails
     "components/logger.py",  # logging

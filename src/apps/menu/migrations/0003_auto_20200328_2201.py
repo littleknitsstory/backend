@@ -7,13 +7,15 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('menu', '0002_auto_20200105_1106'),
+        ("menu", "0002_auto_20200105_1106"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='menu',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='title', verbose_name='slug'),
+            model_name="menu",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from="title", verbose_name="slug"
+            ),
         ),
     ]

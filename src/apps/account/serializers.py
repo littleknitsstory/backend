@@ -66,7 +66,7 @@ class SignUpSerializer(serializers.Serializer):
             "email",
             "password",
         )
-    
+
     # TODO: чето решить с username=email.lower()
     def create(self, validated_data):
         email = validated_data["email"]
@@ -105,7 +105,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     username = serializers.CharField(read_only=True)
     country = CountryField(required=False)
     email = serializers.CharField(validators=[EmailValidator()], required=False)
-    avatar = serializers.CharField(source='get_avatar_url')
+    avatar = serializers.CharField(source="get_avatar_url")
 
     class Meta:
         model = User

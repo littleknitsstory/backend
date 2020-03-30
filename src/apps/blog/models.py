@@ -11,7 +11,7 @@ class Tag(SeoMixin):
     """ Tag model """
 
     title = models.CharField(_("Title"), max_length=64)
-    slug = AutoSlugField(_('slug'), populate_from='title', editable=True)
+    slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
 
     class Meta:
         verbose_name = _("Tag")
@@ -25,7 +25,7 @@ class Article(SeoMixin, ImagesMixin):
     """ Article model """
 
     title = models.CharField(_("Title"), max_length=64)
-    slug = AutoSlugField(_('slug'), populate_from='title', editable=True)
+    slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
     content = RichTextUploadingField(_("Content"))
     is_active = models.BooleanField(_("Active"), default=True)
     author = models.ForeignKey(

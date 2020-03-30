@@ -10,16 +10,19 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     # 'django.contrib.sites',
     # Plugins
+    # Auth2
+    "oauth2_provider",
+    "social_django",
+    "rest_framework_social_oauth2",
     "graphene_django",
     "corsheaders",
     "django_extensions",
     "mptt",
-    "social_django",
     "ckeditor",
     "ckeditor_uploader",
     "optimized_image",
     "djmoney",
-    'djmoney.contrib.exchange',
+    "djmoney.contrib.exchange",
     "colorful",
     # Django Rest Framework
     "rest_framework",

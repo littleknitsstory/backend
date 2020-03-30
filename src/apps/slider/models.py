@@ -9,7 +9,7 @@ class Slider(ImagesMixin):
     """ Slider model """
 
     title = models.CharField(_("Title"), max_length=120)
-    slug = AutoSlugField(_('slug'), populate_from='title', editable=True)
+    slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
     sub_title = models.CharField(_("Sub Title"), max_length=120, blank=True)
     is_active = models.BooleanField(_("Active"), default=True)
     ordering = models.IntegerField(_("Ordering"))
@@ -18,7 +18,7 @@ class Slider(ImagesMixin):
     class Meta:
         verbose_name = _("Slider")
         verbose_name_plural = _("Sliders")
-        ordering = ('ordering', )
+        ordering = ("ordering",)
 
     def __str__(self):
         return self.title

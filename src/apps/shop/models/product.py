@@ -15,7 +15,7 @@ from src.core.mixins.mixin import SeoMixin, ImagesMixin
 class Product(SeoMixin, ImagesMixin):
     title = models.CharField(_("Title"), max_length=120)
     code = models.IntegerField(verbose_name=_("Code product"))
-    slug = AutoSlugField(_('slug'), populate_from='title', editable=True)
+    slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
     is_active = models.BooleanField(_("Active"), default=True)
     description = RichTextField(_("Description"))
     price = MoneyField(
