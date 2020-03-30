@@ -1,7 +1,7 @@
 from split_settings.tools import optional, include
 from decouple import config
 
-CONFIG_NAME = config("DJANGO_ENV") or "development"
+CONFIG_NAME = config("DJANGO_ENV", "test") or "development"
 
 base_settings = [
     "components/_path.py",  # standard django settings

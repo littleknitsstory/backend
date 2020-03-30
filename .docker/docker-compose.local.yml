@@ -24,17 +24,16 @@ services:
     ports:
       - "6379:6379"
     env_file: .env
-    command: redis-server --requirepass ${REDIS_PASSWORD}
+#    command: redis-server --requirepass ${REDIS_PASSWORD}
 
 
-#  redis-commander:
-#    image: rediscommander/redis-commander:latest
-#    environment:
-#      - REDIS_HOSTS=local:redis:6379:0:${REDIS_PASSWORD}
-#      - HTTP_USER=root
-#      - HTTP_PASSWORD=qwerty
-#      - REDIS_PASSWORD=${REDIS_PASSWORD}
-#    ports:
-#      - 8081:8081
-#    depends_on:
-#      - redis
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+      - HTTP_USER=root
+      - HTTP_PASSWORD=qwerty
+    ports:
+      - 8081:8081
+    depends_on:
+      - redis

@@ -66,7 +66,8 @@ class SignUpSerializer(serializers.Serializer):
             "email",
             "password",
         )
-
+    
+    # TODO: чето решить с username=email.lower()
     def create(self, validated_data):
         email = validated_data["email"]
         password = validated_data["password"]

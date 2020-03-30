@@ -34,6 +34,9 @@ class User(AbstractUser):
     inst_profile = JSONField(_("Instagram profile"), blank=True, null=True)
     tg_profile = JSONField(_("Telegram profile"), blank=True, null=True)
 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+    
     objects = UserManager()
 
     def __str__(self):
