@@ -10,6 +10,7 @@ from src.apps.account.choices import AccountTypeChoices
 
 
 class User(AbstractUser):
+    email = models.EmailField(_('email address'), blank=True, unique=True)
 
     account_type = models.CharField(
         _("Type user"), choices=AccountTypeChoices.USER_CHOICES, max_length=63
