@@ -43,3 +43,30 @@ services:
     depends_on:
       - postgresql
       - redis
+
+  celery:
+    container_name: phc_lks_${PROFILE}_backend
+    image: 63phc/lks:develop
+    restart: always
+    command: bash -c "
+      celery -A src.core.celery worker --loglevel=info"
+    volumes:
+      - ./static:/app/static
+      - ./media:/app/media
+    env_file: .env
+    depends_on:
+      - postgresql
+      - redis
+
+#  flower:
+#    image: mher/flower
+#    command: ["--app src.celery",
+#              "--broker=redis://redis:6379/2",
+#              "--port=${FLOWER_PORT}",
+#              "--basic_auth=${FLOWER_USER}:${FLOWER_PASSWORD}"]
+#    depends_on:
+#      - redis
+#    ports:
+#      - "${FLOWER_PORT}:${FLOWER_PORT}"
+#    networks:
+#      - backend

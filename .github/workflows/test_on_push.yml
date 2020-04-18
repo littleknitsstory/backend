@@ -18,5 +18,5 @@ jobs:
         run: pip install -r requirements/test.txt
       - name: Run pytests
         run: pytest
-      - name: Tests report
-        run: coverage report
+#      - name: Tests report
+#        run: coverage report
