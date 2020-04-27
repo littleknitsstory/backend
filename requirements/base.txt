@@ -47,4 +47,4 @@ django-registration==3.1
 sendgrid==6.2.2
 django-grappelli==2.14.1
 django-redis==4.11.0
-drf-yasg==1.17.0
+drf-yasg==1.17.1
