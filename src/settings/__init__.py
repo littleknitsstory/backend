@@ -4,7 +4,7 @@ from decouple import config
 CONFIG_NAME = config("DJANGO_ENV", "test") or "development"
 
 base_settings = [
-    "components/_path.py",  # standard django settings
+    "components/_paths.py",  # standard django settings
     "components/apps.py",  # standard django settings
     "components/cache.py",  # standard django settings
     "components/ckeditor.py",  # standard django settings
