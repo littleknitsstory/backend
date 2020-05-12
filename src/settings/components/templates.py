@@ -1,6 +1,6 @@
 import os
 
-from src.settings.components._path import BASE_DIR
+from src.settings.components._paths import BASE_DIR
 
 # TEMPLATE_CONTEXT_PROCESSORS = (
 #     "social_django.context_processors.backends",
