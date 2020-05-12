@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageFont
+# from PIL import Image, ImageDraw, ImageFont
 
 # from settings.components.watermark import WATERMARK_TEXT, \
 #     WATERMARK_POSITION, IMAGE_SIZE, WATERMARK_FONT

@@ -77,6 +77,7 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
 class OrderCartAdmin(admin.ModelAdmin):
     list_display = ("id", "status", "update_at", "created_at")
     filter_horizontal = ("products",)
+    readonly_fields = ("update_at", "created_at")
     fieldsets = (
         (_("Status"), {"fields": ("status", "update_at", "created_at")}),
         (_("Info"), {"fields": ("email", "phone", "address", "comments",)}),
