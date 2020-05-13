@@ -1,6 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationTabularInline, TranslationAdmin
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from src.apps.blog.models import Article, Tag
 from src.core.mixins.mixin import AdminBaseMixin

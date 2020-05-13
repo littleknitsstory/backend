@@ -1,7 +1,8 @@
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE.md)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
-
+[![develop](https://github.com/63phc/lks/workflows/develop/badge.svg?branch=develop)](https://github.com/63phc/lks)
+[![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks)
 ### Project Descriptions
  This is project, blog and shop with the most modern technologies, also for testing new versions of python and django
 
@@ -14,17 +15,22 @@
 [Read here](docs/README.md)
 
 ### Project Structure
-    services:
-        login         - 
-        store         -
+    applications:
+        account       - 
+        api           - 
+        blog          - 
+          comments    - remark
+        contacts      - 
+        menu          - 
+        reviews       - 
+        shop          -
           order       -
           bucket      -
           delivery    -
-        blogs         - 
-          comments    - remark
-
+        slider        - 
+        subscribe     - 
+    # not realized
         dashboard     - 
-        contact       - 
         notification  - 
         
 
@@ -33,18 +39,16 @@
 ### Project Versions 
 
 backend (fresh versions):
-* Python 3.7.4 ([docs](https://www.python.org/doc/))
-* Django 3.0.2 ([docs](https://docs.djangoproject.com/en/3.0/))
-* DRF 3.9.4 ([docs](https://www.django-rest-framework.org))
-* redis 6.0-rc1 ([hub.docker](https://hub.docker.com/_/redis/))
-* PostgreSQL 11.1 ([hub.docker](https://hub.docker.com/_/postgres/))
-* Celery 4.3 ([docs](http://www.celeryproject.org/))
+* Python ([docs](https://www.python.org/doc/))
+* Django ([docs](https://docs.djangoproject.com/en/3.0/))
+* DRF ([docs](https://www.django-rest-framework.org))
+* Celery ([docs](http://www.celeryproject.org/))
 * Swagger ([docs](https://swagger.io/docs/specification/about/))
+* redis ([hub.docker](https://hub.docker.com/_/redis/))
+* PostgreSQL ([hub.docker](https://hub.docker.com/_/postgres/))
+* nginx ([hub.docker](https://hub.docker.com/_/nginx/))
+* postgres ([hub.docker](https://hub.docker.com/_/postgres/))
+* Docker
+* Docker compose
 
-frontend: [REPO](https://github.com/63phc/lks_frontend)
-
-other:
-* Docker 19.03.2
-* Docker compose 1.24.1
-* nginx 1.17.6 ([hub.docker](https://hub.docker.com/_/nginx/))
-* postgres 12.1 ([hub.docker](https://hub.docker.com/_/postgres/))
+frontend: [REPO](https://github.com/63phc/lks-frontend-vue)
