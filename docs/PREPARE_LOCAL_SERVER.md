@@ -20,7 +20,7 @@ docker-compose -f docker/docker-compose.dev.yml up
 * only postgres
 
 ```
-docker-compose -f docker/docker-compose.dev.yml up postgresql
+docker-compose -f docker/docker-compose.local.yml up postgresql
 # in .env:6
 POSTGRES_HOST=localhost
 # AND GO Local setup
@@ -68,10 +68,8 @@ SECRET_KEY=YOUR_SECRET_KEY
 # inside backend
 python manage.py makemigration
 python manage.py migrate
-python manage.py migrate --run-syncdb
 python manage.py createsuperuser
-python manage.py loaddata _backups/*.json
-```
+python manage.py loaddata src/fixtures/*.json```
 
 ### Running
  - Run developer server:
@@ -79,11 +77,4 @@ python manage.py loaddata _backups/*.json
 ```
 # inside backend
 python manage.py runserver
-```
-
-
-#### OLD frontend
-```
-# inside frontend
-yarn && yarn run start
 ```

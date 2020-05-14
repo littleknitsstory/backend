@@ -1,7 +1,8 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django_extensions.db.fields import AutoSlugField
+from djmoney.contrib.exchange.exceptions import MissingRate
 from djmoney.contrib.exchange.models import convert_money
 from djmoney.models.fields import MoneyField
 
@@ -69,14 +70,21 @@ class Product(SeoMixin, ImagesMixin):
 
     def __str__(self):
         return self.title
-
+    
+    # FIXME rewrite get_price and get_sale
     def get_price(self):
         if self.price:
-            return convert_money(self.price, settings.LANG_EXCHANGE.get(get_language()))
+            try:
+                return convert_money(self.price, settings.LANG_EXCHANGE.get(get_language()))
+            except MissingRate as e:
+                pass
 
     def get_sale(self):
         if self.sale:
-            return convert_money(self.sale, settings.LANG_EXCHANGE.get(get_language()))
+            try:
+                return convert_money(self.sale, settings.LANG_EXCHANGE.get(get_language()))
+            except MissingRate as e:
+                pass
 
 
 class ProductPhoto(ImagesMixin):

@@ -3,7 +3,7 @@ from django.contrib.postgres.fields import JSONField
 from django_countries.fields import CountryField
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from optimized_image.fields import OptimizedImageField
 
 from src.apps.account.choices import AccountTypeChoices
