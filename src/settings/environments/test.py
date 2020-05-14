@@ -9,8 +9,7 @@ logging.disable(logging.WARNING)
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 include(
-    f'{SETTINGS_PATH}/components/_paths.py',
-    f'{SETTINGS_PATH}/components/*.py'
+    f'{SETTINGS_PATH}/components/*.py',
 )
 
 PROFILE = 'test'
@@ -22,6 +21,14 @@ DATABASES = {
         'TEST': {}
     }
 }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/django_cache',
+    }
+}
+
 
 # # Use in-memory file storage
 # DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'

@@ -4,7 +4,6 @@ from django.core.management import call_command
 
 @pytest.fixture(scope='session')
 def django_db_setup(django_db_setup, django_db_blocker):
-    print('ran call_command')
     with django_db_blocker.unblock():
         call_command('loaddata', 'src/fixtures/account.json')
         call_command('loaddata', 'src/fixtures/shop.json')
@@ -13,9 +12,7 @@ def django_db_setup(django_db_setup, django_db_blocker):
 @pytest.mark.django_db
 @pytest.mark.urls('apps.shop.urls')
 def test_something(client):
-    print('heelllooo')
-    # print(dir(client.get('/products/')))
-    # print(client.get('/products/').content)
-    # print(client)
-    # print(client.get('/products/').status_code)
-    # assert 'Success!' in client.get('/order/').content
+    print(dir(client.get('/products/')))
+    print(client)
+    print(client.get('/products/').json())
+    print(client.get('/products/').status_code)
