@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.9.0a6-alpine3.11
 ENV PYTHONUNBUFFERED 1
 ARG DEV=dev
 

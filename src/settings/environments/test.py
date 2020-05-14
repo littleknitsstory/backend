@@ -29,6 +29,7 @@ CACHES = {
     }
 }
 
+SIMPLE_JWT = {}
 
 # # Use in-memory file storage
 # DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'
