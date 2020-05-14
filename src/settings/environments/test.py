@@ -1,6 +1,11 @@
+import sys
 import os
-
 from split_settings.tools import include
+# Disable logging
+import logging
+logging.disable(logging.CRITICAL)
+logging.disable(logging.WARNING)
+
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 include(
@@ -9,17 +14,43 @@ include(
 )
 
 PROFILE = 'test'
-
-from decouple import config
-
 SECRET_KEY = 'test_SECRET_KEY_1234'
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": config("POSTGRES_DB", "POSTGRES_DB"),
-        "USER": config("POSTGRES_USER", "POSTGRES_USER"),
-        "PASSWORD": config("POSTGRES_PASSWORD", "POSTGRES_PASSWORD"),
-        "HOST": config("POSTGRES_HOST", "postgresql"),
-        "PORT": config("POSTGRES_PORT", 5432),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
+        'TEST': {}
     }
 }
+
+# # Use in-memory file storage
+# DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'
+
+# Speed!
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher',
+)
+
+
+# Fake out migrations to speed up tests
+class DisableMigrations(object):
+    
+    def __contains__(self, item):
+        return True
+    
+    def __getitem__(self, item):
+        return None
+    
+    
+MIGRATION_MODULES = DisableMigrations()
+
+
+if not 'create-db' in sys.argv:
+    # and this allows you to use --reuse-db to skip re-creating the db,
+    # even faster!
+    #
+    # To create the RAMDisk, use bash:
+    # $ hdiutil attach -nomount ram://$((2 * 1024 * SIZE_IN_MB))
+    # /dev/disk2
+    # $ diskutil eraseVolume HFS+ RAMDisk /dev/disk2
+    DATABASES['default']['TEST']['NAME'] = f'{SETTINGS_PATH}/test.db.sqlite3'

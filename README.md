@@ -25,7 +25,7 @@
         reviews       - 
         shop          -
           order       -
-          bucket      -
+          product     -
           delivery    -
         slider        - 
         subscribe     - 
