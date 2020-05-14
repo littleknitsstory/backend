@@ -8,7 +8,7 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": True,
     "ALGORITHM": "HS256",
-    "SIGNING_KEY": settings.SECRET_KEY,
+    "SIGNING_KEY": settings.SECRET_KEY or "SECRET_KEY_for_tests",
     "VERIFYING_KEY": None,
     "AUDIENCE": None,
     "ISSUER": None,
