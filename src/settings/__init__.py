@@ -2,6 +2,7 @@ from split_settings.tools import optional, include
 from decouple import config
 
 CONFIG_NAME = config("DJANGO_ENV", "test") or "development"
+print(CONFIG_NAME)
 
 base_settings = [
     "components/_paths.py",  # standard django settings
@@ -15,9 +16,7 @@ base_settings = [
     "components/logger.py",  # logging
     "components/*.py",
     # Select the right env:
-    "environments/%s.py" % CONFIG_NAME,
-    # Optionally override some settings:
-    optional("environments/local.py"),
+    f"environments/{CONFIG_NAME}.py",
 ]
 
 # Include settings:
