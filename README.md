@@ -1,5 +1,5 @@
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
-[![develop](https://github.com/63phc/lks/workflows/develop/badge.svg?branch=develop)](https://github.com/63phc/lks)
+[![develop](https://github.com/63phc/lks/workflows/develop/badge.svg?branch=develop)](https://github.com/63phc/lks/actions?query=workflow%3Adevelop)
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)

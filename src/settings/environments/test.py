@@ -4,12 +4,30 @@ from split_settings.tools import include
 # Disable logging
 import logging
 logging.disable(logging.CRITICAL)
-logging.disable(logging.WARNING)
 
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 include(
-    f'{SETTINGS_PATH}/components/*.py',
+    f'{SETTINGS_PATH}/components/_paths.py',
+    f'{SETTINGS_PATH}/components/apps.py',
+    f'{SETTINGS_PATH}/components/cache.py',
+    f'{SETTINGS_PATH}/components/celery.py',
+    f'{SETTINGS_PATH}/components/ckeditor.py',
+    f'{SETTINGS_PATH}/components/common.py',
+    f'{SETTINGS_PATH}/components/cors.py',
+    f'{SETTINGS_PATH}/components/djmoney.py',
+    f'{SETTINGS_PATH}/components/emails.py',
+    f'{SETTINGS_PATH}/components/geoip.py',
+    f'{SETTINGS_PATH}/components/graphene.py',
+    f'{SETTINGS_PATH}/components/i18n.py',
+    f'{SETTINGS_PATH}/components/logger.py',
+    f'{SETTINGS_PATH}/components/middleware.py',
+    f'{SETTINGS_PATH}/components/rest.py',
+    f'{SETTINGS_PATH}/components/sentry.py',
+    f'{SETTINGS_PATH}/components/simple_jwt.py',
+    f'{SETTINGS_PATH}/components/social.py',
+    f'{SETTINGS_PATH}/components/templates.py',
+    f'{SETTINGS_PATH}/components/watermark.py',
 )
 
 PROFILE = 'test'
@@ -28,8 +46,6 @@ CACHES = {
         'LOCATION': '/var/tmp/django_cache',
     }
 }
-
-SIMPLE_JWT = {}
 
 # # Use in-memory file storage
 # DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'
