@@ -3,8 +3,6 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
-[![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/LICENCE)
-[![GitHub](https://badgen.net/badge/django/3.0.6/blue)](https://github.com/63phc/lks/LICENCE)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
 ### Project Descriptions
  This is project, blog and shop with the most modern technologies, also for testing new versions of python and django
@@ -38,6 +36,8 @@
         
 
 ### Project Technology
+[![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/LICENCE)
+[![GitHub](https://badgen.net/badge/django/3.0.6/blue)](https://github.com/63phc/lks/LICENCE)
 
 * Python ([docs](https://www.python.org/doc/))
 * Django ([docs](https://docs.djangoproject.com/en/3.0/))
