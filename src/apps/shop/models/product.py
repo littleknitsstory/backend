@@ -70,19 +70,23 @@ class Product(SeoMixin, ImagesMixin):
 
     def __str__(self):
         return self.title
-    
+
     # FIXME rewrite get_price and get_sale
     def get_price(self):
         if self.price:
             try:
-                return convert_money(self.price, settings.LANG_EXCHANGE.get(get_language()))
+                return convert_money(
+                    self.price, settings.LANG_EXCHANGE.get(get_language())
+                )
             except MissingRate as e:
                 pass
 
     def get_sale(self):
         if self.sale:
             try:
-                return convert_money(self.sale, settings.LANG_EXCHANGE.get(get_language()))
+                return convert_money(
+                    self.sale, settings.LANG_EXCHANGE.get(get_language())
+                )
             except MissingRate as e:
                 pass
 
