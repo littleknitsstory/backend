@@ -1,6 +1,5 @@
 from datetime import timedelta
-
-from django.conf import settings
+from decouple import config
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
@@ -8,7 +7,7 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": True,
     "ALGORITHM": "HS256",
-    "SIGNING_KEY": settings.SECRET_KEY or "SECRET_KEY_for_tests",
+    "SIGNING_KEY": config("SECRET_KEY", "BAD_SECRET_KEY_73812732478324783274823"),
     "VERIFYING_KEY": None,
     "AUDIENCE": None,
     "ISSUER": None,
