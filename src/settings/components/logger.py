@@ -17,11 +17,11 @@
 #             'class': 'logging.StreamHandler',
 #             'stream': sys.stdout,
 #         },
-#         'db_log': {
-#             'level': 'DEBUG',
-#             'class': 'django_db_logger.db_log_handler.DatabaseLogHandler',
-#             'formatter': 'verbose'
-#         },
+#         # 'db_log': {
+#         #     'level': 'DEBUG',
+#         #     'class': 'django_db_logger.db_log_handler.DatabaseLogHandler',
+#         #     'formatter': 'verbose'
+#         # },
 #     },
 #     'loggers': {
 #         'db': {

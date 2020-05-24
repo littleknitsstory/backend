@@ -3,7 +3,7 @@ from modeltranslation.admin import TranslationAdmin
 from django.utils.translation import gettext_lazy as _
 
 from src.core.mixins.mixin import AdminBaseMixin
-from .models import OrderCart
+from .models import OrderCart, OrderCartItem
 from .models.category import Category
 from .models.product import Product, ProductPhoto, ProductColor
 
@@ -41,7 +41,8 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
         ProductPhotoInline,
     ]
     group_fieldsets = True
-    list_display = ("code", "slug", "is_active", "update_at")
+    list_display = ("id", "code", "slug", "is_active", "update_at")
+    list_display_links = ("code", "slug")
     filter_horizontal = ("categories", "colors")
     fieldsets = (
         (_("Title"), {"fields": ("title",)}),
@@ -73,13 +74,35 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
     )
 
 
+class OrderCartItemInline(admin.TabularInline):
+    model = OrderCartItem
+    extra = 0
+    readonly_fields = ("product",)
+
+
 @admin.register(OrderCart)
 class OrderCartAdmin(admin.ModelAdmin):
-    list_display = ("id", "status", "update_at", "created_at")
-    filter_horizontal = ("products",)
-    readonly_fields = ("update_at", "created_at")
+    list_display = ("id", "order_number", "status", "update_at", "created_at")
+    list_display_links = ("order_number",)
+    inlines = [
+        OrderCartItemInline,
+    ]
+    readonly_fields = ("update_at", "created_at", "order_number")
     fieldsets = (
-        (_("Status"), {"fields": ("status", "update_at", "created_at")}),
+        (
+            _("Status"),
+            {"fields": ("order_number", "status", "update_at", "created_at")},
+        ),
         (_("Info"), {"fields": ("email", "phone", "address", "comments",)}),
-        (_("Products"), {"fields": ("products",)}),
     )
+
+
+@admin.register(OrderCartItem)
+class OrderCartItemAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "order_cart",
+        "product",
+        "amount",
+    )
+    fieldsets = ((_("Info"), {"fields": ("order_cart", "product", "amount")}),)

@@ -122,25 +122,25 @@ class ProductListSerializer(serializers.ModelSerializer):
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderCartItem
-        fields = ("pk", "product", "amount")
+        fields = ("pk", "order_cart", "product", "amount")
 
 
-class OrderSerializer(serializers.ModelSerializer):
+class OrderSerializer(serializers.Serializer):
     products = OrderItemSerializer(many=True)
+    phone = serializers.CharField(required=False)
+    address = serializers.CharField(required=False)
+    comments = serializers.CharField(required=False)
+    email = serializers.EmailField(required=False)
 
-    class Meta:
-        model = OrderCart
-        fields = (
-            "pk",
-            "products",
-            "phone",
-            "address",
-            "comments",
-        )
+    # def validate(self, attrs):
+    #     print(attrs)
+    #     return attrs
 
     def create(self, validated_data):
         products_data = validated_data.pop("products")
         order = OrderCart.objects.create(**validated_data)
         for product_data in products_data:
-            OrderCartItem.objects.create(**product_data)
+            order_item = OrderCartItem.objects.create(**product_data)
+            order_item.order_cart = order
+            order_item.save()
         return order
