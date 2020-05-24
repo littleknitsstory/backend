@@ -12,6 +12,10 @@ from modeltranslation.utils import get_language
 
 from src.core.mixins.mixin import SeoMixin, ImagesMixin
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class Product(SeoMixin, ImagesMixin):
     title = models.CharField(_("Title"), max_length=120)
@@ -71,24 +75,22 @@ class Product(SeoMixin, ImagesMixin):
     def __str__(self):
         return self.title
 
-    # FIXME rewrite get_price and get_sale
     def get_price(self):
-        if self.price:
-            try:
-                return convert_money(
-                    self.price, settings.LANG_EXCHANGE.get(get_language())
-                )
-            except MissingRate as e:
-                pass
+        return self.get_money(self.price)
 
     def get_sale(self):
-        if self.sale:
-            try:
-                return convert_money(
-                    self.sale, settings.LANG_EXCHANGE.get(get_language())
-                )
-            except MissingRate as e:
-                pass
+        return self.get_money(self.sale)
+
+    def get_money(self, price: MoneyField):
+        try:
+            return convert_money(price, settings.LANG_EXCHANGE.get(get_language()))
+        except MissingRate as e:
+            logger.exception(f"Product {self.title}, miss rate in EXCHANGE - {e}")
+        except (ValueError, AttributeError) as e:
+            logger.exception(
+                f"Product {self.title}, not price ({self.price}) or sale - ({self.sale}) because - {e}"
+            )
+        return 0
 
 
 class ProductPhoto(ImagesMixin):

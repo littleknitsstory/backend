@@ -6,17 +6,14 @@ from src.apps.shop.choices import OrderCartStatusChoices
 
 
 class OrderCart(models.Model):
-    order_number = ShortUUIDField(_("Number order"), null=True)
-    products = models.ManyToManyField(
-        "OrderCartItem", verbose_name=_("Products"), related_name="ordercart_products"
-    )
+    order_number = ShortUUIDField(_("Number order"))
     address = models.CharField(
         verbose_name=_("Address"), max_length=256, null=True, blank=True
     )
     phone = models.CharField(
         verbose_name=_("Phone"), max_length=13, null=True, blank=True
     )
-    email = models.EmailField(verbose_name=_("Email"))
+    email = models.EmailField(verbose_name=_("Email"), null=True, blank=True)
     comments = models.CharField(
         verbose_name=_("Comments"), max_length=512, null=True, blank=True
     )
@@ -28,6 +25,7 @@ class OrderCart(models.Model):
         default=OrderCartStatusChoices.NEW,
         max_length=14,
     )
+    products = ""
 
     class Meta:
         verbose_name = _("Order")
@@ -39,17 +37,25 @@ class OrderCart(models.Model):
 
 
 class OrderCartItem(models.Model):
+    order_cart = models.ForeignKey(
+        "OrderCart",
+        on_delete=models.CASCADE,
+        verbose_name=_("Order Cart"),
+        related_name="ordercartitem_ordercart",
+        null=True,
+        blank=True,
+    )
     product = models.ForeignKey(
         "Product",
         on_delete=models.CASCADE,
         verbose_name=_("Product"),
         related_name="ordercartitem_product",
     )
-    amount = models.PositiveSmallIntegerField(verbose_name=_("Amount"), default=1)
+    amount = models.PositiveSmallIntegerField(verbose_name=_("Amount"), default=0)
 
     class Meta:
-        verbose_name = _("Product")
-        verbose_name_plural = _("Products")
+        verbose_name = _("Order Item")
+        verbose_name_plural = _("Order Items")
 
     def __str__(self):
         return f"{self.product} - {self.amount}"

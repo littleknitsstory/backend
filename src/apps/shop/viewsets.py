@@ -1,4 +1,6 @@
+from rest_framework import status
 from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from src.apps.shop.models.order import OrderCart, OrderCartItem
@@ -60,8 +62,16 @@ class OrderViewSet(ModelViewSet):
 
     permission_classes = (AllowAny,)
     serializer_class = OrderSerializer
-    queryset = OrderCart.objects.all()
+    queryset = OrderCart.objects.none()
     http_method_names = ["post"]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        order = serializer.save()
+        headers = self.get_success_headers(serializer.data)
+        response = {"status": order.status, "order_number": order.order_number}
+        return Response(response, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class OrderItemViewSet(ModelViewSet):
