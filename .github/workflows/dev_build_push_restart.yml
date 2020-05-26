@@ -31,7 +31,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         source: "LICENSE"
-        target: ${{ secrets.PATH_BACKEND }}
+        target: "${{ secrets.PATH_BACKEND }}"
 
     - name: Down Pull Up docker remote host
       uses: appleboy/ssh-action@master
