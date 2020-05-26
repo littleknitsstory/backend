@@ -1,8 +1,7 @@
 FROM python:3.9.0a6-alpine3.11
 ENV PYTHONUNBUFFERED 1
-ARG DEV=dev
 
-RUN mkdir -p /app/requirements
+RUN mkdir -p /app/requirements && mkdir -p /app/log/gunicorn
 WORKDIR /app
 
 RUN apk update && \
@@ -15,6 +14,4 @@ COPY requirements /app/requirements
 RUN pip install -r requirements/dev.txt
 
 COPY . /app
-RUN mkdir -p /app/log/gunicorn
-
 ENTRYPOINT [".docker/entrypoint.sh"]

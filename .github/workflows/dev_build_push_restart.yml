@@ -12,7 +12,7 @@ jobs:
     - name: Publish to Docker Repository
       uses: elgohr/Publish-Docker-Github-Action@2.7
       env:
-        DEV: dev
+        DEV: dev_arg
         TEST_VAR: ${{ secrets.TEST_VAR }}
       with:
         name: ${{ secrets.DOCKER_REPO }}
@@ -22,6 +22,16 @@ jobs:
         workdir: .
         dockerfile: .docker/Dockerfile
         buildargs: DEV,TEST_VAR
+
+    - name: Copy LICENSE
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "LICENSE"
+        target: ${{ secrets.PATH_BACKEND }}
 
     - name: Down Pull Up docker remote host
       uses: appleboy/ssh-action@master
@@ -34,3 +44,5 @@ jobs:
           docker-compose down
           docker-compose pull
           docker-compose up -d
+
+

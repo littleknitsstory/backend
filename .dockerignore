@@ -1,16 +1,18 @@
 # virtual environments
 venv
 Venv
-docs
 
 # Python files
 *.pyc
 __pycache__
+**/*.pyc
 
 # point
 .pytest_cache
 .github
 .dependabot
+.gitignore
+.coverage
 
 # Python Notebook dot files
 .ipynb*
@@ -25,6 +27,13 @@ env
 staticfiles
 static
 media
+htmlcov
+docs
+LICENSE
+README.md
 
 # Apple files
 .DS_Store
+
+# Requirements
+requirements
