@@ -14,4 +14,5 @@ COPY requirements /app/requirements
 RUN pip install -r requirements/dev.txt
 
 COPY . /app
+
 ENTRYPOINT [".docker/entrypoint.sh"]
