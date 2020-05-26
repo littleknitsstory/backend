@@ -27,9 +27,8 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+        username: ${{ secrets.HOST_USERNAME }}
+        password: ${{ secrets.HOST_PASSWORD }}
         source: "LICENSE"
         target: ${{ secrets.PATH_BACKEND }}
 
