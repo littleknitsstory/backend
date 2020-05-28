@@ -34,3 +34,7 @@ README.md
 
 # Apple files
 .DS_Store
+
+# docker temp dir
+.docker/pgdata/
+.docker/static/
