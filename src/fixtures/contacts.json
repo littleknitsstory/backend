@@ -1,1 +1,26 @@
-[{"model": "contacts.contact", "pk": 1, "fields": {"name": "string", "message": "string", "phone_number": "string", "email": "user@example.com", "company": "string", "created_at": "2020-02-28T11:58:31.022Z"}}, {"model": "contacts.contact", "pk": 2, "fields": {"name": "string", "message": "string", "phone_number": "string", "email": "user@example.com", "company": "string", "created_at": "2020-03-12T12:00:26.551Z"}}, {"model": "contacts.contact", "pk": 3, "fields": {"name": "", "message": "string", "phone_number": "string", "email": "user@example.com", "company": "string", "created_at": "2020-03-12T12:00:41.797Z"}}, {"model": "contacts.contact", "pk": 4, "fields": {"name": null, "message": "string", "phone_number": "string", "email": "user@example.com", "company": "string", "created_at": "2020-03-12T12:00:51.222Z"}}, {"model": "contacts.contact", "pk": 5, "fields": {"name": "sdf", "message": "sdf", "phone_number": "dfsdf", "email": "asdf@sdf.com", "company": null, "created_at": "2020-03-12T12:31:07.902Z"}}, {"model": "contacts.contact", "pk": 6, "fields": {"name": "\u0444\u044b\u0432\u0430\u044b\u0444\u0432", "message": "\u0444\u044b\u0432\u0430", "phone_number": "\u0430\u0444\u044b\u0432\u0430", "email": "asfasf@asddf.com", "company": null, "created_at": "2020-03-12T12:32:13.330Z"}}]
+[
+  {
+    "model": "contacts.contact",
+    "pk": 1,
+    "fields": {
+      "name": "string",
+      "message": "string",
+      "phone_number": "string",
+      "email": "user@example.com",
+      "company": "string",
+      "created_at": "2020-02-28T11:58:31.022Z"
+    }
+  },
+  {
+    "model": "contacts.contact",
+    "pk": 2,
+    "fields": {
+      "name": "string",
+      "message": "string",
+      "phone_number": "string",
+      "email": "user@example.com",
+      "company": "string",
+      "created_at": "2020-03-12T12:00:26.551Z"
+    }
+  }
+]

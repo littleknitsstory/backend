@@ -8,6 +8,7 @@ from djmoney.models.fields import MoneyField
 
 from colorful.fields import RGBColorField
 from ckeditor.fields import RichTextField
+from djmoney.money import Money
 from modeltranslation.utils import get_language
 
 from src.core.mixins.mixin import SeoMixin, ImagesMixin
@@ -25,19 +26,21 @@ class Product(SeoMixin, ImagesMixin):
     description = RichTextField(_("Description"))
     price = MoneyField(
         _("Price"),
-        null=True,
+        null=False,
         blank=True,
         max_digits=14,
         decimal_places=2,
         default_currency="RUB",
+        default=0,
     )
     sale = MoneyField(
         _("Sale"),
-        null=True,
+        null=False,
         blank=True,
         max_digits=14,
         decimal_places=2,
         default_currency="RUB",
+        default=0,
     )
     count = models.IntegerField(verbose_name=_("Count"), blank=True, default=1)
     type_product = models.CharField(
@@ -76,19 +79,22 @@ class Product(SeoMixin, ImagesMixin):
         return self.title
 
     def get_price(self):
-        return self.get_money(self.price)
+        return self.get_money(value=self.price)
 
     def get_sale(self):
-        return self.get_money(self.sale)
+        return self.get_money(value=self.sale)
 
-    def get_money(self, price: MoneyField):
+    def get_money(self, value: MoneyField or Money, currency: str = None):
+        currency = currency or settings.LANG_EXCHANGE.get(get_language())
         try:
-            return convert_money(price, settings.LANG_EXCHANGE.get(get_language()))
+            return convert_money(value=value, currency=currency)
         except MissingRate as e:
             logger.exception(f"Product {self.title}, miss rate in EXCHANGE - {e}")
         except (ValueError, AttributeError) as e:
             logger.exception(
-                f"Product {self.title}, not price ({self.price}) or sale - ({self.sale}) because - {e}"
+                f"Product {self.title},"
+                f" not price ({self.price})"
+                f" or sale - ({self.sale}) because - {e}"
             )
         return 0
 

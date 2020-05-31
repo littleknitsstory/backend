@@ -1,1 +1,134 @@
-[{"model": "menu.menu", "pk": 1, "fields": {"slug": "header", "hint": "header", "is_active": true}}, {"model": "menu.menu", "pk": 2, "fields": {"slug": "footer", "hint": "footer", "is_active": true}}, {"model": "menu.menuitems", "pk": 1, "fields": {"name": "\u0411\u043b\u043e\u0433", "name_ru": "\u0411\u043b\u043e\u0433", "name_en": "Blog", "url": "/blog/", "menu": 1, "target": null, "parent": null, "ordering": 2, "is_active": true, "lft": 1, "rght": 2, "tree_id": 1, "level": 0}}, {"model": "menu.menuitems", "pk": 2, "fields": {"name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d", "name_ru": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d", "name_en": "Shop", "url": "/shop/", "menu": 1, "target": null, "parent": null, "ordering": 3, "is_active": true, "lft": 1, "rght": 4, "tree_id": 4, "level": 0}}, {"model": "menu.menuitems", "pk": 3, "fields": {"name": "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b", "name_ru": "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b", "name_en": "Contacts", "url": "/contacts/", "menu": 1, "target": null, "parent": null, "ordering": 5, "is_active": true, "lft": 1, "rght": 2, "tree_id": 3, "level": 0}}, {"model": "menu.menuitems", "pk": 4, "fields": {"name": "\u0421\u0445\u0435\u043c\u044b", "name_ru": "\u0421\u0445\u0435\u043c\u044b", "name_en": "Patterns", "url": "https://www.etsy.com/shop/LittleKnitsStory", "menu": 1, "target": "_blank", "parent": null, "ordering": 4, "is_active": true, "lft": 1, "rght": 2, "tree_id": 5, "level": 0}}, {"model": "menu.menuitems", "pk": 5, "fields": {"name": "\u041f\u0440\u044f\u0436\u0430", "name_ru": "\u041f\u0440\u044f\u0436\u0430", "name_en": "Kinits", "url": "product/knits", "menu": 1, "target": null, "parent": 2, "ordering": 0, "is_active": false, "lft": 2, "rght": 3, "tree_id": 4, "level": 1}}, {"model": "menu.menuitems", "pk": 6, "fields": {"name": "\u0413\u043b\u0430\u0432\u043d\u0430\u044f", "name_ru": "\u0413\u043b\u0430\u0432\u043d\u0430\u044f", "name_en": "Home", "url": "/", "menu": 1, "target": null, "parent": null, "ordering": 1, "is_active": true, "lft": 1, "rght": 2, "tree_id": 2, "level": 0}}]
+[
+  {
+    "model": "menu.menu",
+    "pk": 1,
+    "fields": {
+      "slug": "header",
+      "hint": "header",
+      "is_active": true
+    }
+  },
+  {
+    "model": "menu.menu",
+    "pk": 2,
+    "fields": {
+      "slug": "footer",
+      "hint": "footer",
+      "is_active": true
+    }
+  },
+  {
+    "model": "menu.menuitems",
+    "pk": 1,
+    "fields": {
+      "name": "\u0411\u043b\u043e\u0433",
+      "name_ru": "\u0411\u043b\u043e\u0433",
+      "name_en": "Blog",
+      "url": "/blog/",
+      "menu": 1,
+      "target": null,
+      "parent": null,
+      "ordering": 2,
+      "is_active": true,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 1,
+      "level": 0
+    }
+  },
+  {
+    "model": "menu.menuitems",
+    "pk": 2,
+    "fields": {
+      "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d",
+      "name_ru": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d",
+      "name_en": "Shop",
+      "url": "/shop/",
+      "menu": 1,
+      "target": null,
+      "parent": null,
+      "ordering": 3,
+      "is_active": true,
+      "lft": 1,
+      "rght": 4,
+      "tree_id": 4,
+      "level": 0
+    }
+  },
+  {
+    "model": "menu.menuitems",
+    "pk": 3,
+    "fields": {
+      "name": "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b",
+      "name_ru": "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b",
+      "name_en": "Contacts",
+      "url": "/contacts/",
+      "menu": 1,
+      "target": null,
+      "parent": null,
+      "ordering": 5,
+      "is_active": true,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 3,
+      "level": 0
+    }
+  },
+  {
+    "model": "menu.menuitems",
+    "pk": 4,
+    "fields": {
+      "name": "\u0421\u0445\u0435\u043c\u044b",
+      "name_ru": "\u0421\u0445\u0435\u043c\u044b",
+      "name_en": "Patterns",
+      "url": "https://www.etsy.com/shop/LittleKnitsStory",
+      "menu": 1,
+      "target": "_blank",
+      "parent": null,
+      "ordering": 4,
+      "is_active": true,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 5,
+      "level": 0
+    }
+  },
+  {
+    "model": "menu.menuitems",
+    "pk": 5,
+    "fields": {
+      "name": "\u041f\u0440\u044f\u0436\u0430",
+      "name_ru": "\u041f\u0440\u044f\u0436\u0430",
+      "name_en": "Kinits",
+      "url": "product/knits",
+      "menu": 1,
+      "target": null,
+      "parent": 2,
+      "ordering": 0,
+      "is_active": false,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "menu.menuitems",
+    "pk": 6,
+    "fields": {
+      "name": "\u0413\u043b\u0430\u0432\u043d\u0430\u044f",
+      "name_ru": "\u0413\u043b\u0430\u0432\u043d\u0430\u044f",
+      "name_en": "Home",
+      "url": "/",
+      "menu": 1,
+      "target": null,
+      "parent": null,
+      "ordering": 1,
+      "is_active": true,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 2,
+      "level": 0
+    }
+  }
+]

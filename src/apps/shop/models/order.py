@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.fields import ShortUUIDField
+from djmoney.contrib.exchange.models import convert_money
+from djmoney.models.fields import MoneyField
 
 from src.apps.shop.choices import OrderCartStatusChoices
 
@@ -25,6 +27,16 @@ class OrderCart(models.Model):
         default=OrderCartStatusChoices.NEW,
         max_length=14,
     )
+    order_total_cost = MoneyField(
+        _("Total cost order"),
+        null=False,
+        blank=True,
+        max_digits=14,
+        decimal_places=2,
+        default_currency="RUB",
+        default=0,
+    )
+    # FIXME: del this
     products = ""
 
     class Meta:
@@ -33,7 +45,17 @@ class OrderCart(models.Model):
         ordering = ("-created_at",)
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.id}-{self.order_total_cost}"
+
+    def get_total_cost_order(self):
+        order_total_cost = self.order_total_cost
+        items = self.ordercartitem_ordercart.all()
+        for item in items:
+            if item.item_total_cost is not None:
+                order_total_cost = convert_money(
+                    order_total_cost, "RUB"
+                ) + convert_money(item.item_total_cost, "RUB")
+        return order_total_cost
 
 
 class OrderCartItem(models.Model):
@@ -52,6 +74,15 @@ class OrderCartItem(models.Model):
         related_name="ordercartitem_product",
     )
     amount = models.PositiveSmallIntegerField(verbose_name=_("Amount"), default=0)
+    item_total_cost = MoneyField(
+        _("Total cost item order"),
+        null=False,
+        blank=True,
+        max_digits=14,
+        decimal_places=2,
+        default_currency="RUB",
+        default=0,
+    )
 
     class Meta:
         verbose_name = _("Order Item")
@@ -59,3 +90,13 @@ class OrderCartItem(models.Model):
 
     def __str__(self):
         return f"{self.product} - {self.amount}"
+
+    #
+    # def save(self, *args, **kwargs):
+    #     self.total_cost_order = self.get_total_cost_item()
+    #     return super().save(*args, **kwargs)
+
+    def get_total_cost_item(self):
+        if self.amount == 0:
+            return self.product.price
+        return self.product.price * self.amount
