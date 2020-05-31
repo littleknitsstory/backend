@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 from src.apps.shop.models.product import ProductPhoto
 from src.apps.shop.models import (
@@ -8,6 +10,10 @@ from src.apps.shop.models import (
     OrderCart,
     ProductColor,
 )
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class CategoryRetrieveSerializer(serializers.ModelSerializer):
@@ -132,15 +138,37 @@ class OrderSerializer(serializers.Serializer):
     comments = serializers.CharField(required=False)
     email = serializers.EmailField(required=False)
 
-    # def validate(self, attrs):
-    #     print(attrs)
-    #     return attrs
+    def validate_products(self, products):
+        for product in products:
+            product_count = product.get("product")
+            product_count = product_count.count
+            amount = product.get("amount", 0)
+            if amount > product_count:
+                logger.info(f"Product {product} less than requested {amount}")
+                raise ValidationError(_("Product less than requested"))
+        return products
 
+    # FIXME: order.save() in def save()
     def create(self, validated_data):
         products_data = validated_data.pop("products")
         order = OrderCart.objects.create(**validated_data)
         for product_data in products_data:
             order_item = OrderCartItem.objects.create(**product_data)
             order_item.order_cart = order
+            order_item.item_total_cost = order_item.get_total_cost_item()
             order_item.save()
+        order.order_total_cost = order.get_total_cost_order()
+        order.save()
         return order
+
+
+class OrderRetrieveSerializer(serializers.ModelSerializer):
+    products = OrderItemSerializer(many=True)
+
+    class Meta:
+        model = OrderCart
+        fields = (
+            "products",
+            "order_number",
+            "status",
+        )

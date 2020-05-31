@@ -11,6 +11,7 @@ from src.apps.shop.serializers import (
     CategoryListSerializer,
     ProductListSerializer,
     ProductRetrieveSerializer,
+    OrderRetrieveSerializer,
 )
 from src.apps.shop.models import Product, Category
 
@@ -62,15 +63,26 @@ class OrderViewSet(ModelViewSet):
 
     permission_classes = (AllowAny,)
     serializer_class = OrderSerializer
-    queryset = OrderCart.objects.none()
-    http_method_names = ["post"]
+    queryset = OrderCart.objects.all()
+    http_method_names = ["post", "get"]
+    lookup_field = "order_number"
+    serializer_classes = {
+        "retrieve": OrderRetrieveSerializer,
+        "create": OrderSerializer,
+    }
+
+    def get_serializer_class(self):
+        return self.serializer_classes.get(self.action, OrderSerializer)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         order = serializer.save()
         headers = self.get_success_headers(serializer.data)
-        response = {"status": order.status, "order_number": order.order_number}
+        response = {
+            "status": order.status,
+            "order_number": order.order_number,
+        }
         return Response(response, status=status.HTTP_201_CREATED, headers=headers)
 
 

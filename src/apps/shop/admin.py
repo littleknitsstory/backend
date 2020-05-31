@@ -53,6 +53,7 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
                     "code",
                     "slug",
                     "is_active",
+                    "count",
                     "sale",
                     "price",
                     "image_preview",
@@ -87,11 +88,19 @@ class OrderCartAdmin(admin.ModelAdmin):
     inlines = [
         OrderCartItemInline,
     ]
-    readonly_fields = ("update_at", "created_at", "order_number")
+    readonly_fields = ("update_at", "created_at", "order_number", "order_total_cost")
     fieldsets = (
         (
             _("Status"),
-            {"fields": ("order_number", "status", "update_at", "created_at")},
+            {
+                "fields": (
+                    "order_number",
+                    "order_total_cost",
+                    "status",
+                    "update_at",
+                    "created_at",
+                )
+            },
         ),
         (_("Info"), {"fields": ("email", "phone", "address", "comments",)}),
     )
