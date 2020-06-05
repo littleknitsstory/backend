@@ -3,16 +3,14 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
 
       - name: echo
         run: |
         echo ${{ secrets.TEST_VAR }}
-        echo ${{ github.base_ref }}
         echo ${{ github.ref	}}
-        echo ${{ github.head_ref }}
         echo ${{ secrets.TEST_VAR }}
 
       - name: Dump GitHub context
