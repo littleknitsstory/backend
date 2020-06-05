@@ -3,28 +3,16 @@ on: [push]
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: echo
+        env:
+          TEST_VAR: ${{ toJson(github) }}
+          BASE: ${{ github.base_ref	}}
+          REV: ${{ github.ref }}
         run: |
-        echo ${{ secrets.TEST_VAR }}
-        echo ${{ github.ref	}}
-        echo ${{ secrets.TEST_VAR }}
-
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
-      - name: Dump matrix context
-        env:
-          VERSION: ${{ toJson(matrix) }}
-        run: echo "$VERSION"
-
-#Example using an array
-#contains(github.event.issue.labels.*.name, 'bug')
-#
-#Example using a string
-#contains('Hello world', 'llo') returns true
+        echo "$TEST_VAR"
+        echo "$BASE"
+        echo "$REV"
