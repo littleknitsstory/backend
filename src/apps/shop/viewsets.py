@@ -68,6 +68,7 @@ class OrderViewSet(ModelViewSet):
     lookup_field = "order_number"
     serializer_classes = {
         "retrieve": OrderRetrieveSerializer,
+        "list": OrderRetrieveSerializer,
         "create": OrderSerializer,
     }
 

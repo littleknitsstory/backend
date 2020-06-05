@@ -1,0 +1,451 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-31 19:56+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: src/apps/account/choices.py:10 src/apps/blog/models.py:37
+msgid "Author"
+msgstr "Aвтор"
+
+#: src/apps/account/choices.py:11
+msgid "Manager"
+msgstr "Менеджер"
+
+#: src/apps/account/choices.py:12
+msgid "Client"
+msgstr "Клиент"
+
+#: src/apps/account/models.py:13
+msgid "email address"
+msgstr ""
+
+#: src/apps/account/models.py:16
+msgid "Type user"
+msgstr ""
+
+#: src/apps/account/models.py:18
+msgid "Avatar"
+msgstr ""
+
+#: src/apps/account/models.py:19
+msgid "About author"
+msgstr ""
+
+#: src/apps/account/models.py:22 src/apps/contacts/models.py:11
+msgid "Phone number"
+msgstr ""
+
+#: src/apps/account/models.py:25
+msgid "Country"
+msgstr ""
+
+#: src/apps/account/models.py:27
+msgid "City"
+msgstr ""
+
+#: src/apps/account/models.py:28 src/apps/shop/models/order.py:13
+msgid "Address"
+msgstr ""
+
+#: src/apps/account/models.py:29
+msgid "Birth date"
+msgstr ""
+
+#: src/apps/account/models.py:31
+msgid "Email confirm"
+msgstr ""
+
+#: src/apps/account/models.py:32
+msgid "Profile full"
+msgstr ""
+
+#: src/apps/account/models.py:33
+msgid "Vk profile"
+msgstr ""
+
+#: src/apps/account/models.py:34
+msgid "Fb profile"
+msgstr ""
+
+#: src/apps/account/models.py:35
+msgid "Instagram profile"
+msgstr ""
+
+#: src/apps/account/models.py:36
+msgid "Telegram profile"
+msgstr ""
+
+#: src/apps/account/models.py:48
+msgid "User"
+msgstr ""
+
+#: src/apps/account/models.py:49
+msgid "Users"
+msgstr ""
+
+#: src/apps/blog/admin.py:17 src/apps/blog/admin.py:41
+#: src/apps/shop/admin.py:17 src/apps/shop/admin.py:72
+msgid "SEO"
+msgstr ""
+
+#: src/apps/blog/admin.py:39 src/apps/blog/models.py:29
+#: src/apps/shop/admin.py:15
+msgid "Content"
+msgstr "Содержание"
+
+#: src/apps/blog/models.py:13 src/apps/blog/models.py:27
+#: src/apps/reviews/models.py:8 src/apps/shop/admin.py:48
+#: src/apps/shop/models/category.py:9 src/apps/shop/models/product.py:22
+#: src/apps/slider/admin.py:13 src/apps/slider/models.py:11
+msgid "Title"
+msgstr "Заголовок"
+
+#: src/apps/blog/models.py:14 src/apps/blog/models.py:28
+#: src/apps/menu/models.py:12 src/apps/shop/models/category.py:10
+#: src/apps/shop/models/product.py:24 src/apps/slider/models.py:12
+msgid "slug"
+msgstr ""
+
+#: src/apps/blog/models.py:17
+msgid "Tag"
+msgstr ""
+
+#: src/apps/blog/models.py:18 src/apps/blog/models.py:40
+msgid "Tags"
+msgstr ""
+
+#: src/apps/blog/models.py:30 src/apps/menu/models.py:14
+#: src/apps/menu/models.py:49 src/apps/reviews/models.py:13
+#: src/apps/shop/models/product.py:25 src/apps/slider/models.py:14
+msgid "Active"
+msgstr ""
+
+#: src/apps/blog/models.py:47
+msgid "Article"
+msgstr ""
+
+#: src/apps/blog/models.py:48
+msgid "Articles"
+msgstr ""
+
+#: src/apps/contacts/models.py:8 src/apps/menu/models.py:34
+msgid "Name"
+msgstr ""
+
+#: src/apps/contacts/models.py:9
+msgid "Message"
+msgstr ""
+
+#: src/apps/contacts/models.py:13 src/apps/reviews/models.py:11
+#: src/apps/shop/models/order.py:18 src/apps/subscribe/models.py:6
+msgid "Email"
+msgstr ""
+
+#: src/apps/contacts/models.py:14
+msgid "Company"
+msgstr ""
+
+#: src/apps/contacts/models.py:15 src/apps/reviews/models.py:14
+#: src/core/mixins/mixin.py:26
+msgid "Created at"
+msgstr ""
+
+#: src/apps/contacts/models.py:28
+msgid "Contact"
+msgstr ""
+
+#: src/apps/contacts/models.py:29
+msgid "Contacts"
+msgstr ""
+
+#: src/apps/menu/models.py:13
+msgid "Hint"
+msgstr ""
+
+#: src/apps/menu/models.py:20
+msgid "Type"
+msgstr ""
+
+#: src/apps/menu/models.py:21
+msgid "Types"
+msgstr ""
+
+#: src/apps/menu/models.py:35 src/apps/slider/models.py:16
+msgid "Link"
+msgstr ""
+
+#: src/apps/menu/models.py:39
+msgid "Menu type"
+msgstr ""
+
+#: src/apps/menu/models.py:48
+msgid "Sort"
+msgstr ""
+
+#: src/apps/menu/models.py:58
+msgid "Menu item"
+msgstr ""
+
+#: src/apps/menu/models.py:59
+msgid "Menu items"
+msgstr ""
+
+#: src/apps/reviews/models.py:9
+msgid "Author review"
+msgstr ""
+
+#: src/apps/reviews/models.py:10
+msgid "Comment"
+msgstr ""
+
+#: src/apps/reviews/models.py:12
+msgid "Rating"
+msgstr ""
+
+#: src/apps/reviews/models.py:17
+msgid "Review"
+msgstr ""
+
+#: src/apps/reviews/models.py:18
+msgid "Reviews"
+msgstr ""
+
+#: src/apps/shop/admin.py:16 src/apps/shop/admin.py:50
+#: src/apps/slider/admin.py:15
+msgid "Main"
+msgstr ""
+
+#: src/apps/shop/admin.py:66 src/apps/shop/models/product.py:26
+#: src/core/mixins/mixin.py:24
+msgid "Description"
+msgstr ""
+
+#: src/apps/shop/admin.py:68
+msgid "Feature"
+msgstr ""
+
+#: src/apps/shop/admin.py:94 src/apps/shop/models/order.py:25
+msgid "Status"
+msgstr ""
+
+#: src/apps/shop/admin.py:105 src/apps/shop/admin.py:117
+msgid "Info"
+msgstr ""
+
+#: src/apps/shop/models/category.py:13 src/apps/shop/models/product.py:61
+msgid "Category"
+msgstr ""
+
+#: src/apps/shop/models/category.py:14
+msgid "Categories"
+msgstr ""
+
+#: src/apps/shop/models/order.py:11
+msgid "Number order"
+msgstr ""
+
+#: src/apps/shop/models/order.py:16
+msgid "Phone"
+msgstr ""
+
+#: src/apps/shop/models/order.py:20
+msgid "Comments"
+msgstr ""
+
+#: src/apps/shop/models/order.py:22
+msgid "Created"
+msgstr ""
+
+#: src/apps/shop/models/order.py:23 src/core/mixins/mixin.py:27
+msgid "Updated at"
+msgstr ""
+
+#: src/apps/shop/models/order.py:31
+msgid "Total cost order"
+msgstr ""
+
+#: src/apps/shop/models/order.py:43
+msgid "Order"
+msgstr ""
+
+#: src/apps/shop/models/order.py:44
+msgid "Orders"
+msgstr ""
+
+#: src/apps/shop/models/order.py:65
+msgid "Order Cart"
+msgstr ""
+
+#: src/apps/shop/models/order.py:73 src/apps/shop/models/product.py:74
+#: src/apps/shop/models/product.py:105 src/apps/shop/models/product.py:132
+msgid "Product"
+msgstr ""
+
+#: src/apps/shop/models/order.py:76
+msgid "Amount"
+msgstr ""
+
+#: src/apps/shop/models/order.py:78
+msgid "Total cost item order"
+msgstr ""
+
+#: src/apps/shop/models/order.py:88
+msgid "Order Item"
+msgstr ""
+
+#: src/apps/shop/models/order.py:89
+msgid "Order Items"
+msgstr ""
+
+#: src/apps/shop/models/product.py:23
+msgid "Code product"
+msgstr ""
+
+#: src/apps/shop/models/product.py:28
+msgid "Price"
+msgstr ""
+
+#: src/apps/shop/models/product.py:37
+msgid "Sale"
+msgstr ""
+
+#: src/apps/shop/models/product.py:45
+msgid "Count"
+msgstr ""
+
+#: src/apps/shop/models/product.py:47
+msgid "Type Product"
+msgstr ""
+
+#: src/apps/shop/models/product.py:49
+msgid "Material"
+msgstr ""
+
+#: src/apps/shop/models/product.py:50
+msgid "Included"
+msgstr ""
+
+#: src/apps/shop/models/product.py:51
+msgid "Height"
+msgstr ""
+
+#: src/apps/shop/models/product.py:52
+msgid "Weight"
+msgstr ""
+
+#: src/apps/shop/models/product.py:55
+msgid "Colors"
+msgstr ""
+
+#: src/apps/shop/models/product.py:75 src/apps/shop/models/product.py:137
+msgid "Products"
+msgstr ""
+
+#: src/apps/shop/models/product.py:111
+msgid "Product photo"
+msgstr ""
+
+#: src/apps/shop/models/product.py:112
+msgid "Product photos"
+msgstr ""
+
+#: src/apps/shop/models/product.py:119
+msgid "Color"
+msgstr ""
+
+#: src/apps/shop/models/product.py:122
+msgid "Product color"
+msgstr ""
+
+#: src/apps/shop/models/product.py:123
+msgid "Product colors"
+msgstr ""
+
+#: src/apps/shop/models/product.py:141
+msgid "Product Similar"
+msgstr ""
+
+#: src/apps/shop/models/product.py:142
+msgid "Products Similar"
+msgstr ""
+
+#: src/apps/shop/serializers.py:148
+msgid "Product less than requested"
+msgstr ""
+
+#: src/apps/slider/models.py:13
+msgid "Sub Title"
+msgstr ""
+
+#: src/apps/slider/models.py:15
+msgid "Ordering"
+msgstr ""
+
+#: src/apps/slider/models.py:19
+msgid "Slider"
+msgstr ""
+
+#: src/apps/slider/models.py:20
+msgid "Sliders"
+msgstr ""
+
+#: src/apps/subscribe/models.py:7
+msgid "Hidden"
+msgstr ""
+
+#: src/apps/subscribe/models.py:8
+msgid "created_at"
+msgstr ""
+
+#: src/apps/subscribe/models.py:11
+msgid "Subscriber"
+msgstr ""
+
+#: src/apps/subscribe/models.py:12
+msgid "Subscribers"
+msgstr ""
+
+#: src/apps/subscribe/serializers.py:19
+msgid "Email is exists"
+msgstr ""
+
+#: src/core/mixins/mixin.py:22
+msgid "Title Seo"
+msgstr ""
+
+#: src/core/mixins/mixin.py:23
+msgid "Keywords"
+msgstr ""
+
+#: src/core/mixins/mixin.py:41
+msgid "Images"
+msgstr ""
+
+#: src/core/mixins/mixin.py:42
+msgid "Images Alt"
+msgstr ""
+
+#: src/settings/components/i18n.py:17
+msgid "English"
+msgstr ""
+
+#: src/settings/components/i18n.py:18
+msgid "Russian"
+msgstr ""

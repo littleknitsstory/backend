@@ -25,6 +25,6 @@ MODELTRANSLATION_LANGUAGES = (
 MODELTRANSLATION_DEFAULT_LANGUAGE = "ru"
 
 LOCALE_PATHS = (
-    os.path.join(BASE_DIR, "locale"),
-    os.path.join(BASE_DIR, "locale_tpa"),
+    os.path.join(os.path.dirname(BASE_DIR), "locale"),  # src/locale
+    os.path.join(os.path.dirname(BASE_DIR), "locale_tpa"),
 )
