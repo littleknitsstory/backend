@@ -2,7 +2,7 @@ name: linter
 on: [pull_request]
 
 jobs:
-  Flask8Test:
+  linter:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

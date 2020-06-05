@@ -5,34 +5,21 @@ on:
       - 'develop'
 
 jobs:
-  build:
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Publish to Docker Repository
-      uses: elgohr/Publish-Docker-Github-Action@2.7
-      env:
-        DEV: dev_arg
-        TEST_VAR: ${{ secrets.TEST_VAR }}
+    - name: Copy file remote host
+      uses: appleboy/scp-action@master
       with:
-        name: ${{ secrets.DOCKER_REPO }}
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        tags: ${{ github.ref }}
-        workdir: .
-        dockerfile: .docker/Dockerfile
-        buildargs: DEV,TEST_VAR
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.HOST_USERNAME }}
+        password: ${{ secrets.HOST_PASSWORD }}
+        source: ".docker/docker-compose.yml,.docker/nginx.conf.nginx, .docker/.env.example"
+        target: "${{ secrets.PATH_BACKEND }}"
+        strip_components: 1
 
-#    - name: Copy LICENSE
-#      uses: appleboy/scp-action@master
-#      with:
-#        host: ${{ secrets.HOST }}
-#        username: ${{ secrets.HOST_USERNAME }}
-#        password: ${{ secrets.HOST_PASSWORD }}
-#        source: ".docker/docker-compose.yml"
-#        target: "${{ secrets.PATH_BACKEND }}"
-
-    - name: Down Pull Up docker remote host
+    - name: Docker down, pull and up remote host
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
