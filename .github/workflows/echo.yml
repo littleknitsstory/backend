@@ -10,9 +10,7 @@ jobs:
       - name: echo
         env:
           TEST_VAR: ${{ toJson(github) }}
-          BASE: ${{ github.base_ref	}}
           REV: ${{ github.ref }}
         run: |
-        echo "$TEST_VAR"
-        echo "$BASE"
-        echo "$REV"
+          echo "$TEST_VAR"
+          echo "$REV"
