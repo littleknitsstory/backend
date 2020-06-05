@@ -43,6 +43,40 @@ def test_post_orders_url(client):
 
 @pytest.mark.django_db
 @pytest.mark.urls("apps.shop.urls")
+def test_post_orders_double_product_url(client):
+    data = {
+        "products": [{"product": 1, "amount": 1}, {"product": 1, "amount": 1}],
+        "phone": "string",
+        "address": "string",
+    }
+    res = client.post(
+        "/orders/", data=json.dumps(data), content_type="application/json"
+    )
+    assert res.status_code == 400
+    assert res.json().get("products") == ["The order contains a duplicate of the goods"]
+
+
+@pytest.mark.django_db
+@pytest.mark.urls("apps.shop.urls")
+def test_post_quick_orders_url(client):
+    data = {
+        "products": [{"product": 1, "amount": 1}],
+        "phone": "string",
+        "address": "string",
+    }
+    res = client.post(
+        "/quick_orders/", data=json.dumps(data), content_type="application/json"
+    )
+    assert res.status_code == 201
+    assert res.json().get("status") == "NEW"
+    assert isinstance(res.json().get("order_number"), str) is True
+
+    code = res.json().get("order_number")
+    assert client.get(f"/orders/{code}/").status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.urls("apps.shop.urls")
 def test_post_orders_more_amounts_url(client):
     data = {
         "products": [{"product": 2, "amount": 200}],
@@ -53,6 +87,7 @@ def test_post_orders_more_amounts_url(client):
         "/orders/", data=json.dumps(data), content_type="application/json"
     )
     assert res.status_code == 400
+    assert res.json().get("products") == ["Product less than requested"]
 
 
 @pytest.mark.django_db

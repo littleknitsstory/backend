@@ -139,13 +139,18 @@ class OrderSerializer(serializers.Serializer):
     email = serializers.EmailField(required=False)
 
     def validate_products(self, products):
+        products_count = len(products)
+        products_ids = []
         for product in products:
+            products_ids.append(product.get("product").id)
             product_count = product.get("product")
             product_count = product_count.count
             amount = product.get("amount", 0)
             if amount > product_count:
                 logger.info(f"Product {product} less than requested {amount}")
                 raise ValidationError(_("Product less than requested"))
+        if products_count != len(set(products_ids)):
+            raise ValidationError(_("The order contains a duplicate of the goods"))
         return products
 
     # FIXME: order.save() in def save()

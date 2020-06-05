@@ -16,6 +16,7 @@ urlpatterns = [
     path("anymail/", include("anymail.urls")),
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    # path('i18n/', include('django.conf.urls.i18n')),
     # path("auth/", include("rest_framework_social_oauth2.urls")),
 ]
 
@@ -24,8 +25,10 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # urlpatterns += [
-#     path('google5e682b3d95e1b8ef.html', TemplateView.as_view(template_name='google-auth.html')),
-#     path('yandex_5486c91ec180b084.html', TemplateView.as_view(template_name='yandex-auth.html')),
+#     path('google5e682b3d95e1b8ef.html',
+#     TemplateView.as_view(template_name='google-auth.html')),
+#     path('yandex_5486c91ec180b084.html',
+#     TemplateView.as_view(template_name='yandex-auth.html')),
 # ]
 
 # http://www.django-rest-framework.org/api-guide/routers/#usage
