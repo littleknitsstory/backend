@@ -1,12 +1,13 @@
 name: deploy
 on:
+  workflow_success:
+    workflow: build
   push:
     branches:
       - 'develop'
 
 jobs:
   deploy:
-    needs: build
     runs-on: self-hosted
     steps:
     - name: Copy file remote host
