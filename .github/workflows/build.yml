@@ -1,0 +1,27 @@
+name: build
+on:
+  push:
+    branches:
+      - 'develop'
+
+jobs:
+  build:
+    needs: tests
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: Publish to Docker Repository
+      uses: elgohr/Publish-Docker-Github-Action@2.7
+      env:
+        DEV: dev_arg
+        TEST_VAR: ${{ secrets.PATH_BACKEND }}
+      with:
+        name: ${{ secrets.DOCKER_REPO }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        tags: ${{ github.ref }}
+        snapshot: true
+        cache: true
+        workdir: .
+        dockerfile: .docker/Dockerfile
+        buildargs: DEV,TEST_VAR

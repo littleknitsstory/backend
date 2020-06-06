@@ -1,0 +1,16 @@
+name: echo
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: echo
+        env:
+          TEST_VAR: ${{ toJson(github) }}
+          REV: ${{ github.ref }}
+        run: |
+          echo "$TEST_VAR"
+          echo "$REV"
