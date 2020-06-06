@@ -1,7 +1,5 @@
 name: deploy
 on:
-  workflow_success:
-    workflow: build
   push:
     branches:
       - 'develop'
