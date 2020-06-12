@@ -37,7 +37,7 @@
 
 ### Project Technology
 [![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/blob/develop/.docker/Dockerfile#L1)
-[![GitHub](https://badgen.net/badge/django/3.0.6/blue)](https://github.com/63phc/lks/blob/develop/requirements/base.txt#L3)
+[![GitHub](https://badgen.net/badge/django/3.0.7/blue)](https://github.com/63phc/lks/blob/develop/requirements/base.txt#L3)
 
 * Python ([docs](https://www.python.org/doc/))
 * Django ([docs](https://docs.djangoproject.com/en/3.0/))
