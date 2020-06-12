@@ -17,20 +17,19 @@
 
 ### Project Structure
     applications:
-        account       - 
-        api           - 
-        blog          -
-          comments    - remark
-        contacts      - 
-        menu          - 
-        reviews       - 
-        shop          -
-          order       -
-          product     -
+        account       + 
+        api           + 
+        blog          +
+          comments    - remark -
+        contacts      + 
+        menu          + 
+        reviews       + 
+        shop          +
+          order       +
+          product     +
           delivery    -
-        slider        - 
-        subscribe     - 
-    # not realized
+        slider        + 
+        subscribe     + 
         dashboard     - 
         notification  - 
         
