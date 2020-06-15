@@ -7,7 +7,7 @@ django-celerybeat-status==0.0.10
 django-countries==6.1.2
 django-ckeditor==5.9.0
 django-colorful==1.3
-django-cors-headers==3.2.1
+django-cors-headers==3.3.0
 django-environ==0.4.5
 django-filter==2.2.0
 django-modeltranslation==0.15
