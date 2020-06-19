@@ -14,17 +14,17 @@ jobs:
       env:
         TEST_VAR: ${{ secrets.PATH_BACKEND }}
       with:
-        if: startsWith(github.ref, 'refs/heads/tags/v')
+#        if: startsWith(github.ref, 'refs/heads/tags/v')
         name: ${{ secrets.DOCKER_REPO }}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: .docker/Dockerfile
-        tags: "${{ github.ref }}:1.0"
+        tags: "${{ github.ref }}:1.0, latest"
 #        snapshot: true
-        cache: true
+#        cache: true
         workdir: .
         buildargs: TEST_VAR
-        tag_semver: true
+#        tag_semver: true
 
 #  deploy:
 #    runs-on: self-hosted
