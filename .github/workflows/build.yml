@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: .docker/Dockerfile
-        tags: "${{ github.ref }}:1.0, latest"
+        tags: "jopa"
 #        snapshot: true
 #        cache: true
         workdir: .
