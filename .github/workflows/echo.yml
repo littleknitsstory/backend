@@ -1,5 +1,8 @@
-name: echo
-on: [push]
+name: build
+on:
+  push:
+    branches:
+      - 'develop'
 
 jobs:
   build:
