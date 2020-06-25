@@ -22,7 +22,7 @@ djangorestframework-simplejwt==4.4.0
 extensions==0.4
 graphene-django==2.10.1
 idna==2.9
-Markdown==3.2.1
+Markdown==3.2.2
 mccabe==0.6.1
 oauthlib==3.1.0
 phonenumbers==8.12.2
