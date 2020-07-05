@@ -1,5 +1,5 @@
 certifi==2020.4.5.1
-celery==4.4.0
+celery==4.4.6
 Django==3.0.7
 django-anymail==7.1.0
 django-celery-beat==1.6.0
