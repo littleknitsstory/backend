@@ -46,5 +46,5 @@ urllib3==1.25.9
 django-registration==3.1
 sendgrid==6.4.3
 django-grappelli==2.14.2
-django-redis==4.11.0
+django-redis==4.12.1
 drf-yasg==1.17.1
