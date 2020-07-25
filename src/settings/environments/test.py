@@ -25,16 +25,16 @@ CACHES = {
 PASSWORD_HASHERS = ("django.contrib.auth.hashers.UnsaltedMD5PasswordHasher",)
 
 
-# Fake out migrations to speed up tests
-class DisableMigrations(object):
-    def __contains__(self, item):
-        return True
+# # Fake out migrations to speed up tests
+# class DisableMigrations(object):
+#     def __contains__(self, item):
+#         return True
+#
+#     def __getitem__(self, item):
+#         return None
 
-    def __getitem__(self, item):
-        return None
 
-
-MIGRATION_MODULES = DisableMigrations()
+# MIGRATION_MODULES = DisableMigrations()
 
 
 if not "create-db" in sys.argv:

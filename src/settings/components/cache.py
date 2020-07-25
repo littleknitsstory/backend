@@ -1,3 +1,4 @@
+import redis
 from decouple import config
 
 REDIS_HOST = config("REDIS_HOST", "redis")
@@ -26,3 +27,6 @@ CACHES = {
 
 if REDIS_PASSWORD:
     CACHES["default"]["OPTIONS"]["PASSWORD"] = REDIS_PASSWORD
+
+
+redis_connect = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=3, password=REDIS_PASSWORD)

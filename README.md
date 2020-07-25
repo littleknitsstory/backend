@@ -39,14 +39,17 @@
 [![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/blob/develop/.docker/Dockerfile#L1)
 [![GitHub](https://badgen.net/badge/django/3.0.6/blue)](https://github.com/63phc/lks/blob/develop/requirements/base.txt#L3)
 
-* Python ([docs](https://www.python.org/doc/))
+* Python ([docs](https://www.python.org/doc/), [hub.docker](https://hub.docker.com/_/python))
 * Django ([docs](https://docs.djangoproject.com/en/3.0/))
 * DRF ([docs](https://www.django-rest-framework.org))
 * Celery ([docs](http://www.celeryproject.org/))
 * Swagger ([docs](https://swagger.io/docs/specification/about/))
-* redis ([hub.docker](https://hub.docker.com/_/redis/))
+* Redis ([hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL ([hub.docker](https://hub.docker.com/_/postgres/))
-* nginx ([hub.docker](https://hub.docker.com/_/nginx/))
-* postgres ([hub.docker](https://hub.docker.com/_/postgres/))
-* Docker (python [hub.docker](https://hub.docker.com/_/python))
+* Nginx ([hub.docker](https://hub.docker.com/_/nginx/))
+* Docker 
 * Docker compose 
+
+
+###### 
+ uvicorn src.core.asgi:application

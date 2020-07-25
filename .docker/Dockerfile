@@ -1,4 +1,4 @@
-FROM python:3.9.0a6-alpine3.11
+FROM python:3.9.0b3-alpine3.12
 ENV PYTHONUNBUFFERED 1
 
 RUN mkdir -p /app/requirements && mkdir -p /app/log/gunicorn

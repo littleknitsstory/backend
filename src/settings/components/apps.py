@@ -8,15 +8,14 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
-    # 'django.contrib.sites',
     # Plugins
     # Auth2
     # "oauth2_provider",
     # "social_django",
     # "rest_framework_social_oauth2",
+    "anymail",
     "graphene_django",
     "corsheaders",
-    "django_extensions",
     "mptt",
     "ckeditor",
     "ckeditor_uploader",
@@ -24,19 +23,22 @@ INSTALLED_APPS = [
     "djmoney",
     "djmoney.contrib.exchange",
     "colorful",
+    # Dev
+    "django_extensions",
     # Django Rest Framework
     "rest_framework",
     "rest_framework_swagger",
     "rest_framework_simplejwt.token_blacklist",
     "drf_yasg",
     # Apps project
+    "src.apps.account",
     "src.apps.api",
     "src.apps.blog",
-    "src.apps.shop",
-    "src.apps.menu",
-    "src.apps.account",
-    "src.apps.subscribe",
     "src.apps.contacts",
+    "src.apps.menu",
+    "src.apps.shop",
+    "src.apps.shorter",
     "src.apps.slider",
+    "src.apps.subscribe",
     "src.apps.reviews",
 ]

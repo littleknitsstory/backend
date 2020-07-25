@@ -45,7 +45,7 @@ class OrderCart(models.Model):
         ordering = ("-created_at",)
 
     def __str__(self):
-        return f"{self.id}-{self.order_total_cost}"
+        return f"{self.order_number}-{self.order_total_cost}"
 
     def get_total_cost_order(self):
         order_total_cost = self.order_total_cost
@@ -91,10 +91,9 @@ class OrderCartItem(models.Model):
     def __str__(self):
         return f"{self.product} - {self.amount}"
 
-    #
-    # def save(self, *args, **kwargs):
-    #     self.total_cost_order = self.get_total_cost_item()
-    #     return super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.item_total_cost = self.get_total_cost_item()
+        super().save(*args, **kwargs)
 
     def get_total_cost_item(self):
         if self.amount == 0:

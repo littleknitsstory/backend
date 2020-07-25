@@ -137,7 +137,10 @@ class OrderSerializer(serializers.Serializer):
     address = serializers.CharField(required=False)
     comments = serializers.CharField(required=False)
     email = serializers.EmailField(required=False)
-
+    #
+    status = serializers.CharField(required=False)
+    order_number = serializers.CharField(required=False)
+    
     def validate_products(self, products):
         products_count = len(products)
         products_ids = []
@@ -157,14 +160,22 @@ class OrderSerializer(serializers.Serializer):
     def create(self, validated_data):
         products_data = validated_data.pop("products")
         order = OrderCart.objects.create(**validated_data)
+        bulk_inserts = []
         for product_data in products_data:
-            order_item = OrderCartItem.objects.create(**product_data)
-            order_item.order_cart = order
-            order_item.item_total_cost = order_item.get_total_cost_item()
-            order_item.save()
-        order.order_total_cost = order.get_total_cost_order()
-        order.save()
-        return order
+            bulk_inserts.append(OrderCartItem(order_cart=order, **product_data))
+            # order_item = OrderCartItem.objects.create(order_cart=order, **product_data)
+            # order_item.item_total_cost = order_item.get_total_cost_item()
+            # order_item.save()
+            
+        OrderCartItem.objects.bulk_create(bulk_inserts)
+        
+        # order.order_total_cost = order.get_total_cost_order()
+        # order.save()
+        return {
+            "status": order.status,
+            "order_number": order.order_number,
+            "products": products_data
+        }
 
 
 class OrderRetrieveSerializer(serializers.ModelSerializer):

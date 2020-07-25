@@ -75,17 +75,6 @@ class OrderViewSet(ModelViewSet):
     def get_serializer_class(self):
         return self.serializer_classes.get(self.action, OrderSerializer)
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        order = serializer.save()
-        headers = self.get_success_headers(serializer.data)
-        response = {
-            "status": order.status,
-            "order_number": order.order_number,
-        }
-        return Response(response, status=status.HTTP_201_CREATED, headers=headers)
-
 
 class OrderItemViewSet(ModelViewSet):
     """ Viewsets order items """
