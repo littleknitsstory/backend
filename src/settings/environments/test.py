@@ -42,3 +42,6 @@ if not "create-db" in sys.argv:
     # even faster!
     SETTINGS_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     DATABASES["default"]["TEST"]["NAME"] = f"{SETTINGS_PATH}/test.db.sqlite3"
+
+from src.core.conftest import *
+print('test2')

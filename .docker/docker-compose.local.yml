@@ -1,7 +1,7 @@
 version: "3.0"
 
 services:
-  pg:
+  pg_l:
     # CHECK PG VERSION
     image: postgres:11.5-alpine
     environment:
@@ -19,7 +19,7 @@ services:
       - ./pgdata_3:/var/lib/postgresql/data/pgdata
 
 
-  redis:
+  redis_l:
     image: redis:6.0-rc1-alpine
     ports:
       - "6379:6379"

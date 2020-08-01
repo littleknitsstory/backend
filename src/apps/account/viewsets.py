@@ -1,6 +1,6 @@
 from rest_framework import generics, status
 from rest_framework.generics import GenericAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework_simplejwt.views import TokenViewBase
@@ -21,14 +21,17 @@ class UserViewSet(ReadOnlyModelViewSet):
     serializer_class = UserSerializer
     pagination_class = None
     lookup_field = "username"
+    permission_classes = (AllowAny,)
 
 
 class SignUpView(generics.CreateAPIView):
     serializer_class = SignUpSerializer
+    permission_classes = (AllowAny,)
 
 
 class SignInView(TokenViewBase):
     serializer_class = SignInSerializer
+    permission_classes = (AllowAny,)
 
 
 class SignOutView(GenericAPIView):

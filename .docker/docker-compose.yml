@@ -34,9 +34,11 @@ services:
   backend:
     container_name: phc_lks_${PROFILE}_backend
     image: 63phc/lks:${PROFILE}
-    build:
-      context: ..
-      dockerfile: .docker/Dockerfile
+#    build:
+#      context: ..
+#      dockerfile: .docker/Dockerfile
+#      args:
+#        env: dev
     restart: always
     command: bash -c "
       gunicorn src.core.wsgi:application -w 2 -b 0.0.0.0:8000"

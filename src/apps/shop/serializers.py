@@ -126,9 +126,11 @@ class ProductListSerializer(serializers.ModelSerializer):
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
+    code = serializers.CharField(source="product.code", required=False)
+    
     class Meta:
         model = OrderCartItem
-        fields = ("pk", "order_cart", "product", "amount")
+        fields = ("product", "amount", "code")
 
 
 class OrderSerializer(serializers.Serializer):
@@ -146,8 +148,7 @@ class OrderSerializer(serializers.Serializer):
         products_ids = []
         for product in products:
             products_ids.append(product.get("product").id)
-            product_count = product.get("product")
-            product_count = product_count.count
+            product_count = product.get("product").count
             amount = product.get("amount", 0)
             if amount > product_count:
                 logger.info(f"Product {product} less than requested {amount}")
@@ -156,25 +157,22 @@ class OrderSerializer(serializers.Serializer):
             raise ValidationError(_("The order contains a duplicate of the goods"))
         return products
 
-    # FIXME: order.save() in def save()
     def create(self, validated_data):
         products_data = validated_data.pop("products")
         order = OrderCart.objects.create(**validated_data)
         bulk_inserts = []
         for product_data in products_data:
             bulk_inserts.append(OrderCartItem(order_cart=order, **product_data))
-            # order_item = OrderCartItem.objects.create(order_cart=order, **product_data)
-            # order_item.item_total_cost = order_item.get_total_cost_item()
-            # order_item.save()
-            
-        OrderCartItem.objects.bulk_create(bulk_inserts)
+        item_data = OrderCartItem.objects.bulk_create(bulk_inserts)
         
-        # order.order_total_cost = order.get_total_cost_order()
-        # order.save()
+        # item_data = OrderItemSerializer(item_data, many=True).data
+        # need call save() bulk_create do *not* call save()
+        order.save()
+
         return {
             "status": order.status,
             "order_number": order.order_number,
-            "products": products_data
+            "products": item_data
         }
 
 

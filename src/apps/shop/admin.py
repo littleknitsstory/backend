@@ -78,7 +78,8 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
 class OrderCartItemInline(admin.TabularInline):
     model = OrderCartItem
     extra = 0
-    readonly_fields = ("product",)
+    readonly_fields = ("item_total_cost",)
+    show_change_link = True
 
 
 @admin.register(OrderCart)

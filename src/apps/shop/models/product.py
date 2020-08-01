@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 class Product(SeoMixin, ImagesMixin):
     title = models.CharField(_("Title"), max_length=120)
-    code = models.IntegerField(verbose_name=_("Code product"))
+    code = models.IntegerField(verbose_name=_("Code product"), db_index=True)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
     is_active = models.BooleanField(_("Active"), default=True)
     description = RichTextField(_("Description"))
@@ -76,7 +76,7 @@ class Product(SeoMixin, ImagesMixin):
         ordering = ("-created_at",)
 
     def __str__(self):
-        return self.title
+        return f'{self.code}: {self.title}'
 
     def get_price(self):
         return self.get_money(value=self.price)
