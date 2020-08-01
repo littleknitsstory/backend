@@ -24,10 +24,10 @@ jobs:
 
     - name: Bump version
       run: |
-        bump2version --new-version 0.0.1  --verbose --allow-dirty part
-#          bump2version patch --verbose --allow-dirty
+        bump2version patch --verbose --allow-dirty
 
   deploy:
+    needs: build
     runs-on: self-hosted
     steps:
     - name: Docker down, pull and up remote host
