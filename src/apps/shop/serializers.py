@@ -127,7 +127,7 @@ class ProductListSerializer(serializers.ModelSerializer):
 
 class OrderItemSerializer(serializers.ModelSerializer):
     code = serializers.CharField(source="product.code", required=False)
-    
+
     class Meta:
         model = OrderCartItem
         fields = ("product", "amount", "code")
@@ -142,7 +142,7 @@ class OrderSerializer(serializers.Serializer):
     #
     status = serializers.CharField(required=False)
     order_number = serializers.CharField(required=False)
-    
+
     def validate_products(self, products):
         products_count = len(products)
         products_ids = []
@@ -164,7 +164,7 @@ class OrderSerializer(serializers.Serializer):
         for product_data in products_data:
             bulk_inserts.append(OrderCartItem(order_cart=order, **product_data))
         item_data = OrderCartItem.objects.bulk_create(bulk_inserts)
-        
+
         # item_data = OrderItemSerializer(item_data, many=True).data
         # need call save() bulk_create do *not* call save()
         order.save()
@@ -172,7 +172,7 @@ class OrderSerializer(serializers.Serializer):
         return {
             "status": order.status,
             "order_number": order.order_number,
-            "products": item_data
+            "products": item_data,
         }
 
 

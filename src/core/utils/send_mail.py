@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 def _get_connection(backend: str):
-    
+
     if backend:
         backend, api_key = (
             settings.ANYMAIL.get(f"{backend}_EMAIL_BACKEND"),
@@ -29,7 +29,7 @@ def send_email_celery(
 ) -> Union[bool, Exception]:
 
     from_email = settings.EMAIL_HOST_USER if from_email is None else from_email
-    
+
     try:
         connection = _get_connection(backend=backend)
         send_mail(
@@ -47,7 +47,5 @@ def send_email_celery(
         return True
 
     except Exception as e:
-        logger.error(
-            f"Not send mail with Celery to {to}, - {e}, subject - {subject}"
-        )
+        logger.error(f"Not send mail with Celery to {to}, - {e}, subject - {subject}")
         return e

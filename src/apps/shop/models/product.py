@@ -76,7 +76,7 @@ class Product(SeoMixin, ImagesMixin):
         ordering = ("-created_at",)
 
     def __str__(self):
-        return f'{self.code}: {self.title}'
+        return f"{self.code}: {self.title}"
 
     def get_price(self):
         return self.get_money(value=self.price)

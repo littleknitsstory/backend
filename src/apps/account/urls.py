@@ -8,7 +8,8 @@ from src.apps.account.viewsets import (
     SignInView,
     SignOutView,
     ProfileView,
-    ConfirmView)
+    ConfirmView,
+)
 
 router_user = routers.DefaultRouter()
 router_user.register(r"users", UserViewSet)

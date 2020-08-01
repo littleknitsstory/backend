@@ -61,21 +61,21 @@ class SignInSerializer(TokenObtainPairSerializer):
 class PasswordValidator(object):
     def __call__(self, password):
         password_validation.validate_password(password)
-        
-        
+
+
 def set_code(email):
-    key = str(uuid.uuid4()).replace('-', '')
+    key = str(uuid.uuid4()).replace("-", "")
     rc.set(email, key, ex=300)
-    
+
     is_code = get_code(key)
     print(rc.get(email))
     print(is_code)
-    
-    
+
+
 def get_code(key):
     return rc.get(key)
 
-    
+
 class SignUpSerializer(serializers.Serializer):
     # username
     email = serializers.EmailField(validators=[EmailValidator()])
@@ -86,7 +86,7 @@ class SignUpSerializer(serializers.Serializer):
             "email",
             "password",
         )
-    
+
     def validate_email(self, email):
         if User.objects.filter(email=email).exists():
             raise ValidationError(f"{email} already exists")
@@ -104,7 +104,7 @@ class SignUpSerializer(serializers.Serializer):
             account_type=AccountTypeChoices.CLIENT,
         )
         print(type(email.lower()))
-        code = f'{1234}'
+        code = f"{1234}"
         code = set_code(email.lower())
         send_email_celery.delay(to=[email], subject=_("Welcome"), message=f"{code}")
         # user.save()
@@ -161,9 +161,9 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ConfirmSerializer(serializers.Serializer):
     email = serializers.CharField(validators=[EmailValidator()], required=False)
     code = serializers.CharField(read_only=True, required=False)
-    
+
     class Meta:
         model = User
-        
+
     def validate_code(self, code):
         return code

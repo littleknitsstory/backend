@@ -23,7 +23,7 @@ class UrlShorter(models.Model):
     class Meta:
         verbose_name = "Short Link"
         verbose_name_plural = "Short Links"
-        ordering = ('-created_at',)
-        
+        ordering = ("-created_at",)
+
     def save(self):
         pass

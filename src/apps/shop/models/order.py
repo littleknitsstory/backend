@@ -48,8 +48,7 @@ class OrderCart(models.Model):
 
     def __str__(self):
         return f"{self.order_number}-{self.order_total_cost}"
-    
-    
+
     def save(self, *args, **kwargs):
         print("=================== order_total_cost")
         print(self.order_total_cost)
@@ -63,7 +62,9 @@ class OrderCart(models.Model):
         for item in items:
             order_total_cost = convert_money(
                 order_total_cost, settings.BASE_CURRENCY
-            ) + convert_money(item.get_and_save_total_cost_item(), settings.BASE_CURRENCY)
+            ) + convert_money(
+                item.get_and_save_total_cost_item(), settings.BASE_CURRENCY
+            )
         return order_total_cost
 
 

@@ -9,7 +9,7 @@ from src.apps.shorter.models import UrlShorter
 
 
 class UrlShorterViewset(ModelViewSet):
-    
+
     permission_classes = (AllowAny,)
     # serializer_class = UrlShorterSerializer
     queryset = UrlShorter.objects.all()
@@ -23,13 +23,12 @@ class UrlShorterViewset(ModelViewSet):
 
     def get_serializer_class(self):
         return self.serializer_classes.get(self.action, UrlShorterSerializer)
-    
+
     def get_object(self):
         return self.request.query_params
 
 
 class UrlShorterRedirectViewset(View):
-
     def get(self, request, url_short):
         short_link = get_object_or_404(UrlShorter, url_short=url_short)
         short_link.count += 1
