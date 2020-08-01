@@ -9,6 +9,10 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@master
+    - name: Bump version
+        run: |
+          bump2version patch --verbose --allow-dirty
+
     - name: Publish to Docker Repository
       uses: elgohr/Publish-Docker-Github-Action@master
       env:
@@ -22,9 +26,7 @@ jobs:
         tag_semver: true
         buildargs: DEV
 
-    - name: Bump version
-      run: |
-        bump2version patch --verbose --allow-dirty
+
 
   deploy:
     needs: build
