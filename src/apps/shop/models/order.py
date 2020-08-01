@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.fields import ShortUUIDField
 from djmoney.contrib.exchange.models import convert_money
 from djmoney.models.fields import MoneyField
+from djmoney.money import Money
 
 from src.apps.shop.choices import OrderCartStatusChoices
 
@@ -45,16 +47,24 @@ class OrderCart(models.Model):
         ordering = ("-created_at",)
 
     def __str__(self):
-        return f"{self.id}-{self.order_total_cost}"
+        return f"{self.order_number}-{self.order_total_cost}"
+
+    def save(self, *args, **kwargs):
+        print("=================== order_total_cost")
+        print(self.order_total_cost)
+        self.order_total_cost = self.get_total_cost_order()
+        print(self.order_total_cost)
+        return super().save(*args, **kwargs)
 
     def get_total_cost_order(self):
-        order_total_cost = self.order_total_cost
+        order_total_cost = Money(0, settings.BASE_CURRENCY)
         items = self.ordercartitem_ordercart.all()
         for item in items:
-            if item.item_total_cost is not None:
-                order_total_cost = convert_money(
-                    order_total_cost, "RUB"
-                ) + convert_money(item.item_total_cost, "RUB")
+            order_total_cost = convert_money(
+                order_total_cost, settings.BASE_CURRENCY
+            ) + convert_money(
+                item.get_and_save_total_cost_item(), settings.BASE_CURRENCY
+            )
         return order_total_cost
 
 
@@ -91,12 +101,7 @@ class OrderCartItem(models.Model):
     def __str__(self):
         return f"{self.product} - {self.amount}"
 
-    #
-    # def save(self, *args, **kwargs):
-    #     self.total_cost_order = self.get_total_cost_item()
-    #     return super().save(*args, **kwargs)
-
-    def get_total_cost_item(self):
-        if self.amount == 0:
-            return self.product.price
-        return self.product.price * self.amount
+    def get_and_save_total_cost_item(self):
+        self.item_total_cost = self.product.price * self.amount
+        self.save()
+        return self.item_total_cost

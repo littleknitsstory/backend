@@ -10,10 +10,13 @@ from src.apps.account.choices import AccountTypeChoices
 
 
 class User(AbstractUser):
-    email = models.EmailField(_("email address"), blank=True, unique=True)
+    # email = models.EmailField(_("email address"), blank=True, unique=True)
 
     account_type = models.CharField(
-        _("Type user"), choices=AccountTypeChoices.USER_CHOICES, max_length=63
+        _("Type user"),
+        choices=AccountTypeChoices.USER_CHOICES,
+        default=AccountTypeChoices.CLIENT,
+        max_length=63,
     )
     avatar = OptimizedImageField(_("Avatar"), null=True, blank=True)
     about = models.TextField(_("About author"), max_length=633, null=True, blank=True)
@@ -69,5 +72,5 @@ class User(AbstractUser):
         if self.inst_profile:
             return self.inst_profile.get("link")
 
-    def get_country(self, user=None):
+    def get_country(self):
         return {"name": self.country.name, "code": self.country.code}

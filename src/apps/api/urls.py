@@ -10,4 +10,5 @@ urlpatterns = [
     path("", include("src.apps.subscribe.urls")),
     path("", include("src.apps.reviews.urls")),
     path("", include("src.apps.contacts.urls")),
+    path("", include("src.apps.shorter.urls")),
 ]

@@ -12,10 +12,10 @@ schema_view = get_swagger_view(title="Shop API")
 urlpatterns = [
     path("", include("src.apps.swagger.urls")),
     path("api/v1/", include("src.apps.api.urls")),
+    path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     path("admin/", admin.site.urls),
     path("anymail/", include("anymail.urls")),
     path("ckeditor/", include("ckeditor_uploader.urls")),
-    path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     # path('i18n/', include('django.conf.urls.i18n')),
     # path("auth/", include("rest_framework_social_oauth2.urls")),
 ]

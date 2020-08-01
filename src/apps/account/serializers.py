@@ -1,7 +1,11 @@
+import uuid
+
 from django.contrib.auth import password_validation
 from django.core.validators import EmailValidator
+from django.utils.translation import gettext_lazy as _
 from django_countries.serializer_fields import CountryField
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.serializers import (
     TokenObtainPairSerializer,
@@ -9,6 +13,8 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from src.settings.components.cache import redis_connect as rc
+from src.core.utils.send_mail import send_email_celery
 from src.apps.account.choices import AccountTypeChoices
 from src.apps.account.models import User
 
@@ -57,7 +63,21 @@ class PasswordValidator(object):
         password_validation.validate_password(password)
 
 
+def set_code(email):
+    key = str(uuid.uuid4()).replace("-", "")
+    rc.set(email, key, ex=300)
+
+    is_code = get_code(key)
+    print(rc.get(email))
+    print(is_code)
+
+
+def get_code(key):
+    return rc.get(key)
+
+
 class SignUpSerializer(serializers.Serializer):
+    # username
     email = serializers.EmailField(validators=[EmailValidator()])
     password = serializers.CharField(validators=[PasswordValidator()])
 
@@ -67,18 +87,27 @@ class SignUpSerializer(serializers.Serializer):
             "password",
         )
 
+    def validate_email(self, email):
+        if User.objects.filter(email=email).exists():
+            raise ValidationError(f"{email} already exists")
+        return email
+
     # TODO: чето решить с username=email.lower()
     def create(self, validated_data):
         email = validated_data["email"]
         password = validated_data["password"]
 
         user = User.objects.create_user(
-            username=email.lower(),
+            username=str(email.lower()),
             email=email.lower(),
             password=password,
             account_type=AccountTypeChoices.CLIENT,
         )
-        user.save()
+        print(type(email.lower()))
+        code = f"{1234}"
+        code = set_code(email.lower())
+        send_email_celery.delay(to=[email], subject=_("Welcome"), message=f"{code}")
+        # user.save()
 
         return user
 
@@ -127,3 +156,14 @@ class ProfileSerializer(serializers.ModelSerializer):
             "inst_profile",
             "tg_profile",
         )
+
+
+class ConfirmSerializer(serializers.Serializer):
+    email = serializers.CharField(validators=[EmailValidator()], required=False)
+    code = serializers.CharField(read_only=True, required=False)
+
+    class Meta:
+        model = User
+
+    def validate_code(self, code):
+        return code

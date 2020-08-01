@@ -126,9 +126,11 @@ class ProductListSerializer(serializers.ModelSerializer):
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
+    code = serializers.CharField(source="product.code", required=False)
+
     class Meta:
         model = OrderCartItem
-        fields = ("pk", "order_cart", "product", "amount")
+        fields = ("product", "amount", "code")
 
 
 class OrderSerializer(serializers.Serializer):
@@ -137,14 +139,16 @@ class OrderSerializer(serializers.Serializer):
     address = serializers.CharField(required=False)
     comments = serializers.CharField(required=False)
     email = serializers.EmailField(required=False)
+    #
+    status = serializers.CharField(required=False)
+    order_number = serializers.CharField(required=False)
 
     def validate_products(self, products):
         products_count = len(products)
         products_ids = []
         for product in products:
             products_ids.append(product.get("product").id)
-            product_count = product.get("product")
-            product_count = product_count.count
+            product_count = product.get("product").count
             amount = product.get("amount", 0)
             if amount > product_count:
                 logger.info(f"Product {product} less than requested {amount}")
@@ -153,18 +157,23 @@ class OrderSerializer(serializers.Serializer):
             raise ValidationError(_("The order contains a duplicate of the goods"))
         return products
 
-    # FIXME: order.save() in def save()
     def create(self, validated_data):
         products_data = validated_data.pop("products")
         order = OrderCart.objects.create(**validated_data)
+        bulk_inserts = []
         for product_data in products_data:
-            order_item = OrderCartItem.objects.create(**product_data)
-            order_item.order_cart = order
-            order_item.item_total_cost = order_item.get_total_cost_item()
-            order_item.save()
-        order.order_total_cost = order.get_total_cost_order()
+            bulk_inserts.append(OrderCartItem(order_cart=order, **product_data))
+        item_data = OrderCartItem.objects.bulk_create(bulk_inserts)
+
+        # item_data = OrderItemSerializer(item_data, many=True).data
+        # need call save() bulk_create do *not* call save()
         order.save()
-        return order
+
+        return {
+            "status": order.status,
+            "order_number": order.order_number,
+            "products": item_data,
+        }
 
 
 class OrderRetrieveSerializer(serializers.ModelSerializer):

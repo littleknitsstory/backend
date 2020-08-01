@@ -1,20 +1,51 @@
-# import sendgrid
-# from django.conf import settings
-# from sendgrid.helpers.mail.content import Content
-# from sendgrid.helpers.mail.email import Email
-# from sendgrid.helpers.mail.mail import Mail
-#
-#
-# class SendEmail:
-#     def __init__(self, from_email, to_email, subject, content):
-#         self.from_email = Email(from_email)
-#         self.to_email = Email(to_email)
-#         self.subject = subject
-#         self.content = Content("text/html", content)
-#
-#     def send(self):
-#         sg = sendgrid.SendGridAPIClient(apikey=settings.SENDGRID_API_KEY)
-#         mail = Mail(self.from_email, self.subject, self.to_email, self.content)
-#         response = sg.client.mail.send.post(request_body=mail.get())
-#         return response
-#
+import logging
+from typing import Union, List
+
+from django.conf import settings
+from django.core.mail import get_connection, send_mail
+from src.core.celery import app
+
+logger = logging.getLogger(__name__)
+
+
+def _get_connection(backend: str):
+
+    if backend:
+        backend, api_key = (
+            settings.ANYMAIL.get(f"{backend}_EMAIL_BACKEND"),
+            settings.ANYMAIL.get(f"{backend}_API_KEY"),
+        )
+        return get_connection(backend=backend, api_key=api_key)
+
+
+@app.task
+def send_email_celery(
+    subject: str,
+    to: List[str],
+    message: str,
+    from_email: str = None,
+    html_message: str = None,
+    backend: str = settings.PROVIDER_EMAIL,
+) -> Union[bool, Exception]:
+
+    from_email = settings.EMAIL_HOST_USER if from_email is None else from_email
+
+    try:
+        connection = _get_connection(backend=backend)
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email=from_email,
+            recipient_list=to,
+            fail_silently=False,
+            auth_user=None,
+            auth_password=None,
+            connection=connection,
+            html_message=html_message,
+        )
+        logger.info(f"Send message successfully to {to}, subject - {subject}")
+        return True
+
+    except Exception as e:
+        logger.error(f"Not send mail with Celery to {to}, - {e}, subject - {subject}")
+        return e

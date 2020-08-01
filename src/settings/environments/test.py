@@ -25,16 +25,16 @@ CACHES = {
 PASSWORD_HASHERS = ("django.contrib.auth.hashers.UnsaltedMD5PasswordHasher",)
 
 
-# Fake out migrations to speed up tests
-class DisableMigrations(object):
-    def __contains__(self, item):
-        return True
+# # Fake out migrations to speed up tests
+# class DisableMigrations(object):
+#     def __contains__(self, item):
+#         return True
+#
+#     def __getitem__(self, item):
+#         return None
 
-    def __getitem__(self, item):
-        return None
 
-
-MIGRATION_MODULES = DisableMigrations()
+# MIGRATION_MODULES = DisableMigrations()
 
 
 if not "create-db" in sys.argv:
@@ -42,3 +42,7 @@ if not "create-db" in sys.argv:
     # even faster!
     SETTINGS_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     DATABASES["default"]["TEST"]["NAME"] = f"{SETTINGS_PATH}/test.db.sqlite3"
+
+from src.core.conftest import *
+
+print("test2")
