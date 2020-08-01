@@ -42,7 +42,7 @@ social-auth-core==3.3.3
 six==1.15.0
 social-auth-app-django==4.0.0
 sqlparse==0.3.1
-urllib3==1.25.9
+urllib3==1.25.10
 django-registration==3.1
 sendgrid==6.2.2
 bump2version==1.0.0
