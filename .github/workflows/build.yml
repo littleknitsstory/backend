@@ -10,8 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Bump version
-        run: |
-          bump2version patch --verbose --allow-dirty
+      run: |
+        bump2version patch --verbose --allow-dirty
 
     - name: Publish to Docker Repository
       uses: elgohr/Publish-Docker-Github-Action@master
