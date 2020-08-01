@@ -29,10 +29,11 @@ def django_db_setup(django_db_setup, django_db_blocker):
 #         == 400
 #     )
 
+
 @pytest.mark.django_db
 @pytest.mark.urls("apps.account.urls")
 def test_ste():
-    print('hello')
+    print("hello")
 
 
 @pytest.mark.django_db
@@ -44,6 +45,8 @@ def test_get_sign_up(client):
         "/sign-up/", data=json.dumps(data), content_type="application/json"
     )
     print(res.json())
+
+
 #     assert (
 #         client.post(
 #             "/sign-up/", data=json.dumps(data), content_type="application/json"

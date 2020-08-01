@@ -10,4 +10,3 @@ class SubscribeViewSet(ModelViewSet):
     queryset = Subscribe.objects.none()
     http_method_names = ["post"]
     permission_classes = (AllowAny,)
-

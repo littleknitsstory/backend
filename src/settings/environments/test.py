@@ -44,4 +44,5 @@ if not "create-db" in sys.argv:
     DATABASES["default"]["TEST"]["NAME"] = f"{SETTINGS_PATH}/test.db.sqlite3"
 
 from src.core.conftest import *
-print('test2')
+
+print("test2")

@@ -12,7 +12,8 @@ from src.apps.account.serializers import (
     SignInSerializer,
     SignOutSerializer,
     ProfileSerializer,
-    ConfirmSerializer)
+    ConfirmSerializer,
+)
 from src.apps.account.models import User
 
 
@@ -55,8 +56,8 @@ class ProfileView(generics.RetrieveAPIView):
 
 class ConfirmView(generics.RetrieveAPIView):
     serializer_class = ConfirmSerializer
-    http_method_names = ['get']
-    
+    http_method_names = ["get"]
+
     def get_object(self):
         print(dir(self.request))
         print(self.request.user)
