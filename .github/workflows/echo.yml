@@ -17,3 +17,5 @@ jobs:
         run: |
           echo "$TEST_VAR"
           echo "$REV"
+          echo " $GITHUB_REF "
+          echo $GITHUB_REF
