@@ -1,4 +1,4 @@
-[![version](https://badgen.net/badge/version/v0.0.2b/black/)]()
+[![version](https://badgen.net/badge/version/v0.0.18b/black/)]()
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![develop](https://github.com/63phc/lks/workflows/develop/badge.svg?branch=develop)](https://github.com/63phc/lks/actions?query=workflow%3Adevelop)
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)

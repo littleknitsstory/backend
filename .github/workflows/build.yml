@@ -10,8 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Bump version
-      run: |
-        bump2version patch --verbose --allow-dirty
+    - run: pip install bump2version
+#    - run: bump2version patch --verbose --allow-dirty
+
+    - name: Get release version
+      id: get_version
+      run: echo ::set-env name=VERSION::$(echo $(bump2version patch --verbose --allow-dirty) | tail -c 7)
 
     - name: Publish to Docker Repository
       uses: elgohr/Publish-Docker-Github-Action@master
@@ -23,10 +27,9 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: .docker/Dockerfile
         workdir: .
-        tag_semver: true
+#        tag_semver: true
         buildargs: DEV
-
-
+        tags: "latest,${{ env.VERSION }}"
 
   deploy:
     needs: build
