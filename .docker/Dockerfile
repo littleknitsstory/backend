@@ -13,7 +13,10 @@ RUN apk add --update bash && rm -rf /var/cache/apk/*
 COPY requirements /app/requirements
 #--no-cache-dir
 RUN pip install -r requirements/dev.txt
-RUN echo $TEST_VAR
+
+ARG DEV
+RUN echo ${DEV}
+
 COPY . /app
 
 ENTRYPOINT [".docker/entrypoint.sh"]
