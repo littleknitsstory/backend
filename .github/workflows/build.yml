@@ -9,13 +9,13 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@master
+    - uses: actions/setup-python@v2
     - name: Bump version
     - run: pip install bump2version
 #    - run: bump2version patch --verbose --allow-dirty
 
     - name: Get release version
-      id: get_version
-      run: echo ::set-env name=VERSION::$(echo $(bump2version patch --verbose --allow-dirty) | tail -c 7)
+    - run: echo ::set-env name=VERSION::$(echo $(bump2version patch --verbose --allow-dirty) | tail -c 7)
 
     - name: Publish to Docker Repository
       uses: elgohr/Publish-Docker-Github-Action@master
