@@ -1,17 +1,32 @@
-[![version](https://badgen.net/badge/version/v0.0.18b/black/)]()
-[![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
-[![develop](https://github.com/63phc/lks/workflows/develop/badge.svg?branch=develop)](https://github.com/63phc/lks/actions?query=workflow%3Adevelop)
+[![version](https://img.shields.io/badge/version-v0.0.18b-black.svg)]()
+[![GitHub](https://img.shields.io/badge/docs-docs.lkslink.info-brightgreen.svg)]()
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
-### Project Descriptions
- This is project, blog and shop with the most modern technologies, also for testing new v of python and django
+<br>
+[![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
+[![develop](https://github.com/63phc/lks/workflows/develop/badge.svg?branch=develop)](https://github.com/63phc/lks/actions?query=workflow%3Adevelop)
 
-### Project Resource
-* main development in the [development](https://github.com/63phc/lks/tree/develop) branch
-* project releases in the [master](https://github.com/63phc/lks/tree/master) branch
-* frontend-vue [REPO](https://github.com/63phc/lks-frontend-vue)
+<div align="center">
+  <h1>LKS Project</h1>
+</div>
+
+<div align="center">
+  This is project, blog and shop with the most modern technologies, also for testing new version of python and django
+</div>
+
+<br>
+
+## Project Contents
+
+- [Features](#features)
+- [Project Documentation](#project-documentation)
+- [Project Technology](#project-technology)
+- [Project Guides](#project-guides)
+
+## Project Features
+## Project Storefront
 
 ### Project Documentation
 [Read here](docs/README.md)
@@ -38,6 +53,7 @@
 ### Project Technology
 [![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/blob/develop/.docker/Dockerfile#L1)
 [![GitHub](https://badgen.net/badge/django/3.0.7/blue)](https://github.com/63phc/lks/blob/develop/requirements/base.txt#L3)
+[![GitHub](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 * Python ([docs](https://www.python.org/doc/), [hub.docker](https://hub.docker.com/_/python))
 * Django ([docs](https://docs.djangoproject.com/en/3.0/))
@@ -47,9 +63,10 @@
 * Redis ([hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL ([hub.docker](https://hub.docker.com/_/postgres/))
 * Nginx ([hub.docker](https://hub.docker.com/_/nginx/))
-* Docker 
-* Docker compose 
+* Docker ([docs](https://docs.docker.com/))
+* Docker compose ([docs](https://docs.docker.com/compose/reference/overview/))
 
 
-###### 
- uvicorn src.core.asgi:application
+## Project Guides
+## Contributing
+

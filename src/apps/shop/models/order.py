@@ -1,3 +1,5 @@
+from typing import Optional
+
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -50,10 +52,7 @@ class OrderCart(models.Model):
         return f"{self.order_number}-{self.order_total_cost}"
 
     def save(self, *args, **kwargs):
-        print("=================== order_total_cost")
-        print(self.order_total_cost)
         self.order_total_cost = self.get_total_cost_order()
-        print(self.order_total_cost)
         return super().save(*args, **kwargs)
 
     def get_total_cost_order(self):
@@ -105,3 +104,12 @@ class OrderCartItem(models.Model):
         self.item_total_cost = self.product.price * self.amount
         self.save()
         return self.item_total_cost
+
+    @property
+    def is_digital(self) -> Optional[bool]:
+        """Check if a variant is digital and contains digital content."""
+        if not self.product:
+            return None
+        is_digital = self.product.is_digital()
+        has_digital = hasattr(self.product, "digital_content")
+        return is_digital and has_digital
