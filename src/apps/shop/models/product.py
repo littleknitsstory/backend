@@ -50,6 +50,10 @@ class Product(SeoMixin, ImagesMixin):
     included = models.CharField(_("Included"), max_length=120, null=True, blank=True)
     height = models.IntegerField(_("Height"), null=True, blank=True)
     weight = models.IntegerField(_("Weight"), null=True, blank=True)
+
+    is_shipping_required = models.BooleanField(default=True)
+    is_digital = models.BooleanField(default=False)
+
     colors = models.ManyToManyField(
         "ProductColor",
         verbose_name=_("Colors"),
@@ -75,8 +79,12 @@ class Product(SeoMixin, ImagesMixin):
         verbose_name_plural = _("Products")
         ordering = ("-created_at",)
 
-    def __str__(self):
-        return f"{self.code}: {self.title}"
+    def __str__(self) -> str:
+        return f"{self.title}"
+
+    def __repr__(self) -> str:
+        class_ = type(self)
+        return f"<{class_.__module__}.{class_.__name__}(code={self.code}, name={self.title})>"
 
     def get_price(self):
         return self.get_money(value=self.price)

@@ -40,6 +40,8 @@ class ImagesMixin(models.Model):
 
     image_preview = OptimizedImageField(_("Images"), blank=True)
     image_alt = models.CharField(_("Images Alt"), blank=True, max_length=255)
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
+    update_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     class Meta:
         abstract = True

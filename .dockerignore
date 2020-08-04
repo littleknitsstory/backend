@@ -38,3 +38,7 @@ README.md
 # docker temp dir
 .docker/pgdata/
 .docker/static/
+
+# sqlite
+*.sqlite3
+**/*.sqlite3
