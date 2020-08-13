@@ -6,13 +6,11 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-          architecture: 'x64'
+      - run: pip install bump2version
 
       - name: Set VERSION
         run: echo ::set-env name=VERSION::$(echo $(bump2version patch --verbose --allow-dirty) | tail -c 7)
