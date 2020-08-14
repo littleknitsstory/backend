@@ -10,12 +10,12 @@ RUN apk update && \
     python -m pip install --upgrade pip
 RUN apk add --update bash && rm -rf /var/cache/apk/*
 
-COPY requirements /app/requirements
+COPY src/requirements /app/requirements
 #--no-cache-dir
-RUN pip install -r requirements/dev.txt
+RUN pip install -r requirements/${REQUIREMENT}.txt
 
-ARG DEV
-RUN echo ${DEV}
+ARG REQUIREMENT
+RUN echo ${REQUIREMENT}
 
 COPY . /app
 

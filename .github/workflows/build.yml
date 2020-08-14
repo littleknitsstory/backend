@@ -13,25 +13,31 @@ jobs:
       - run: pip install bump2version
 
       - name: Set VERSION
-        run: echo ::set-env name=VERSION::$(echo $(bump2version patch --verbose --allow-dirty) | tail -c 7)
+        run: |
+          echo ::set-env name=VERSION::$(echo $(bump2version patch --verbose --allow-dirty) | tail -c 7)
+          git config --global user.name github-actions
+          git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git commit -am "Bump version to ${{ env.VERSION }}"
+          git push --force origin HEAD:$GITHUB_REF
+
 
       - name: Publish to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
         env:
-          DEV: True
+          REQUIREMENT: develop
         with:
           name: ${{ secrets.DOCKER_REPO }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           dockerfile: .docker/Dockerfile
           workdir: .
-  #        tag_semver: true
-          buildargs: DEV
+          buildargs: REQUIREMENT
           tags: "latest,${{ env.VERSION }}"
 
   deploy:
     needs: build
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Docker down, pull and up remote host
       uses: appleboy/ssh-action@master
