@@ -56,7 +56,7 @@ class ProductNode(DjangoObjectType):
 # 'meta_keywords',
 # 'meta_description',
 # 'created_at',
-# 'update_at'
+# 'updated_at'
 # )
 
 

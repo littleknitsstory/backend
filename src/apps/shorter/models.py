@@ -15,7 +15,7 @@ class UrlShorter(models.Model):
     count = models.IntegerField(default=0)
     is_expired = models.BooleanField(default=False)
     created_at = models.DateTimeField(verbose_name=_("Created"), auto_now_add=True)
-    update_at = models.DateTimeField(_("Updated at"), auto_now=True)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     def __str__(self):
         return str(self.url)

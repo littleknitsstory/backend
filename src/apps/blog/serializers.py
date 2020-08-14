@@ -50,5 +50,5 @@ class ArticleRetrieveSerializer(serializers.ModelSerializer):
             "meta_keywords",
             "meta_description",
             "created_at",
-            "update_at",
+            "updated_at",
         )

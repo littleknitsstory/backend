@@ -68,7 +68,7 @@ services:
 #    container_name: phc_lks_${PROFILE}_flower
 #    image: mher/flower
 #    command: ["--app src.celery",
-#              "--broker=redis://${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}/2",
+#              "--broker=redis://${REDIS_USER}:{REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}/2",
 #              "--port=${FLOWER_PORT}",
 #              "--basic_auth=${FLOWER_USER}:${FLOWER_PASSWORD}"]
 #    depends_on:

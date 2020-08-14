@@ -1,6 +1,6 @@
 certifi==2020.6.20
 celery==4.4.7
-Django==3.0.9
+Django==3.1
 django-anymail==7.1.0
 django-celery-beat==2.0.0
 django-celerybeat-status==0.0.10

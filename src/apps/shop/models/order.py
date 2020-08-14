@@ -24,7 +24,7 @@ class OrderCart(models.Model):
         verbose_name=_("Comments"), max_length=512, null=True, blank=True
     )
     created_at = models.DateTimeField(verbose_name=_("Created"), auto_now_add=True)
-    update_at = models.DateTimeField(_("Updated at"), auto_now=True)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
     status = models.CharField(
         verbose_name=_("Status"),
         choices=OrderCartStatusChoices.CHOICES,
