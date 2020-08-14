@@ -10,7 +10,7 @@ from .models.product import Product, ProductPhoto, ProductColor
 
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin, AdminBaseMixin):
-    list_display = ("title", "slug", "meta_description", "created_at", "update_at")
+    list_display = ("title", "slug", "meta_description", "created_at", "updated_at")
     fieldsets = (
         (_("Content"), {"fields": ("title",)}),
         (_("Main"), {"fields": ("slug",)}),
@@ -41,7 +41,7 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
         ProductPhotoInline,
     ]
     group_fieldsets = True
-    list_display = ("id", "code", "slug", "is_active", "update_at")
+    list_display = ("id", "code", "slug", "is_active", "updated_at")
     list_display_links = ("code", "slug")
     filter_horizontal = ("categories", "colors")
     fieldsets = (
@@ -84,12 +84,12 @@ class OrderCartItemInline(admin.TabularInline):
 
 @admin.register(OrderCart)
 class OrderCartAdmin(admin.ModelAdmin):
-    list_display = ("id", "order_number", "status", "update_at", "created_at")
+    list_display = ("id", "order_number", "status", "updated_at", "created_at")
     list_display_links = ("order_number",)
     inlines = [
         OrderCartItemInline,
     ]
-    readonly_fields = ("update_at", "created_at", "order_number", "order_total_cost")
+    readonly_fields = ("updated_at", "created_at", "order_number", "order_total_cost")
     fieldsets = (
         (
             _("Status"),
@@ -98,7 +98,7 @@ class OrderCartAdmin(admin.ModelAdmin):
                     "order_number",
                     "order_total_cost",
                     "status",
-                    "update_at",
+                    "updated_at",
                     "created_at",
                 )
             },

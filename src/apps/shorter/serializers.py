@@ -17,8 +17,5 @@ class UrlShorterSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        print("validated_data")
-        print(validated_data)
         d = {"url": "https://google2.com", "url_short": "https://google2.com"}
-
         return d

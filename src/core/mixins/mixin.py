@@ -16,7 +16,7 @@ class SeoMixin(models.Model):
         keywords (text): seo keywords
         title_seo (char): page's title_seo
         created_at: info created
-        update_at: info update
+        updated_at: info update
     """
 
     title_seo = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
@@ -24,7 +24,7 @@ class SeoMixin(models.Model):
     meta_description = models.TextField(_("Description"), blank=True, null=True)
 
     created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
-    update_at = models.DateTimeField(_("Updated at"), auto_now=True)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     class Meta:
         abstract = True
@@ -40,8 +40,6 @@ class ImagesMixin(models.Model):
 
     image_preview = OptimizedImageField(_("Images"), blank=True)
     image_alt = models.CharField(_("Images Alt"), blank=True, max_length=255)
-    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
-    update_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     class Meta:
         abstract = True

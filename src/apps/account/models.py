@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser, UserManager
-from django.contrib.postgres.fields import JSONField
+from django.db.models import JSONField
 from django_countries.fields import CountryField
 
 from django.db import models
