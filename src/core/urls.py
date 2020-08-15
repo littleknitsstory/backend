@@ -4,10 +4,7 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
-from rest_framework_swagger.views import get_swagger_view
 
-
-schema_view = get_swagger_view(title="Shop API")
 
 urlpatterns = [
     path("", include("src.apps.swagger.urls")),
@@ -30,5 +27,4 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #     path('yandex_5486c91ec180b084.html',
 #     TemplateView.as_view(template_name='yandex-auth.html')),
 # ]
-
 # http://www.django-rest-framework.org/api-guide/routers/#usage

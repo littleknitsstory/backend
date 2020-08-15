@@ -4,11 +4,11 @@
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
 <br>
-[![version](https://img.shields.io/badge/version-v0.0.22b-black.svg)]()
+[![version](https://img.shields.io/badge/version-0.0.21b-black.svg)]() :  
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
 <div align="center">
-  <h1>LKS Project</h1>
+  <h1>LITTLE KNITS STORY</h1>
 </div>
 
 <div align="center">
@@ -17,15 +17,15 @@
 
 <br>
 
-## Project Contents
+### Project Contents
 
 - [Features](#features)
 - [Project Documentation](#project-documentation)
 - [Project Technology](#project-technology)
 - [Project Guides](#project-guides)
 
-## Project Features
-## Project Storefront
+### Project Features
+### Project Storefront
 
 ### Project Documentation
 [Read here](docs/README.md)
@@ -51,7 +51,7 @@
 
 ### Project Technology
 [![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/blob/develop/.docker/Dockerfile#L1)
-[![GitHub](https://badgen.net/badge/django/3.0.7/blue)](https://github.com/63phc/lks/blob/develop/requirements/base.txt#L3)
+[![GitHub](https://badgen.net/badge/django/3.1/blue)](https://github.com/63phc/lks/blob/develop/requirements/base.txt#L3)
 [![GitHub](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 * Python ([docs](https://www.python.org/doc/), [hub.docker](https://hub.docker.com/_/python))
@@ -66,6 +66,6 @@
 * Docker compose ([docs](https://docs.docker.com/compose/reference/overview/))
 
 
-## Project Guides
-## Contributing
+### Project Guides
+### Contributing
 
