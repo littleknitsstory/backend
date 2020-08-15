@@ -1,13 +1,12 @@
-[![version](https://img.shields.io/badge/version-v0.0.21b-black.svg)]()
 [![GitHub](https://img.shields.io/badge/docs-docs.lkslink.info-brightgreen.svg)]()
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
 <br>
+[![version](https://img.shields.io/badge/version-v0.0.21b-black.svg)]()
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
-[![develop](https://github.com/63phc/lks/workflows/develop/badge.svg?branch=develop)](https://github.com/63phc/lks/actions?query=workflow%3Adevelop)
-
+[![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
 <div align="center">
   <h1>LKS Project</h1>
 </div>
