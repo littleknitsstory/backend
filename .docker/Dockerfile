@@ -12,10 +12,10 @@ RUN apk add --update bash && rm -rf /var/cache/apk/*
 
 COPY src/requirements /app/requirements
 #--no-cache-dir
-RUN pip install -r requirements/${REQUIREMENT}.txt
 
 ARG REQUIREMENT
 RUN echo ${REQUIREMENT}
+RUN pip install -r requirements/${REQUIREMENT}.txt
 
 COPY . /app
 
