@@ -3,7 +3,7 @@ version: '3'
 services:
 
   nginx:
-    container_name: phc_lks_${PROFILE}_nginx
+    container_name: lks_${DJANGO_ENV}_nginx
     image: nginx:1.19-alpine
     restart: always
     depends_on:
@@ -17,14 +17,14 @@ services:
       - "${NGINX_PORT}:80"
 
   redis:
-    container_name: phc_lks_${PROFILE}_redis
-    image: redis:6.0.5-alpine
+    container_name: lks_${DJANGO_ENV}_redis
+    image: redis:6.0.6-alpine
     restart: always
     env_file: .env
     command: redis-server --requirepass ${REDIS_PASSWORD}
 
   postgresql:
-    container_name: phc_lks_${PROFILE}_postgres
+    container_name: lks_${DJANGO_ENV}_postgres
     image: postgres:13-alpine
     restart: always
     env_file: .env
@@ -32,13 +32,13 @@ services:
       - ./pgdata:/var/lib/postgresql/data
 
   backend:
-    container_name: phc_lks_${PROFILE}_backend
-    image: 63phc/lks:${PROFILE}
-#    build:
-#      context: ..
-#      dockerfile: .docker/Dockerfile
-#      args:
-#        env: dev
+    container_name: lks_${DJANGO_ENV}_backend
+    image: 63phc/lks:latest
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+      args:
+        env: dev
     restart: always
     command: bash -c "
       gunicorn src.core.wsgi:application -w 2 -b 0.0.0.0:8000"
@@ -51,8 +51,8 @@ services:
       - redis
 
   celery:
-    container_name: phc_lks_${PROFILE}_celery
-    image: 63phc/lks:${PROFILE}
+    container_name: lks_${DJANGO_ENV}_celery
+    image: 63phc/lks:latest
     restart: always
     command: bash -c "
       celery -A src.core.celery worker --loglevel=info"
@@ -63,15 +63,3 @@ services:
     depends_on:
       - postgresql
       - redis
-
-#  flower:
-#    container_name: phc_lks_${PROFILE}_flower
-#    image: mher/flower
-#    command: ["--app src.celery",
-#              "--broker=redis://${REDIS_USER}:{REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}/2",
-#              "--port=${FLOWER_PORT}",
-#              "--basic_auth=${FLOWER_USER}:${FLOWER_PASSWORD}"]
-#    depends_on:
-#      - redis
-#    ports:
-#      - "${FLOWER_PORT}:5555"
