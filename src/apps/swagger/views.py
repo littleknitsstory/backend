@@ -10,9 +10,7 @@ schema_view = get_schema_view(
         default_version="v1",
         license=openapi.License(name="BSD License"),
         contact=openapi.Contact(email="support@littleknitsstory.com"),
-
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
-    
 )
