@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/version-v0.0.20b-black.svg)]()
+[![version](https://img.shields.io/badge/version-v0.0.21b-black.svg)]()
 [![GitHub](https://img.shields.io/badge/docs-docs.lkslink.info-brightgreen.svg)]()
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
