@@ -28,7 +28,7 @@ staticfiles
 static
 media
 htmlcov
-docs
+src/docs
 LICENSE
 README.md
 
@@ -38,6 +38,7 @@ README.md
 # docker temp dir
 .docker/pgdata/
 .docker/static/
+.docker/media/
 
 # sqlite
 *.sqlite3
