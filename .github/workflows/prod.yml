@@ -2,7 +2,7 @@ name: build
 on:
   push:
     branches:
-      - 'develop'
+      - 'master'
 
 jobs:
   build:
@@ -14,11 +14,11 @@ jobs:
 
       - name: Set VERSION
         run: |
-          echo ::set-env name=VERSION::$(echo $(bump2version patch --verbose --allow-dirty) | tail -c 7)
+          echo ::set-env name=VERSION::$(echo $(bump2version minor --verbose --allow-dirty) | tail -c 7)
           git config --global user.name github-actions
           git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git commit -am "Bump patch version"
+          git commit -am "Bump minor version"
           git push --force origin HEAD:$GITHUB_REF
 
       - name: Publish to Docker Repository
@@ -45,7 +45,7 @@ jobs:
         username: ${{ secrets.HOST_USERNAME }}
         password: ${{ secrets.HOST_PASSWORD }}
         script: |
-          cd ${{ secrets.PATH_BACKEND }}
+          cd ${{ secrets.PATH_BACKEND_PROD }}
           docker-compose down
           docker-compose pull
           docker-compose up -d
