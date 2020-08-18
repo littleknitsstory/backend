@@ -16,7 +16,7 @@ django-mptt-admin==1.0.2
 django-optimized-image==0.3.0
 django-split-settings==1.0.1
 djangorestframework==3.11.0
-djangorestframework-simplejwt==4.3.0
+djangorestframework-simplejwt==4.4.0
 extensions==0.4
 graphene-django==2.12.1
 idna==2.10
