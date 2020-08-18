@@ -18,7 +18,7 @@ django-split-settings==1.0.1
 djangorestframework==3.11.0
 djangorestframework-simplejwt==4.3.0
 extensions==0.4
-graphene-django==2.12.1
+graphene-django==2.13.0
 idna==2.10
 Markdown==3.2.2
 mccabe==0.6.1
