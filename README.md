@@ -26,7 +26,7 @@
 
 ### Project Features
 ### Project Documentation
-[Read here](docs/README.md)
+[Read here](src/docs/README.md)
 
 ### Project Structure
     applications:
