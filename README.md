@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
 <br>
-[![version](https://img.shields.io/badge/version-0.0.31b-black.svg)]()
+[![version](https://img.shields.io/badge/version-0.0.32b-black.svg)]()
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
 <div align="center">
