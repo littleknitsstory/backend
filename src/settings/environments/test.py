@@ -18,6 +18,7 @@ CACHES = {
     }
 }
 
+REDIS_CONNECT = ""
 # # Use in-memory file storage
 # DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'
 

@@ -1,6 +1,3 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect
-from django.views import View
 from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
 
@@ -26,11 +23,3 @@ class UrlShorterViewset(ModelViewSet):
 
     def get_object(self):
         return self.request.query_params
-
-
-class UrlShorterRedirectViewset(View):
-    def get(self, request, url_short):
-        short_link = get_object_or_404(UrlShorter, url_short=url_short)
-        short_link.count += 1
-        short_link.save()
-        return HttpResponseRedirect(short_link.url)

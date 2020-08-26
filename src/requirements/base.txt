@@ -42,3 +42,4 @@ urllib3==1.25.10
 django-registration==3.1
 django-redis==4.12.1
 drf-yasg==1.17.1
+django-robots==4.0

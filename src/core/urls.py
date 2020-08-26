@@ -4,7 +4,9 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
+from django.contrib.sitemaps.views import sitemap
 
+from src.core.sitemap import sitemaps
 
 urlpatterns = [
     path("", include("src.apps.swagger.urls")),
@@ -15,6 +17,8 @@ urlpatterns = [
     path("ckeditor/", include("ckeditor_uploader.urls")),
     # path('i18n/', include('django.conf.urls.i18n')),
     # path("auth/", include("rest_framework_social_oauth2.urls")),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
+    path("robots.txt", include("robots.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

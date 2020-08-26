@@ -1,5 +1,6 @@
 import uuid
 
+from django.conf import settings
 from django.contrib.auth import password_validation
 from django.core.validators import EmailValidator
 from django.utils.translation import gettext_lazy as _
@@ -13,7 +14,6 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from src.settings.components.cache import redis_connect as rc
 from src.core.utils.send_mail import send_email_celery
 from src.apps.account.choices import AccountTypeChoices
 from src.apps.account.models import User
@@ -63,17 +63,16 @@ class PasswordValidator(object):
         password_validation.validate_password(password)
 
 
+# TODO: go utils
 def set_code(email):
     key = str(uuid.uuid4()).replace("-", "")
-    rc.set(email, key, ex=300)
-
-    is_code = get_code(key)
-    print(rc.get(email))
-    print(is_code)
+    # settings.REDIS_CONNECT.set(email, key, ex=300)
+    # is_code = get_code(key)
+    return key
 
 
 def get_code(key):
-    return rc.get(key)
+    return settings.redis_connect.get(key)
 
 
 class SignUpSerializer(serializers.Serializer):
@@ -92,7 +91,7 @@ class SignUpSerializer(serializers.Serializer):
             raise ValidationError(f"{email} already exists")
         return email
 
-    # TODO: чето решить с username=email.lower()
+    # TODO: username=email.lower()?
     def create(self, validated_data):
         email = validated_data["email"]
         password = validated_data["password"]
@@ -103,8 +102,6 @@ class SignUpSerializer(serializers.Serializer):
             password=password,
             account_type=AccountTypeChoices.CLIENT,
         )
-        print(type(email.lower()))
-        code = f"{1234}"
         code = set_code(email.lower())
         send_email_celery.delay(to=[email], subject=_("Welcome"), message=f"{code}")
         # user.save()
