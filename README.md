@@ -1,15 +1,11 @@
-[![GitHub](https://img.shields.io/badge/docs-docs.lkslink.info-brightgreen.svg)](https://63phc.github.io/lks/)
-[![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)
-[![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
-[![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
-<br>
 [![version](https://img.shields.io/badge/version-0.0.39b-black.svg)]()
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
+[![GitHub](https://img.shields.io/badge/docs-docs.lkslink.info-brightgreen.svg)](https://63phc.github.io/lks/)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
+
 <div align="center">
-    <h1>LITTLE KNITS STORY</h1>
-    <br>
+    <h1>LITTLE KNITS STORY</h1>  
     
 [![swagger](https://validator.swagger.io/validator?url=http://dev.backend.littleknitsstory.com/)](http://dev.backend.littleknitsstory.com/) 
 [![graphql](https://badgen.net/badge/icon/graphql.beta?icon=graphql&label)](http://dev.backend.littleknitsstory.com/api/v2/)
@@ -21,6 +17,14 @@
   The project that underlies this repository is coming out of deep beta and the production version of the product 1.0.0 is being prepared.
 </div>
 <br>
+
+### Code Health
+
+[![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)
+[![codebeat badge](https://codebeat.co/badges/8b6af8ba-2ad4-45bf-a07e-210829951461)](https://codebeat.co/projects/github-com-63phc-lks-develop)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/79d402edf48b4b8886a47f22cc7e9212)](https://app.codacy.com/manual/pavel.burns/lks)
+[![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
+[![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 
 ### Project Contents
 
