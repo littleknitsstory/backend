@@ -1,4 +1,4 @@
-[![GitHub](https://img.shields.io/badge/docs-docs.lkslink.info-brightgreen.svg)]()
+[![GitHub](https://img.shields.io/badge/docs-docs.lkslink.info-brightgreen.svg)](https://63phc.github.io/lks/)
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
@@ -8,9 +8,9 @@
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
 <div align="center">
-  <h1>LITTLE KNITS STORY</h1>
-  <br>
-
+    <h1>LITTLE KNITS STORY</h1>
+    <br>
+    
 [![swagger](https://validator.swagger.io/validator?url=http://dev.backend.littleknitsstory.com/)](http://dev.backend.littleknitsstory.com/) 
 [![graphql](https://badgen.net/badge/icon/graphql.beta?icon=graphql&label)](http://dev.backend.littleknitsstory.com/api/v2/)
 </div>
@@ -25,12 +25,11 @@
 ### Project Contents
 
 - [Features](#features)
-- [Project Documentation](#project-documentation)
 - [Project Technology](#project-technology)
 - [Project Guides](#project-guides)
 
 ### Project Documentation
-[Read here](src/docs/README.md)
+[Read here](https://63phc.github.io/lks/)
 
 ### Project Structure
     applications:
@@ -72,6 +71,5 @@
 If you find any bugs, feel free to file an issue on the github issue tracker.
 
 ### Project Features
-
 ### Project Guides
 ### Contributing

@@ -1,37 +1,101 @@
-## Welcome to GitHub Pages
+## Welcome to LKS Project Docs 
 
-You can use the [editor on GitHub](https://github.com/63phc/lks/edit/develop/docs/index.md) to maintain and preview the content for your website in Markdown files.
+### How to prepare local server
+### Project Install 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+#### Clone project: 
+```
+git clone -b develop https://github.com/63phc/lks.git
+```
+### Docker setup
+ - Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers) 
+ - edit docker/dev/.env file with your params
 
-### Markdown
+```
+cp docker/dev/.env.example .env
+docker-compose -f docker/docker-compose.dev.yml build
+docker-compose -f docker/docker-compose.dev.yml run backend python manage.py makemigrations
+docker-compose -f docker/docker-compose.dev.yml run backend python manage.py migrate
+docker-compose -f docker/docker-compose.dev.yml up
+```
+ - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+* only postgres
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+docker-compose -f docker/docker-compose.local.yml up postgresql
+# in .env:6
+POSTGRES_HOST=localhost
+# AND GO Local setup
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+### Local setup
+#### Create env
+- VirtualEnv
+```
+python3 -m venv name
+source name/bin/activate 
+pip3 install -r backend/requirements/local.txt
+```
+- Or through pipenv:
+```
+pip3 install pipenv
+pipenv install
+pipenv shell
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/63phc/lks/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+#### Env File
+- edit .env.example file with your params
+```
+cp .env.expamle .env
+```
+- or create .env with params
+```
+DJANGO_ENV=development
+SECRET_KEY=YOUR_SECRET_KEY
+# POSTGRES_USER=user_db
+# POSTGRES_DB=test_db
+# POSTGRES_PASSWORD=pass_db
+# POSTGRES_HOST=postgresql # for docker
+# POSTGRES_HOST=localhost  # for local
+# POSTGRES_PORT=5432
+# PGDATA=/var/lib/postgresql/data/pgdata
 
-### Support or Contact
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- Prepare project:
+
+```
+python manage.py makemigration
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py loaddata src/fixtures/*.json
+python manage.py runserver
+```
+
+### Git flow
+
+- Easy git flow
+```
+git checkout develop
+git pull develop
+git checkout -b <your branch>
+# when complete task
+git add .
+git commit -m '#<number task> commit messages' 
+git push origin <your branch>
+```
+
+- Git flow healthy person
+[git-flow-cheatsheet](https://danielkummer.github.io/git-flow-cheatsheet/)
+
+ - Settings flake + pre-commit hook,
+``` 
+sudo pip3 install flake8
+#(OUTPUT FILTERS -> $FILE_PATH$\:$LINE$\:$COLUMN$\:.*)
+flake8 --install-hook git
+git config --global --bool flake8.strict true
+# Easy start -> ctrl + shift + a -> flake -> enter
+```
+
