@@ -25,6 +25,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/79d402edf48b4b8886a47f22cc7e9212)](https://app.codacy.com/manual/pavel.burns/lks)
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
+[![CodeScene System Mastery](https://codescene.io/projects/9132/status-badges/system-mastery)](https://codescene.io/projects/9132)
 
 ### Project Contents
 
