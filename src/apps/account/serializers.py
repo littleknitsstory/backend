@@ -104,8 +104,6 @@ class SignUpSerializer(serializers.Serializer):
         )
         code = set_code(email.lower())
         send_email_celery.delay(to=[email], subject=_("Welcome"), message=f"{code}")
-        # user.save()
-
         return user
 
     def to_representation(self, instance):

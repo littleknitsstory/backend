@@ -11,14 +11,27 @@
 [![graphql](https://badgen.net/badge/icon/graphql.beta?icon=graphql&label)](http://dev.backend.littleknitsstory.com/api/v2/)
 </div>
 
-
 <div align="center">
-  This is project, blog and shop with the most modern technologies, also for testing new version of python and django.
-  The project that underlies this repository is coming out of deep beta and the production version of the product 1.0.0 is being prepared.
+  - This is project, blog and shop with the most modern technologies, also for testing new version of python and django. <br>
+  - This is just a pet project backend, this is not a boxed solution, this is just an API for my project. <br>
+  - This API can be used if you have a marketplace or aggregator. <br>
+  - The project itself can also be used as a working solution for the API, your blog store, it's all about the content. <br>
+  - The project that underlies this repository is coming out of deep beta and the production version of the product 1.0.0 is being prepared. <br>
+  - So the master branch can be used however you like. <br>
+  - There is a lot of experimental stuff in the development branch.
 </div>
-<br>
 
-### Code Health
+
+### Project Contents
+
+- [Project Code](#project-code)
+- [Project Documentation](#project-documentation)
+- [Project Structure](#project-structure)
+- [Project Features](#project-features)
+- [Project Technology](#project-technology)
+- [Project Guides](#project-guides)
+
+### Project Code
 
 [![CodeFactor](https://www.codefactor.io/repository/github/63phc/lks/badge?s=20b5db5dea700723ad3e05f5a2e0e6bb500fda65)](https://www.codefactor.io/repository/github/63phc/lks)
 [![codebeat badge](https://codebeat.co/badges/8b6af8ba-2ad4-45bf-a07e-210829951461)](https://codebeat.co/projects/github-com-63phc-lks-develop)
@@ -27,11 +40,6 @@
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 [![CodeScene System Mastery](https://codescene.io/projects/9132/status-badges/system-mastery)](https://codescene.io/projects/9132)
 
-### Project Contents
-
-- [Features](#features)
-- [Project Technology](#project-technology)
-- [Project Guides](#project-guides)
 
 ### Project Documentation
 [Read here](https://63phc.github.io/lks/)
@@ -72,9 +80,18 @@
 * Docker compose ([docs](https://docs.docker.com/compose/reference/overview/))
 
 
-## Issues [![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/63phc/lks)](https://www.tickgit.com/browse?repo=github.com/63phc/lks)
+## Project Issues [![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/63phc/lks)](https://www.tickgit.com/browse?repo=github.com/63phc/lks)
 If you find any bugs, feel free to file an issue on the github issue tracker.
 
 ### Project Features
+ - Support multilingual
+ - ... be sure to add features ...
+ 
 ### Project Guides
-### Contributing
+guides will be collected here, for example:
+ - How to do versioning?
+ - How to make multilingual api?
+ - How to write reusable apps?
+ 
+### Project Contributing
+...
