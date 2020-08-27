@@ -1,8 +1,31 @@
 ## Welcome to LKS Project Docs 
   - This is project, blog and shop with the most modern technologies, also for testing new version of python and django.
   - This is just a pet project backend, this is not a boxed solution, this is just an API for my project.
-  
-### Project Install 
+
+Quick start
+-----------
+
+1. Add "lks" to your INSTALLED_APPS setting like this::
+
+        INSTALLED_APPS = [
+            ...
+            'lks',
+        ]
+
+2. Include the polls URLconf in your project urls.py like this::
+
+        path('lks/', include('lks.urls')),
+
+3. Run ``python manage.py migrate`` to create the lks models.
+
+4. Start the development server and visit http://127.0.0.1:8000/admin/
+   to create a lks (you'll need the Admin app enabled).
+
+5. Visit http://127.0.0.1:8000/lks/ to participate in the poll.
+
+
+Project Install from repo
+------
 
 #### Clone project: 
 ```

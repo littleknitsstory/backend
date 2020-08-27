@@ -3,15 +3,12 @@
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
 [![GitHub](https://img.shields.io/badge/docs-docs.lkslink.info-brightgreen.svg)](https://63phc.github.io/lks/)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
-
 <div align="center">
     <h1>LITTLE KNITS STORY</h1>  
     
 [![swagger](https://validator.swagger.io/validator?url=http://dev.backend.littleknitsstory.com/)](http://dev.backend.littleknitsstory.com/) 
 [![graphql](https://badgen.net/badge/icon/graphql.beta?icon=graphql&label)](http://dev.backend.littleknitsstory.com/api/v2/)
 </div>
-
-<div align="center">
   - This is project, blog and shop with the most modern technologies, also for testing new version of python and django. <br>
   - This is just a pet project backend, this is not a boxed solution, this is just an API for my project. <br>
   - This API can be used if you have a marketplace or aggregator. <br>
@@ -19,7 +16,6 @@
   - The project that underlies this repository is coming out of deep beta and the production version of the product 1.0.0 is being prepared. <br>
   - So the master branch can be used however you like. <br>
   - There is a lot of experimental stuff in the development branch.
-</div>
 
 
 ### Project Contents
@@ -69,7 +65,7 @@
 [![GitHub](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 * Python ([docs](https://www.python.org/doc/), [hub.docker](https://hub.docker.com/_/python))
-* Django ([docs](https://docs.djangoproject.com/en/3.0/))
+* Django ([docs](https://docs.djangoproject.com/en/3.1/))
 * DRF ([docs](https://www.django-rest-framework.org))
 * Celery ([docs](http://www.celeryproject.org/))
 * Swagger ([docs](htps://swagger.io/docs/specification/about/))
@@ -81,14 +77,14 @@
 
 
 ## Project Issues [![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/63phc/lks)](https://www.tickgit.com/browse?repo=github.com/63phc/lks)
-If you find any bugs, feel free to file an issue on the github issue tracker.
+ - If you find any bugs, feel free to file an issue on the github issue tracker.
 
 ### Project Features
  - Support multilingual
  - ... be sure to add features ...
  
 ### Project Guides
-guides will be collected here, for example:
+- guides will be collected here, for example:
  - How to do versioning?
  - How to make multilingual api?
  - How to write reusable apps?
