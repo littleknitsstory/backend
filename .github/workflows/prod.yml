@@ -1,11 +1,11 @@
-name: build
+name: prod-build
 on:
   push:
     branches:
       - 'master'
 
 jobs:
-  build:
+  prod-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

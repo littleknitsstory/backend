@@ -6,7 +6,7 @@
 name: autoblack_push
 on: [push]
 jobs:
-  build:
+  autoblack:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1  # Use v1, NOT v2
