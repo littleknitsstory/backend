@@ -47,7 +47,7 @@ class CategoryViewSet(ModelViewSet):
 
 
 class OrderViewSet(ModelViewSet):
-    """ Viewsets order
+    """Viewsets order
     ```
     {
         "products":  [{"product": int, "amount": int}, {"product": int, "amount": int}],

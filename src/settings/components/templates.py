@@ -14,7 +14,9 @@ TEMPLATES = [
         "DIRS": [os.path.join(BASE_DIR, "src/templates")],
         # "APP_DIRS": True,
         "OPTIONS": {
-            "loaders": ["django.template.loaders.app_directories.Loader",],
+            "loaders": [
+                "django.template.loaders.app_directories.Loader",
+            ],
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",

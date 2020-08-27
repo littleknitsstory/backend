@@ -54,6 +54,9 @@ class Migration(migrations.Migration):
                     models.DateTimeField(auto_now_add=True, verbose_name="Created at"),
                 ),
             ],
-            options={"verbose_name": "Review", "verbose_name_plural": "Reviews",},
+            options={
+                "verbose_name": "Review",
+                "verbose_name_plural": "Reviews",
+            },
         ),
     ]

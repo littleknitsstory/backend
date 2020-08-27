@@ -213,7 +213,12 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "User", "verbose_name_plural": "Users",},
-            managers=[("objects", django.contrib.auth.models.UserManager()),],
+            options={
+                "verbose_name": "User",
+                "verbose_name_plural": "Users",
+            },
+            managers=[
+                ("objects", django.contrib.auth.models.UserManager()),
+            ],
         ),
     ]
