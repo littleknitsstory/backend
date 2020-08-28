@@ -49,3 +49,12 @@ jobs:
           docker-compose down
           docker-compose pull
           docker-compose up -d
+
+  pypi:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Publish package
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: ${{ secrets.PIPY_USER }}
+        password: ${{ secrets.PIPY_PASS }}

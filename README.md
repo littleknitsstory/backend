@@ -1,7 +1,7 @@
-[![version](https://img.shields.io/badge/version-0.0.43b-black.svg)]()
+[![version](https://img.shields.io/badge/version-0.0.44b-green.svg)]()
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
-[![GitHub](https://img.shields.io/badge/docs-docs.lkslink.info-brightgreen.svg)](https://63phc.github.io/lks/)
+[![Documentation Status](https://readthedocs.org/projects/lks/badge/?version=develop)](https://lks.readthedocs.io/en/develop/?badge=develop)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
 <div align="center">
     <h1>LITTLE KNITS STORY</h1>  
