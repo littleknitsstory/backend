@@ -13,7 +13,15 @@ class TagAdmin(TranslationAdmin, admin.ModelAdmin):
         "slug",
     )
     fieldsets = (
-        (None, {"fields": ("title", "slug",)}),
+        (
+            None,
+            {
+                "fields": (
+                    "title",
+                    "slug",
+                )
+            },
+        ),
         (_("SEO"), {"fields": ("title_seo", "meta_keywords", "meta_description")}),
     )
 

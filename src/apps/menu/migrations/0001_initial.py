@@ -40,7 +40,10 @@ class Migration(migrations.Migration):
                     models.BooleanField(default=False, verbose_name="Active"),
                 ),
             ],
-            options={"verbose_name": "Type", "verbose_name_plural": "Types",},
+            options={
+                "verbose_name": "Type",
+                "verbose_name_plural": "Types",
+            },
         ),
         migrations.CreateModel(
             name="MenuItems",
@@ -113,6 +116,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "Menu item", "verbose_name_plural": "Menu items",},
+            options={
+                "verbose_name": "Menu item",
+                "verbose_name_plural": "Menu items",
+            },
         ),
     ]
