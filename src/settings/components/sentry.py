@@ -11,5 +11,6 @@ sentry_logging = LoggingIntegration(
 )
 
 sentry_sdk.init(
-    dsn=config("SENTRY_DNS", ""), integrations=[DjangoIntegration(), sentry_logging],
+    dsn=config("SENTRY_DNS", ""),
+    integrations=[DjangoIntegration(), sentry_logging],
 )

@@ -98,7 +98,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "Tag", "verbose_name_plural": "Tags",},
+            options={
+                "verbose_name": "Tag",
+                "verbose_name_plural": "Tags",
+            },
         ),
         migrations.CreateModel(
             name="Article",
