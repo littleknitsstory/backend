@@ -39,7 +39,7 @@ six==1.15.0
 social-auth-app-django==4.0.0
 sqlparse==0.3.1
 urllib3==1.25.10
-django-registration==3.1
+django-registration==3.1.1
 django-redis==4.12.1
 drf-yasg==1.17.1
 django-robots==4.0
