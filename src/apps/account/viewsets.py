@@ -1,7 +1,8 @@
-from rest_framework import generics, status
+from django.conf import settings
+from django.http import HttpResponseRedirect
+from rest_framework import generics
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework_simplejwt.views import TokenViewBase
 
@@ -43,7 +44,7 @@ class SignOutView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return HttpResponseRedirect(settings.SIGN_OUT_REDIRECT_URL)
 
 
 class ProfileView(generics.RetrieveAPIView):
@@ -56,12 +57,6 @@ class ProfileView(generics.RetrieveAPIView):
 
 class ConfirmView(generics.RetrieveAPIView):
     serializer_class = ConfirmSerializer
+    permission_classes = (AllowAny,)
     http_method_names = ["get"]
-
-    def get_object(self):
-        print(dir(self.request))
-        print(self.request.user)
-        print(self.request.content_type)
-        print(self.request.data)
-        print(self.request.parser_context)
-        return self.request.query_params
+    lookup_field = "code"

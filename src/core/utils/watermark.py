@@ -1,5 +1,5 @@
+# TODO: reprite this place and implemented solved
 # from PIL import Image, ImageDraw, ImageFont
-
 # from settings.components.watermark import WATERMARK_TEXT, \
 #     WATERMARK_POSITION, IMAGE_SIZE, WATERMARK_FONT
 # from settings.components.watermark import WATERMARK_TEXT, WATERMARK_POSITION, WATERMARK_FONT, IMAGE_SIZE

@@ -27,3 +27,5 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 OPTIMIZED_IMAGE_METHOD = "pillow"
+
+SIGN_OUT_REDIRECT_URL = "https://littleknitsstory.com"

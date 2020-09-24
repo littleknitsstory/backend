@@ -52,6 +52,7 @@ class OrderCart(models.Model):
         return f"{self.order_number}-{self.order_total_cost}"
 
     def save(self, *args, **kwargs):
+        # if not self.order_total_cost:
         self.order_total_cost = self.get_total_cost_order()
         return super().save(*args, **kwargs)
 

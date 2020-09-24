@@ -13,7 +13,7 @@ base_settings = [
     "components/cors.py",  # social auth
     "components/database.py",  # postgres
     "components/emails.py",  # emails
-    "components/logger.py",  # logging
+    "components/logging.py",  # logging
     "components/*.py",
     # Select the right env:
     f"environments/{CONFIG_NAME}.py",

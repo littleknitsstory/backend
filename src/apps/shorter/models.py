@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.db import models
 
 
-def generate_token(length):
+def generate_short_code(length):
     return "".join([uuid4().hex for _ in range(ceil(length / 32))])[:length]
 
 
@@ -25,5 +25,14 @@ class UrlShorter(models.Model):
         verbose_name_plural = "Short Links"
         ordering = ("-created_at",)
 
-    def save(self):
-        pass
+    def get_url_short(self):
+        from django.conf import settings
+
+        return f"{settings.SHORT_URL}/{self.url_short}"
+
+    def save(
+        self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        if not self.url_short:
+            self.url_short = generate_short_code(length=6)
+        super().save()
