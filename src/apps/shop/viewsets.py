@@ -48,7 +48,7 @@ class CategoryViewSet(ModelViewSet):
 
 
 class OrderViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, GenericViewSet):
-    """ Viewsets order
+    """Viewsets order
     ```
     {
         "products":  [{"product": int, "amount": int}, {"product": int, "amount": int}],
