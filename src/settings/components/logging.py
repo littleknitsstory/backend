@@ -10,7 +10,10 @@ LOGGING = {
         "simple": {"format": "%(levelname)s %(asctime)s %(message)s"},
     },
     "handlers": {
-        "console": {"class": "logging.StreamHandler", "stream": sys.stdout,},
+        "console": {
+            "class": "logging.StreamHandler",
+            "stream": sys.stdout,
+        },
         # 'db_log': {
         #     'level': 'DEBUG',
         #     'class': 'django_db_logger.db_log_handler.DatabaseLogHandler',
