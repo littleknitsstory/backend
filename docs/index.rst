@@ -5,20 +5,16 @@
 Quick start
 -----------
 
-1. Add "lks" to your INSTALLED_APPS setting like this:
-
-
+1. Add "lks" to your INSTALLED_APPS setting like this::
 
         INSTALLED_APPS = [
             'lks'
         ]
 
+2. Include the lks API in your project api/urls.py like this::
 
-2. Include the lks API in your project api/urls.py like this:
-
-```
         path('lks/', include('lks.api.v1')),
-```
+
 3. Run ``python manage.py migrate`` to create the lks models.
 
 4. Start the development server and visit http://127.0.0.1:8000/admin/
@@ -30,11 +26,9 @@ Quick start
 Project Install from repo for developing
 ------
 
-#### Clone project:
+Clone project::
 
-```
         git clone -b develop https://github.com/63phc/lks.git
-```
 
  - There are two ways to start a project, all in docker or only pg, redis in docker
  - You can not use docker, then you should have pg and redis in local
@@ -45,13 +39,13 @@ Start in Docker all
  - Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers) 
  - edit docker/dev/.env file with your params
 
-```
+d::
         cp .env.example .env
         docker-compose -f .docker/docker-compose.dev.yml build
         docker-compose -f .docker/docker-compose.dev.yml run backend python manage.py makemigrations
         docker-compose -f .docker/docker-compose.dev.yml run backend python manage.py migrate
         docker-compose -f .docker/docker-compose.dev.yml up
-```
+
 
  - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
 
@@ -67,32 +61,25 @@ Start only postgres, redis
 Create virtual env
 ------
 
-- VirtualEnv
+- VirtualEnv::
 
-```
         python3 -m venv Venv
         source Venv/bin/activate
         pip3 install -r src/requirements/development.txt
-```
 
-- Or through pipenv:
+- Or through pipenv::
 
-
-```
         pip3 install pipenv
         pipenv install
         pipenv shell
-```
 
 - Env File
 
-- edit .env.example file with your params
+- edit .env.example file with your params::
 
-```
         cp .env.example .env
-```
 
-- or create .env with params
+- or create .env with params::
 
 | var | description |
 | --- | --- |
