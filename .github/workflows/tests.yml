@@ -13,7 +13,9 @@ jobs:
       - name: Install requirements
         run: pip install -r src/requirements/test.txt
       - name: Run pytests
-        run:  DJANGO_ENV=test pytest
+        run: |
+          export DJANGO_ENV=test
+          pytest
       - name: Tests report
         run: coverage report
 

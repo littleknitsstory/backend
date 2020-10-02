@@ -1,19 +1,18 @@
-from split_settings.tools import optional, include
 from decouple import config
+from split_settings.tools import include
 
-CONFIG_NAME = config("DJANGO_ENV", "test") or "development"
-print(CONFIG_NAME)
+CONFIG_NAME = config("DJANGO_ENV", "development")
 
 base_settings = [
-    "components/_paths.py",  # standard django settings
-    "components/apps.py",  # standard django settings
-    "components/cache.py",  # standard django settings
-    "components/ckeditor.py",  # standard django settings
-    "components/common.py",  # standard django settings
-    "components/cors.py",  # social auth
-    "components/database.py",  # postgres
-    "components/emails.py",  # emails
-    "components/logging.py",  # logging
+    "components/_paths.py",
+    "components/apps.py",
+    "components/cache.py",
+    "components/ckeditor.py",
+    "components/common.py",
+    "components/cors.py",
+    "components/database.py",
+    "components/emails.py",
+    "components/logging.py",
     "components/*.py",
     # Select the right env:
     f"environments/{CONFIG_NAME}.py",
