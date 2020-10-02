@@ -2,8 +2,8 @@ name: pypi
 on:
   push:
     branches:
-      - 'develop'
-#      - 'master'
+#      - 'develop'
+      - 'master'
 
 jobs:
   pypi:
