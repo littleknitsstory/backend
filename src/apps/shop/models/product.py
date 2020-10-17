@@ -1,19 +1,19 @@
+import logging
+import typing
+
+from ckeditor.fields import RichTextField
+from colorful.fields import RGBColorField
+from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.conf import settings
 from django_extensions.db.fields import AutoSlugField
 from djmoney.contrib.exchange.exceptions import MissingRate
 from djmoney.contrib.exchange.models import convert_money
 from djmoney.models.fields import MoneyField
-
-from colorful.fields import RGBColorField
-from ckeditor.fields import RichTextField
 from djmoney.money import Money
 from modeltranslation.utils import get_language
 
 from src.core.mixins.mixin import SeoMixin, ImagesMixin
-
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -84,7 +84,8 @@ class Product(SeoMixin, ImagesMixin):
 
     def __repr__(self) -> str:
         class_ = type(self)
-        return f"<{class_.__module__}.{class_.__name__}(code={self.code}, name={self.title})>"
+        return f"<{class_.__module__}.{class_.__name__}" \
+               f"(code={self.code}, name={self.title})>"
 
     def get_price(self):
         return self.get_money(value=self.price)
@@ -92,7 +93,9 @@ class Product(SeoMixin, ImagesMixin):
     def get_sale(self):
         return self.get_money(value=self.sale)
 
-    def get_money(self, value: MoneyField or Money, currency: str = None):
+    def get_money(
+            self, value: MoneyField or Money, currency: typing.Optional[str] = None
+    ):
         currency = currency or settings.LANG_EXCHANGE.get(get_language())
         try:
             return convert_money(value=value, currency=currency)
