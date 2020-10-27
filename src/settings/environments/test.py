@@ -5,9 +5,7 @@ import sentry_sdk
 
 PROFILE = "test"
 SECRET_KEY = "test_SECRET_KEY_1234"
-DATABASES = {
-    "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:", "TEST": {}}
-}
+DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "TEST": {}}}
 
 CACHES = {
     "default": {

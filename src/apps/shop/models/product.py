@@ -84,8 +84,10 @@ class Product(SeoMixin, ImagesMixin):
 
     def __repr__(self) -> str:
         class_ = type(self)
-        return f"<{class_.__module__}.{class_.__name__}" \
-               f"(code={self.code}, name={self.title})>"
+        return (
+            f"<{class_.__module__}.{class_.__name__}"
+            f"(code={self.code}, name={self.title})>"
+        )
 
     def get_price(self):
         return self.get_money(value=self.price)

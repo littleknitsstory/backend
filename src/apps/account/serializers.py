@@ -14,9 +14,9 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from src.core.utils.send_mail import send_email_celery
 from src.apps.account.choices import AccountTypeChoices
 from src.apps.account.models import User
+from src.core.utils.send_mail import send_email_celery
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -55,7 +55,7 @@ class PasswordValidator(object):
 # TODO: go utils
 def set_code(email):
     key = str(uuid.uuid4()).replace("-", "")
-    settings.REDIS_CONNECT.set(email, key, ex=300)
+    # settings.REDIS_CONNECT.set(email, key, ex=300)
     return key
 
 
