@@ -8,10 +8,10 @@ import pytest
 def test_sign_up_short_pass(client):
     data = {"email": "userexample.com", "password": "string"}
     assert (
-            client.post(
-                "/sign-up/", data=json.dumps(data), content_type="application/json"
-            ).status_code
-            == 400
+        client.post(
+            "/sign-up/", data=json.dumps(data), content_type="application/json"
+        ).status_code
+        == 400
     )
 
 

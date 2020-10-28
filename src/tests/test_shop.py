@@ -25,7 +25,9 @@ def test_post_orders_url(client):
         "address": "string",
     }
     res = client.post(
-        "/orders/", data=json.dumps(data), content_type="application/json",
+        "/orders/",
+        data=json.dumps(data),
+        content_type="application/json",
     )
     assert res.status_code == 201
     assert res.json().get("status") == "NEW"
