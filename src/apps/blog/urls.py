@@ -1,7 +1,7 @@
 from django.urls import path, include
-
 from rest_framework import routers
-from .viewsets import ArticleList
+
+from src.apps.blog.viewsets import ArticleList
 
 app_name = "blog"
 
