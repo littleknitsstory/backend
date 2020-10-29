@@ -96,7 +96,7 @@ class Product(SeoMixin, ImagesMixin):
         return self.get_money(value=self.sale)
 
     def get_money(
-            self, value: MoneyField or Money, currency: typing.Optional[str] = None
+        self, value: MoneyField or Money, currency: typing.Optional[str] = None
     ):
         currency = currency or settings.LANG_EXCHANGE.get(get_language())
         try:
