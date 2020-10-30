@@ -11,7 +11,6 @@ pytestmark = pytest.mark.django_db
 @pytest.mark.django_db
 @pytest.mark.urls("apps.shop.urls")
 def test_get_products_url(client):
-    assert client.get("/products/").status_code == 200
     products = client.get("/products/").json()
     assert type(products["results"][0]["id"]) == int
 
