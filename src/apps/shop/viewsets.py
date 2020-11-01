@@ -1,7 +1,8 @@
-from rest_framework import status
-from rest_framework.permissions import AllowAny
+from rest_framework import status, mixins
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
 
 from src.apps.shop.models.order import OrderCart, OrderCartItem
 from src.apps.shop.serializers import (
@@ -46,7 +47,7 @@ class CategoryViewSet(ModelViewSet):
         return self.serializer_classes.get(self.action, CategoryListSerializer)
 
 
-class OrderViewSet(ModelViewSet):
+class OrderViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, GenericViewSet):
     """Viewsets order
     ```
     {
@@ -62,13 +63,11 @@ class OrderViewSet(ModelViewSet):
     """
 
     permission_classes = (AllowAny,)
-    serializer_class = OrderSerializer
     queryset = OrderCart.objects.all()
     http_method_names = ["post", "get"]
     lookup_field = "order_number"
     serializer_classes = {
         "retrieve": OrderRetrieveSerializer,
-        "list": OrderRetrieveSerializer,
         "create": OrderSerializer,
     }
 

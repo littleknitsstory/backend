@@ -10,12 +10,8 @@ logger = logging.getLogger(__name__)
 
 class UrlShorterSerializer(serializers.ModelSerializer):
     url = serializers.URLField(required=False)
-    url_short = serializers.URLField(required=False)
+    url_short = serializers.URLField(required=False, source="get_url_short")
 
     class Meta:
         model = UrlShorter
-        fields = "__all__"
-
-    def create(self, validated_data):
-        d = {"url": "https://google2.com", "url_short": "https://google2.com"}
-        return d
+        fields = ("url", "url_short")

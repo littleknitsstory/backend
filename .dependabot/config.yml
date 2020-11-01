@@ -1,6 +1,0 @@
-version: 1
-
-update_configs:
-  - package_manager: "python"
-    directory: "src/requirements"
-    update_schedule: "live"
