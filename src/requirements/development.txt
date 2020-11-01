@@ -2,7 +2,7 @@
 -r base.txt
 
 # Code linter
-flake8==3.8.3
-pytest==6.0.1
-django-extensions==3.0.8
+flake8==3.8.4
+pytest==6.1.2
+django-extensions==3.0.9
 gunicorn==20.0.4
