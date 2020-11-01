@@ -1,9 +1,9 @@
 import graphene
-from graphene import relay, ObjectType
+from graphene import relay
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
-from apps.shop.models import Product
+from src.apps.shop.models import Product
 
 
 class CategoryNode(DjangoObjectType):
@@ -13,11 +13,9 @@ class CategoryNode(DjangoObjectType):
         interfaces = (relay.Node,)
 
 
-# ['title', 'slug', 'price', 'sale', 'author', 'image_preview', 'image_alt']
 class ProductNode(DjangoObjectType):
     class Meta:
         model = Product
-        # Allow for some more advanced filtering here
         filter_fields = {
             "code": ["exact"],
             "title": ["exact"],
@@ -33,36 +31,6 @@ class ProductNode(DjangoObjectType):
         interfaces = (relay.Node,)
 
 
-# 'code',
-# 'title',
-# 'slug',
-# 'description',
-# 'price',
-# 'sale',
-# 'categories',
-# 'author',
-# 'count',
-# 'type_product',
-# 'material',
-# 'included',
-# 'height',
-# 'weight',
-# 'colors',
-# # ImagesMixin
-# 'image_preview',
-# 'image_alt',
-# # SeoMixin
-# 'title_seo',
-# 'meta_keywords',
-# 'meta_description',
-# 'created_at',
-# 'updated_at'
-# )
-
-
 class Query(graphene.ObjectType):
     category = relay.Node.Field(CategoryNode)
     all_categories = DjangoFilterConnectionField(CategoryNode)
-
-    # ingredient = relay.Node.Field(IngredientNode)
-    # all_ingredients = DjangoFilterConnectionField(IngredientNode)

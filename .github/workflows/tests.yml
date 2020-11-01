@@ -1,5 +1,8 @@
 name: tests
-on: [push]
+on:
+  push:
+    branches:
+      - 'develop'
 
 jobs:
   tests:
@@ -13,6 +16,10 @@ jobs:
       - name: Install requirements
         run: pip install -r src/requirements/test.txt
       - name: Run pytests
-        run:  DJANGO_ENV=test pytest
+        run: DJANGO_ENV=test pytest
       - name: Tests report
         run: coverage report
+
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

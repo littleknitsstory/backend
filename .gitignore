@@ -1,23 +1,17 @@
-### Sass template
-.sass-cache/
-*.css.map
-### Example user template template
-### Example user template
-
 # IntelliJ project files
 .idea
 .idea/
-
 *.iml
 out
-gen### Python template
+gen
+.DS_Store
+src/.DS_Store
+
+### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
-*.so
 
 # Distribution / packaging
 .Python
@@ -49,6 +43,7 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
+.pytest_cache
 htmlcov/
 .tox/
 .coverage
@@ -60,30 +55,13 @@ coverage.xml
 .hypothesis/
 
 # Translations
-*.mo
-*.pot
+# *.mo
+# *.po
 
 # Django stuff:
 *.log
 .static/
 .media/
-local_settings.py
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
 
 # pyenv
 .python-version
@@ -91,40 +69,9 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
-# SageMath parsed files
-*.sage.py
-
 # Environments
 .env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
+Venv
 
 # mypy
 .mypy_cache/
-### Example user template template
-### Example user template
-
-# IntelliJ project files
-.idea
-*.iml
-out
-gen
-
-frontend/node_modules
-.pytest_cache
-.DS_Store
-src/.DS_Store

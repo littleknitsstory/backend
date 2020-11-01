@@ -11,6 +11,7 @@ USER_NAME = ""  # add instagram username
 COUNT_PICTURES = 5  # number of pictures
 
 
+# TODO: rewrite this place
 def download_file(url):
     print("Downloading image...")
     f = urllib.request.urlopen(url)

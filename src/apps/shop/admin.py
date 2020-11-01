@@ -14,7 +14,16 @@ class CategoryAdmin(TranslationAdmin, AdminBaseMixin):
     fieldsets = (
         (_("Content"), {"fields": ("title",)}),
         (_("Main"), {"fields": ("slug",)}),
-        (_("SEO"), {"fields": ("title_seo", "meta_keywords", "meta_description",)}),
+        (
+            _("SEO"),
+            {
+                "fields": (
+                    "title_seo",
+                    "meta_keywords",
+                    "meta_description",
+                )
+            },
+        ),
     )
 
 
@@ -103,7 +112,17 @@ class OrderCartAdmin(admin.ModelAdmin):
                 )
             },
         ),
-        (_("Info"), {"fields": ("email", "phone", "address", "comments",)}),
+        (
+            _("Info"),
+            {
+                "fields": (
+                    "email",
+                    "phone",
+                    "address",
+                    "comments",
+                )
+            },
+        ),
     )
 
 

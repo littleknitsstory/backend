@@ -1,5 +1,6 @@
 import uuid
 
+from django.conf import settings
 from django.contrib.auth import password_validation
 from django.core.validators import EmailValidator
 from django.utils.translation import gettext_lazy as _
@@ -13,10 +14,9 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from src.settings.components.cache import redis_connect as rc
-from src.core.utils.send_mail import send_email_celery
 from src.apps.account.choices import AccountTypeChoices
 from src.apps.account.models import User
+from src.core.utils.send_mail import send_email_celery
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -37,7 +37,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 class SignInSerializer(TokenObtainPairSerializer):
 
-    username = serializers.SerializerMethodField()
     email = serializers.EmailField(validators=[EmailValidator()])
     password = PasswordField(write_only=True)
 
@@ -47,37 +46,24 @@ class SignInSerializer(TokenObtainPairSerializer):
     def get_username(self, obj):
         return self.email
 
-    def create(self, validated_data):
-        return validated_data
-
-    def validate(self, attrs):
-        data = super().validate(attrs)
-        refresh = self.get_token(self.user)
-        data.pop("refresh")
-        data["access"] = str(refresh.access_token)
-        return data
-
 
 class PasswordValidator(object):
     def __call__(self, password):
         password_validation.validate_password(password)
 
 
+# TODO: go utils
 def set_code(email):
     key = str(uuid.uuid4()).replace("-", "")
-    rc.set(email, key, ex=300)
-
-    is_code = get_code(key)
-    print(rc.get(email))
-    print(is_code)
+    # settings.REDIS_CONNECT.set(email, key, ex=300)
+    return key
 
 
 def get_code(key):
-    return rc.get(key)
+    return settings.REDIS_CONNECT.get(key)
 
 
 class SignUpSerializer(serializers.Serializer):
-    # username
     email = serializers.EmailField(validators=[EmailValidator()])
     password = serializers.CharField(validators=[PasswordValidator()])
 
@@ -92,23 +78,20 @@ class SignUpSerializer(serializers.Serializer):
             raise ValidationError(f"{email} already exists")
         return email
 
-    # TODO: чето решить с username=email.lower()
     def create(self, validated_data):
         email = validated_data["email"]
         password = validated_data["password"]
-
+        username = email.lower().split("@")[0]
         user = User.objects.create_user(
-            username=str(email.lower()),
+            username=username,
             email=email.lower(),
             password=password,
             account_type=AccountTypeChoices.CLIENT,
         )
-        print(type(email.lower()))
-        code = f"{1234}"
-        code = set_code(email.lower())
-        send_email_celery.delay(to=[email], subject=_("Welcome"), message=f"{code}")
-        # user.save()
 
+        code = set_code(email.lower())
+        message = f"{code}"
+        send_email_celery.delay(to=[email], subject=_("Welcome"), message=message)
         return user
 
     def to_representation(self, instance):

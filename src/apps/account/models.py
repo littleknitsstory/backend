@@ -10,7 +10,7 @@ from src.apps.account.choices import AccountTypeChoices
 
 
 class User(AbstractUser):
-    # email = models.EmailField(_("email address"), blank=True, unique=True)
+    """ """
 
     account_type = models.CharField(
         _("Type user"),
@@ -37,10 +37,6 @@ class User(AbstractUser):
     fb_profile = JSONField(_("Fb profile"), blank=True, null=True)
     inst_profile = JSONField(_("Instagram profile"), blank=True, null=True)
     tg_profile = JSONField(_("Telegram profile"), blank=True, null=True)
-
-    # TODO: надо перехать на было только
-    # USERNAME_FIELD = "email"
-    # REQUIRED_FIELDS = []
 
     objects = UserManager()
 

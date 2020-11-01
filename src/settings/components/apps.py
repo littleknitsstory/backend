@@ -8,6 +8,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
     # Plugins
     # Auth2
     # "oauth2_provider",
@@ -23,13 +25,13 @@ INSTALLED_APPS = [
     "djmoney",
     "djmoney.contrib.exchange",
     "colorful",
+    "robots",
     # Dev
     "django_extensions",
     # Django Rest Framework
     "rest_framework",
-    # "rest_framework_swagger",
     "rest_framework_simplejwt.token_blacklist",
-    "drf_yasg",
+    "drf_yasg2",
     # Apps project
     "src.apps.account",
     "src.apps.api",
@@ -42,3 +44,5 @@ INSTALLED_APPS = [
     "src.apps.subscribe",
     "src.apps.reviews",
 ]
+
+SITE_ID = 1

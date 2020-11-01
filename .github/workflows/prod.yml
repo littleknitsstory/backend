@@ -1,11 +1,11 @@
-name: build
+name: prod-build
 on:
   push:
     branches:
       - 'master'
 
 jobs:
-  build:
+  prod-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -18,7 +18,7 @@ jobs:
           git config --global user.name github-actions
           git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git commit -am "Bump minor version"
+          git commit -am "[minor]"
           git push --force origin HEAD:$GITHUB_REF
 
       - name: Publish to Docker Repository
@@ -49,3 +49,12 @@ jobs:
           docker-compose down
           docker-compose pull
           docker-compose up -d
+
+  pypi:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Publish package
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: ${{ secrets.PIPY_USER }}
+        password: ${{ secrets.PIPY_PASS }}

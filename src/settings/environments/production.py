@@ -1,1 +1,2 @@
 DEBUG = False
+ROBOTS_USE_SITEMAP = False

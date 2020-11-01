@@ -10,13 +10,13 @@ from optimized_image.fields import OptimizedImageField
 
 class SeoMixin(models.Model):
     """
-        Abstract model for basic seo information
-        Attributes:
-        description (text): description seo text field
-        keywords (text): seo keywords
-        title_seo (char): page's title_seo
-        created_at: info created
-        updated_at: info update
+    Abstract model for basic seo information
+    Attributes:
+    description (text): description seo text field
+    keywords (text): seo keywords
+    title_seo (char): page's title_seo
+    created_at: info created
+    updated_at: info update
     """
 
     title_seo = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
@@ -32,10 +32,10 @@ class SeoMixin(models.Model):
 
 class ImagesMixin(models.Model):
     """
-        Abstract model for basic images information
-        Attributes:
-        image_preview: path images
-        image_alt (char): image_alt for <img>
+    Abstract model for basic images information
+    Attributes:
+    image_preview: path images
+    image_alt (char): image_alt for <img>
     """
 
     image_preview = OptimizedImageField(_("Images"), blank=True)
