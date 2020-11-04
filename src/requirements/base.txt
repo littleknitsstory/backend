@@ -41,5 +41,5 @@ sqlparse==0.4.1
 urllib3==1.25.11
 django-registration==3.1.1
 django-redis==4.12.1
-drf-yasg2==1.18.5
+drf-yasg2==1.19.4
 django-robots==4.0
