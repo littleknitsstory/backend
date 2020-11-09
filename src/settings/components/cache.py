@@ -29,6 +29,6 @@ if REDIS_PASSWORD:
     CACHES["default"]["OPTIONS"]["PASSWORD"] = REDIS_PASSWORD
 
 
-REDIS_CONNECT = redis.Redis(
+REDIS_CONNECT = redis.StrictRedis(
     host=REDIS_HOST, port=REDIS_PORT, db=3, password=REDIS_PASSWORD
 )

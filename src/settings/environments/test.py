@@ -14,7 +14,7 @@ CACHES = {
     }
 }
 
-REDIS_CONNECT = ""
+# REDIS_CONNECT = ""
 
 # Speed!
 PASSWORD_HASHERS = ("django.contrib.auth.hashers.UnsaltedMD5PasswordHasher",)

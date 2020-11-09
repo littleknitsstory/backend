@@ -1,12 +1,15 @@
-from django.contrib.auth.models import AbstractUser, UserManager
-from django.db.models import JSONField
-from django_countries.fields import CountryField
+import uuid
 
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
+from django.db.models import JSONField
 from django.utils.translation import gettext_lazy as _
+from django_countries.fields import CountryField
 from optimized_image.fields import OptimizedImageField
 
 from src.apps.account.choices import AccountTypeChoices
+from src.core.utils.send_mail import send_email_celery
 
 
 class User(AbstractUser):
@@ -70,3 +73,19 @@ class User(AbstractUser):
 
     def get_country(self):
         return {"name": self.country.name, "code": self.country.code}
+
+    def send_confirm(self):
+        code = set_code(self.email.lower())
+        message = f"{code}"
+        send_email_celery.delay(to=[self.email], subject=_("Welcome"), message=message)
+
+
+# TODO: go utils
+def set_code(email):
+    key = str(uuid.uuid4()).replace("-", "")
+    # settings.REDIS_CONNECT.set(email, key, ex=300)
+    return key
+
+
+def get_code(key):
+    return settings.REDIS_CONNECT.get(key)

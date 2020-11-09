@@ -10,3 +10,4 @@ django-extensions==3.0.9
 pytest-django==4.1.0
 pyflakes==2.2.0
 pycodestyle==2.6.0
+pytest-redis==2.0.0

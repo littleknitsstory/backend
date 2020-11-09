@@ -1,10 +1,10 @@
 from django.conf import settings
-from django.contrib import admin
-from django.urls import include, path
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
+from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
-from django.contrib.sitemaps.views import sitemap
 
 from src.core.sitemap import sitemaps
 
@@ -19,6 +19,7 @@ urlpatterns = [
     # path("auth/", include("rest_framework_social_oauth2.urls")),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
     path("robots.txt", include("robots.urls")),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

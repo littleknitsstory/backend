@@ -3,13 +3,13 @@ from typing import Union, List
 
 from django.conf import settings
 from django.core.mail import get_connection, send_mail
+
 from src.core.celery import app
 
 logger = logging.getLogger(__name__)
 
 
 def _get_connection(backend: str):
-
     if backend:
         backend, api_key = (
             settings.ANYMAIL.get(f"{backend}_EMAIL_BACKEND"),
@@ -18,7 +18,8 @@ def _get_connection(backend: str):
         return get_connection(backend=backend, api_key=api_key)
 
 
-@app.task
+# @app.task(time_limit=10, soft_time_limit=8)
+@app.task()
 def send_email_celery(
     subject: str,
     to: List[str],
@@ -27,7 +28,6 @@ def send_email_celery(
     html_message: str = None,
     backend: str = settings.PROVIDER_EMAIL,
 ) -> Union[bool, Exception]:
-
     from_email = settings.EMAIL_HOST_USER if from_email is None else from_email
 
     try:

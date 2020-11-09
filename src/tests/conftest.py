@@ -16,7 +16,7 @@ def django_db_setup(django_db_setup, django_db_blocker):
 
 
 @pytest.fixture
-def token(client, django_user_model):
+def headers(client, django_user_model):
     django_user_model.objects.create_user(
         username="user_test0001@example.com",
         password="string8euwq",
@@ -27,4 +27,4 @@ def token(client, django_user_model):
         data=json.dumps(data),
         content_type="application/json",
     )
-    return res.json().get("access")
+    return {"Authorization": f"Bearer {res.json().get('access')}"}

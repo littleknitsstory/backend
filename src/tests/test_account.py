@@ -27,6 +27,6 @@ def test_sign_up(client):
 
 @pytest.mark.django_db
 @pytest.mark.urls("apps.account.urls")
-def test_get_sign_in(client, token):
-    headers = {"Authorization": f"Bearer {token}"}
+def test_get_profile(client, headers):
+    assert client.get("/profile/").status_code == 401
     assert client.get("/profile/", headers=headers)

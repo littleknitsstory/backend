@@ -1,9 +1,5 @@
-import uuid
-
-from django.conf import settings
 from django.contrib.auth import password_validation
 from django.core.validators import EmailValidator
-from django.utils.translation import gettext_lazy as _
 from django_countries.serializer_fields import CountryField
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
@@ -16,7 +12,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from src.apps.account.choices import AccountTypeChoices
 from src.apps.account.models import User
-from src.core.utils.send_mail import send_email_celery
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -52,17 +47,6 @@ class PasswordValidator(object):
         password_validation.validate_password(password)
 
 
-# TODO: go utils
-def set_code(email):
-    key = str(uuid.uuid4()).replace("-", "")
-    # settings.REDIS_CONNECT.set(email, key, ex=300)
-    return key
-
-
-def get_code(key):
-    return settings.REDIS_CONNECT.get(key)
-
-
 class SignUpSerializer(serializers.Serializer):
     email = serializers.EmailField(validators=[EmailValidator()])
     password = serializers.CharField(validators=[PasswordValidator()])
@@ -82,20 +66,23 @@ class SignUpSerializer(serializers.Serializer):
         email = validated_data["email"]
         password = validated_data["password"]
         username = email.lower().split("@")[0]
-        user = User.objects.create_user(
-            username=username,
-            email=email.lower(),
-            password=password,
-            account_type=AccountTypeChoices.CLIENT,
-        )
-
-        code = set_code(email.lower())
-        message = f"{code}"
-        send_email_celery.delay(to=[email], subject=_("Welcome"), message=message)
+        if User.objects.filter(email=email).exists():
+            user = User.objects.get(email=email)
+        else:
+            user = User.objects.create_user(
+                username=username,
+                email=email.lower(),
+                password=password,
+                account_type=AccountTypeChoices.CLIENT,
+            )
+        # TODO: add after integrate test with mock redis and celery
+        # user.send_confirm()
         return user
 
     def to_representation(self, instance):
         token = RefreshToken.for_user(instance)
+        print(token)
+        print(dir(token))
         return {"access": str(token.access_token)}
 
 
@@ -139,14 +126,3 @@ class ProfileSerializer(serializers.ModelSerializer):
             "inst_profile",
             "tg_profile",
         )
-
-
-class ConfirmSerializer(serializers.Serializer):
-    email = serializers.CharField(validators=[EmailValidator()], required=False)
-    code = serializers.CharField(read_only=True, required=False)
-
-    class Meta:
-        model = User
-
-    def validate_code(self, code):
-        return code

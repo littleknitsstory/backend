@@ -1,21 +1,19 @@
-from django.conf import settings
-from django.http import HttpResponseRedirect
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework_simplejwt.views import TokenViewBase
 
 from src.apps.account.choices import AccountTypeChoices
+from src.apps.account.models import User
 from src.apps.account.serializers import (
     UserSerializer,
     SignUpSerializer,
     SignInSerializer,
     SignOutSerializer,
     ProfileSerializer,
-    ConfirmSerializer,
 )
-from src.apps.account.models import User
 
 
 class UserViewSet(ReadOnlyModelViewSet):
@@ -44,7 +42,6 @@ class SignOutView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return HttpResponseRedirect(settings.SIGN_OUT_REDIRECT_URL)
 
 
 class ProfileView(generics.RetrieveAPIView):
@@ -55,8 +52,9 @@ class ProfileView(generics.RetrieveAPIView):
         return self.request.user
 
 
-class ConfirmView(generics.RetrieveAPIView):
-    serializer_class = ConfirmSerializer
-    permission_classes = (AllowAny,)
-    http_method_names = ["get"]
-    lookup_field = "code"
+class ConfirmView(generics.GenericAPIView):
+    def get(self, request):
+        # TODO: add in dashboard
+        # email = request.query_params.get("email")
+        # code = request.query_params.get("code")
+        return Response(status=status.HTTP_200_OK)
