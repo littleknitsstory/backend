@@ -26,7 +26,14 @@ services:
     env_file: .env
     command: redis-server --requirepass ${REDIS_PASSWORD}
 
-
+  elasticsearch_l:
+    image: elasticsearch:7.9.3
+    ports:
+      - "9200"
+      - "9300"
+    volumes:
+      - ./data/elasticsearch:/data/elasticsearch
+      - /dev/log:/dev/log
 
 #  redis-commander:
 #    image: rediscommander/redis-commander:latest
