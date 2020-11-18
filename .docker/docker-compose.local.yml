@@ -3,7 +3,7 @@ version: "3.0"
 services:
   pg_l:
     # CHECK PG VERSION
-    image: postgres:13-alpine
+    image: postgres:13.1-alpine
     environment:
       - POSTGRES_NAME=lks_pg_name
       - POSTGRES_USER=lks_pg_user
@@ -16,11 +16,11 @@ services:
       - .env
     volumes:
       # CHECK PATH
-      - ./pgdata_3:/var/lib/postgresql/data/pgdata
+      - ./data/pgdata_3:/var/lib/postgresql/data/pgdata
 
 
   redis_l:
-    image: redis:6.0.6-alpine
+    image: redis:6.0.9-alpine
     ports:
       - "6379:6379"
     env_file: .env
@@ -33,7 +33,7 @@ services:
       - "9300"
     volumes:
       - ./data/elasticsearch:/data/elasticsearch
-      - /dev/log:/dev/log
+      - /data/elasticsearch/log:/dev/log
 
 #  redis-commander:
 #    image: rediscommander/redis-commander:latest

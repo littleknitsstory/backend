@@ -4,7 +4,7 @@ services:
 
   nginx:
     container_name: lks_${DJANGO_ENV}_nginx
-    image: nginx:1.19-alpine
+    image: nginx:1.19.4-alpine
     restart: always
     depends_on:
       - backend
@@ -18,14 +18,14 @@ services:
 
   redis:
     container_name: lks_${DJANGO_ENV}_redis
-    image: redis:6.0.6-alpine
+    image: redis:6.0.9-alpine
     restart: always
     env_file: .env
     command: redis-server --requirepass ${REDIS_PASSWORD}
 
   postgresql:
     container_name: lks_${DJANGO_ENV}_postgres
-    image: postgres:13-alpine
+    image: postgres:13.1-alpine
     restart: always
     env_file: .env
     volumes:
