@@ -1,4 +1,4 @@
-# LOGIN_URL = 'login'
+# TODO: LOGIN_URL = 'login'
 # LOGIN_REDIRECT_URL = 'dashboard:list'
 #
 # SOCIAL_AUTH_URL_NAMESPACE = 'social'
