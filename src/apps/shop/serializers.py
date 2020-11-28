@@ -1,8 +1,9 @@
+import logging
+
+from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
 
-from src.apps.shop.models.product import ProductPhoto
 from src.apps.shop.models import (
     Product,
     Category,
@@ -10,8 +11,7 @@ from src.apps.shop.models import (
     OrderCart,
     ProductColor,
 )
-
-import logging
+from src.apps.shop.models.product import ProductPhoto
 
 logger = logging.getLogger(__name__)
 
@@ -38,10 +38,7 @@ class CategoryRetrieveSerializer(serializers.ModelSerializer):
 class CategoryListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = (
-            "title",
-            "slug",
-        )
+        fields = ("title", "slug")
 
 
 class ColorSerializer(serializers.ModelSerializer):
@@ -162,12 +159,10 @@ class OrderSerializer(serializers.Serializer):
         bulk_inserts = []
         for product_data in products_data:
             bulk_inserts.append(OrderCartItem(order_cart=order_cart, **product_data))
-        item_data = OrderCartItem.objects.bulk_create(bulk_inserts)
-
-        # item_data = OrderItemSerializer(item_data, many=True).data
+        OrderCartItem.objects.bulk_create(bulk_inserts)
+        # TODO: item_data = OrderItemSerializer(item_data, many=True).data
         # need call save() bulk_create do *not* call save()
         order_cart.save()
-
         return order_cart
 
     def to_representation(self, instance):

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from modeltranslation.admin import TranslationAdmin
 from django.utils.translation import gettext_lazy as _
+from modeltranslation.admin import TranslationAdmin
 
 from src.core.mixins.mixin import AdminBaseMixin
 from .models import OrderCart, OrderCartItem
@@ -14,16 +14,7 @@ class CategoryAdmin(TranslationAdmin, AdminBaseMixin):
     fieldsets = (
         (_("Content"), {"fields": ("title",)}),
         (_("Main"), {"fields": ("slug",)}),
-        (
-            _("SEO"),
-            {
-                "fields": (
-                    "title_seo",
-                    "meta_keywords",
-                    "meta_description",
-                )
-            },
-        ),
+        (_("SEO"), {"fields": ("title_seo", "meta_keywords", "meta_description")}),
     )
 
 
@@ -128,10 +119,5 @@ class OrderCartAdmin(admin.ModelAdmin):
 
 @admin.register(OrderCartItem)
 class OrderCartItemAdmin(admin.ModelAdmin):
-    list_display = (
-        "id",
-        "order_cart",
-        "product",
-        "amount",
-    )
+    list_display = ("id", "order_cart", "product", "amount")
     fieldsets = ((_("Info"), {"fields": ("order_cart", "product", "amount")}),)

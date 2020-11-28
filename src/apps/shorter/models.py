@@ -31,7 +31,11 @@ class UrlShorter(models.Model):
         return f"{settings.SHORT_URL}/{self.url_short}"
 
     def save(
-        self, force_insert=False, force_update=False, using=None, update_fields=None
+        self,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
     ):
         if not self.url_short:
             self.url_short = generate_short_code(length=6)

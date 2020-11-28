@@ -81,8 +81,6 @@ class SignUpSerializer(serializers.Serializer):
 
     def to_representation(self, instance):
         token = RefreshToken.for_user(instance)
-        print(token)
-        print(dir(token))
         return {"access": str(token.access_token)}
 
 
