@@ -1,5 +1,6 @@
 from math import ceil
 from uuid import uuid4
+from django.conf import settings
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -26,8 +27,6 @@ class UrlShorter(models.Model):
         ordering = ("-created_at",)
 
     def get_url_short(self):
-        from django.conf import settings
-
         return f"{settings.SHORT_URL}/{self.url_short}"
 
     def save(

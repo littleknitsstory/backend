@@ -1,10 +1,8 @@
-from django.contrib import admin
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from optimized_image.fields import OptimizedImageField
 
 # from src.core.utils.watermark import watermark_text
-
 # TODO: разнести по файлам
 
 
@@ -22,7 +20,6 @@ class SeoMixin(models.Model):
     title_seo = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
     meta_keywords = models.TextField(_("Keywords"), blank=True, null=True)
     meta_description = models.TextField(_("Description"), blank=True, null=True)
-
     created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
@@ -50,7 +47,7 @@ class ImagesMixin(models.Model):
         super(ImagesMixin, self).save(
             force_insert=False, force_update=False, using=None, update_fields=None
         )
-        # watermark_text(self.image_preview.path, self.image_preview.path)
+        # TODO: watermark_text(self.image_preview.path, self.image_preview.path)
 
     def get_image(self) -> str:
         try:
@@ -58,14 +55,3 @@ class ImagesMixin(models.Model):
         except ValueError:
             image = None
         return image
-
-
-class AdminBaseMixin(admin.ModelAdmin):
-    """ Abstract model for admin """
-
-    list_display = ("pk", "title", "slug")
-    save_as = True
-    save_on_top = True
-
-    class Meta:
-        abstract = True

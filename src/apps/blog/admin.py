@@ -3,7 +3,6 @@ from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
 from src.apps.blog.models import Article, Tag
-from src.core.mixins.mixin import AdminBaseMixin
 
 
 @admin.register(Tag)
@@ -19,7 +18,10 @@ class TagAdmin(TranslationAdmin, admin.ModelAdmin):
 
 
 @admin.register(Article)
-class ArticleAdmin(TranslationAdmin, AdminBaseMixin):
+class ArticleAdmin(TranslationAdmin):
+    save_as = True
+    save_on_top = True
+    list_display = ("pk", "title", "slug")
     list_display_links = ("title",)
     filter_horizontal = ("tags",)
     fieldsets = (

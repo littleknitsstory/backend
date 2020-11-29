@@ -3,11 +3,12 @@ from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
 from src.apps.slider.models import Slider
-from src.core.mixins.mixin import AdminBaseMixin
 
 
 @admin.register(Slider)
-class SliderAdmin(TranslationAdmin, AdminBaseMixin):
+class SliderAdmin(TranslationAdmin):
+    save_as = True
+    save_on_top = True
     list_display = ("title", "slug", "is_active")
     fieldsets = (
         (_("Title"), {"fields": ("title", "sub_title")}),

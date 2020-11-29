@@ -2,10 +2,20 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
-from src.core.mixins.mixin import AdminBaseMixin
 from .models import OrderCart, OrderCartItem
 from .models.category import Category
 from .models.product import Product, ProductPhoto, ProductColor
+
+
+class AdminBaseMixin(admin.ModelAdmin):
+    """ Abstract model for shop admin """
+
+    list_display = ("pk", "title", "slug")
+    save_as = True
+    save_on_top = True
+
+    class Meta:
+        abstract = True
 
 
 @admin.register(Category)
@@ -24,10 +34,7 @@ class ProductPhotoInline(admin.TabularInline):
 
 @admin.register(ProductPhoto)
 class ProductPhotoAdmin(admin.ModelAdmin):
-    list_display = (
-        "image_preview",
-        "image_alt",
-    )
+    list_display = ("image_preview", "image_alt")
 
 
 @admin.register(ProductColor)
@@ -37,9 +44,7 @@ class ProductColorAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin, AdminBaseMixin):
-    inlines = [
-        ProductPhotoInline,
-    ]
+    inlines = [ProductPhotoInline]
     group_fieldsets = True
     list_display = ("id", "code", "slug", "is_active", "updated_at")
     list_display_links = ("code", "slug")
@@ -84,11 +89,9 @@ class OrderCartItemInline(admin.TabularInline):
 
 @admin.register(OrderCart)
 class OrderCartAdmin(admin.ModelAdmin):
+    inlines = [OrderCartItemInline]
     list_display = ("id", "order_number", "status", "updated_at", "created_at")
     list_display_links = ("order_number",)
-    inlines = [
-        OrderCartItemInline,
-    ]
     readonly_fields = ("updated_at", "created_at", "order_number", "order_total_cost")
     fieldsets = (
         (
@@ -105,14 +108,7 @@ class OrderCartAdmin(admin.ModelAdmin):
         ),
         (
             _("Info"),
-            {
-                "fields": (
-                    "email",
-                    "phone",
-                    "address",
-                    "comments",
-                )
-            },
+            {"fields": ("email", "phone", "address", "comments")},
         ),
     )
 

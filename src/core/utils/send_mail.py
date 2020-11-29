@@ -18,7 +18,7 @@ def _get_connection(backend: str):
         return get_connection(backend=backend, api_key=api_key)
 
 
-# @app.task(time_limit=10, soft_time_limit=8)
+# TODO: use it? @app.task(time_limit=10, soft_time_limit=8)
 @app.task()
 def send_email_celery(
     subject: str,
