@@ -53,11 +53,13 @@
           order       +
           product     +
           delivery    -
+        shorter       -
         slider        + 
         subscribe     + 
         dashboard     - 
         notification  - 
-        
+          web puhs - 
+          email    -
 
 ### Project Technology
 [![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/blob/develop/.docker/Dockerfile#L1)

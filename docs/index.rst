@@ -37,9 +37,8 @@ Start in Docker all
 ------
 
  - Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers) 
- - edit docker/dev/.env file with your params
+ - edit docker/dev/.env file with your params::
 
-d::
         cp .env.example .env
         docker-compose -f .docker/docker-compose.dev.yml build
         docker-compose -f .docker/docker-compose.dev.yml run backend python manage.py makemigrations
@@ -52,11 +51,9 @@ d::
 Start only postgres, redis
 ------
 
--  in file .env:6 need update `POSTGRES_HOST=localhost`
+-  in file .env:6 need update `POSTGRES_HOST=localhost`::
 
-```
-        docker-compose -f .docker/docker-compose.local.yml up postgresql redis
-```
+    docker-compose -f .docker/docker-compose.local.yml up postgresql redis
 
 Create virtual env
 ------
@@ -81,54 +78,48 @@ Create virtual env
 
 - or create .env with params::
 
-| var | description |
-| --- | --- |
-| DJANGO_ENV|  ENUM: develop, test, production|
-| SECRET_KEY| random sting|
-| PROFILE| |
-| NGINX_PORT| |
-| POSTGRES_NAME| |
-| POSTGRES_USER| |
-| POSTGRES_DB| |
-| POSTGRES_PASSWORD| |
-| PGDATA| |
-| POSTGRES_HOST| |
-| POSTGRES_PORT| |
-| REDIS_HOST| |
-| REDIS_PASSWORD| |
-| REDIS_PORT| |
-| FLOWER_PORT| |
-| FLOWER_USER| |
-| FLOWER_PASSWORD| |
-| PROVIDER_EMAIL| |
-| EMAIL_HOST| |
-| EMAIL_PORT| |
-| EMAIL_HOST_USER| |
-| EMAIL_HOST_PASSWORD| |
-| SENDGRID_API_KEY| |
-| MAILGUN_API_KEY| |
-| FIXER_ACCESS_KEY| |
-| OPEN_EXCHANGE_RATES_APP_ID| |
-| SENTRY_DNS| |
 
+ DJANGO_ENV  ENUM: develop, test, production
+ SECRET_KEY random sting
+ PROFILE 
+ NGINX_PORT 
+ POSTGRES_NAME 
+ POSTGRES_USER 
+ POSTGRES_DB 
+ POSTGRES_PASSWORD 
+ PGDATA 
+ POSTGRES_HOST 
+ POSTGRES_PORT 
+ REDIS_HOST 
+ REDIS_PASSWORD 
+ REDIS_PORT 
+ FLOWER_PORT 
+ FLOWER_USER 
+ FLOWER_PASSWORD 
+ PROVIDER_EMAIL 
+ EMAIL_HOST 
+ EMAIL_PORT 
+ EMAIL_HOST_USER 
+ EMAIL_HOST_PASSWORD 
+ SENDGRID_API_KEY 
+ MAILGUN_API_KEY 
+ FIXER_ACCESS_KEY 
+ OPEN_EXCHANGE_RATES_APP_ID 
+ SENTRY_DNS 
 
+- Prepare project::
 
-- Prepare project:
-
-```
     python manage.py makemigration
     python manage.py migrate
     python manage.py createsuperuser
     python manage.py loaddata src/fixtures/*.json
     python manage.py runserver
-```
 
 Git flow
 ------
 
-- Easy git flow
+- Easy git flow::
 
-```
     git checkout develop
     git pull develop
     git checkout -b <your branch>
@@ -136,18 +127,15 @@ Git flow
     git add .
     git commit -m '#<number task> commit messages' 
     git push origin <your branch>
-```
 
 - Git flow healthy person
 [git-flow-cheatsheet](https://danielkummer.github.io/git-flow-cheatsheet/)
 
- - Settings flake + pre-commit hook
- 
-```
+ - Settings flake + pre-commit hook::
+
     sudo pip3 install flake8
     #(OUTPUT FILTERS -> $FILE_PATH$\:$LINE$\:$COLUMN$\:.*)
     flake8 --install-hook git
     git config --global --bool flake8.strict true
     # Easy start -> ctrl + shift + a -> flake -> enter
-```
 
