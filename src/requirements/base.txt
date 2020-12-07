@@ -1,4 +1,4 @@
-certifi==2020.11.8
+certifi==2020.12.5
 celery==5.0.3
 Django==3.1.4
 django-anymail==8.1
