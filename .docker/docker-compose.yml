@@ -4,7 +4,7 @@ services:
 
   nginx:
     container_name: lks_${DJANGO_ENV}_nginx
-    image: nginx:1.19.4-alpine
+    image: nginx:1.19.5-alpine
     restart: always
     depends_on:
       - backend
