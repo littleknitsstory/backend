@@ -1,8 +1,9 @@
-# TODO: reprite this place and implemented solved
+# TODO: rewrite this place and implemented solved
 # from PIL import Image, ImageDraw, ImageFont
 # from settings.components.watermark import WATERMARK_TEXT, \
 #     WATERMARK_POSITION, IMAGE_SIZE, WATERMARK_FONT
-# from settings.components.watermark import WATERMARK_TEXT, WATERMARK_POSITION, WATERMARK_FONT, IMAGE_SIZE
+# from settings.components.watermark import WATERMARK_TEXT,
+# WATERMARK_POSITION, WATERMARK_FONT, IMAGE_SIZE
 
 
 # def watermark_text(input_image_path, output_image_path, text=WATERMARK_TEXT,
@@ -34,3 +35,5 @@
 # photo.show()  # just to show the result picture when you test it
 # photo.save(output_image_path)
 #
+
+from notifiers import get_notifier

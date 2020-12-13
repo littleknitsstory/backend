@@ -57,4 +57,5 @@ class ConfirmView(generics.GenericAPIView):
         # TODO: add in dashboard
         # email = request.query_params.get("email")
         # code = request.query_params.get("code")
+        # print(f"")
         return Response(status=status.HTTP_200_OK)

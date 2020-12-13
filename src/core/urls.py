@@ -10,9 +10,11 @@ from src.core.sitemap import sitemaps
 
 urlpatterns = [
     path("", include("src.apps.swagger.urls")),
+    # API's
     path("api/v1/", include("src.apps.api.urls")),
     path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    path("admin/", admin.site.urls),
+    # foolproof mirror url admin/
+    path("nimda/", admin.site.urls),
     path("anymail/", include("anymail.urls")),
     path("ckeditor/", include("ckeditor_uploader.urls")),
     # path('i18n/', include('django.conf.urls.i18n')),
