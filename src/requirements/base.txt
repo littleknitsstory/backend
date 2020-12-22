@@ -1,5 +1,5 @@
 certifi==2020.12.5
-celery==5.0.4
+celery==5.0.5
 Django==3.1.4
 django-anymail==8.1
 django-celery-beat==2.1.0
@@ -7,7 +7,7 @@ django-celerybeat-status==0.0.10
 django-countries==7.0
 django-ckeditor==6.0.0
 django-colorful==1.3
-django-cors-headers==3.5.0
+django-cors-headers==3.6.0
 django-filter==2.4.0
 django-modeltranslation==0.16.1
 django-money==1.2.1
@@ -23,13 +23,13 @@ idna==2.10
 Markdown==3.3.3
 mccabe==0.6.1
 oauthlib==3.1.0
-phonenumbers==8.12.14
+phonenumbers==8.12.15
 Pillow==8.0.1
 psycopg2==2.8.6
 python-decouple==3.3
 python3-openid==3.2.0
 pytz==2020.4
-requests==2.25.0
+requests==2.25.1
 requests-oauthlib==1.3.0
 sentry-sdk==0.19.5
 shortuuid==1.0.1
