@@ -10,6 +10,7 @@ Clone project::
 
         git clone -b develop https://github.com/63phc/lks.git
 
+
  - There are two ways to start a project, all in docker or only pg, redis in docker
  - You can not use docker, then you should have pg and redis in local
  
@@ -24,8 +25,6 @@ Start in Docker all
         docker-compose -f .docker/docker-compose.dev.yml run backend python manage.py makemigrations
         docker-compose -f .docker/docker-compose.dev.yml run backend python manage.py migrate
         docker-compose -f .docker/docker-compose.dev.yml up
-
-
  - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
 
 Start only postgres, redis
@@ -56,36 +55,6 @@ Create virtual env
 
         cp .env.example .env
 
-- or create .env with params::
-
-
- DJANGO_ENV - ENUM: develop, test, production
- SECRET_KEY - random sting
- PROFILE 
- NGINX_PORT 
- POSTGRES_NAME 
- POSTGRES_USER 
- POSTGRES_DB 
- POSTGRES_PASSWORD 
- PGDATA 
- POSTGRES_HOST 
- POSTGRES_PORT 
- REDIS_HOST 
- REDIS_PASSWORD 
- REDIS_PORT 
- FLOWER_PORT 
- FLOWER_USER 
- FLOWER_PASSWORD 
- PROVIDER_EMAIL 
- EMAIL_HOST 
- EMAIL_PORT 
- EMAIL_HOST_USER 
- EMAIL_HOST_PASSWORD 
- SENDGRID_API_KEY 
- MAILGUN_API_KEY 
- FIXER_ACCESS_KEY 
- OPEN_EXCHANGE_RATES_APP_ID 
- SENTRY_DNS 
 
 - Prepare project::
 
