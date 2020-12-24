@@ -58,7 +58,7 @@
         subscribe     + 
         dashboard     - 
         notification  - 
-          web puhs - 
+          web push - 
           email    -
 
 ### Project Technology
