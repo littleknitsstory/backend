@@ -14,20 +14,21 @@ Clone project::
 - There are two ways to start a project, all in docker or only pg, redis in docker
 - You can not use docker, then you should have pg and redis in local
  
-Start in Docker all
+Start in Docker
 ------
 
 - Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers)
-- edit docker/dev/.env file with your params::
+- edit .docker/dev/.env file with your params::
 
-        cp .env.example .env
-        docker-compose -f .docker/docker-compose.dev.yml build
-        docker-compose -f .docker/docker-compose.dev.yml run backend python manage.py makemigrations
-        docker-compose -f .docker/docker-compose.dev.yml run backend python manage.py migrate
-        docker-compose -f .docker/docker-compose.dev.yml up
+        cp .env.example .docker/dev/.env
+        docker-compose -f .docker/docker-compose.yml build
+        docker-compose -f .docker/docker-compose.yml run backend python manage.py makemigrations
+        docker-compose -f .docker/docker-compose.yml run backend python manage.py migrate
+        docker-compose -f .docker/docker-compose.yml run backend python manage.py loaddata src/fixtures/*.json
+        docker-compose -f .docker/docker-compose.yml up
 - Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
 
-Start locale with postgres, redis in docker
+Start for developing locale with postgres, redis in docker
 ------
 
 -  in file .env:6 need update `POSTGRES_HOST=localhost`::
@@ -64,7 +65,6 @@ Start locale with postgres, redis in docker
 
 Git flow
 ------
-
 - Easy git flow::
 
     git checkout develop
@@ -75,14 +75,12 @@ Git flow
     git commit -m '#<number task> commit messages' 
     git push origin <your branch>
 
-- Git flow healthy person
-[git-flow-cheatsheet](https://danielkummer.github.io/git-flow-cheatsheet/)
-
- - Settings flake + pre-commit hook::
+- Git flow healthy person https://danielkummer.github.io/git-flow-cheatsheet/
+- Settings flake + pre-commit hook::
 
     sudo pip3 install flake8
     #(OUTPUT FILTERS -> $FILE_PATH$\:$LINE$\:$COLUMN$\:.*)
     flake8 --install-hook git
     git config --global --bool flake8.strict true
-    # Easy start -> ctrl + shift + a -> flake -> enter
+- Easy start -> ctrl + shift + a -> flake -> enter
 
