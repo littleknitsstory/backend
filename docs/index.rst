@@ -3,7 +3,6 @@ Welcome to LKS Project Docs
   - This is project, blog and shop with the most modern technologies, also for testing new version of python and django.
   - This is just a pet project backend, this is not a boxed solution, this is just an API for my project.
 
-
 Project Install from repo for developing
 ------
 
@@ -26,7 +25,7 @@ Start in Docker
         docker-compose -f .docker/docker-compose.yml run backend python manage.py migrate
         docker-compose -f .docker/docker-compose.yml run backend python manage.py loaddata src/fixtures/*.json
         docker-compose -f .docker/docker-compose.yml up
-- Pycharm Setup: [instruction](https://www.jetbrains.com/help/pycharm/docker.html)
+- Pycharm Setup: https://www.jetbrains.com/help/pycharm/docker.html
 
 Start for developing locale with postgres, redis in docker
 ------

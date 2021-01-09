@@ -11,8 +11,6 @@
 </div>
   - This is project, blog and shop with the most modern technologies, also for testing new version of python and django. <br>
   - This is just a pet project backend, this is not a boxed solution, this is just an API for my project. <br>
-  - This API can be used if you have a marketplace or aggregator. <br>
-  - The project itself can also be used as a working solution for the API, your blog store, it's all about the content. <br>
   - The project that underlies this repository is coming out of deep beta and the production version of the product 1.0.0 is being prepared. <br>
   - So the master branch can be used however you like. <br>
   - There is a lot of experimental stuff in the development branch.
@@ -45,7 +43,8 @@
         account       + 
         api           + 
         blog          +
-          comments    - remark -
+          comments    -
+           remark -
         contacts      + 
         menu          + 
         reviews       + 
@@ -64,16 +63,16 @@
 ### Project Technology
 [![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/blob/develop/.docker/Dockerfile#L1)
 [![GitHub](https://badgen.net/badge/django/3.1/blue)](https://github.com/63phc/lks/blob/develop/src/requirements/base.txt#L3)
-[![GitHub](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![GitHub](https://img.shields.io/badge/code%20style-black-ffffff.svg)](https://github.com/psf/black)
 
 * Python ([docs](https://www.python.org/doc/), [hub.docker](https://hub.docker.com/_/python))
 * Django ([docs](https://docs.djangoproject.com/en/3.1/))
 * DRF ([docs](https://www.django-rest-framework.org))
 * Celery ([docs](http://www.celeryproject.org/))
 * Swagger ([docs](htps://swagger.io/docs/specification/about/))
-* Redis ([hub.docker](https://hub.docker.com/_/redis/))
-* PostgreSQL ([hub.docker](https://hub.docker.com/_/postgres/))
-* Nginx ([hub.docker](https://hub.docker.com/_/nginx/))
+* Redis ([docs](https://redis.io/documentation), [hub.docker](https://hub.docker.com/_/redis/))
+* PostgreSQL ([docs](https://www.postgresql.org/docs/), [hub.docker](https://hub.docker.com/_/postgres/))
+* Nginx ([hub.docker](https://docs.nginx.com/), [hub.docker](https://hub.docker.com/_/nginx/))
 * Docker ([docs](https://docs.docker.com/))
 * Docker compose ([docs](https://docs.docker.com/compose/reference/overview/))
 
@@ -83,6 +82,9 @@
 
 ### Project Features
  - Support multilingual
+ - CI/CD with github actions
+ - Auto posting FB, INST, VK
+ - Watermarks photo
  - ... be sure to add features ...
  
 ### Project Guides
@@ -90,6 +92,7 @@
  - How to do versioning?
  - How to make multilingual api?
  - How to write reusable apps?
+ - How to use CI/CD with github actions?
  
 ### Project Contributing
-...
+pass
