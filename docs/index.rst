@@ -25,6 +25,7 @@ Start in Docker
         docker-compose -f .docker/docker-compose.yml run backend python manage.py migrate
         docker-compose -f .docker/docker-compose.yml run backend python manage.py loaddata src/fixtures/*.json
         docker-compose -f .docker/docker-compose.yml up
+
 - Pycharm Setup: https://www.jetbrains.com/help/pycharm/docker.html
 
 Start for developing locale with postgres, redis in docker
@@ -81,5 +82,6 @@ Git flow
     #(OUTPUT FILTERS -> $FILE_PATH$\:$LINE$\:$COLUMN$\:.*)
     flake8 --install-hook git
     git config --global --bool flake8.strict true
+
 - Easy start -> ctrl + shift + a -> flake -> enter
 

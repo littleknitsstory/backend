@@ -44,7 +44,7 @@
         api           + 
         blog          +
           comments    -
-           remark -
+           remark     -
         contacts      + 
         menu          + 
         reviews       + 
@@ -75,6 +75,11 @@
 * Nginx ([hub.docker](https://docs.nginx.com/), [hub.docker](https://hub.docker.com/_/nginx/))
 * Docker ([docs](https://docs.docker.com/))
 * Docker compose ([docs](https://docs.docker.com/compose/reference/overview/))
+* Kibana
+* Elasticsearch
+* Flower
+* Redis-commander
+* GraphQL
 
 
 ## Project Issues [![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/63phc/lks)](https://www.tickgit.com/browse?repo=github.com/63phc/lks)
@@ -85,6 +90,7 @@
  - CI/CD with github actions
  - Auto posting FB, INST, VK
  - Watermarks photo
+ - Async views for graphQL
  - ... be sure to add features ...
  
 ### Project Guides
