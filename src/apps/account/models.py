@@ -75,6 +75,7 @@ class User(AbstractUser):
         return {"name": self.country.name, "code": self.country.code}
 
     def send_confirm(self):
+        # TODO: need templates for welcome mail
         code = set_code(self.email.lower())
         message = f"{code}"
         send_email_celery.delay(to=[self.email], subject=_("Welcome"), message=message)

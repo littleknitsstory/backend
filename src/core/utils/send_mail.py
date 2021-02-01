@@ -1,5 +1,5 @@
 import logging
-from typing import Union, List
+from typing import Union, List, Optional
 
 from django.conf import settings
 from django.core.mail import get_connection, send_mail
@@ -24,9 +24,9 @@ def send_email_celery(
     subject: str,
     to: List[str],
     message: str,
-    from_email: str = None,
-    html_message: str = None,
-    backend: str = settings.PROVIDER_EMAIL,
+    from_email: Optional[str] = None,
+    html_message: Optional[str] = None,
+    backend: Optional[str] = settings.PROVIDER_EMAIL,
 ) -> Union[bool, Exception]:
     from_email = settings.EMAIL_HOST_USER if from_email is None else from_email
 

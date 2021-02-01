@@ -15,7 +15,7 @@
   - So the master branch can be used however you like. <br>
   - There is a lot of experimental stuff in the development branch.
 
-### Project DO 
+### Project Deploying 
 [![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/63phc/lks)
 
 ### Project Contents
