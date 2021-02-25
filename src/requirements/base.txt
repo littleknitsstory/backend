@@ -20,7 +20,7 @@ djangorestframework==3.12.2
 extensions==0.4
 graphene-django==2.15.0
 idna==3.1
-Markdown==3.3.3
+Markdown==3.3.4
 mccabe==0.6.1
 oauthlib==3.1.0
 phonenumbers==8.12.18
