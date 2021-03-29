@@ -4,4 +4,4 @@
 # Code linter
 flake8==3.9.0
 django-extensions==3.1.1
-gunicorn==20.0.4
+gunicorn==20.1.0
