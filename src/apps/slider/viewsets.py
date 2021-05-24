@@ -6,7 +6,7 @@ from .models import Slider
 
 
 class SliderAPIViewSet(mixins.ListModelMixin, GenericViewSet):
-    """ Slider viewset """
+    """Slider viewset"""
 
     queryset = Slider.objects.filter(is_active=True)
     serializer_class = SliderSerializer

@@ -8,7 +8,7 @@ from src.core.mixins.mixin import SeoMixin, ImagesMixin
 
 
 class Tag(SeoMixin):
-    """ Tag model """
+    """Tag model"""
 
     title = models.CharField(_("Title"), max_length=64)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
@@ -22,7 +22,7 @@ class Tag(SeoMixin):
 
 
 class Article(SeoMixin, ImagesMixin):
-    """ Article model """
+    """Article model"""
 
     title = models.CharField(_("Title"), max_length=64)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)

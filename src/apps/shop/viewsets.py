@@ -76,7 +76,7 @@ class OrderViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, GenericVi
 
 
 class OrderItemViewSet(ModelViewSet):
-    """ Viewsets order items """
+    """Viewsets order items"""
 
     permission_classes = (AllowAny,)
     serializer_class = OrderItemSerializer

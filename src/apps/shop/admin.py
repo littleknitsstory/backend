@@ -8,7 +8,7 @@ from .models.product import Product, ProductPhoto, ProductColor
 
 
 class AdminBaseMixin(admin.ModelAdmin):
-    """ Abstract model for shop admin """
+    """Abstract model for shop admin"""
 
     list_display = ("pk", "title", "slug")
     save_as = True

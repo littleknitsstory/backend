@@ -6,7 +6,7 @@ from src.core.mixins.mixin import ImagesMixin
 
 
 class Slider(ImagesMixin):
-    """ Slider model """
+    """Slider model"""
 
     title = models.CharField(_("Title"), max_length=120)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
