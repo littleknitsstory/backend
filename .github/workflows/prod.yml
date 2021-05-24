@@ -5,7 +5,9 @@ on:
       - 'master'
 
 jobs:
+
   prod-build:
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -34,8 +36,8 @@ jobs:
           buildargs: REQUIREMENT
           tags: "latest,${{ env.VERSION }}"
 
-  deploy:
-    needs: build
+  prod-deploy:
+    needs: prod-build
     runs-on: ubuntu-latest
     steps:
     - name: Docker down, pull and up remote host
@@ -49,12 +51,3 @@ jobs:
           docker-compose down
           docker-compose pull
           docker-compose up -d
-
-  pypi:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@master
-      with:
-        user: ${{ secrets.PIPY_USER }}
-        password: ${{ secrets.PIPY_PASS }}
