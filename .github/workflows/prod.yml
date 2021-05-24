@@ -5,7 +5,6 @@ on:
       - 'master'
 
 jobs:
-
   prod-build:
     needs: tests
     runs-on: ubuntu-latest
