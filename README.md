@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/version-0.3.15b-green.svg)]()
+[![version](https://img.shields.io/badge/version-0.3.16b-green.svg)]()
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
 [![Documentation Status](https://readthedocs.org/projects/lks/badge/?version=develop)](https://lks.readthedocs.io/en/develop/?badge=develop)
