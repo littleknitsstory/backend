@@ -2,7 +2,7 @@
 -r base.txt
 
 # Code linter
-black==21.5b1
+black==21.5b2
 flake8==3.9.2
 pytest==6.2.4
 pytest-cov==2.12.0
