@@ -39,7 +39,7 @@ social-auth-core==4.1.0
 six==1.16.0
 social-auth-app-django==4.0.0
 sqlparse==0.4.1
-urllib3==1.26.5
+urllib3==1.26.6
 django-registration==3.2
 django-redis==5.0.0
 drf-yasg2==1.19.4
