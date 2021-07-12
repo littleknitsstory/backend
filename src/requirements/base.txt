@@ -24,7 +24,7 @@ idna==2.10
 Markdown==3.3.4
 mccabe==0.6.1
 oauthlib==3.1.1
-phonenumbers==8.12.26
+phonenumbers==8.12.27
 Pillow==8.3.1
 psycopg2==2.9.1
 python-decouple==3.4
