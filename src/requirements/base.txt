@@ -1,6 +1,6 @@
 certifi==2021.5.30
 celery==5.1.2
-cryptography==3.3.2
+cryptography==3.4.7
 Django==3.2.5
 django-anymail==8.4
 django-celery-beat==2.2.1
