@@ -45,9 +45,9 @@
         api           + 
         blog          +
           comments    -
-           remark     -
+          like        - 
         contacts      + 
-        feed          +
+        feed          -
         menu          + 
         reviews       + 
         shop          +
@@ -59,8 +59,8 @@
         subscribe     + 
         dashboard     - 
         notification  - 
-          web push - 
-          email    -
+          web push    - 
+          email       -
 
 ### Project Technology
 [![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/blob/develop/.docker/Dockerfile#L1)
