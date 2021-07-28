@@ -9,7 +9,10 @@ sentry_logging = LoggingIntegration(
     level=logging.INFO,
     event_level=logging.ERROR,
 )
-sentry_sdk.init(
-    dsn=config("SENTRY_DNS", ""),
-    integrations=[DjangoIntegration(), sentry_logging],
-)
+
+# Sentry ON for production
+if config("ENVIRONMENT") == "production":
+    sentry_sdk.init(
+        dsn=config("SENTRY_DNS", ""),
+        integrations=[DjangoIntegration(), sentry_logging],
+    )

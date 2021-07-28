@@ -5,7 +5,7 @@ AUTH_USER_MODEL = "account.User"
 
 PAGINATION_BY = 6
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 CSRF_COOKIE_NAME = "XCSRF-Token"

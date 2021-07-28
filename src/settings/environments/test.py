@@ -1,9 +1,7 @@
 import os
 import sys
 
-import sentry_sdk
-
-PROFILE = "test"
+# PROFILE = "test"
 SECRET_KEY = "test_SECRET_KEY_1234"
 DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "TEST": {}}}
 
@@ -24,6 +22,3 @@ if "create-db" not in sys.argv:
     # even faster!
     SETTINGS_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     DATABASES["default"]["TEST"]["NAME"] = f"{SETTINGS_PATH}/test.db.sqlite3"
-
-# off sentry
-sentry_sdk.init()
