@@ -12,8 +12,8 @@ RUN apk update && \
 
 COPY src/requirements /app/requirements
 
-ARG REQUIREMENT
-RUN pip install -r requirements/${REQUIREMENT}.txt
+ARG ENVIRONMENT
+RUN pip install -r requirements/${ENVIRONMENT}.txt
 #--no-cache-dir
 
 COPY . /app
