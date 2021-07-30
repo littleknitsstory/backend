@@ -1,7 +1,6 @@
 import os
 import sys
 
-# PROFILE = "test"
 SECRET_KEY = "test_SECRET_KEY_1234"
 DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "TEST": {}}}
 
