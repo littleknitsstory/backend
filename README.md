@@ -1,7 +1,6 @@
 [![version](https://img.shields.io/badge/version-0.3.66b-green.svg)]()
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
-[![Documentation Status](https://readthedocs.org/projects/lks/badge/?version=develop)](https://lks.readthedocs.io/en/develop/?badge=develop)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
 <div align="center">
     <h1>LITTLE KNITS STORY</h1>  
@@ -21,7 +20,6 @@
 ### Project Contents
 
 - [Project Code](#project-code)
-- [Project Documentation](#project-documentation)
 - [Project Structure](#project-structure)
 - [Project Features](#project-features)
 - [Project Technology](#project-technology)
@@ -35,9 +33,6 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/63phc/lks?branch=develop)](https://bettercodehub.com/)
 [![codecov](https://codecov.io/gh/63phc/lks/branch/develop/graph/badge.svg)](https://codecov.io/gh/63phc/lks)
 [![CodeScene System Mastery](https://codescene.io/projects/9132/status-badges/system-mastery)](https://codescene.io/projects/9132)
-
-### Project Documentation
-[Read here](https://63phc.github.io/lks/)
 
 ### Project Structure
     applications:
