@@ -28,7 +28,6 @@ staticfiles
 static
 media
 htmlcov
-src/docs
 LICENSE
 README.md
 

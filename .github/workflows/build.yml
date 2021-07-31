@@ -3,13 +3,14 @@ on:
   push:
     branches:
       - 'develop'
-      - 'master'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with: # https://github.com/stefanzweifel/git-auto-commit-action#checkout-the-correct-branch
+            ref: ${{ github.head_ref }}
       - uses: actions/setup-python@v2
       - run: pip install bump2version
 
@@ -18,9 +19,9 @@ jobs:
           echo  >>$GITHUB_ENV VERSION=$(echo $(bump2version patch --verbose --allow-dirty) | tail -c 7)
           git config --global user.name github-actions
           git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          # git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git commit -am "[patch]"
-          git push --force origin HEAD:$GITHUB_REF
+          git push # --force origin HEAD:$GITHUB_REF
 
       - name: Publish to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
@@ -32,7 +33,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           dockerfile: .docker/Dockerfile
           workdir: .
-          buildargs: REQUIREMENT
+          buildargs: ENVIRONMENT
           tags: "latest,${{ env.VERSION }}"
 
   deploy:
