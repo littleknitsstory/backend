@@ -13,9 +13,25 @@ class OrderCartStatusChoices:
 
     CHOICES = (
         (NEW, _("New")),
-        (AWAITING, "ожидает оплаты"),
-        (CREATING, "изготовление"),
-        (SHIPPING, "доставка"),
-        (COMPLETED, "завершен"),
+        (AWAITING, _("Awaiting pay")),
+        (CREATING, _("Creating")),
+        (SHIPPING, _("Shipping")),
+        (COMPLETED, _("Completed")),
         (CANCELED, _("Canceled")),
+    )
+
+
+class ProductTypeChoices:
+    """Choices Product type"""
+
+    HANDMADE = "HANDMADE"
+    SUBSCRIBE = "SUBSCRIBE"
+    COURSE = "COURSE"
+    SCHEMA = "SCHEMA"
+
+    CHOICES = (
+        (HANDMADE, _("Handmade")),
+        (SUBSCRIBE, _("Subscribe")),
+        (COURSE, _("Course")),
+        (SCHEMA, _("Schema")),
     )

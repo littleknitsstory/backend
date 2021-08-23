@@ -9,19 +9,22 @@ from graphene_django.views import GraphQLView
 from src.core.sitemap import sitemaps
 
 urlpatterns = [
-    path("", include("src.apps.swagger.urls")),
     # API's
     path("api/v1/", include("src.apps.api.urls")),
     path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    # foolproof mirror url admin/
-    path("nimda/", admin.site.urls),
-    path("anymail/", include("anymail.urls")),
+    # AUTH
+    path("auth/", include("rest_framework_social_oauth2.urls")),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    # ADMIN
+    path("nimda/", admin.site.urls),  # foolproof mirror url admin/
     path("ckeditor/", include("ckeditor_uploader.urls")),
-    # path('i18n/', include('django.conf.urls.i18n')),
-    # path("auth/", include("rest_framework_social_oauth2.urls")),
+    # SUPPORT
+    path("docs/", include("src.apps.swagger.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
+    path("anymail/", include("anymail.urls")),
+    # SEO
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
     path("robots.txt", include("robots.urls")),
-    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

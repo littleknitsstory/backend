@@ -53,6 +53,8 @@ class ProfileView(generics.RetrieveAPIView):
 
 
 class ConfirmView(generics.GenericAPIView):
+    serializer_class = None
+    
     def get(self, request):
         # TODO: add in dashboard
         # email = request.query_params.get("email")

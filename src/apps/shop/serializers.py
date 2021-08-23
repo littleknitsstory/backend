@@ -166,8 +166,6 @@ class OrderSerializer(serializers.Serializer):
         return order_cart
 
     def to_representation(self, instance):
-        # print(instance)
-        # print(instance.products.all())
         return {
             "status": instance.status,
             "order_number": instance.order_number,

@@ -22,8 +22,7 @@
 - [Project Code](#project-code)
 - [Project Structure](#project-structure)
 - [Project Features](#project-features)
-- [Project Technology](#project-technology)
-- [Project Guides](#project-guides)
+- [Project Install](#project-features)
 
 ### Project Code
 
@@ -88,12 +87,106 @@
  - Async views for graphQL
  - ... be sure to add features ...
  
-### Project Guides
-- guides will be collected here, for example:
- - How to do versioning?
- - How to make multilingual api?
- - How to write reusable apps?
- - How to use CI/CD with github actions?
  
-### Project Contributing
-pass
+### Project Install from repo for developing
+- Clone project:
+```
+        git clone -b develop https://github.com/63phc/lks.git
+```
+- There are two ways to start a project, all in docker or only pg, redis in docker
+- You can not use docker, then you should have pg and redis in local
+ 
+### Start in Docker
+
+- Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers)
+- edit .docker/dev/.env file with your params:
+```
+        cp .env.example .docker/dev/.env
+        docker-compose -f .docker/docker-compose.yml build
+        docker-compose -f .docker/docker-compose.yml run backend python manage.py makemigrations
+        docker-compose -f .docker/docker-compose.yml run backend python manage.py migrate
+        docker-compose -f .docker/docker-compose.yml run backend python manage.py loaddata src/fixtures/*.json
+        docker-compose -f .docker/docker-compose.yml up
+```
+- Pycharm Setup: https://www.jetbrains.com/help/pycharm/docker.html
+
+### Start for developing locale with postgres, redis in docker
+
+
+-  in file .env:6 need update `POSTGRES_HOST=localhost`:
+```
+   docker-compose -f .docker/docker-compose.local.yml up postgresql redis
+```
+- Create virtual env:
+```
+        python3 -m venv Venv
+        source Venv/bin/activate
+        pip3 install -r src/requirements/development.txt
+```
+- Or through pipenv:
+```
+        pip3 install pipenv
+        pipenv install
+        pipenv shell
+```
+
+#### Parameters
+
+| Command line            | Environment             | Default                  | Description                                     |
+| ----------------------- | ----------------------- | ------------------------ | ----------------------------------------------- |
+| url                     | REMARK_URL              |                          | URL to Remark42 server, _required_              |
+
+
+- Prepare project:
+```
+    python manage.py makemigration
+    python manage.py migrate
+    python manage.py createsuperuser
+    python manage.py loaddata src/fixtures/*.json
+    python manage.py runserver
+```
+
+### Git flow
+- Easy git flow:
+```
+    git checkout develop
+    git pull develop
+    git checkout -b <your branch>
+    # when complete task
+    git add .
+    git commit -m '#<number task> commit messages' 
+    git push origin <your branch>
+```
+
+```
+
+python3 -m pip install --user --upgrade setuptools wheel
+
+python setup.py sdist bdist_wheel
+
+pip install twine
+twine check dist/*
+
+python3 -m twine upload --repository testpypi dist/* 
+
+```
+
+Quick start
+-----------
+
+1. Add "lks" to your INSTALLED_APPS setting like this::
+
+        INSTALLED_APPS = [
+            'lks'
+        ]
+
+2. Include the lks API in your project api/urls.py like this::
+
+        path('lks/', include('lks.api.v1')),
+
+3. Run ``python manage.py migrate`` to create the lks models.
+
+4. Start the development server and visit http://127.0.0.1:8000/admin/
+   to create a lks (you'll need the Admin app enabled).
+
+5. Visit http://127.0.0.1:8000/lks/ to participate in the api.

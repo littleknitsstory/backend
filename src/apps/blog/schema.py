@@ -1,4 +1,5 @@
 import graphene
+from graphene import ObjectType
 from graphene_django import DjangoObjectType
 
 from src.apps.blog.models import Tag, Article
@@ -14,12 +15,12 @@ class ArticleType(DjangoObjectType):
         model = Article
 
 
-class Query(object):
+class Query(ObjectType):
     all_tags = graphene.List(TagsType)
     all_articles = graphene.List(ArticleType)
 
-    def resolve_all_categories(self, info, **kwargs):
+    async def resolve_all_categories(self, info, **kwargs):
         return Tag.objects.all()
 
-    def resolve_all_articles(self, info, **kwargs):
+    async def resolve_all_articles(self, info, **kwargs):
         return Article.objects.prefetch_related("tags").all()
