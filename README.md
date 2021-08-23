@@ -132,9 +132,37 @@
 
 #### Parameters
 
-| Command line            | Environment             | Default                  | Description                                     |
-| ----------------------- | ----------------------- | ------------------------ | ----------------------------------------------- |
-| url                     | REMARK_URL              |                          | URL to Remark42 server, _required_              |
+- .env file:
+
+| Environment                | Default                        | Description                                     |
+| -------------------------- | ------------------------------ | ----------------------------------------------- |
+| SECRET_KEY                 |                                |                                                 |
+| ENVIRONMENT                | test                           |                                                 |
+| NGINX_PORT                 | 26363                          |                                                 |
+| POSTGRES_NAME              | lks_pg_name                    |                                                 |
+| POSTGRES_USER              | lks_pg_user                    |                                                 |
+| POSTGRES_DB                | lks_pg_db                      |                                                 |
+| POSTGRES_PASSWORD          | lks_pg_pass                    |                                                 |
+| PGDATA                     | /var/lib/postgresql/data/pgdata|                                                 |
+| POSTGRES_HOST              | localhost                      |                                                 |
+| POSTGRES_PORT              | 5432                           |                                                 |
+| REDIS_HOST                 | localhost                      |                                                 |
+| REDIS_PASSWORD             | pswd123                        |                                                 |
+| REDIS_PORT                 | 6379                           |                                                 |
+| FLOWER_PORT                | 9876                           |                                                 |
+| FLOWER_USER                | admin                          |                                                 |
+| FLOWER_PASSWORD            | admin                          |                                                 |
+| PROVIDER_EMAIL             |                                |                                                 |
+| EMAIL_HOST                 |                                |                                                 |
+| EMAIL_PORT                 | 587                            |                                                 |
+| EMAIL_HOST_USER            |                                |                                                 |
+| EMAIL_HOST_PASSWORD        |                                |                                                 |
+| SENDGRID_API_KEY           |                                |                                                 |
+| MAILGUN_API_KEY            |                                |                                                 |
+| FIXER_ACCESS_KEY           |                                |                                                 |
+| OPEN_EXCHANGE_RATES_APP_ID |                                |                                                 |
+| SENTRY_DNS                 |                                |                                                 |
+| PGDATA                     |                                |                                                 |
 
 
 - Prepare project:
