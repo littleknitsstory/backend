@@ -1,6 +1,6 @@
 certifi==2021.5.30
 celery==5.1.2
-cryptography==3.4.8
+cryptography==3.3.2
 Django==3.2.7
 django-anymail==8.4
 django-countries==7.2.1
