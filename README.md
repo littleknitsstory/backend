@@ -8,7 +8,7 @@
 [![swagger](https://validator.swagger.io/validator?url=http://dev.backend.littleknitsstory.com/)](http://dev.backend.littleknitsstory.com/) 
 [![graphql](https://badgen.net/badge/icon/graphql.beta?icon=graphql&label)](http://dev.backend.littleknitsstory.com/api/v2/)
 </div>
-  - This is project, blog and shop with the most modern technologies, also for testing new version of python and django. <br>
+  - This is project with the most modern technologies, also for testing new version of python and django. <br>
   - This is just a pet project backend, this is not a boxed solution, this is just an API for my project. <br>
   - The project that underlies this repository is coming out of deep beta and the production version of the product 1.0.0 is being prepared. <br>
   - So the master branch can be used however you like. <br>
@@ -19,10 +19,9 @@
 
 ### Project Contents
 
-- [Project Code](#project-code)
 - [Project Structure](#project-structure)
 - [Project Features](#project-features)
-- [Project Install](#project-features)
+- [Project Install](#project-install)
 
 ### Project Code
 
@@ -41,6 +40,8 @@
           comments    -
           like        - 
         contacts      + 
+        courses       - 
+        dashboard     - 
         feed          -
         menu          + 
         reviews       + 
@@ -51,9 +52,8 @@
         shorter       -
         slider        + 
         subscribe     + 
-        dashboard     - 
         notification  - 
-          web push    - 
+          in app      - 
           email       -
 
 ### Project Technology
@@ -65,19 +65,13 @@
 * Django ([docs](https://docs.djangoproject.com/en/3.1/))
 * DRF ([docs](https://www.django-rest-framework.org))
 * Celery ([docs](http://www.celeryproject.org/))
-* Swagger ([docs](htps://swagger.io/docs/specification/about/))
+* Swagger ([docs](https://swagger.io/docs/specification/about/))
 * Redis ([docs](https://redis.io/documentation), [hub.docker](https://hub.docker.com/_/redis/))
 * PostgreSQL ([docs](https://www.postgresql.org/docs/), [hub.docker](https://hub.docker.com/_/postgres/))
 * Nginx ([hub.docker](https://docs.nginx.com/), [hub.docker](https://hub.docker.com/_/nginx/))
 * Docker ([docs](https://docs.docker.com/))
 * Docker compose ([docs](https://docs.docker.com/compose/reference/overview/))
-* Flower
-* Redis-commander
-* GraphQL
-
-
-## Project Issues [![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/63phc/lks)](https://www.tickgit.com/browse?repo=github.com/63phc/lks)
- - If you find any bugs, feel free to file an issue on the github issue tracker.
+* GraphQL ([docs](https://graphql.org/)
 
 ### Project Features
  - Support multilingual
@@ -88,7 +82,7 @@
  - ... be sure to add features ...
  
  
-### Project Install from repo for developing
+### Project Install
 - Clone project:
 ```
         git clone -b develop https://github.com/63phc/lks.git
@@ -150,7 +144,6 @@
 | FIXER_ACCESS_KEY           |                                |                                                 |
 | OPEN_EXCHANGE_RATES_APP_ID |                                |                                                 |
 | SENTRY_DNS                 |                                |                                                 |
-| PGDATA                     |                                |                                                 |
 
 
 ### Start in Docker
@@ -158,7 +151,7 @@
 - Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers)
 - edit .docker/dev/.env file with your params:
 ```
-        cp .env.example .env
+        cp .env.example .docker/.env
         docker-compose -f .docker/docker-compose.yml build
         docker-compose -f .docker/docker-compose.yml run backend python manage.py makemigrations
         docker-compose -f .docker/docker-compose.yml run backend python manage.py migrate
@@ -167,34 +160,6 @@
 ```
 - Pycharm Setup: https://www.jetbrains.com/help/pycharm/docker.html
 
-```
-python3 -m pip install --user --upgrade setuptools wheel
 
-python setup.py sdist bdist_wheel
-
-pip install twine
-twine check dist/*
-
-python3 -m twine upload --repository testpypi dist/* 
-
-```
-
-Quick start
------------
-
-1. Add "lks" to your INSTALLED_APPS setting like this::
-
-        INSTALLED_APPS = [
-            'lks'
-        ]
-
-2. Include the lks API in your project api/urls.py like this::
-
-        path('lks/', include('lks.api.v1')),
-
-3. Run ``python manage.py migrate`` to create the lks models.
-
-4. Start the development server and visit http://127.0.0.1:8000/admin/
-   to create a lks (you'll need the Admin app enabled).
-
-5. Visit http://127.0.0.1:8000/lks/ to participate in the api.
+## Project Issues [![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/63phc/lks)](https://www.tickgit.com/browse?repo=github.com/63phc/lks)
+ - If you find any bugs, feel free to file an issue on the github issue tracker.
