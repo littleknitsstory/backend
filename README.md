@@ -22,6 +22,7 @@
 - [Project Structure](#project-structure)
 - [Project Features](#project-features)
 - [Project Install](#project-install)
+- [Project Issues](#project-issues)
 
 ### Project Code
 
