@@ -96,38 +96,26 @@
 - There are two ways to start a project, all in docker or only pg, redis in docker
 - You can not use docker, then you should have pg and redis in local
  
-### Start in Docker
-
-- Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers)
-- edit .docker/dev/.env file with your params:
-```
-        cp .env.example .docker/dev/.env
-        docker-compose -f .docker/docker-compose.yml build
-        docker-compose -f .docker/docker-compose.yml run backend python manage.py makemigrations
-        docker-compose -f .docker/docker-compose.yml run backend python manage.py migrate
-        docker-compose -f .docker/docker-compose.yml run backend python manage.py loaddata src/fixtures/*.json
-        docker-compose -f .docker/docker-compose.yml up
-```
-- Pycharm Setup: https://www.jetbrains.com/help/pycharm/docker.html
-
 ### Start for developing locale with postgres, redis in docker
 
-
--  in file .env:6 need update `POSTGRES_HOST=localhost`:
 ```
+   cp .env.example .env
    docker-compose -f .docker/docker-compose.local.yml up postgresql redis
 ```
 - Create virtual env:
 ```
-        python3 -m venv Venv
-        source Venv/bin/activate
-        pip3 install -r src/requirements/development.txt
+    python3 -m venv Venv
+    source Venv/bin/activate
+    pip3 install -r src/requirements/development.txt
 ```
-- Or through pipenv:
+
+- Prepare project:
 ```
-        pip3 install pipenv
-        pipenv install
-        pipenv shell
+    python manage.py makemigration
+    python manage.py migrate
+    python manage.py createsuperuser
+    python manage.py loaddata src/fixtures/*.json
+    python manage.py runserver
 ```
 
 #### Parameters
@@ -165,29 +153,21 @@
 | PGDATA                     |                                |                                                 |
 
 
-- Prepare project:
-```
-    python manage.py makemigration
-    python manage.py migrate
-    python manage.py createsuperuser
-    python manage.py loaddata src/fixtures/*.json
-    python manage.py runserver
-```
+### Start in Docker
 
-### Git flow
-- Easy git flow:
+- Install Docker: [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#supported-storage-drivers)
+- edit .docker/dev/.env file with your params:
 ```
-    git checkout develop
-    git pull develop
-    git checkout -b <your branch>
-    # when complete task
-    git add .
-    git commit -m '#<number task> commit messages' 
-    git push origin <your branch>
+        cp .env.example .env
+        docker-compose -f .docker/docker-compose.yml build
+        docker-compose -f .docker/docker-compose.yml run backend python manage.py makemigrations
+        docker-compose -f .docker/docker-compose.yml run backend python manage.py migrate
+        docker-compose -f .docker/docker-compose.yml run backend python manage.py loaddata src/fixtures/*.json
+        docker-compose -f .docker/docker-compose.yml up
 ```
+- Pycharm Setup: https://www.jetbrains.com/help/pycharm/docker.html
 
 ```
-
 python3 -m pip install --user --upgrade setuptools wheel
 
 python setup.py sdist bdist_wheel
