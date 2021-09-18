@@ -13,7 +13,7 @@ urlpatterns = [
     path("api/v1/", include("src.apps.api.urls")),
     path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     # AUTH
-    path("auth/", include("rest_framework_social_oauth2.urls")),
+    # path("auth/", include("rest_framework_social_oauth2.urls")),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     # ADMIN
     path("nimda/", admin.site.urls),  # foolproof mirror url admin/
