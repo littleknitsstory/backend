@@ -1,5 +1,5 @@
 certifi==2021.10.8
-celery==5.2.0
+celery==5.2.1
 cryptography==35.0.0
 Django==3.2.9
 django-anymail==8.4
