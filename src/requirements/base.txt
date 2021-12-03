@@ -12,6 +12,7 @@ django-modeltranslation==0.17.3
 django-money==2.1
 django-mptt==0.13.4
 django-mptt-admin==2.1.0
+django-nested-admin==3.3.3
 django-optimized-image==0.3.0
 django-split-settings==1.1.0
 djangorestframework-simplejwt==4.8.0

@@ -2,7 +2,7 @@ from rest_framework import generics, status
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
-from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework.viewsets import ReadOnlyModelViewSet, ModelViewSet
 from rest_framework_simplejwt.views import TokenViewBase
 
 from src.apps.account.choices import AccountTypeChoices
@@ -13,6 +13,7 @@ from src.apps.account.serializers import (
     SignInSerializer,
     SignOutSerializer,
     ProfileSerializer,
+    ConfirmSerializer,
 )
 
 
@@ -52,8 +53,21 @@ class ProfileView(generics.RetrieveAPIView):
         return self.request.user
 
 
+class ProfileViewSet(ModelViewSet):
+
+    queryset = User.objects.all()
+    http_method_names = ["get"]
+    # lookup_field = "slug"
+    pagination_class = None
+    serializer_classes = {}
+
+    def get_serializer_class(self):
+        return self.serializer_classes.get(self.action, ProfileSerializer)
+
+
+
 class ConfirmView(generics.GenericAPIView):
-    serializer_class = None
+    serializer_class = ConfirmSerializer
     
     def get(self, request):
         # TODO: add in dashboard

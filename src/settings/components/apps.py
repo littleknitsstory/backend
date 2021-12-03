@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "djmoney.contrib.exchange",
     "colorful",
     "robots",
+    "nested_admin",
     # Dev
     "django_extensions",
     # Django Rest Framework
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     "src.apps.slider",
     "src.apps.subscribe",
     "src.apps.reviews",
+    "src.apps.course",
 ]
 
 SITE_ID = 1

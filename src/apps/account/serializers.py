@@ -124,3 +124,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "inst_profile",
             "tg_profile",
         )
+
+
+class ConfirmSerializer():
+    pass
