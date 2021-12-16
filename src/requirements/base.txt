@@ -16,7 +16,7 @@ django-nested-admin==3.3.3
 django-optimized-image==0.3.0
 django-split-settings==1.1.0
 djangorestframework-simplejwt==5.0.0
-djangorestframework==3.13.0
+djangorestframework==3.13.1
 graphene-django==2.15.0
 idna==3.3
 Markdown==3.3.6
