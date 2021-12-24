@@ -38,7 +38,7 @@ social-auth-app-django==5.0.0
 sqlparse==0.4.2
 urllib3==1.26.7
 django-registration==3.2
-django-redis==5.1.0
+django-redis==5.2.0
 drf-yasg2==1.19.4
 django-robots==4.0
 notifiers==1.2.1
