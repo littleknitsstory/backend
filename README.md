@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/version-0.3.195b-green.svg)]()
+[![version](https://img.shields.io/badge/version-0.3.196b-green.svg)]()
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
