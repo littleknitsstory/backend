@@ -15,7 +15,7 @@
   - There is a lot of experimental stuff in the development branch.
 
 ### Project Deploying 
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/63phc/lks)
+[![Deploy to DO](https://www.deploytodo.com/do-btn-white.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/63phc/lks/tree/develop)
 
 ### Project Contents
 
@@ -120,7 +120,7 @@
 | Environment                | Default                        | Description                                     |
 | -------------------------- | ------------------------------ | ----------------------------------------------- |
 | SECRET_KEY                 |                                |                                                 |
-| ENVIRONMENT                | test                           |                                                 |
+| ENVIRONMENT                | test                           |   test using sqlite                             |
 | NGINX_PORT                 | 26363                          |                                                 |
 | POSTGRES_NAME              | lks_pg_name                    |                                                 |
 | POSTGRES_USER              | lks_pg_user                    |                                                 |
