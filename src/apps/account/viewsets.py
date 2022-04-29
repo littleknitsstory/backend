@@ -57,7 +57,6 @@ class ProfileViewSet(ModelViewSet):
 
     queryset = User.objects.all()
     http_method_names = ["get"]
-    # lookup_field = "slug"
     pagination_class = None
     serializer_classes = {}
 
@@ -65,13 +64,8 @@ class ProfileViewSet(ModelViewSet):
         return self.serializer_classes.get(self.action, ProfileSerializer)
 
 
-
 class ConfirmView(generics.GenericAPIView):
     serializer_class = ConfirmSerializer
     
     def get(self, request):
-        # TODO: add in dashboard
-        # email = request.query_params.get("email")
-        # code = request.query_params.get("code")
-        # print(f"")
         return Response(status=status.HTTP_200_OK)

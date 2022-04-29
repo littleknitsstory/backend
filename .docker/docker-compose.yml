@@ -55,7 +55,7 @@ services:
     image: 63phc/lks:latest
     restart: always
     command: bash -c "
-      celery -A src.core.celery worker --loglevel=info"
+      celery -A src.core.celery worker --loglevel=info --uid=nobody --gid=nogroup"
     volumes:
       - ./static:/app/static
       - ./media:/app/media
