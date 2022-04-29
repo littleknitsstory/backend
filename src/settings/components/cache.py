@@ -1,4 +1,4 @@
-from settings.components.redis import REDIS_HOST, REDIS_PORT, REDIS_PASSWORD
+from src.settings.components.redis import REDIS_HOST, REDIS_PORT, REDIS_PASSWORD
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
