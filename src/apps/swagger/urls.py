@@ -1,19 +1,19 @@
-from django.conf.urls import url
+from django.urls import re_path
 
 from .views import schema_view
 
 urlpatterns = [
-    url(
+    re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",
         schema_view.without_ui(cache_timeout=None),
         name="schema-json",
     ),
-    url(
+    re_path(
         r"^redoc/$",
         schema_view.with_ui("redoc", cache_timeout=None),
         name="schema-redoc",
     ),
-    url(
+    re_path(
         r"^$",
         schema_view.with_ui("swagger", cache_timeout=None),
         name="schema-swagger-ui",

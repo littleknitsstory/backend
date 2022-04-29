@@ -1,6 +1,6 @@
 from decouple import config
 
-BASE_CURRENCY = "RUB"
+BASE_CURRENCY = "EUR"
 CURRENCIES = ("USD", "EUR", "RUB")
 CURRENCY_CHOICES = [("USD", "USD $"), ("EUR", "EUR €"), ("RUB", "RUB ₽")]
 EXCHANGE_BACKEND = "djmoney.contrib.exchange.backends.FixerBackend"

@@ -44,7 +44,5 @@ INSTALLED_APPS = [
     "src.apps.slider",
     "src.apps.subscribe",
     "src.apps.reviews",
-    "src.apps.course",
+    # "src.apps.course",
 ]
-
-SITE_ID = 1

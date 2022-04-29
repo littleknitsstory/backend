@@ -75,6 +75,7 @@
 * GraphQL ([docs](https://graphql.org/)
 
 ### Project Features
+ - Versioning
  - Support multilingual
  - CI/CD with github actions
  - Auto posting FB, INST, VK
@@ -95,6 +96,9 @@
 
 ```
    cp .env.example .env
+   # all 
+   docker-compose -f .docker/docker-compose.local.yml up --build --quiet-pull
+   # postgresql redis
    docker-compose -f .docker/docker-compose.local.yml up postgresql redis
 ```
 - Create virtual env:
@@ -108,10 +112,17 @@
 ```
     python manage.py makemigration
     python manage.py migrate
+    python manage.py collectstatic
     python manage.py createsuperuser
     python manage.py loaddata src/fixtures/*.json
     python manage.py runserver
+
 ```
+```
+    gunicorn src.core.wsgi:application -w 2 -b 0.0.0.0:8000
+    gunicorn src.core.asgi:application -k uvicorn.workers.UvicornWorker
+```
+
 
 #### Parameters
 
@@ -154,10 +165,11 @@
 ```
         cp .env.example .docker/.env
         docker-compose -f .docker/docker-compose.yml build
+        docker-compose -f .docker/docker-compose.yml up
+        #
         docker-compose -f .docker/docker-compose.yml run backend python manage.py makemigrations
         docker-compose -f .docker/docker-compose.yml run backend python manage.py migrate
         docker-compose -f .docker/docker-compose.yml run backend python manage.py loaddata src/fixtures/*.json
-        docker-compose -f .docker/docker-compose.yml up
 ```
 - Pycharm Setup: https://www.jetbrains.com/help/pycharm/docker.html
 

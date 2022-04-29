@@ -17,7 +17,7 @@ django-optimized-image==0.3.0
 django-split-settings==1.1.0
 djangorestframework-simplejwt==5.1.0
 djangorestframework==3.13.1
-graphene-django==2.15.0
+graphene-django==3.0.0b7
 idna==3.3
 Markdown==3.3.6
 oauthlib==3.2.0
