@@ -1,7 +1,7 @@
 certifi==2022.5.18.1
 celery==5.2.7
 cryptography==37.0.2
-Django==4.0.4
+Django==4.0.5
 django-anymail==8.6
 django-countries==7.3.2
 django-ckeditor==6.4.0
