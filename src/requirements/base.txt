@@ -21,7 +21,7 @@ graphene-django==3.0.0b7
 idna==3.3
 Markdown==3.3.7
 oauthlib==3.2.0
-phonenumbers==8.12.49
+phonenumbers==8.12.50
 Pillow==9.1.1
 psycopg2==2.9.3
 python-decouple==3.6
