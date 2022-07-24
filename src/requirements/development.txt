@@ -3,5 +3,5 @@
 
 # Code linter
 flake8==4.0.1
-django-extensions==3.1.5
+django-extensions==3.2.0
 gunicorn==20.1.0
