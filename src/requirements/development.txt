@@ -2,6 +2,6 @@
 -r base.txt
 
 # Code linter
-flake8==4.0.1
+flake8==5.0.2
 django-extensions==3.2.0
 gunicorn==20.1.0
