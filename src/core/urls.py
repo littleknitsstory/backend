@@ -4,14 +4,14 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
-from graphene_django.views import GraphQLView
+# from graphene_django.views import GraphQLView
 
 from src.core.sitemap import sitemaps
 
 urlpatterns = [
     # API's
     path("api/v1/", include("src.apps.api.urls")),
-    path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    # path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     # AUTH
     # path("auth/", include("rest_framework_social_oauth2.urls")),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
@@ -30,7 +30,6 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
 
 # urlpatterns += [
 #     path('google5e682b3d95e1b8ef.html',
