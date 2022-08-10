@@ -38,6 +38,7 @@ README.md
 .docker/pgdata/
 .docker/static/
 .docker/media/
+.docker/data/
 
 # sqlite
 *.sqlite3

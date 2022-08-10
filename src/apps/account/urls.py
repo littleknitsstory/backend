@@ -24,5 +24,5 @@ urlpatterns = [
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("sign-out/", SignOutView.as_view(), name="logout"),
     path("profile/", ProfileView.as_view(), name="profile"),
-    path("confirm/", ConfirmView.as_view(), name="confirm"),
+    # path("confirm/", ConfirmView.as_view(), name="confirm"),
 ]

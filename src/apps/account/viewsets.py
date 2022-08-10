@@ -13,7 +13,6 @@ from src.apps.account.serializers import (
     SignInSerializer,
     SignOutSerializer,
     ProfileSerializer,
-    ConfirmSerializer,
 )
 
 
@@ -65,7 +64,6 @@ class ProfileViewSet(ModelViewSet):
 
 
 class ConfirmView(generics.GenericAPIView):
-    serializer_class = ConfirmSerializer
     
     def get(self, request):
         return Response(status=status.HTTP_200_OK)

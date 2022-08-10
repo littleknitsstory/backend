@@ -42,6 +42,8 @@ jobs:
     steps:
     - name: Docker down, pull and up remote host
       uses: appleboy/ssh-action@master
+      env:
+        ENVIRONMENT: development
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.HOST_USERNAME }}
