@@ -1,7 +1,7 @@
 certifi==2022.6.15
 celery==5.2.7
 cryptography==37.0.4
-Django==4.1.1
+Django==4.1.2
 django-anymail==8.6
 django-countries==7.3.2
 django-ckeditor==6.5.1
@@ -15,7 +15,7 @@ django-mptt-admin==2.3.0
 django-nested-admin==3.4.0
 django-optimized-image==0.3.0
 django-split-settings==1.1.0
-djangorestframework-simplejwt==5.2.0
+djangorestframework-simplejwt==5.2.1
 djangorestframework==3.13.1
 graphene-django==3.0.0
 idna==3.4
