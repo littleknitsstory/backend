@@ -58,8 +58,8 @@
           email       -
 
 ### Project Technology
-[![GitHub](https://badgen.net/badge/python/3.9/blue)](https://github.com/63phc/lks/blob/develop/.docker/Dockerfile#L1)
-[![GitHub](https://badgen.net/badge/django/3.1/blue)](https://github.com/63phc/lks/blob/develop/src/requirements/base.txt#L3)
+[![GitHub](https://badgen.net/badge/python/3.10.4/blue)](https://github.com/63phc/lks/blob/develop/.docker/Dockerfile#L1)
+[![GitHub](https://badgen.net/badge/django/4.1.2/blue)](https://github.com/63phc/lks/blob/develop/src/requirements/base.txt#L3)
 [![GitHub](https://img.shields.io/badge/code%20style-black-ffffff.svg)](https://github.com/psf/black)
 
 * Python ([docs](https://www.python.org/doc/), [hub.docker](https://hub.docker.com/_/python))

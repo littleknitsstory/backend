@@ -1,6 +1,6 @@
 from django.urls import re_path
 
-from .views import schema_view
+from src.apps.swagger.views import schema_view
 
 urlpatterns = [
     re_path(
