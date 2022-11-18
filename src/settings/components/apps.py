@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "nested_admin",
     # Dev
     "django_extensions",
+    "django_filters",
     # Django Rest Framework
     "rest_framework",
     "rest_framework_simplejwt.token_blacklist",
@@ -44,5 +45,6 @@ INSTALLED_APPS = [
     "src.apps.slider",
     "src.apps.subscribe",
     "src.apps.reviews",
+    "src.apps.comments",
     # "src.apps.course",
 ]
