@@ -1,3 +1,3 @@
-#from decouple import config
+from decouple import config
 
-SHORT_URL = "" #config("SHORT_URL", "")
+SHORT_URL = config("SHORT_URL", "")
