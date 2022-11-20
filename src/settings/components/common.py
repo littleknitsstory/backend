@@ -1,6 +1,6 @@
-#from decouple import config
+from decouple import config
 
-SECRET_KEY = "SECRET_KEY_%hq1-v75hm5w)t^)!o-!-&pn0_rnavd8qswzs_BAD" #config("SECRET_KEY", "BAD_SECRET_KEY_73812732478324783274823")
+SECRET_KEY = config("SECRET_KEY", "BAD_SECRET_KEY_73812732478324783274823")
 AUTH_USER_MODEL = "account.User"
 
 PAGINATION_BY = 6

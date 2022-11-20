@@ -33,4 +33,4 @@ class Comment(SeoMixin):
     class Meta:
         verbose_name = _("Comment")
         verbose_name_plural = _("Comments")
-        ordering = ("-created_at",)
+#        ordering = ("-created_at",)

@@ -1,7 +1,7 @@
 from decouple import config
 from split_settings.tools import include
 
-CONFIG_NAME = config("ENVIRONMENT", "test") # "development"
+CONFIG_NAME = config("ENVIRONMENT", "development")
 
 base_settings = [
     "components/_paths.py",
