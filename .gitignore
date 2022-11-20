@@ -61,7 +61,7 @@ coverage.xml
 # Django stuff:
 *.log
 .static/
-static/
+#static/
 .media/
 
 # pyenv
