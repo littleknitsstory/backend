@@ -11,7 +11,7 @@ ALLOWED_HOSTS = ["*"]
 
 CSRF_COOKIE_NAME = "XCSRF-Token"
 
-AUTH_PASSWORD_VALIDATORS = [
+A_P_V = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
@@ -26,6 +26,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_PASSWORD_VALIDATORS = config("AUTH_PASSWORD_VALIDATORS", A_P_V)
 
 OPTIMIZED_IMAGE_METHOD = "pillow"
 

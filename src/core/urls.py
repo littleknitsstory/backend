@@ -15,6 +15,7 @@ urlpatterns = [
     # AUTH
     # path("auth/", include("rest_framework_social_oauth2.urls")),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("account/", include("src.apps.account.urls")),
     # ADMIN
     path("nimda/", admin.site.urls),  # foolproof mirror url admin/
     path("ckeditor/", include("ckeditor_uploader.urls")),
