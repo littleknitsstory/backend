@@ -29,4 +29,4 @@ def test_sign_up(client):
 @pytest.mark.urls("apps.account.urls")
 def test_get_profile(client, headers):
     assert client.get("/profile/").status_code == 401
-    assert client.get("/profile/", headers=headers)
+    assert client.get("/profile/", headers=headers).status_code == 201
