@@ -1,27 +1,17 @@
-from rest_framework import generics, status
+from rest_framework import generics
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.response import Response
-from rest_framework.viewsets import ReadOnlyModelViewSet, ModelViewSet
+from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenViewBase
 
-from src.apps.account.choices import AccountTypeChoices
 from src.apps.account.models import User
+from src.apps.account.permissions import IsOwner
 from src.apps.account.serializers import (
-    UserSerializer,
     SignUpSerializer,
     SignInSerializer,
     SignOutSerializer,
     ProfileSerializer,
 )
-
-
-class UserViewSet(ReadOnlyModelViewSet):
-    queryset = User.objects.filter(account_type=AccountTypeChoices.AUTHOR)
-    serializer_class = UserSerializer
-    pagination_class = None
-    lookup_field = "username"
-    permission_classes = (AllowAny,)
 
 
 class SignUpView(generics.CreateAPIView):
@@ -44,26 +34,26 @@ class SignOutView(GenericAPIView):
         serializer.save()
 
 
-class ProfileView(generics.RetrieveAPIView):
-    serializer_class = ProfileSerializer
-    permission_classes = (IsAuthenticated,)
-
-    def get_object(self) -> User:
-        return self.request.user
-
-
 class ProfileViewSet(ModelViewSet):
-
     queryset = User.objects.all()
-    http_method_names = ["get"]
+    http_method_names = ["get","put"]
+    lookup_field = "username"
+    serializer_class = ProfileSerializer
     pagination_class = None
-    serializer_classes = {}
 
-    def get_serializer_class(self):
-        return self.serializer_classes.get(self.action, ProfileSerializer)
+    def get_queryset(self):
+        if self.action == "list":
+            return self.queryset.filter(username=self.request.user.username)
+        return self.queryset
 
+    def get_permissions(self):
+        if self.action in ["retrieve", "list", ]:
+            return [IsAuthenticated()]
+        if self.action in ["update", "partial_update", "destroy"]:
+            return [IsOwner()]
+        return []
 
-class ConfirmView(generics.GenericAPIView):
+#class ConfirmView(generics.GenericAPIView):
     
-    def get(self, request):
-        return Response(status=status.HTTP_200_OK)
+#    def get(self, request):
+#        return Response(status=status.HTTP_200_OK)

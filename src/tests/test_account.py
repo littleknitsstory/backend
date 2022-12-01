@@ -29,4 +29,22 @@ def test_sign_up(client):
 @pytest.mark.urls("apps.account.urls")
 def test_get_profile(client, headers):
     assert client.get("/profile/").status_code == 401
-    assert client.get("/profile/", headers=headers)
+    res = client.get("/profile/", headers=headers)
+    assert res.status_code == 201
+    username = res.json()[0].get("username")
+    assert client.get(f"/profile/{username}/", headers=headers).status_code == 201
+
+
+@pytest.mark.django_db
+@pytest.mark.urls("apps.account.urls")
+def test_put_profile(client, headers):
+    res = client.get("/profile/", headers=headers)
+    assert res.status_code == 201
+    username = res.json()[0].get("username")
+    data = {"address": "test"}
+    res = client.put(f"/profile/{username}/",
+                     headers=headers,
+                     data=json.dumps(data),
+                     content_type="application/json",
+                    )
+    assert res.status_code == 200
