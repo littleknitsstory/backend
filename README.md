@@ -176,5 +176,3 @@
 
 ## Project Issues [![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/63phc/lks)](https://www.tickgit.com/browse?repo=github.com/63phc/lks)
  - If you find any bugs, feel free to file an issue on the github issue tracker.
-
-## doker instructions
