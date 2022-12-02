@@ -10,7 +10,7 @@ sentry_logging = LoggingIntegration(
     event_level=logging.ERROR,
 )
 
- Sentry ON for production
+# Sentry ON for production
 if config("ENVIRONMENT", "test") == "production":
     sentry_sdk.init(
         dsn=config("SENTRY_DNS", ""),
