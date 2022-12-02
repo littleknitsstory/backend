@@ -2,8 +2,8 @@ import redis
 
 from decouple import config
 
-REDIS_HOST = config("REDIS_HOST", "redis") # "localhost"
-REDIS_PORT = config("REDIS_PORT", "6379") # 6379
+REDIS_HOST = config("REDIS_HOST", "redis")
+REDIS_PORT = config("REDIS_PORT", "6379")
 REDIS_PASSWORD = config("REDIS_PASSWORD", None)
 
 
