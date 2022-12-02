@@ -1,3 +1,5 @@
+from django.utils.translation import gettext_lazy as _
+
 
 class CommentAssociationChoices:
     ARTICLE = "ARTICLE"
@@ -6,8 +8,8 @@ class CommentAssociationChoices:
     PRODUCT = "PRODUCT"
 
     MODEL_CHOICES = (
-        (ARTICLE, "Article"),
-        (COMMENT, "Comment"),
-        (COURSE, "Course"),
-        (PRODUCT, "Product"),
+        (ARTICLE, _("Article")),
+        (COMMENT, _("Comment")),
+        (COURSE, _("Course")),
+        (PRODUCT, _("Product")),
     )
