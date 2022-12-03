@@ -59,8 +59,6 @@ class SignUpSerializer(serializers.Serializer):
                 password=password,
                 account_type=AccountTypeChoices.CLIENT,
             )
-        # TODO: add after integrate test with mock redis and celery
-        # user.send_confirm()
         return user
 
     def to_representation(self, instance):
@@ -79,14 +77,14 @@ class SignOutSerializer(serializers.Serializer):
         try:
             RefreshToken(self.token).blacklist()
         except TokenError:
-            self.fail("bad_token")
+            raise serializers.ValidationError("Bad refresh token")
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     username = serializers.CharField(read_only=True)
     country = CountryField(required=False)
     email = serializers.CharField(validators=[EmailValidator()], required=False)
-#    avatar = serializers.CharField(source="get_avatar_url", required=False)
+    avatar = serializers.CharField(source="get_avatar_url", required=False)
 
     class Meta:
         model = User

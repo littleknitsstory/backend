@@ -1,6 +1,7 @@
 from rest_framework import generics
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenViewBase
 
@@ -32,6 +33,7 @@ class SignOutView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        return Response(status=200)
 
 
 class ProfileViewSet(ModelViewSet):
@@ -52,8 +54,3 @@ class ProfileViewSet(ModelViewSet):
         if self.action in ["update", "partial_update", "destroy"]:
             return [IsOwner()]
         return []
-
-#class ConfirmView(generics.GenericAPIView):
-    
-#    def get(self, request):
-#        return Response(status=status.HTTP_200_OK)

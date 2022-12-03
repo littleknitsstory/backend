@@ -1,7 +1,6 @@
-import json
-
 import pytest
 from django.core.management import call_command
+from rest_framework.test import APIClient
 
 
 @pytest.fixture(scope="session")
@@ -16,15 +15,12 @@ def django_db_setup(django_db_setup, django_db_blocker):
 
 
 @pytest.fixture
-def headers(client, django_user_model):
-    django_user_model.objects.create_user(
-        username="user_test0001@example.com",
-        password="string8euwq",
-    )
-    data = {"email": "user_test0001@example.com", "password": "string8euwq"}
-    res = client.post(
-        "/sign-up/",
-        data=json.dumps(data),
-        content_type="application/json",
-    )
-    return {"Authorization": f"Bearer {res.json().get('access')}"}
+def client():
+    return APIClient()
+
+
+@pytest.fixture
+def token(client, django_user_model):
+    django_user_model.objects.create_user(username="test01@example.com", password="string8euwq")
+    res = client.post("/sign-up/", {"email": "test01@example.com", "password": "string8euwq"}, format="json")
+    return f"Bearer {res.json().get('access')}"
