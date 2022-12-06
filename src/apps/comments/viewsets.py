@@ -14,7 +14,7 @@ from src.apps.comments.serializers import (
 
 
 class CommentList(ModelViewSet):
-    queryset = Comment.objects.filter(is_deleted=False)
+    queryset = Comment.objects.filter(is_deleted=False).prefetch_related("author")
     http_method_names = ["get", "post", "put", "delete"]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter, ]
     filterset_fields = ["author", "model_type", "model_id", "created_at", "updated_at"]

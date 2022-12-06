@@ -1,9 +1,18 @@
 from rest_framework import serializers
 
+from src.apps.account.models import User
 from src.apps.comments.models import Comment
 
 
+class AuthorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("id", "username", "first_name", "last_name")
+
+
 class CommentListSerializer(serializers.ModelSerializer):
+    author = AuthorSerializer(read_only=True)
+
     class Meta:
         model = Comment
         fields = (
@@ -15,6 +24,8 @@ class CommentListSerializer(serializers.ModelSerializer):
 
 
 class CommentRetrieveSerializer(serializers.ModelSerializer):
+    author = AuthorSerializer(read_only=True)
+
     class Meta:
         model = Comment
         fields = (
