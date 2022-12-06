@@ -178,3 +178,51 @@
  - If you find any bugs, feel free to file an issue on the github issue tracker.
 
 ## doker instructions
+
+
+
+
+pr_How_to_install_Doker_on_Windows_en-US.docx
+
+
+The program is downloaded from the official site following all the instructions - there should be no problems.
+https://www.docker.com/ If the Doker works correctly, go down to the installation of Vistulstudio.
+You may get a notification on that Doker is not connected because virtualization is not running on the computer.
+To check that this is really the problem. Go to the Task Manager to select "Performance". 
+If it doesn't show the visualization enabled as in the picture. Run it as shown below
+Go to the control panel. You can do this in several ways.
+The easiest way is to type a query in the search box.Under Preview, select Large Icons, then click Programs and Components.
+Then choose Turn Windows Components On or Off -> HuperV-> OK.
+Enabling or disabling Windows components Wait for Windows to install the component and restart the computer.Next, click the Close button and restart your computer.
+If the Doker works correctly, move down to the installation of Vistulstudio.
+
+If this does not help and Doker shows the same visualization error, fix it as described below:
+From experience, the problem was solved as follows:- Turn off the computer (and be sure to wait 5 minutes after a complete shutdown!!!!!!) 
+- press the "turn on the computer" button and immediately start pressing F2 every second. !!!! 
+If the BIOS does not start:press DEL or F2 when the computer boots. Brand-name PCs and all-in-one PCs may have other keys.
+To enter the BIOS on a desktop computer, you need to press the DEL key at startup. 
+This is the key most often used, but in some cases there may be others (especially on monoblocks and branded computers). 
+The exact keys are determined by the manufacturer, for example, ASRock specifies DEL or F2 for its motherboards. 
+Monoblocks and desktop PCs from Lenovo monoblocks use the F1 key.enter the BIOS on the laptopIn short: 
+Press F2, DEL, ESC or one of the function keys (mostly F1, F8, F9, F10, F11, F12) while booting. Also try combinations Fn c F1 - F12.
+In contrast to desktop computers, on laptops there can be a lot more differences between different manufacturers. 
+The most common way to enter the BIOS is to use the F2 key (sometimes combined with the Fn) but there are also other keys and their combinations. 
+In particular, there can be such less common combinations: Ctrl + Alt + Ins, Ctrl + Alt + F3, Ctrl + Alt + S and others.Now you have to go to the "Advanced" item. 
+It can also be called "Integrated Peripherals". In it you need to go to "CPU Configuration". 
+There you need to find the item "Intel Virtualization Technology" (the route and the name of the item may vary slightly). 
+Switch it to "Enabled". If it does not, it means that your computer does not support virtualization.It would roughly look like this
+
+INSTALLING Visualstudio
+https://code.visualstudio.com
+Install with an extension for Doker!!!
+Go to your Github.
+Download the archive with Backend, unzip it into a convenient folder.
+In the . Docker you need to replace the existing Dockerfile and docker-compose.yml files with the necessary ones (they are available in our team).
+
+In addition, it is necessary to replace the name of the . env to env
+Go to VisualStudioCode, use the built-in explorer to navigate to the folder with the unpacked Backend. Go to the folder .
+Docker.
+Run compose up the replaced docker-compose.yml file either by command or from the menu:
+Waiting for the images to be built and the containers to run. Voila.
+
+
