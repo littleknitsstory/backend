@@ -1,0 +1,38 @@
+name: Publish to Registry
+
+on:
+  push:
+    tags:
+      - "*"
+    branch:
+      - "master"
+
+jobs:
+  build_dev:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@v4
+      with:
+        name: littleknitsstory/backend
+        username: ${{ github.actor }}
+        password: ${{ secrets.PACKAGE_TOKEN }}
+        registry: ghcr.io
+        tags: ${{ steps.meta.outputs.tags }}
+
+  deploy:
+    needs:   build_dev
+    runs-on: ubuntu-latest
+    steps:
+    - name: Docker down, pull and up remote host
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.HOST_USERNAME }}
+        password: ${{ secrets.HOST_PASSWORD }}
+        script: |
+          cd ${{ secrets.PATH_BACKEND }}
+          docker-compose down
+          docker-compose pull
+          docker-compose up -d
