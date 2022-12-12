@@ -52,3 +52,4 @@ def test_put_profile(client, token):
     assert res.status_code == 200
     assert res.json().get("username") == username
     assert res.json().get("address") == "test"
+
