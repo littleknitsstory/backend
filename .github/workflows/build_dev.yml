@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - "*"
-    branch:
-      - "develop"
 
 jobs:
   build_dev:
