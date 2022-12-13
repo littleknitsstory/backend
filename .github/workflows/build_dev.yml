@@ -5,7 +5,7 @@ on:
     tags:
       - "*"
     branch:
-      - "master"
+      - "develop"
 
 jobs:
   build_dev:
