@@ -46,7 +46,7 @@ class ImagesMixin(models.Model):
         super(ImagesMixin, self).save(
             force_insert=False, force_update=False, using=None, update_fields=None
         )
-        watermark_text(self.image_preview.path, self.image_preview.path)
+        # watermark_text(self.image_preview.path, self.image_preview.path)
 
     def get_image(self) -> str:
         try:
