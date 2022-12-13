@@ -11,8 +11,8 @@ sentry_logging = LoggingIntegration(
 )
 
 # Sentry ON for production
-if config("ENVIRONMENT", "test") == "production":
-    sentry_sdk.init(
-        dsn=config("SENTRY_DNS", ""),
-        integrations=[DjangoIntegration(), sentry_logging],
-    )
+# if config("ENVIRONMENT", "test") == "production":
+sentry_sdk.init(
+    dsn=config("SENTRY_DNS", ""),
+    integrations=[DjangoIntegration(), sentry_logging],
+)

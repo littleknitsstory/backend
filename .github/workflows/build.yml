@@ -6,7 +6,7 @@ on:
       - "*"
 
 jobs:
-  build_dev:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
 
   deploy:
-    needs:   build_dev
+    needs:   build
     runs-on: ubuntu-latest
     steps:
     - name: Docker down, pull and up remote host
