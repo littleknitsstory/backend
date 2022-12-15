@@ -1,7 +1,10 @@
+from random import randint
+from etxt_api import ApiClient
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
+from src import settings
 from src.apps.blog.models import Article, Tag
 
 
@@ -21,7 +24,7 @@ class TagAdmin(TranslationAdmin, admin.ModelAdmin):
 class ArticleAdmin(TranslationAdmin):
     save_as = True
     save_on_top = True
-    list_display = ("pk", "title", "slug")
+    list_display = ("pk", "title", "slug", "is_active")
     list_display_links = ("title",)
     filter_horizontal = ("tags",)
     fieldsets = (
@@ -44,3 +47,26 @@ class ArticleAdmin(TranslationAdmin):
             {"fields": ("title_seo", "meta_keywords", "meta_description", "image_alt")},
         ),
     )
+    actions = ["make_active", "make_not_active"]
+
+    def get_etxt_article(self, request):
+        cli = ApiClient(settings.ETXT_TOKEN, settings.ETXT_API_PASS)
+        art_list = cli.article_list(text="вязать")
+        if "error" in art_list:
+            self.message_user(request, "Error: " + art_list["error"])
+            return
+        if len(art_list) == 0:
+            self.message_user(request, "No Articles found")
+            return
+        num = randint(0, len(art_list)-1)
+        Article.objects.create(title=art_list[num]["title"], author=request.user)
+
+    @admin.action(description="Make selected Articles active")
+    def make_active(self, request, queryset):
+        self.get_etxt_article(request)
+        queryset.update(is_active=True)
+
+    @admin.action(description="Make selected Articles not active")
+    def make_not_active(self, request, queryset):
+        self.get_etxt_article(request)
+        queryset.update(is_active=False)

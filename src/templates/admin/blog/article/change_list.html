@@ -1,0 +1,12 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+    {% block object-tools %}
+        <ul class="object-tools">
+          {% block object-tools-items %}
+            <div>xxxxxxxxxx</div>
+            {% change_list_object_tools %}
+            {% change_list_object_tools %}
+          {% endblock %}
+        </ul>
+    {% endblock %}

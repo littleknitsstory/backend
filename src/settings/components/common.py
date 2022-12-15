@@ -33,3 +33,7 @@ OPTIMIZED_IMAGE_METHOD = "pillow"
 SIGN_OUT_REDIRECT_URL = "https://littleknitsstory.com"
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+ETXT_TOKEN = config("ETXT_TOKEN", "token")
+ETXT_API_PASS = config("ETXT_API_PASS", "password")
+
