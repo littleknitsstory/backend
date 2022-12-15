@@ -1,6 +1,5 @@
 from random import randint
 
-from django.http import HttpResponseRedirect
 from etxt_api import ApiClient
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
@@ -63,11 +62,10 @@ class ArticleAdmin(TranslationAdmin):
         num = randint(0, len(art_list)-1)
         Article.objects.create(title=art_list[num]["title"], author=request.user)
 
-    def response_action(self, request, queryset):
-        if "get_etxt" in request.POST:
-            self.get_etxt_article(self, request)
-            return HttpResponseRedirect(".")
-        return super().response_action(request, queryset)
+    def changelist_view(self, request, extra_context=None):
+        if "etxt" in request.GET:
+            self.get_etxt_article(request)
+        return super().changelist_view(request)
 
     @admin.action(description="Make selected Articles active")
     def make_active(self, request, queryset):

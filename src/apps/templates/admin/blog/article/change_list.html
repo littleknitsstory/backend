@@ -5,7 +5,7 @@
         <ul class="object-tools">
           {% block object-tools-items %}
             {% change_list_object_tools %}
-            <button type="submit" class="button" title="Add Article from etxt.biz" value="0" name="get_etxt">Add ETXT Article</button>
+            <a href="{% url 'admin:blog_article_changelist' %}?etxt=1">{% translate 'Add' %} ETXT Article</a>
           {% endblock %}
         </ul>
     {% endblock %}
