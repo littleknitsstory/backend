@@ -1,11 +1,10 @@
 import os
-from src.settings.components._paths import BASE_DIR
+from src.settings.components._paths import ROOT_DIR
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "src/templates")],
-#        "APP_DIRS": True,
+        "DIRS": [os.path.join(ROOT_DIR, "apps/templates")],
         "OPTIONS": {
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
