@@ -12,7 +12,7 @@ RUN apt-get update -y && \
 COPY src/requirements /app/requirements
 
 ARG ENVIRONMENT
-RUN pip install -r requirements/${ENVIRONMENT}.txt
+RUN pip install -r requirements/development.txt
 
 COPY . /app
 

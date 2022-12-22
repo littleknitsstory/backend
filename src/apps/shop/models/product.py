@@ -1,7 +1,6 @@
 import logging
 import typing
 
-from ckeditor.fields import RichTextField
 from colorful.fields import RGBColorField
 from django.conf import settings
 from django.db import models
@@ -23,7 +22,7 @@ class Product(SeoMixin, ImagesMixin):
     code = models.IntegerField(verbose_name=_("Code product"), db_index=True)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
     is_active = models.BooleanField(_("Active"), default=True)
-    description = RichTextField(_("Description"))
+    description = models.TextField(_("Description"), blank=True, null=True)
     price = MoneyField(
         _("Price"),
         null=False,
