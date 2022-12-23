@@ -46,5 +46,6 @@ INSTALLED_APPS = [
     "src.apps.subscribe",
     "src.apps.reviews",
     "src.apps.comments",
+    "src.apps.feature_flags",
     # "src.apps.course",
 ]
