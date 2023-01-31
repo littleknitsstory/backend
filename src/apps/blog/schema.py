@@ -19,8 +19,9 @@ class Query(ObjectType):
     all_tags = graphene.List(TagsType)
     all_articles = graphene.List(ArticleType)
 
-    async def resolve_all_categories(self, info, **kwargs):
+    def resolve_all_categories(self, info, **kwargs):
+
         return Tag.objects.all()
 
-    async def resolve_all_articles(self, info, **kwargs):
+    def resolve_all_articles(self, info, **kwargs):
         return Article.objects.prefetch_related("tags").all()
