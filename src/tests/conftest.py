@@ -21,6 +21,12 @@ def client():
 
 @pytest.fixture
 def token(client, django_user_model):
-    django_user_model.objects.create_user(username="test01@example.com", password="string8euwq")
-    res = client.post("/sign-up/", {"email": "test01@example.com", "password": "string8euwq"}, format="json")
+    django_user_model.objects.create_user(
+        username="test01@example.com", password="string8euwq"
+    )
+    res = client.post(
+        "/sign-up/",
+        {"email": "test01@example.com", "password": "string8euwq"},
+        format="json",
+    )
     return f"Bearer {res.json().get('access')}"
