@@ -38,7 +38,7 @@ class SignOutView(GenericAPIView):
 
 class ProfileViewSet(ModelViewSet):
     queryset = User.objects.all()
-    http_method_names = ["get","put"]
+    http_method_names = ["get", "put"]
     lookup_field = "username"
     serializer_class = ProfileSerializer
     pagination_class = None
@@ -49,7 +49,10 @@ class ProfileViewSet(ModelViewSet):
         return self.queryset
 
     def get_permissions(self):
-        if self.action in ["retrieve", "list", ]:
+        if self.action in [
+            "retrieve",
+            "list",
+        ]:
             return [IsAuthenticated()]
         if self.action in ["update", "partial_update", "destroy"]:
             return [IsOwner()]

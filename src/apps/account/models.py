@@ -22,25 +22,76 @@ class User(AbstractUser):
         default=AccountTypeChoices.CLIENT,
         max_length=63,
     )
-    avatar = OptimizedImageField(_("Avatar"), null=True, blank=True,)
-    about: str = models.TextField(_("About author"), max_length=633, null=True, blank=True,)
+    avatar = OptimizedImageField(
+        _("Avatar"),
+        null=True,
+        blank=True,
+    )
+    about: str = models.TextField(
+        _("About author"),
+        max_length=633,
+        null=True,
+        blank=True,
+    )
 
     phone_number: str = models.CharField(
-        _("Phone number"), max_length=13, null=True, blank=True,
+        _("Phone number"),
+        max_length=13,
+        null=True,
+        blank=True,
     )
     country: Country = CountryField(
-        verbose_name=_("Country"), default=None, null=True, blank=True,
+        verbose_name=_("Country"),
+        default=None,
+        null=True,
+        blank=True,
     )
-    city: str = models.CharField(_("City"), max_length=63, null=True, blank=True,)
-    address: str = models.CharField(_("Address"), max_length=512, null=True, blank=True,)
-    birth_date: datetime = models.DateField(_("Birth date"), null=True, blank=True,)
+    city: str = models.CharField(
+        _("City"),
+        max_length=63,
+        null=True,
+        blank=True,
+    )
+    address: str = models.CharField(
+        _("Address"),
+        max_length=512,
+        null=True,
+        blank=True,
+    )
+    birth_date: datetime = models.DateField(
+        _("Birth date"),
+        null=True,
+        blank=True,
+    )
 
-    is_email_confirmed: bool = models.BooleanField(_("Email confirm"), default=False,)
-    is_profile_full: bool = models.BooleanField(_("Profile full"), default=False,)
-    vk_profile: dict = JSONField(_("Vk profile"), blank=True, null=True,)
-    fb_profile: dict = JSONField(_("Fb profile"), blank=True, null=True,)
-    inst_profile: dict = JSONField(_("Instagram profile"), blank=True, null=True,)
-    tg_profile: dict = JSONField(_("Telegram profile"), blank=True, null=True,)
+    is_email_confirmed: bool = models.BooleanField(
+        _("Email confirm"),
+        default=False,
+    )
+    is_profile_full: bool = models.BooleanField(
+        _("Profile full"),
+        default=False,
+    )
+    vk_profile: dict = JSONField(
+        _("Vk profile"),
+        blank=True,
+        null=True,
+    )
+    fb_profile: dict = JSONField(
+        _("Fb profile"),
+        blank=True,
+        null=True,
+    )
+    inst_profile: dict = JSONField(
+        _("Instagram profile"),
+        blank=True,
+        null=True,
+    )
+    tg_profile: dict = JSONField(
+        _("Telegram profile"),
+        blank=True,
+        null=True,
+    )
 
     objects = UserManager()
 
