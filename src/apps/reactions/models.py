@@ -1,26 +1,28 @@
 from django.db import models
+
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
-from src.apps.comments.choices import CommentAssociationChoices
+from src.apps.reactions.choices import ReactionAssociationChoices
 from src.core.mixins.mixin import SeoMixin
 
 
-class Comment(SeoMixin):
-    """Comment model"""
+class Reaction(SeoMixin):
+    """Reaction model"""
 
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        related_name="comments",
+        related_name="reactions",
         on_delete=models.CASCADE,
         verbose_name=_("Author"),
     )
     text = models.CharField(_("Text"), max_length=263)
-    model_type: CommentAssociationChoices = models.CharField(
+    model_type: ReactionAssociationChoices = models.CharField(
         _("Model type"),
-        choices=CommentAssociationChoices.MODEL_CHOICES,
+        choices=ReactionAssociationChoices.MODEL_CHOICES,
         blank=True,
-        default=CommentAssociationChoices.COMMENT,
+        default=ReactionAssociationChoices.REACTION,
         max_length=20
     )
     model_id = models.IntegerField(_("Associated"), blank=True, default=0)
@@ -30,5 +32,6 @@ class Comment(SeoMixin):
         return f"#{self.pk} by {self.author}"
 
     class Meta:
-        verbose_name = _("Comment")
-        verbose_name_plural = _("Comments")
+        verbose_name = _("Reaction")
+        verbose_name_plural = _("Reactions")
+
