@@ -20,7 +20,6 @@ class Query(ObjectType):
     all_articles = graphene.List(ArticleType)
 
     def resolve_all_categories(self, info, **kwargs):
-
         return Tag.objects.all()
 
     def resolve_all_articles(self, info, **kwargs):

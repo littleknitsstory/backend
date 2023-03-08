@@ -6,7 +6,6 @@ import optimized_image.fields
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = []

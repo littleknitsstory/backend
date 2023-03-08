@@ -23,7 +23,7 @@ class Reaction(SeoMixin):
         choices=ReactionAssociationChoices.MODEL_CHOICES,
         blank=True,
         default=ReactionAssociationChoices.REACTION,
-        max_length=20
+        max_length=20,
     )
     model_id = models.IntegerField(_("Associated"), blank=True, default=0)
     is_deleted = models.BooleanField(_("Deleted"), default=False)
@@ -34,4 +34,3 @@ class Reaction(SeoMixin):
     class Meta:
         verbose_name = _("Reaction")
         verbose_name_plural = _("Reactions")
-

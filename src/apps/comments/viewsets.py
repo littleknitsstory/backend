@@ -11,20 +11,28 @@ from src.apps.comments.permissions import IsOwnerOrAdmin
 from src.apps.comments.serializers import (
     CommentListCreateSerializer,
     CommentUpdateSerializer,
-   # CommentCreateSerializer
+    # CommentCreateSerializer
 )
 
 
-class CommentList(generics.ListAPIView, generics.CreateAPIView ):
+class CommentList(generics.ListAPIView, generics.CreateAPIView):
     queryset = Comment.objects.filter(is_deleted=False).prefetch_related("author")
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter, ]
+    filter_backends = [
+        DjangoFilterBackend,
+        SearchFilter,
+        OrderingFilter,
+    ]
     filterset_fields = ["author", "model_type", "model_id", "created_at", "updated_at"]
-    search_fields = ['text', ]
-    ordering_fields = ['created_at', ]
+    search_fields = [
+        "text",
+    ]
+    ordering_fields = [
+        "created_at",
+    ]
     permission_classes = (AllowAny,)
     serializer_class = CommentListCreateSerializer
 
-    
+
 # class CommentCreate(generics.CreateAPIView):
 #     queryset = Comment.objects.filter(is_deleted=False).prefetch_related("author")
 #     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter, ]
@@ -37,12 +45,21 @@ class CommentList(generics.ListAPIView, generics.CreateAPIView ):
 
 class UpdateComment(generics.UpdateAPIView):
     queryset = Comment.objects.filter(is_deleted=False).prefetch_related("author")
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter, ]
+    filter_backends = [
+        DjangoFilterBackend,
+        SearchFilter,
+        OrderingFilter,
+    ]
     filterset_fields = ["author", "model_type", "model_id", "created_at", "updated_at"]
-    search_fields = ['text', ]
-    ordering_fields = ['created_at', ]
+    search_fields = [
+        "text",
+    ]
+    ordering_fields = [
+        "created_at",
+    ]
     permission_classes = (IsAuthenticated, IsOwnerOrAdmin)
-    serializer_class = CommentUpdateSerializer,
+    serializer_class = (CommentUpdateSerializer,)
+
 
 # class DestroyComment(generics.DestroyAPIView):
 #     queryset = Comment.objects.filter(is_deleted=False).prefetch_related("author")

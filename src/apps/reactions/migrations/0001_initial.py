@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,23 +14,79 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Reaction',
+            name="Reaction",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title_seo', models.CharField(blank=True, max_length=500, null=True, verbose_name='Title Seo')),
-                ('meta_keywords', models.TextField(blank=True, null=True, verbose_name='Keywords')),
-                ('meta_description', models.TextField(blank=True, null=True, verbose_name='Description')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated at')),
-                ('text', models.CharField(max_length=263, verbose_name='Text')),
-                ('model_type', models.CharField(blank=True, choices=[('ARTICLE', 'Article'), ('COMMENT', 'Comment'), ('COURSE', 'Course'), ('PRODUCT', 'Product'), ('REACTION', 'Reaction')], default='REACTION', max_length=20, verbose_name='Model type')),
-                ('model_id', models.IntegerField(blank=True, default=0, verbose_name='Associated')),
-                ('is_deleted', models.BooleanField(default=False, verbose_name='Deleted')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reactions', to=settings.AUTH_USER_MODEL, verbose_name='Author')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title_seo",
+                    models.CharField(
+                        blank=True, max_length=500, null=True, verbose_name="Title Seo"
+                    ),
+                ),
+                (
+                    "meta_keywords",
+                    models.TextField(blank=True, null=True, verbose_name="Keywords"),
+                ),
+                (
+                    "meta_description",
+                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated at"),
+                ),
+                ("text", models.CharField(max_length=263, verbose_name="Text")),
+                (
+                    "model_type",
+                    models.CharField(
+                        blank=True,
+                        choices=[
+                            ("ARTICLE", "Article"),
+                            ("COMMENT", "Comment"),
+                            ("COURSE", "Course"),
+                            ("PRODUCT", "Product"),
+                            ("REACTION", "Reaction"),
+                        ],
+                        default="REACTION",
+                        max_length=20,
+                        verbose_name="Model type",
+                    ),
+                ),
+                (
+                    "model_id",
+                    models.IntegerField(
+                        blank=True, default=0, verbose_name="Associated"
+                    ),
+                ),
+                (
+                    "is_deleted",
+                    models.BooleanField(default=False, verbose_name="Deleted"),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="reactions",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Author",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Reaction',
-                'verbose_name_plural': 'Reactions',
+                "verbose_name": "Reaction",
+                "verbose_name_plural": "Reactions",
             },
         ),
     ]

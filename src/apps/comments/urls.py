@@ -9,8 +9,8 @@ app_name = "comments"
 # router.register("comments", CommentList.as_view())
 
 urlpatterns = [
-   # path("", include(router.urls)),
+    # path("", include(router.urls)),
     path("comments", CommentList.as_view()),
     path("comments/<int:pk>/", UpdateComment.as_view()),
-   # path("comments", CommentList.as_view()),
+    # path("comments", CommentList.as_view()),
 ]

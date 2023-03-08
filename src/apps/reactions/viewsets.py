@@ -16,10 +16,18 @@ from src.apps.reactions.serializers import (
 class ReactionList(ModelViewSet):
     queryset = Reaction.objects.filter(is_deleted=False).prefetch_related("author")
     http_method_names = ["get", "post", "put", "delete"]
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter, ]
+    filter_backends = [
+        DjangoFilterBackend,
+        SearchFilter,
+        OrderingFilter,
+    ]
     filterset_fields = ["author", "model_type", "model_id", "created_at", "updated_at"]
-    search_fields = ['text', ]
-    ordering_fields = ['created_at', ]
+    search_fields = [
+        "text",
+    ]
+    ordering_fields = [
+        "created_at",
+    ]
     permission_classes = (AllowAny, IsAuthenticated, IsOwnerOrAdmin)
 
     serializer_classes = {
