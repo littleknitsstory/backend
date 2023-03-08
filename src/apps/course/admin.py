@@ -13,27 +13,22 @@ class TocArticleInline(nested_admin.NestedModelAdmin):
         "model_id",
         "model_type",
     )
-    fieldsets = (
-        (None, {"fields": ("model_id", "model_type")}),
-    )
+    fieldsets = ((None, {"fields": ("model_id", "model_type")}),)
 
 
 class TocSectionInline(nested_admin.NestedStackedInline):
     model = Step
     sortable_field_name = "id"
     # inlines = [TocArticleInline]
-    
-    
+
+
 @admin.register(Course)
 class CourseAdmin(nested_admin.NestedModelAdmin):
-    list_display = (
-        "title",
-    )
-    fieldsets = (
-        (None, {"fields": ("title",)}),
-    )
+    list_display = ("title",)
+    fieldsets = ((None, {"fields": ("title",)}),)
 
     inlines = [TocSectionInline]
+
 
 # Example:
 # class TocArticleInline(nested_admin.NestedStackedInline):

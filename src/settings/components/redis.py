@@ -10,4 +10,3 @@ REDIS_PASSWORD = config("REDIS_PASSWORD", None)
 REDIS_CONNECT = redis.StrictRedis(
     host=REDIS_HOST, port=REDIS_PORT, db=3, password=REDIS_PASSWORD
 )
-

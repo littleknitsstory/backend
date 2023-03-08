@@ -18,6 +18,7 @@ jobs:
         password: ${{ secrets.PACKAGE_TOKEN }}
         registry: ghcr.io
         tags: ${{ steps.meta.outputs.tags }}
+        dockerfile: .docker/Dockerfile
 
   deploy:
     needs:   build

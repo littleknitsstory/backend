@@ -21,7 +21,7 @@ class Comment(SeoMixin):
         choices=CommentAssociationChoices.MODEL_CHOICES,
         blank=True,
         default=CommentAssociationChoices.COMMENT,
-        max_length=20
+        max_length=20,
     )
     model_id = models.IntegerField(_("Associated"), blank=True, default=0)
     is_deleted = models.BooleanField(_("Deleted"), default=False)
