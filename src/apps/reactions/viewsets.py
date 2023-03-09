@@ -9,12 +9,13 @@ from src.apps.reactions.serializers import (
     ReactionListSerializer,
     ReactionRetrieveSerializer,
     ReactionCreateSerializer,
-    ReactionUpdateSerializer,
+    ReactionDeletSerializer,
+    #  ReactionUpdateSerializer,
 )
 
 
 class ReactionList(ModelViewSet):
-    queryset = Reaction.objects.filter(is_deleted=False).prefetch_related("author")
+    queryset = Reaction.objects.filter(is_like=False).prefetch_related("author")
     http_method_names = ["get", "post", "put", "delete"]
     filter_backends = [
         DjangoFilterBackend,
@@ -22,9 +23,7 @@ class ReactionList(ModelViewSet):
         OrderingFilter,
     ]
     filterset_fields = ["author", "model_type", "model_id", "created_at", "updated_at"]
-    search_fields = [
-        "text",
-    ]
+
     ordering_fields = [
         "created_at",
     ]
@@ -34,7 +33,8 @@ class ReactionList(ModelViewSet):
         "list": ReactionListSerializer,
         "retrieve": ReactionRetrieveSerializer,
         "create": ReactionCreateSerializer,
-        "update": ReactionUpdateSerializer,
+        "delete": ReactionDeletSerializer,
+        # "update": ReactionUpdateSerializer,
     }
 
     def get_serializer_class(self):

@@ -11,4 +11,5 @@ urlpatterns = [
     path("", include("src.apps.contacts.urls")),
     path("", include("src.apps.shorter.urls")),
     path("", include("src.apps.comments.urls")),
+    path("", include("src.apps.reactions.urls")),
 ]

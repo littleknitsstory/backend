@@ -17,15 +17,15 @@ class Reaction(SeoMixin):
         on_delete=models.CASCADE,
         verbose_name=_("Author"),
     )
-    text = models.CharField(_("Text"), max_length=263)
     model_type: ReactionAssociationChoices = models.CharField(
         _("Model type"),
         choices=ReactionAssociationChoices.MODEL_CHOICES,
         blank=True,
-        default=ReactionAssociationChoices.REACTION,
+        default=ReactionAssociationChoices.ARTICLE,
         max_length=20,
     )
     model_id = models.IntegerField(_("Associated"), blank=True, default=0)
+    is_like = models.BooleanField(_("Liked"), default=False)
     is_deleted = models.BooleanField(_("Deleted"), default=False)
 
     def __str__(self):
