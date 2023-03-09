@@ -46,6 +46,10 @@ INSTALLED_APPS = [
     "src.apps.subscribe",
     "src.apps.reviews",
     "src.apps.comments",
+<<<<<<< HEAD
     "src.apps.reactions",
+=======
+    "src.apps.feature_flags",
+>>>>>>> develop
     # "src.apps.course",
 ]
