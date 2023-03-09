@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+
 class Feature(models.Model):
     name = models.CharField(_("Title"), max_length=24, blank=True)
     is_active = models.BooleanField(_("Active"), default=True)
