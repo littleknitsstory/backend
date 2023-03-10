@@ -2,6 +2,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
+from . import services
+from rest_framework.response import Response
+from rest_framework.decorators import action
 
 from src.apps.reactions.models import Reaction
 from src.apps.reactions.permissions import IsOwnerOrAdmin
@@ -10,7 +13,6 @@ from src.apps.reactions.serializers import (
     ReactionRetrieveSerializer,
     ReactionCreateSerializer,
     ReactionDeletSerializer,
-    #  ReactionUpdateSerializer,
 )
 
 
@@ -22,11 +24,8 @@ class ReactionList(ModelViewSet):
         SearchFilter,
         OrderingFilter,
     ]
-    filterset_fields = ["author", "model_type", "model_id", "created_at", "updated_at"]
+    filterset_fields = ["author", "model_type", "model_id"]
 
-    ordering_fields = [
-        "created_at",
-    ]
     permission_classes = (AllowAny, IsAuthenticated, IsOwnerOrAdmin)
 
     serializer_classes = {
@@ -34,7 +33,6 @@ class ReactionList(ModelViewSet):
         "retrieve": ReactionRetrieveSerializer,
         "create": ReactionCreateSerializer,
         "delete": ReactionDeletSerializer,
-        # "update": ReactionUpdateSerializer,
     }
 
     def get_serializer_class(self):
@@ -48,7 +46,3 @@ class ReactionList(ModelViewSet):
         if self.action in ["update", "partial_update", "destroy"]:
             return [IsOwnerOrAdmin()]
         return []
-
-    def perform_destroy(self, instance):
-        instance.is_deleted = True
-        instance.save()

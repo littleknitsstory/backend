@@ -5,10 +5,10 @@ from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
 from src.apps.reactions.choices import ReactionAssociationChoices
-from src.core.mixins.mixin import SeoMixin
+from django.contrib.contenttypes.models import ContentType
 
 
-class Reaction(SeoMixin):
+class Reaction(models.Model):
     """Reaction model"""
 
     author = models.ForeignKey(
@@ -26,7 +26,6 @@ class Reaction(SeoMixin):
     )
     model_id = models.IntegerField(_("Associated"), blank=True, default=0)
     is_like = models.BooleanField(_("Liked"), default=False)
-    is_deleted = models.BooleanField(_("Deleted"), default=False)
 
     def __str__(self):
         return f"#{self.pk} by {self.author}"

@@ -1,10 +1,9 @@
 from rest_framework import serializers
-from . import services
 from rest_framework.response import Response
 
 from src.apps.account.models import User
-from src.apps.reactions.models import Reaction
-
+from .models import Reaction
+from . import services
 
 class AuthorLikeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,15 +13,14 @@ class AuthorLikeSerializer(serializers.ModelSerializer):
 
 class ReactionListSerializer(serializers.ModelSerializer):
     author = AuthorLikeSerializer(read_only=True)
-
+    
     class Meta:
         model = Reaction
         fields = (
             "id",
             "author",
-            "created_at",
         )
-
+    
 
 class ReactionRetrieveSerializer(serializers.ModelSerializer):
     author = AuthorLikeSerializer(read_only=True)
@@ -32,11 +30,11 @@ class ReactionRetrieveSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "author",
-            "created_at",
         )
 
 
 class ReactionCreateSerializer(serializers.ModelSerializer):
+
     def create(self, request, pk=None):
         obj = self.get_object()
         services.add_reactions(obj, request.user)
@@ -76,9 +74,3 @@ class ReactionDeletSerializer(serializers.ModelSerializer):
             "model_type",
             "model_id",
         ]
-
-
-# class ReactionUpdateSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Reaction
-#         fields = ("text",)
