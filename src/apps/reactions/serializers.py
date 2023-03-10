@@ -5,6 +5,7 @@ from src.apps.account.models import User
 from .models import Reaction
 from . import services
 
+
 class AuthorLikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -13,14 +14,14 @@ class AuthorLikeSerializer(serializers.ModelSerializer):
 
 class ReactionListSerializer(serializers.ModelSerializer):
     author = AuthorLikeSerializer(read_only=True)
-    
+
     class Meta:
         model = Reaction
         fields = (
             "id",
             "author",
         )
-    
+
 
 class ReactionRetrieveSerializer(serializers.ModelSerializer):
     author = AuthorLikeSerializer(read_only=True)
@@ -34,7 +35,6 @@ class ReactionRetrieveSerializer(serializers.ModelSerializer):
 
 
 class ReactionCreateSerializer(serializers.ModelSerializer):
-
     def create(self, request, pk=None):
         obj = self.get_object()
         services.add_reactions(obj, request.user)

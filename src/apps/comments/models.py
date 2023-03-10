@@ -28,7 +28,7 @@ class Comment(SeoMixin):
 
     def __str__(self):
         return f"#{self.pk} by {self.author}"
-    
+
     class Meta:
         verbose_name = _("Comment")
         verbose_name_plural = _("Comments")
