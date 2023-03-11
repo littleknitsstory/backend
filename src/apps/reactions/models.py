@@ -25,7 +25,14 @@ class Reaction(models.Model):
         max_length=20,
     )
     model_id = models.IntegerField(_("Associated"), blank=True, default=0)
-    is_like = models.BooleanField(_("Liked"), default=False)
+    # is_like = models.BooleanField(_("Liked"), default=False)
+    # reactions = models.CharField as model_type
+    # LiKE
+    # THUMB
+    # HEART
+    # DEFAULT
+
+    # {"LIKE" : 0, ...}
 
     def __str__(self):
         return f"#{self.pk} by {self.author}"
@@ -33,3 +40,4 @@ class Reaction(models.Model):
     class Meta:
         verbose_name = _("Reaction")
         verbose_name_plural = _("Reactions")
+

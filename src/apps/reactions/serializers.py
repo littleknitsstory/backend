@@ -55,7 +55,7 @@ class ReactionCreateSerializer(serializers.ModelSerializer):
         ]
 
 
-class ReactionDeletSerializer(serializers.ModelSerializer):
+class ReactionDeleteSerializer(serializers.ModelSerializer):
     def delete(self, request, pk=None):
         obj = self.get_object()
         services.remove_reactions(obj, request.user)
