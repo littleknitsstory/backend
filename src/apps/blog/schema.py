@@ -1,4 +1,5 @@
 import graphene
+from django.shortcuts import get_object_or_404
 from graphene import ObjectType
 from graphene_django import DjangoObjectType
 
@@ -9,13 +10,13 @@ from src.apps.blog.models import Tag, Article
 class UserType(DjangoObjectType):
     class Meta:
         model = User
-        fields = ('id', 'username')
+        fields = ("id", "username")
 
 
 class TagsType(DjangoObjectType):
     class Meta:
         model = Tag
-        fields = ('id', 'title', 'slug')
+        fields = ("id", "title", "slug")
 
 
 class ArticleType(DjangoObjectType):
@@ -23,25 +24,75 @@ class ArticleType(DjangoObjectType):
 
     class Meta:
         model = Article
-        fields = ('id', 'title', 'slug', 'content', 'is_active', 'author', 'tags')
+
+
+class CreatePostInput(graphene.InputObjectType):
+    title = graphene.String(required=True)
+    content = graphene.String()
+    author_id = graphene.ID(required=True)
+    image_preview = graphene.String(required=True)
+
+
+class UpdatePostInput(graphene.InputObjectType):
+    title = graphene.String()
+    slug = graphene.String()
+    content = graphene.String()
+    author_id = graphene.ID()
+    image_preview = graphene.String()
 
 
 class CreateArticleMutation(graphene.Mutation):
     class Arguments:
-        title = graphene.String(required=True)
-        content = graphene.String(required=True)
-        # author = graphene.ID(required=True)
-        tags = graphene.List(graphene.Int)
+        input_data = CreatePostInput(required=True)
+        tag_ids = graphene.List(graphene.ID)
 
     article = graphene.Field(ArticleType)
 
-    def mutate(self, info,  title, content, tags):
-        # author = User.objects.get(pk=author_id)
-        article = Article(title=title, content=content)
-        if tags:
+    def mutate(self, info, input_data, tag_ids):
+        article = Article.objects.create(**input_data)
+
+        if tag_ids:
+            tags = Tag.objects.filter(id__in=tag_ids)
             article.tags.set(tags)
-        article.save()
+
         return CreateArticleMutation(article=article)
+
+
+class UpdateArticleMutation(graphene.Mutation):
+    class Arguments:
+        input_data = UpdatePostInput(required=True)
+        id = graphene.ID(required=True)
+        tag_ids = graphene.List(graphene.ID)
+
+    article = graphene.Field(ArticleType)
+
+    def mutate(self, info, input_data, id, tag_ids):
+        article = get_object_or_404(Article, id=id)
+
+        for key, value in input_data.items():
+            setattr(article, key, value)
+
+        article.save()
+
+        if tag_ids:
+            tags = Tag.objects.filter(id__in=tag_ids)
+            article.tags.set(tags)
+
+        return UpdateArticleMutation(article=article)
+
+
+class DeleteArticleMutation(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+
+    ok = graphene.Boolean()
+
+    def mutate(self, info, id):
+        article = get_object_or_404(Article, id=id)
+
+        article.delete()
+
+        return DeleteArticleMutation(ok=True)
 
 
 class Query(ObjectType):
@@ -63,5 +114,6 @@ class Query(ObjectType):
 
 
 class Mutation(graphene.ObjectType):
-    article_mutation = CreateArticleMutation.Field()
-
+    create_article = CreateArticleMutation.Field()
+    update_article = UpdateArticleMutation.Field()
+    delete_article = DeleteArticleMutation.Field()
