@@ -10,7 +10,6 @@ from src.apps.reactions.serializers import (
     ReactionRetrieveSerializer,
     ReactionCreateSerializer,
     ReactionUpdateSerializer,
-    ReactionDeletSerializer,
 )
 
 
@@ -22,7 +21,11 @@ class ReactionList(ModelViewSet):
         SearchFilter,
         OrderingFilter,
     ]
-    filterset_fields = ["author", "model_type", "model_id",]
+    filterset_fields = [
+        "author",
+        "model_type",
+        "model_id",
+    ]
     search_fields = [
         "reaction",
     ]
@@ -34,7 +37,6 @@ class ReactionList(ModelViewSet):
         "retrieve": ReactionRetrieveSerializer,
         "create": ReactionCreateSerializer,
         "update": ReactionUpdateSerializer,
-        "delete": ReactionDeletSerializer,
     }
 
     def get_serializer_class(self):
@@ -45,7 +47,7 @@ class ReactionList(ModelViewSet):
             return [AllowAny()]
         if self.action == "create":
             return [IsAuthenticated()]
-        if self.action in ["update", "partial_update", "destroy", "delete"]:
+        if self.action in ["update", "partial_update", "destroy"]:
             return [IsOwnerOrAdmin()]
         return []
 

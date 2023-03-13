@@ -11,9 +11,3 @@ def add_reactions(obj, user):
         model_type=obj_type, model_id=obj.id, user=user
     )
     return reaction
-
-
-def remove_reactions(obj, user):
-    """delete reaction to `obj`."""
-    obj_type = ContentType.objects.get_for_model(obj)
-    Reaction.objects.filter(model_type=obj_type, model_id=obj.id, user=user).delete()

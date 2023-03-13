@@ -62,25 +62,3 @@ class ReactionUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reaction
         fields = ("reaction",)
-
-
-class ReactionDeleteSerializer(serializers.ModelSerializer):
-    def delete(self, request, pk=None):
-        obj = self.get_object()
-        services.remove_reactions(obj, request.user)
-        return Response()
-
-    class Meta:
-        model = Reaction
-        fields = (
-            "id",
-            "author",
-            "model_type",
-            "model_id",
-            "reaction",
-        )
-        read_only_fields = [
-            "author",
-            "model_type",
-            "model_id",
-        ]

@@ -10,13 +10,13 @@ class ReactionAssociationChoices:
         (COMMENT, _("Comment")),
     )
 
+
 class ReactionChoices:
     RED_HEART = "RED_HEART"
     FIRE = "FIRE"
     SMILING = "SMILING"
     THUMBS_UP = "THUMBS UP"
     DEFAULT = "DEFAULT"
-
 
     REACTION_CHOICES = (
         (RED_HEART, _("RED HEART")),
