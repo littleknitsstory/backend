@@ -4,8 +4,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
-from src.apps.reactions.choices import ReactionAssociationChoices
-from django.contrib.contenttypes.models import ContentType
+from src.apps.reactions.choices import ReactionAssociationChoices, ReactionChoices
+
 
 
 class Reaction(models.Model):
@@ -25,7 +25,14 @@ class Reaction(models.Model):
         max_length=20,
     )
     model_id = models.IntegerField(_("Associated"), blank=True, default=0)
-    is_like = models.BooleanField(_("Liked"), default=False)
+    reaction = models.CharField(
+        _("Reactioned"),
+        choices=ReactionChoices.REACTION_CHOICES,
+        default=ReactionChoices.RED_HEART,
+        blank=True,
+        max_length=20,
+    )
+    is_delete = models.BooleanField(_("Deleted"), default=False)
 
     def __str__(self):
         return f"#{self.pk} by {self.author}"
