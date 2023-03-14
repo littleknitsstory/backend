@@ -127,19 +127,6 @@ class User(AbstractUser):
     def get_country(self) -> dict:
         return {"name": self.country.name, "code": self.country.code}
 
-    # def send_confirm(self):
-    #     # TODO: need templates for welcome mail
-    #     code = set_code(self.email.lower())
-    #     message = f"{code}"
-    #     send_email_celery.delay(to=[self.email], subject=_("Welcome"), message=message)
-
-
-# TODO: go utils
-# def set_code(email):
-#     key = str(uuid.uuid4()).replace("-", "")
-#     # settings.REDIS_CONNECT.set(email, key, ex=300)
-#     return key
-
 
 def get_code(key):
     return settings.REDIS_CONNECT.get(key)

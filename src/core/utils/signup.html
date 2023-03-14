@@ -1,126 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="icon" href="http://dev.littleknitsstory.com/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Web site created using create-react-app">
+  <link rel="apple-touch-icon" href="http://dev.littleknitsstory.com/logo192.png">
+  <link rel="manifest" href="http://dev.littleknitsstory.com/manifest.json">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  <title>LKS</title>
+  <link href="http://dev.littleknitsstory.com/static/css/main.d46a584f.css" rel="stylesheet">
+  <style type="text/css" id="operaUserStyle"></style>
 </head>
 <body>
-<!--
- <section className="contacts">
-      <Container>
-        <Row>
-          <Col
-            xs={{ span: 12, offset: 0 }}
-            md={{ span: 12, offset: 0 }}
-            lg={{ span: 8, offset: 2 }}
-            xl={{ span: 6, offset: 3 }}
-            xxl={{ span: 6, offset: 3 }}
-          >
-            <div className="coffee-card">
-              <div className="coffee-card__title">{t("Contacts.title")}</div>
-              <Form className="contacts__form" onSubmit={handleFormSubmit}>
-                <Row>
-                  <Form.Group as={Col} md="6" controlId="name">
-                    <Form.Control
-                      required
-                      type="text"
-                      placeholder={t("Contacts.name")}
-                      name="name"
-                      value={formData.name}
-                      onChange={handleFormChange}
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md="6" controlId="theme">
-                    <Form.Control
-                      type="text"
-                      placeholder={t("Contacts.subject")}
-                      name="company"
-                      value={formData.company}
-                      onChange={handleFormChange}
-                    />
-                  </Form.Group>
-                </Row>
-                <Row>
-                  <Form.Group as={Col} md="12" controlId="phone">
-                    <Form.Control
-                      required
-                      type="tel"
-                      placeholder={t("Contacts.phone")}
-                      name="phone_number"
-                      value={formData.phone_number}
-                      onChange={handleFormChange}
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md="12" controlId="email">
-                    <Form.Control
-                      required
-                      type="email"
-                      placeholder="Е-mail"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleFormChange}
-                    />
-                  </Form.Group>
-                </Row>
-                <Row>
-                  <Form.Group as={Col} md="12" controlId="message">
-                    <Form.Control
-                      required
-                      as="textarea"
-                      placeholder={t("Contacts.message")}
-                      name="message"
-                      value={formData.message}
-                      onChange={handleFormChange}
-                    />
-                  </Form.Group>
-                </Row>
-                <button className="btn btn_white btn_center contacts__btn" type="submit">
-                  <div className="btn__text btn__text_center">{t("Contacts.send")}</div>
-                </button>
-              </Form>
-              <div className="contacts__policy">{t("Contacts.policy")}</div>
+  <div id="root">
+    <section class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="header__logo">
+              <img src="data:image/png;base64,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" alt="logo">
+              <div class="header__text">Blog and knitting shop </div>
             </div>
-          </Col>
-        </Row>
-        <div className="contacts__info">
-          <Row>
-            <Col
-              xs={{ span: 12, offset: 0 }}
-              md={{ span: 12, offset: 0 }}
-              lg={{ span: 8, offset: 2 }}
-              xl={{ span: 6, offset: 3 }}
-              xxl={{ span: 6, offset: 3 }}
-            >
-              <div className="title">{t("Contacts.contactInfo")}</div>
-              <div className="contacts__wrapper-info">
-                <img src={map} alt="map" />
-                <div className="contacts__text">Montenegro, Budva</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="lks-navbar">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler collapsed">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="lks-navbar__right">
+            <div class="lks-navbar__icons">
+              <a href="http://dev.littleknitsstory.com/saved">
+                <img src="http://dev.littleknitsstory.com/static/media/heart.f42d0ae84b0cbe1352f939090584a112.svg" alt="heart">
+              </a>
+              <a href="http://dev.littleknitsstory.com/cart">
+                <img src="http://dev.littleknitsstory.com/static/media/shopping-bag.3452f25b6d1ff7aec330d65d5b280250.svg" alt="shoppingBag">
+              </a>
+            </div>
+            <div class="lks-navbar__lang nav-item dropdown">
+              <a id="basic-nav-dropdown" aria-expanded="false" role="button" class="dropdown-toggle nav-link" tabindex="0" href="http://dev.littleknitsstory.com/contacts/#">EN</a>
+            </div>
+          </div>
+          <div class="navbar-collapse collapse">
+            <div class="lks-navbar__links navbar-nav"><a class="primary-nav-links" href="http://dev.littleknitsstory.com/blog/">Blog</a>
+              <a class="primary-nav-links" href="http://dev.littleknitsstory.com/shop/">Shop</a>
+              <a class="primary-nav-links" href="https://www.etsy.com/shop/LittleKnitsStory" target="_blank">Patterns</a>
+              <a class="primary-nav-links active" href="http://dev.littleknitsstory.com/contacts/" aria-current="page">Contacts</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <section class="contacts">
+      <div class="container">
+        <div class="row">
+          <div class="col-xxl-6 col-xl-6 col-lg-8 col-md-12 col-12 offset-xxl-3 offset-xl-3 offset-lg-2 offset-md-0 offset-0">
+            <div class="coffee-card">
+              <div class="coffee-card__title">Send a message to us</div>
+              <form class="contacts__form">
+                <div class="row">
+                  <div class="col-md-6"><input required="" placeholder="Name" name="name" type="text" id="name" class="form-control" value="">
+                  </div>
+                  <div class="col-md-6"><input placeholder="Subject" name="company" type="text" id="theme" class="form-control" value="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12"><input required="" placeholder="Phone" name="phone_number" type="tel" id="phone" class="form-control" value="">
+                  </div>
+                  <div class="col-md-12"><input required="" placeholder="Е-mail" name="email" type="email" id="email" class="form-control" value="">
+                  </div>
+                </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <textarea required="" placeholder="Message" name="message" id="message" class="form-control">
+                      </textarea>
+                    </div>
+                  </div>
+                  <button class="btn btn_white btn_center contacts__btn" type="submit">
+                    <div class="btn__text btn__text_center">Send</div>
+                  </button>
+                </form>
+              <div class="contacts__policy">By submitting your personal data, you agree to its processing.</div>
+            </div>
+          </div>
+        </div>
+        <div class="contacts__info">
+          <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-8 col-md-12 col-12 offset-xxl-3 offset-xl-3 offset-lg-2 offset-md-0 offset-0">
+              <div class="title">Contacts</div>
+              <div class="contacts__wrapper-info">
+                <img src="http://dev.littleknitsstory.com/static/media/map-point.d778c32d792af1b06d39cf4f49184e3d.svg" alt="map">
+                <div class="contacts__text">Montenegro, Budva</div>
               </div>
-              <div className="contacts__wrapper-info">
-                <img src={phone} alt="phone" />
-                <a href="tel:+38267000000" className="contacts__text">
-                  +382 67 00 00 00
+              <div class="contacts__wrapper-info">
+                <img src="http://dev.littleknitsstory.com/static/media/phone.63f9db463c2d88e636dfb3f50790efc3.svg" alt="phone">
+                <a href="tel:+38267000000" class="contacts__text">+382 67 00 00 00</a>
+              </div>
+              <div class="contacts__wrapper-info">
+                <img src="http://dev.littleknitsstory.com/static/media/envelope.6d4bc4fd007f76ae3500d8517139604a.svg" alt="envelope">
+                <a href="mailto:littleknitsstory@mail.com" class="contacts__text">littleknitsstory@mail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-modal-thanks"></div>
+      </div>
+    </section>
+    <section class="instagram">
+      <div class="container">
+        <div class="row">
+          <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-12">
+            <div class="instagram__left-side"></div>
+          </div>
+          <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-12">
+            <div class="instagram__mid-side"><h2>@littleknitsstory</h2>
+              <a href="https://www.instagram.com/littleknitsstory/" target="_blank" rel="noreferrer">
+                <button class="btn btn_vinous instagram__btn">
+                  <div class="btn__text btn__text_center">Follow</div>
+                </button>
+              </a>
+            </div>
+          </div>
+          <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-12">
+            <div class="instagram__right-side"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="footer">
+      <div class="container">
+        <div class="footer__wrapper">
+          <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
+              <div class="footer__subtitle">Blog and knitting shop</div>
+              <div class="footer__title">Little Knits Story</div>
+              <div class="row">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
+                  <div class="footer__navbar">
+                    <a class="primary-nav-links" href="http://dev.littleknitsstory.com/blog/">Blog</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
+              <div class="footer__subscribe">
+                <div class="footer__subscribe-text">We run special promotions for our clients. Checkout subscribe and we will keep you updated
+                </div>
+                <form class="">
+                  <div class="mb-3">
+                    <input required="" placeholder="E-mail" type="email" id="formGroupEmail" class="form-control" value="">
+                    <button class="btn btn_border" type="submit">
+                    <div class="btn__text btn__text_center">Subscribe</div>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="social">
+                <a href="https://vk.com/littleknitsstory" target="_blank" rel="noreferrer">
+                  <div class="social-circle">
+                    <img src="http://dev.littleknitsstory.com/static/media/logo-vk_white.8b00c22360d8b811761acc3666d026d1.svg" alt="vk">
+                  </div>
+                </a>
+                <a href="https://www.facebook.com/littleknitsstory/" target="_blank" rel="noreferrer">
+                  <div class="social-circle">
+                    <img src="http://dev.littleknitsstory.com/static/media/logo-facebook_white.226bc8ce09fb0d70b68c5fcdb6829d08.svg" alt="facebook">
+                  </div>
+                </a>
+                <a href="https://www.instagram.com/littleknitsstory/" target="_blank" rel="noreferrer">
+                  <div class="social-circle">
+                    <img src="http://dev.littleknitsstory.com/static/media/logo-instagram_white.dc6c8fa185d95f94897c15f43f4944a4.svg" alt="instagram">
+                  </div>
+                </a>
+                <a href="https://www.pinterest.ru/littleknitsstory/" target="_blank" rel="noreferrer">
+                  <div class="social-circle">
+                    <img src="http://dev.littleknitsstory.com/static/media/logo-pinterest_white.db81ed2038a2efce8099f81e1ab3da41.svg" alt="pinterest">
+                  </div>
                 </a>
               </div>
-              <div className="contacts__wrapper-info">
-                <img src={envelope} alt="envelope" />
-                <a href="mailto:littleknitsstory@mail.com" className="contacts__text">
-                  littleknitsstory@mail.com
-                </a>
-              </div>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </div>
-        <div className="card-modal-thanks">
-          <ModalThanks
-            showModal={showModalThanks}
-            handleClose={handleClose}
-            button={true}
-            title={t("Modal.titleThanks.thanks")}
-            message={<p>{t("Modal.thanksText.contacts")}</p>}
-          />
+        <div class="footer__end">
+          <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
+              <div class="footer__rights">Little Knits Story 2023 | All Rights Reserved</div>
+            </div>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
+              <a class="footer__policy" href="http://dev.littleknitsstory.com/privacyPolicy">Privacy policy</a>
+            </div>
+          </div>
         </div>
-      </Container>
-    </section>-->
+      </div>
+    </section>
+  </div>
 </body>
 </html>
