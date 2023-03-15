@@ -1,7 +1,9 @@
 import graphene
+from django.core.files.storage import default_storage
 from django.shortcuts import get_object_or_404
 from graphene import ObjectType
 from graphene_django import DjangoObjectType
+from graphene_file_upload.scalars import Upload
 
 from src.apps.account.models import User
 from src.apps.blog.models import Tag, Article
@@ -30,7 +32,7 @@ class CreatePostInput(graphene.InputObjectType):
     title = graphene.String(required=True)
     content = graphene.String()
     author_id = graphene.ID(required=True)
-    image_preview = graphene.String(required=True)
+    # image_preview = Upload(required=True)
 
 
 class UpdatePostInput(graphene.InputObjectType):
@@ -45,15 +47,24 @@ class CreateArticleMutation(graphene.Mutation):
     class Arguments:
         input_data = CreatePostInput(required=True)
         tag_ids = graphene.List(graphene.ID)
+        image_preview = Upload(required=True)
 
     article = graphene.Field(ArticleType)
 
-    def mutate(self, info, input_data, tag_ids):
+    def mutate(self, info, input_data, tag_ids, image_preview):
         article = Article.objects.create(**input_data)
+
+        filename = image_preview.value.split('/')[-1]
+        image_path = f'articles/{filename}'
+
+        default_storage.save(filename, image_preview)
 
         if tag_ids:
             tags = Tag.objects.filter(id__in=tag_ids)
             article.tags.set(tags)
+
+        article.image_preview = image_path
+        article.save()
 
         return CreateArticleMutation(article=article)
 
