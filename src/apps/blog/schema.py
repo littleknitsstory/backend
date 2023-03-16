@@ -1,12 +1,13 @@
 import graphene
-from django.core.files.storage import default_storage
 from django.shortcuts import get_object_or_404
 from graphene import ObjectType
 from graphene_django import DjangoObjectType
-from graphene_file_upload.scalars import Upload
 
 from src.apps.account.models import User
 from src.apps.blog.models import Tag, Article
+from src.apps.blog.services import copy_image_to_media_folder
+
+TARGET_COPY_IMAGE_PATH = "media/articles/"
 
 
 class UserType(DjangoObjectType):
@@ -32,7 +33,7 @@ class CreatePostInput(graphene.InputObjectType):
     title = graphene.String(required=True)
     content = graphene.String()
     author_id = graphene.ID(required=True)
-    # image_preview = Upload(required=True)
+    image_preview = graphene.String(required=True)
 
 
 class UpdatePostInput(graphene.InputObjectType):
@@ -47,17 +48,15 @@ class CreateArticleMutation(graphene.Mutation):
     class Arguments:
         input_data = CreatePostInput(required=True)
         tag_ids = graphene.List(graphene.ID)
-        image_preview = Upload(required=True)
 
     article = graphene.Field(ArticleType)
+    ok = graphene.Boolean()
 
-    def mutate(self, info, input_data, tag_ids, image_preview):
+    def mutate(self, info, input_data, tag_ids):
         article = Article.objects.create(**input_data)
+        image_preview = input_data["image_preview"]
 
-        filename = image_preview.value.split('/')[-1]
-        image_path = f'articles/{filename}'
-
-        default_storage.save(filename, image_preview)
+        image_path = copy_image_to_media_folder(image_preview, TARGET_COPY_IMAGE_PATH)
 
         if tag_ids:
             tags = Tag.objects.filter(id__in=tag_ids)
@@ -79,6 +78,12 @@ class UpdateArticleMutation(graphene.Mutation):
 
     def mutate(self, info, input_data, id, tag_ids):
         article = get_object_or_404(Article, id=id)
+
+        if "image_preview" in input_data:
+            image_preview = copy_image_to_media_folder(
+                input_data["image_preview"], TARGET_COPY_IMAGE_PATH
+            )
+            input_data["image_preview"] = image_preview
 
         for key, value in input_data.items():
             setattr(article, key, value)

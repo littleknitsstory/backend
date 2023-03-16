@@ -5,14 +5,13 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
-from graphene_file_upload.django import FileUploadGraphQLView
 
 from src.core.sitemap import sitemaps
 
 urlpatterns = [
     # API's
     path("api/v1/", include("src.apps.api.urls")),
-    path("api/v2/", csrf_exempt(FileUploadGraphQLView.as_view(graphiql=True))),
+    path("api/v2/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     # AUTH
     # path("auth/", include("rest_framework_social_oauth2.urls")),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
