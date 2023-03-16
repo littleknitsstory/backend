@@ -1,14 +1,21 @@
 import email
 import uuid
+import os
+from pathlib import Path
 
 
 from django.db import models
 #from django.core.mail import send_mail as send_email_celery
 from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
+from jinja2 import Environment, FileSystemLoader
 
 from src.settings.components import _paths, redis
 from src.core.utils.send_mail import logger, send_email_celery
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'core\\utils')
+TEMPLATE_FILE = 'sidnup.html'
 
 
 class Templates(models.Model):
@@ -24,14 +31,17 @@ class Templates(models.Model):
     @staticmethod
     def get_template(slug: str) -> object or False:
         try:
-            template = Templates.objects.get(slug=slug)
+            #template = Templates.objects.get(slug=slug)
+            env = Environment(loader=FileSystemLoader(BASE_DIR))
+            template = env.get_template(TEMPLATE_FILE)
         except Templates.DoesNotExist:
             logger.warning(f'template is not found')
             return False
         except Exception as e:
             logger.warning(f'{e}. Something went wrong with slug... {slug}, get_template()')
             return False
-        return template
+        html_str = template.render()
+        return html_str
 
     def _get_context(self) -> dict:
         return {
