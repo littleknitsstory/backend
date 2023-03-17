@@ -5,9 +5,6 @@ from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
 from src.apps.reactions.choices import ReactionAssociationChoices, ReactionChoices
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.fields import GenericRelation
-from django.contrib.contenttypes.fields import GenericForeignKey
 
 
 class Reaction(models.Model):

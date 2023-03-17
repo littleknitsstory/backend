@@ -4,9 +4,6 @@ from django.conf import settings
 
 from src.apps.comments.choices import CommentAssociationChoices
 from src.core.mixins.mixin import SeoMixin
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.fields import GenericRelation
-from src.apps.reactions.models import Reaction
 
 
 class Comment(SeoMixin):
