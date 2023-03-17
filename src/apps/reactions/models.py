@@ -5,6 +5,9 @@ from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
 from src.apps.reactions.choices import ReactionAssociationChoices, ReactionChoices
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericRelation
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 
 class Reaction(models.Model):
@@ -25,7 +28,7 @@ class Reaction(models.Model):
     )
     model_id = models.IntegerField(_("Associated"), blank=True, default=0)
     reaction = models.CharField(
-        _("Reactioned"),
+        _("Reaction_type"),
         choices=ReactionChoices.REACTION_CHOICES,
         default=ReactionChoices.RED_HEART,
         blank=True,
@@ -39,3 +42,13 @@ class Reaction(models.Model):
     class Meta:
         verbose_name = _("Reaction")
         verbose_name_plural = _("Reactions")
+        constraints = (
+            models.UniqueConstraint(
+                fields=(
+                    "model_type",
+                    "model_id",
+                    "reaction",
+                ),
+                name="unique_reaction",
+            ),
+        )
