@@ -15,7 +15,6 @@ from src.apps.account.models import User
 
 
 class SignInSerializer(TokenObtainPairSerializer):
-
     email = serializers.EmailField(validators=[EmailValidator()])
     password = PasswordField(write_only=True)
 
