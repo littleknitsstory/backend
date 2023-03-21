@@ -42,6 +42,7 @@ class Reaction(models.Model):
         constraints = (
             models.UniqueConstraint(
                 fields=(
+                    "author",
                     "model_type",
                     "model_id",
                     "reaction",
