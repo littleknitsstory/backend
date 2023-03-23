@@ -1,11 +1,10 @@
 import json
 
 import pytest
-from moneyed import Money, Currency
-
-from src.apps.shop.models import Product
 
 pytestmark = pytest.mark.django_db
+
+пше
 
 
 @pytest.mark.django_db
@@ -66,27 +65,12 @@ def test_post_orders_more_amounts_url(client):
 
 
 @pytest.mark.django_db
-def test_product_get_money():
-    product = Product()
-    product.price = Money(10, "RUB")
-    price = product.get_money(value=product.price, currency="EUR")
-    assert str(price.currency) == "EUR"
-    assert isinstance(price.currency, Currency)
-    assert isinstance(price, Money)
-    price = product.get_money(value=product.price, currency="RUB")
-    assert price.amount == 10
-    assert str(price.currency) == "RUB"
-    price = product.get_money(value=product.price, currency="USD")
-    assert price.amount == 10
-
-
-@pytest.mark.django_db
 @pytest.mark.urls("apps.shop.urls")
 def test_get_product_and_lang_product_url(client, settings):
     res_1 = client.get("/products/test_slug/")
     assert res_1.status_code == 200
     assert res_1.json().get("title") == "test_title_ru"
-    assert res_1.json().get("price") == "10,00\xa0₽"  # "10.00 ₽"
+    assert res_1.json().get("price") == "10.00"  # "10.00 ₽"
     # test_product_get_money save rate
     settings.LANGUAGE_CODE = "en"
     res_2 = client.get("/products/test_slug/")

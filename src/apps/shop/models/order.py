@@ -1,12 +1,6 @@
-from typing import Optional
-
-from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.fields import ShortUUIDField
-from djmoney.contrib.exchange.models import convert_money
-from djmoney.models.fields import MoneyField
-from djmoney.money import Money
 
 from src.apps.shop.choices import OrderCartStatusChoices
 
@@ -31,17 +25,15 @@ class OrderCart(models.Model):
         default=OrderCartStatusChoices.NEW,
         max_length=14,
     )
-    order_total_cost = MoneyField(
+    order_total_cost = models.DecimalField(
         _("Total cost order"),
         null=False,
         blank=True,
         max_digits=14,
         decimal_places=2,
-        default_currency="RUB",
         default=0,
     )
-    # FIXME: del this
-    products = ""
+    currency = models.CharField(_("Currency"), default="EUR", max_length=3)
 
     class Meta:
         verbose_name = _("Order")
@@ -53,19 +45,8 @@ class OrderCart(models.Model):
 
     def save(self, *args, **kwargs):
         # if not self.order_total_cost:
-        self.order_total_cost = self.get_total_cost_order()
+        # self.order_total_cost = self.get_total_cost_order()
         return super().save(*args, **kwargs)
-
-    def get_total_cost_order(self):
-        order_total_cost = Money(0, settings.BASE_CURRENCY)
-        items = self.ordercartitem_ordercart.all()
-        for item in items:
-            order_total_cost = convert_money(
-                order_total_cost, settings.BASE_CURRENCY
-            ) + convert_money(
-                item.get_and_save_total_cost_item(), settings.BASE_CURRENCY
-            )
-        return order_total_cost
 
 
 class OrderCartItem(models.Model):
@@ -84,15 +65,15 @@ class OrderCartItem(models.Model):
         related_name="ordercartitem_product",
     )
     amount = models.PositiveSmallIntegerField(verbose_name=_("Amount"), default=0)
-    item_total_cost = MoneyField(
+    item_total_cost = models.DecimalField(
         _("Total cost item order"),
         null=False,
         blank=True,
         max_digits=14,
         decimal_places=2,
-        default_currency="RUB",
         default=0,
     )
+    currency = models.CharField(_("Currency"), default="EUR", max_length=3)
 
     class Meta:
         verbose_name = _("Order Item")
@@ -105,12 +86,3 @@ class OrderCartItem(models.Model):
         self.item_total_cost = self.product.price * self.amount
         self.save()
         return self.item_total_cost
-
-    @property
-    def is_digital(self) -> Optional[bool]:
-        """Check if a variant is digital and contains digital content."""
-        if not self.product:
-            return None
-        is_digital = self.product.is_digital()
-        has_digital = hasattr(self.product, "digital_content")
-        return is_digital and has_digital
