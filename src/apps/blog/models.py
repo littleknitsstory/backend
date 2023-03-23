@@ -4,6 +4,7 @@ from django.conf import settings
 
 from django_extensions.db.fields import AutoSlugField
 from src.core.mixins.mixin import SeoMixin, ImagesMixin
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Tag(SeoMixin):
@@ -25,7 +26,7 @@ class Article(SeoMixin, ImagesMixin):
 
     title = models.CharField(_("Title"), max_length=64)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
-    content = models.TextField(_("Content"), blank=True)
+    content = RichTextUploadingField(_("Content"), blank=True, config_name='default')
     is_active = models.BooleanField(_("Active"), default=True)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
