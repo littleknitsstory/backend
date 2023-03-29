@@ -7,7 +7,6 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 import django_extensions.db.fields
-import djmoney.models.fields
 import optimized_image.fields
 
 
@@ -173,7 +172,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "order_total_cost_currency",
-                    djmoney.models.fields.CurrencyField(
+                    models.CharField(
                         choices=[("EUR", "EUR €"), ("RUB", "RUB ₽"), ("USD", "USD $")],
                         default="RUB",
                         editable=False,
@@ -182,7 +181,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "order_total_cost",
-                    djmoney.models.fields.MoneyField(
+                    models.CharField(
                         blank=True,
                         decimal_places=2,
                         default=Decimal("0"),
@@ -313,7 +312,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "price_currency",
-                    djmoney.models.fields.CurrencyField(
+                    models.CharField(
                         choices=[("EUR", "EUR €"), ("RUB", "RUB ₽"), ("USD", "USD $")],
                         default="RUB",
                         editable=False,
@@ -322,7 +321,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "price",
-                    djmoney.models.fields.MoneyField(
+                    models.CharField(
                         blank=True,
                         decimal_places=2,
                         default=Decimal("0"),
@@ -333,7 +332,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "sale_currency",
-                    djmoney.models.fields.CurrencyField(
+                    models.CharField(
                         choices=[("EUR", "EUR €"), ("RUB", "RUB ₽"), ("USD", "USD $")],
                         default="RUB",
                         editable=False,
@@ -342,7 +341,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "sale",
-                    djmoney.models.fields.MoneyField(
+                    models.CharField(
                         blank=True,
                         decimal_places=2,
                         default=Decimal("0"),
@@ -575,7 +574,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "item_total_cost_currency",
-                    djmoney.models.fields.CurrencyField(
+                    models.CharField(
                         choices=[("EUR", "EUR €"), ("RUB", "RUB ₽"), ("USD", "USD $")],
                         default="RUB",
                         editable=False,
@@ -584,7 +583,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "item_total_cost",
-                    djmoney.models.fields.MoneyField(
+                    models.CharField(
                         blank=True,
                         decimal_places=2,
                         default=Decimal("0"),
