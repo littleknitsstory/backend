@@ -4,8 +4,6 @@ import pytest
 
 pytestmark = pytest.mark.django_db
 
-пше
-
 
 @pytest.mark.django_db
 @pytest.mark.urls("apps.shop.urls")

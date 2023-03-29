@@ -1,4 +1,5 @@
 from django.db import models
+from typing import Optional
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.fields import ShortUUIDField
 
@@ -44,8 +45,6 @@ class OrderCart(models.Model):
         return f"{self.order_number}-{self.order_total_cost}"
 
     def save(self, *args, **kwargs):
-        # if not self.order_total_cost:
-        # self.order_total_cost = self.get_total_cost_order()
         return super().save(*args, **kwargs)
 
 
@@ -86,3 +85,12 @@ class OrderCartItem(models.Model):
         self.item_total_cost = self.product.price * self.amount
         self.save()
         return self.item_total_cost
+
+    @property
+    def is_digital(self) -> Optional[bool]:
+        """Check if a variant is digital and contains digital content."""
+        if not self.product:
+            return None
+        is_digital = self.product.is_digital()
+        has_digital = hasattr(self.product, "digital_content")
+        return is_digital and has_digital
