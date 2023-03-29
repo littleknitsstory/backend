@@ -1,12 +1,11 @@
 import graphene
 
 import src.apps.blog.schema
+from src.apps.blog.schema import Mutation
 
 
 class Query(src.apps.blog.schema.Query, graphene.ObjectType):
-    # This class will inherit from multiple Queries
-    # as we begin to add more apps to our project
     pass
 
 
-schema = graphene.Schema(query=Query)
+schema = graphene.Schema(query=Query, mutation=Mutation)
