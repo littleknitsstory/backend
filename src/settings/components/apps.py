@@ -22,8 +22,6 @@ INSTALLED_APPS = [
     "ckeditor",
     "ckeditor_uploader",
     "optimized_image",
-    "djmoney",
-    "djmoney.contrib.exchange",
     "colorful",
     "robots",
     "nested_admin",
@@ -46,5 +44,7 @@ INSTALLED_APPS = [
     "src.apps.subscribe",
     "src.apps.reviews",
     "src.apps.comments",
+    "src.apps.feature_flags",
+    "src.apps.reactions",
     # "src.apps.course",
 ]
