@@ -60,8 +60,6 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
     colors = ColorSerializer(read_only=True, many=True)
     photo_product = ProductPhotoSerializer(many=True, read_only=True)
     image_preview = serializers.CharField(source="get_image")
-    price = serializers.CharField(source="get_price")
-    sale = serializers.CharField(source="get_sale")
 
     class Meta:
         model = Product
@@ -72,9 +70,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
             "slug",
             "description",
             "price",
-            "price_currency",
             "sale",
-            "sale_currency",
             "categories",
             "author",
             "count",
@@ -101,8 +97,6 @@ class ProductListSerializer(serializers.ModelSerializer):
     categories = CategoryListSerializer(many=True, read_only=True)
     colors = ColorSerializer(read_only=True, many=True)
     image_preview = serializers.CharField(source="get_image")
-    price = serializers.CharField(source="get_price")
-    sale = serializers.CharField(source="get_sale")
 
     class Meta:
         model = Product

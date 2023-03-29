@@ -22,8 +22,6 @@ INSTALLED_APPS = [
     "ckeditor",
     "ckeditor_uploader",
     "optimized_image",
-    "djmoney",
-    "djmoney.contrib.exchange",
     "colorful",
     "robots",
     "nested_admin",
