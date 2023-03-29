@@ -1,9 +1,0 @@
-spec:
-  name: sample-python
-  services:
-    - name: lks-python
-      git:
-        branch: develop
-        repo_clone_url: https://github.com/63phc/lks.git
-    databases:
-    - name: example-db

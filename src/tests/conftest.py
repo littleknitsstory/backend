@@ -7,8 +7,6 @@ from rest_framework.test import APIClient
 def django_db_setup(django_db_setup, django_db_blocker):
     with django_db_blocker.unblock():
         call_command("migrate")
-        call_command("loaddata", "src/fixtures/account.json")
-        call_command("loaddata", "src/fixtures/shop.json")
         call_command("loaddata", "src/fixtures/blog.json")
         call_command("loaddata", "src/fixtures/menu.json")
 

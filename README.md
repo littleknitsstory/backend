@@ -1,9 +1,8 @@
-[![version](https://img.shields.io/badge/version-0.3.313b-green.svg)]()
 [![tests](https://github.com/63phc/lks/workflows/tests/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Atests)
 [![build](https://github.com/63phc/lks/workflows/build/badge.svg)](https://github.com/63phc/lks/actions?query=workflow%3Abuild)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/63phc/lks/LICENCE)
 <div align="center">
-    <h1>LITTLE KNITS STORY</h1>  
+<h1>LITTLE KNITS STORY</h1>  
     
 [![swagger](https://validator.swagger.io/validator?url=http://dev.backend.littleknitsstory.com/)](http://dev.backend.littleknitsstory.com/) 
 [![graphql](https://badgen.net/badge/icon/graphql.beta?icon=graphql&label)](http://dev.backend.littleknitsstory.com/api/v2/)
@@ -13,9 +12,6 @@
   - The project that underlies this repository is coming out of deep beta and the production version of the product 1.0.0 is being prepared. <br>
   - So the master branch can be used however you like. <br>
   - There is a lot of experimental stuff in the development branch.
-
-### Project Deploying 
-[![Deploy to DO](https://www.deploytodo.com/do-btn-white.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/63phc/lks/tree/develop)
 
 ### Project Contents
 
@@ -38,8 +34,8 @@
         account       + 
         api           + 
         blog          +
-          comments    -
-          like        - 
+          comments    +
+          reactions   + 
         contacts      + 
         courses       - 
         dashboard     - 
@@ -72,10 +68,9 @@
 * Nginx ([hub.docker](https://docs.nginx.com/), [hub.docker](https://hub.docker.com/_/nginx/))
 * Docker ([docs](https://docs.docker.com/))
 * Docker compose ([docs](https://docs.docker.com/compose/reference/overview/))
-* GraphQL ([docs](https://graphql.org/)
+* GraphQL ([docs](https://graphql.org/))
 
 ### Project Features
- - Versioning
  - Support multilingual
  - CI/CD with github actions
  - Auto posting FB, INST, VK
@@ -153,8 +148,6 @@
 | EMAIL_HOST_PASSWORD        |                                |                                                 |
 | SENDGRID_API_KEY           |                                |                                                 |
 | MAILGUN_API_KEY            |                                |                                                 |
-| FIXER_ACCESS_KEY           |                                |                                                 |
-| OPEN_EXCHANGE_RATES_APP_ID |                                |                                                 |
 | SENTRY_DNS                 |                                |                                                 |
 
 
