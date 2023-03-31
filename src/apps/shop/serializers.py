@@ -149,14 +149,39 @@ class OrderSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         products_data = validated_data.pop("products")
-        order_cart = OrderCart.objects.create(**validated_data)
+        print('products_data = ', products_data)
+        #order_cart = OrderCart.objects.create(**validated_data)
+
+        order_number = validated_data['order_number']
+        address = validated_data['address']
+        phone = validated_data['phone']
+        email = validated_data['email']
+        comments = validated_data['comments']
+        status = validated_data['status']
+
+        order_cart = OrderCart(
+            pk=1, #если явно передавать pk, order_cart сохраняется, и метод дальше идет работать
+            # без явной передачи, order_cart не сохраняется, и метод падает с ошибкой
+            order_number=order_number,
+            address=address,
+            phone=phone,
+            email=email,
+            comments=comments,
+            status=status
+        )
+        order_cart.save()
+        print(order_cart)
+
         bulk_inserts = []
         for product_data in products_data:
-            bulk_inserts.append(OrderCartItem(order_cart=order_cart, **product_data))
-        OrderCartItem.objects.bulk_create(bulk_inserts)
+            item = OrderCartItem.objects.create(order_cart=order_cart, product=product)
+
+        #for product_data in products_data:
+        #    bulk_inserts.append(OrderCartItem(order_cart=order_cart, **product_data))
+        #OrderCartItem.objects.bulk_create(bulk_inserts)
         # TODO: item_data = OrderItemSerializer(item_data, many=True).data
         # need call save() bulk_create do *not* call save()
-        order_cart.save()
+        #order_cart.save()
         return order_cart
 
     def to_representation(self, instance):
