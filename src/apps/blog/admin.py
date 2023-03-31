@@ -30,6 +30,7 @@ class ArticleAdmin(TranslationAdmin):
             {
                 "fields": (
                     "title",
+                    "description",
                     "slug",
                     "is_active",
                     "image_preview",
