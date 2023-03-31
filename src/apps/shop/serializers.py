@@ -174,6 +174,7 @@ class OrderSerializer(serializers.Serializer):
 
         bulk_inserts = []
         for product_data in products_data:
+            product = product_data['product']
             item = OrderCartItem.objects.create(order_cart=order_cart, product=product)
 
         #for product_data in products_data:
