@@ -1,7 +1,20 @@
 from rest_framework import serializers
 
-from src.apps.blog.models import Tag
+from src.apps.account.models import User
 from src.apps.blog.models import Article
+from src.apps.blog.models import Tag
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "username",
+            "avatar",
+            "first_name",
+            "last_name",
+        )
 
 
 class TagsForArticleSerializer(serializers.ModelSerializer):
@@ -16,6 +29,7 @@ class TagsForArticleSerializer(serializers.ModelSerializer):
 class ArticleListSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
     image_preview = serializers.CharField(source="get_image")
+    author = UserSerializer(read_only=True)
 
     class Meta:
         model = Article
@@ -34,6 +48,7 @@ class ArticleListSerializer(serializers.ModelSerializer):
 class ArticleRetrieveSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
     image_preview = serializers.CharField(source="get_image")
+    author = UserSerializer(read_only=True)
 
     class Meta:
         model = Article
