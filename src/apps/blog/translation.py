@@ -9,4 +9,11 @@ class TagsTranslationOptions(TranslationOptions):
 
 @register(Article)
 class ArticleTranslationOptions(TranslationOptions):
-    fields = ("title", "content", "title_seo", "meta_keywords", "meta_description")
+    fields = (
+        "title",
+        "description",
+        "content",
+        "title_seo",
+        "meta_keywords",
+        "meta_description",
+    )

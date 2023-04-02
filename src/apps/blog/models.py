@@ -25,6 +25,7 @@ class Article(SeoMixin, ImagesMixin):
     """Article model"""
 
     title = models.CharField(_("Title"), max_length=64)
+    description = models.CharField(_("Description"), max_length=63, null=True)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
     content = RichTextUploadingField(_("Content"), blank=True, config_name="default")
     is_active = models.BooleanField(_("Active"), default=True)
