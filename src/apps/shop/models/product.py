@@ -5,13 +5,42 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.fields import AutoSlugField
+from optimized_image.fields import OptimizedImageField
 
-from src.core.mixins.mixin import SeoMixin, ImagesMixin
 
 logger = logging.getLogger(__name__)
 
 
-class Product(SeoMixin, ImagesMixin):
+class ImagesMixin(models.Model):
+    """
+    Abstract model for basic images information
+    Attributes:
+    image_preview: path images
+    image_alt (char): image_alt for <img>
+    """
+
+    image_preview = OptimizedImageField(_("Images"), blank=True)
+    image_alt = models.CharField(_("Images Alt"), blank=True, max_length=255)
+
+    class Meta:
+        abstract = True
+
+    def save(
+        self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        super(ImagesMixin, self).save(
+            force_insert=False, force_update=False, using=None, update_fields=None
+        )
+
+    def get_image(self) -> str:
+        try:
+            image = self.image_preview.url
+        except ValueError:
+            image = None
+        return image
+
+
+class Product(ImagesMixin):
     title = models.CharField(_("Title"), max_length=120)
     code = models.IntegerField(verbose_name=_("Code product"), db_index=True)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
@@ -42,9 +71,13 @@ class Product(SeoMixin, ImagesMixin):
     included = models.CharField(_("Included"), max_length=120, null=True, blank=True)
     height = models.IntegerField(_("Height"), null=True, blank=True)
     weight = models.IntegerField(_("Weight"), null=True, blank=True)
-
     is_shipping_required = models.BooleanField(default=True)
     is_digital = models.BooleanField(default=False)
+    meta_title = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
+    meta_keywords = models.TextField(_("Keywords"), blank=True, null=True)
+    meta_description = models.TextField(_("Description"), blank=True, null=True)
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     colors = models.ManyToManyField(
         "ProductColor",

@@ -74,7 +74,6 @@
  - Support multilingual
  - CI/CD with github actions
  - Auto posting FB, INST, VK
- - Watermarks photo
  - Async views for graphQL
  - ... be sure to add features ...
  

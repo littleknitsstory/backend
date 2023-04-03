@@ -3,15 +3,20 @@ from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
 from django_extensions.db.fields import AutoSlugField
-from src.core.mixins.mixin import SeoMixin, ImagesMixin
 from ckeditor_uploader.fields import RichTextUploadingField
+from optimized_image.fields import OptimizedImageField
 
 
-class Tag(SeoMixin):
+class Tag(models.Model):
     """Tag model"""
 
     title = models.CharField(_("Title"), max_length=64)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
+    meta_title = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
+    meta_keywords = models.TextField(_("Keywords"), blank=True, null=True)
+    meta_description = models.TextField(_("Description"), blank=True, null=True)
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     class Meta:
         verbose_name = _("Tag")
@@ -21,7 +26,7 @@ class Tag(SeoMixin):
         return self.title
 
 
-class Article(SeoMixin, ImagesMixin):
+class Article(models.Model):
     """Article model"""
 
     title = models.CharField(_("Title"), max_length=64)
@@ -39,9 +44,31 @@ class Article(SeoMixin, ImagesMixin):
     tags = models.ManyToManyField(
         Tag, related_name="article_tags", blank=True, verbose_name=_("Tags")
     )
+    meta_title = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
+    meta_keywords = models.TextField(_("Keywords"), blank=True, null=True)
+    meta_description = models.TextField(_("Description"), blank=True, null=True)
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
+    image_preview = OptimizedImageField(_("Images"), blank=True)
+    image_alt = models.CharField(_("Images Alt"), blank=True, max_length=255)
 
     def __str__(self):
         return self.title
+    
+    def save(
+        self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        super(Article, self).save(
+            force_insert=False, force_update=False, using=None, update_fields=None
+        )
+
+    def get_image(self) -> str:
+        try:
+            image = self.image_preview.url
+        except ValueError:
+            image = None
+        return image
+
 
     class Meta:
         verbose_name = _("Article")

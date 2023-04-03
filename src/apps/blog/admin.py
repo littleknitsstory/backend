@@ -13,7 +13,7 @@ class TagAdmin(TranslationAdmin, admin.ModelAdmin):
     )
     fieldsets = (
         (None, {"fields": ("title", "slug")}),
-        (_("SEO"), {"fields": ("title_seo", "meta_keywords", "meta_description")}),
+        (_("SEO"), {"fields": ("meta_title", "meta_keywords", "meta_description")}),
     )
 
 
@@ -41,6 +41,13 @@ class ArticleAdmin(TranslationAdmin):
         (_("Content"), {"fields": ("content",)}),
         (
             _("SEO"),
-            {"fields": ("title_seo", "meta_keywords", "meta_description", "image_alt")},
+            {
+                "fields": (
+                    "meta_title",
+                    "meta_keywords",
+                    "meta_description",
+                    "image_alt",
+                )
+            },
         ),
     )

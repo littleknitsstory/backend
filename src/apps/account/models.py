@@ -10,7 +10,6 @@ from django_countries.fields import CountryField, Country
 from optimized_image.fields import OptimizedImageField
 
 from src.apps.account.choices import AccountTypeChoices
-from src.core.utils.send_mail import send_email_celery
 
 
 class User(AbstractUser):
@@ -126,12 +125,6 @@ class User(AbstractUser):
 
     def get_country(self) -> dict:
         return {"name": self.country.name, "code": self.country.code}
-
-    def send_confirm(self):
-        # TODO: need templates for welcome mail
-        code = set_code(self.email.lower())
-        message = f"{code}"
-        send_email_celery.delay(to=[self.email], subject=_("Welcome"), message=message)
 
 
 # TODO: go utils
