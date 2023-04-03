@@ -54,7 +54,7 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
@@ -68,7 +68,6 @@ class Article(models.Model):
         except ValueError:
             image = None
         return image
-
 
     class Meta:
         verbose_name = _("Article")
