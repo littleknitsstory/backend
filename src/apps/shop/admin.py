@@ -24,7 +24,7 @@ class CategoryAdmin(TranslationAdmin, AdminBaseMixin):
     fieldsets = (
         (_("Content"), {"fields": ("title",)}),
         (_("Main"), {"fields": ("slug",)}),
-        (_("SEO"), {"fields": ("title_seo", "meta_keywords", "meta_description")}),
+        (_("SEO"), {"fields": ("meta_title", "meta_keywords", "meta_description")}),
     )
 
 
@@ -75,7 +75,14 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
         ),
         (
             _("SEO"),
-            {"fields": ("title_seo", "meta_keywords", "meta_description", "image_alt")},
+            {
+                "fields": (
+                    "meta_title",
+                    "meta_keywords",
+                    "meta_description",
+                    "image_alt",
+                )
+            },
         ),
     )
 

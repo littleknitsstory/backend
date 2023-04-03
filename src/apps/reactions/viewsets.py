@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 
 from src.apps.reactions.models import Reaction
-from src.core.permissions import IsOwnerOrAdmin
+from src.apps.reactions.permissions import IsOwnerOrAdmin
 from src.apps.reactions.serializers import (
     ReactionListSerializer,
     ReactionRetrieveSerializer,

@@ -21,7 +21,6 @@ urlpatterns = [
     # SUPPORT
     path("docs/", include("src.apps.swagger.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
-    path("anymail/", include("anymail.urls")),
     path("_nested_admin/", include("nested_admin.urls")),
     # SEO
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
