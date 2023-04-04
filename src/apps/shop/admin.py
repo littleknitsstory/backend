@@ -20,11 +20,10 @@ class AdminBaseMixin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin, AdminBaseMixin):
-    list_display = ("title", "slug", "meta_description", "created_at", "updated_at")
+    list_display = ("title", "slug", "created_at", "updated_at")
     fieldsets = (
         (_("Content"), {"fields": ("title",)}),
         (_("Main"), {"fields": ("slug",)}),
-        (_("SEO"), {"fields": ("title_seo", "meta_keywords", "meta_description")}),
     )
 
 
@@ -75,7 +74,14 @@ class ProductAdmin(TranslationAdmin, AdminBaseMixin):
         ),
         (
             _("SEO"),
-            {"fields": ("title_seo", "meta_keywords", "meta_description", "image_alt")},
+            {
+                "fields": (
+                    "meta_title",
+                    "meta_keywords",
+                    "meta_description",
+                    "image_alt",
+                )
+            },
         ),
     )
 

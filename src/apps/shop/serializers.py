@@ -24,9 +24,6 @@ class CategoryRetrieveSerializer(serializers.ModelSerializer):
         fields = (
             "title",
             "slug",
-            "title_seo",
-            "meta_keywords",
-            "meta_description",
             "products",
         )
 
@@ -85,7 +82,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
             "image_preview",
             "image_alt",
             # SeoMixin
-            "title_seo",
+            "meta_title",
             "meta_keywords",
             "meta_description",
             "created_at",

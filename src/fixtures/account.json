@@ -1,0 +1,33 @@
+[
+  {
+    "model": "account.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$180000$5GU7bfIWt5IG$drnWmTwdRLIPDDRt3fc800KRmW5nf9me+SPfW/shCXM=",
+      "last_login": "2020-05-13T14:18:50.199Z",
+      "is_superuser": true,
+      "username": "admin_0",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-01-05T11:10:54.882Z",
+      "email": "admin@adm.in",
+      "account_type": "",
+      "avatar": "",
+      "about": null,
+      "phone_number": null,
+      "country": null,
+      "city": null,
+      "address": null,
+      "birth_date": null,
+      "is_email_confirmed": false,
+      "is_profile_full": true,
+      "vk_profile": null,
+      "fb_profile": null,
+      "inst_profile": null,
+      "tg_profile": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  }]

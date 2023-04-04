@@ -4,7 +4,7 @@ from src.apps.shop.models import Category, Product
 
 @register(Category)
 class CategoryTranslationOptions(TranslationOptions):
-    fields = ("title", "title_seo", "meta_keywords", "meta_description")
+    fields = ("title",)
 
 
 @register(Product)
@@ -15,7 +15,7 @@ class ProductTranslationOptions(TranslationOptions):
         "type_product",
         "material",
         "included",
-        "title_seo",
+        "meta_title",
         "meta_keywords",
         "meta_description",
     )

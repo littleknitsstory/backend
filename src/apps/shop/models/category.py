@@ -2,12 +2,12 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.fields import AutoSlugField
 
-from src.core.mixins.mixin import SeoMixin
 
-
-class Category(SeoMixin):
+class Category(models.Model):
     title = models.CharField(_("Title"), max_length=120)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     class Meta:
         verbose_name = _("Category")

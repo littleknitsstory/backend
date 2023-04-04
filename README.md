@@ -74,7 +74,6 @@
  - Support multilingual
  - CI/CD with github actions
  - Auto posting FB, INST, VK
- - Watermarks photo
  - Async views for graphQL
  - ... be sure to add features ...
  
@@ -142,12 +141,6 @@
 | FLOWER_USER                | admin                          |                                                 |
 | FLOWER_PASSWORD            | admin                          |                                                 |
 | PROVIDER_EMAIL             |                                |                                                 |
-| EMAIL_HOST                 |                                |                                                 |
-| EMAIL_PORT                 | 587                            |                                                 |
-| EMAIL_HOST_USER            |                                |                                                 |
-| EMAIL_HOST_PASSWORD        |                                |                                                 |
-| SENDGRID_API_KEY           |                                |                                                 |
-| MAILGUN_API_KEY            |                                |                                                 |
 | SENTRY_DNS                 |                                |                                                 |
 
 

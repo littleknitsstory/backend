@@ -48,7 +48,7 @@ class ArticleRetrieveSerializer(serializers.ModelSerializer):
             "tags",
             "image_preview",
             "image_alt",
-            "title_seo",
+            "meta_title",
             "meta_keywords",
             "meta_description",
             "created_at",
