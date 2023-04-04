@@ -1,16 +1,18 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.conf import settings
 
 from src.apps.comments.choices import CommentAssociationChoices
 from src.core.mixins.mixin import SeoMixin
+
+User = get_user_model()
 
 
 class Comment(SeoMixin):
     """Comment model"""
 
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         related_name="comments",
         on_delete=models.CASCADE,
         verbose_name=_("Author"),

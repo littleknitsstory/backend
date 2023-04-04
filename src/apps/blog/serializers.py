@@ -1,7 +1,22 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from src.apps.blog.models import Tag
 from src.apps.blog.models import Article
+from src.apps.blog.models import Tag
+
+User = get_user_model()
+
+
+class AuthorArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "username",
+            "avatar",
+            "first_name",
+            "last_name",
+        )
 
 
 class TagsForArticleSerializer(serializers.ModelSerializer):
@@ -16,12 +31,12 @@ class TagsForArticleSerializer(serializers.ModelSerializer):
 class ArticleListSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
     image_preview = serializers.CharField(source="get_image")
+    author = AuthorArticleSerializer(read_only=True)
 
     class Meta:
         model = Article
         fields = (
             "title",
-            "description",
             "slug",
             "content",
             "author",
@@ -35,13 +50,13 @@ class ArticleListSerializer(serializers.ModelSerializer):
 class ArticleRetrieveSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
     image_preview = serializers.CharField(source="get_image")
+    author = AuthorArticleSerializer(read_only=True)
 
     class Meta:
         model = Article
         fields = (
             "title",
             "slug",
-            "description",
             "content",
             "is_active",
             "author",

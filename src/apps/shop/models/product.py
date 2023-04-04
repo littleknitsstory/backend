@@ -1,7 +1,7 @@
 import logging
 
 from colorful.fields import RGBColorField
-from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.fields import AutoSlugField
@@ -9,6 +9,7 @@ from django_extensions.db.fields import AutoSlugField
 from src.core.mixins.mixin import SeoMixin, ImagesMixin
 
 logger = logging.getLogger(__name__)
+User = get_user_model()
 
 
 class Product(SeoMixin, ImagesMixin):
@@ -59,7 +60,7 @@ class Product(SeoMixin, ImagesMixin):
         blank=True,
     )
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         related_name="product_author",
         on_delete=models.CASCADE,
         blank=True,
