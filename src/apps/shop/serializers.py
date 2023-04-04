@@ -24,9 +24,6 @@ class CategoryRetrieveSerializer(serializers.ModelSerializer):
         fields = (
             "title",
             "slug",
-            "meta_title",
-            "meta_keywords",
-            "meta_description",
             "products",
         )
 
