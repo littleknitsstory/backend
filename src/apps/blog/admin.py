@@ -11,9 +11,7 @@ class TagAdmin(TranslationAdmin, admin.ModelAdmin):
         "title",
         "slug",
     )
-    fieldsets = (
-        (None, {"fields": ("title", "slug")}),
-    )
+    fieldsets = ((None, {"fields": ("title", "slug")}),)
 
 
 @admin.register(Article)
