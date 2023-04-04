@@ -21,6 +21,7 @@ class ArticleListSerializer(serializers.ModelSerializer):
         model = Article
         fields = (
             "title",
+            "description",
             "slug",
             "content",
             "author",
@@ -40,6 +41,7 @@ class ArticleRetrieveSerializer(serializers.ModelSerializer):
         fields = (
             "title",
             "slug",
+            "description",
             "content",
             "is_active",
             "author",
