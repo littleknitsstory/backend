@@ -18,13 +18,6 @@ class Review(models.Model):
     def __str__(self):
         return self.author
 
-    def save(
-        self, force_insert=False, force_update=False, using=None, update_fields=None
-    ):
-        super(Review, self).save(
-            force_insert=False, force_update=False, using=None, update_fields=None
-        )
-
     def get_image(self) -> str:
         try:
             image = self.image_preview.url

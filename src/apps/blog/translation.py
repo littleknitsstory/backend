@@ -4,7 +4,7 @@ from src.apps.blog.models import Tag, Article
 
 @register(Tag)
 class TagsTranslationOptions(TranslationOptions):
-    fields = ("title", "meta_title", "meta_keywords", "meta_description")
+    fields = ("title",)
 
 
 @register(Article)

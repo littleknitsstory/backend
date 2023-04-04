@@ -12,9 +12,6 @@ class Tag(models.Model):
 
     title = models.CharField(_("Title"), max_length=64)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
-    meta_title = models.CharField(_("Title Seo"), max_length=500, blank=True, null=True)
-    meta_keywords = models.TextField(_("Keywords"), blank=True, null=True)
-    meta_description = models.TextField(_("Description"), blank=True, null=True)
     created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
@@ -55,13 +52,6 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
-
-    def save(
-        self, force_insert=False, force_update=False, using=None, update_fields=None
-    ):
-        super(Article, self).save(
-            force_insert=False, force_update=False, using=None, update_fields=None
-        )
 
     def get_image(self) -> str:
         try:

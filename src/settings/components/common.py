@@ -30,6 +30,4 @@ AUTH_PASSWORD_VALIDATORS = config("AUTH_PASSWORD_VALIDATORS", A_P_V)
 
 OPTIMIZED_IMAGE_METHOD = "pillow"
 
-SIGN_OUT_REDIRECT_URL = "https://littleknitsstory.com"
-
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

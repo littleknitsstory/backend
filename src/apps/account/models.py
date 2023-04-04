@@ -102,7 +102,6 @@ class User(AbstractUser):
         verbose_name_plural = _("Users")
 
     def get_avatar_url(self):
-        # TODO:
         try:
             return self.avatar.url
         except ValueError:
@@ -125,14 +124,3 @@ class User(AbstractUser):
 
     def get_country(self) -> dict:
         return {"name": self.country.name, "code": self.country.code}
-
-
-# TODO: go utils
-def set_code(email):
-    key = str(uuid.uuid4()).replace("-", "")
-    # settings.REDIS_CONNECT.set(email, key, ex=300)
-    return key
-
-
-def get_code(key):
-    return settings.REDIS_CONNECT.get(key)

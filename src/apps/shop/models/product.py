@@ -25,13 +25,6 @@ class ImagesMixin(models.Model):
     class Meta:
         abstract = True
 
-    def save(
-        self, force_insert=False, force_update=False, using=None, update_fields=None
-    ):
-        super(ImagesMixin, self).save(
-            force_insert=False, force_update=False, using=None, update_fields=None
-        )
-
     def get_image(self) -> str:
         try:
             image = self.image_preview.url
