@@ -10,6 +10,7 @@ def django_db_setup(django_db_setup, django_db_blocker):
         call_command("loaddata", "src/fixtures/account.json")
         call_command("loaddata", "src/fixtures/blog.json")
         call_command("loaddata", "src/fixtures/menu.json")
+        call_command("loaddata", "src/fixtures/comments.json")
 
 
 @pytest.fixture
