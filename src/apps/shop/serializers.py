@@ -1,5 +1,6 @@
 import logging
 
+from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
@@ -24,9 +25,6 @@ class CategoryRetrieveSerializer(serializers.ModelSerializer):
         fields = (
             "title",
             "slug",
-            "title_seo",
-            "meta_keywords",
-            "meta_description",
             "products",
         )
 
@@ -85,7 +83,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
             "image_preview",
             "image_alt",
             # SeoMixin
-            "title_seo",
+            "meta_title",
             "meta_keywords",
             "meta_description",
             "created_at",
@@ -117,21 +115,19 @@ class ProductListSerializer(serializers.ModelSerializer):
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    code = serializers.CharField(source="product.code", required=False)
+    code = serializers.IntegerField(source="product.code", required=False)
 
     class Meta:
         model = OrderCartItem
         fields = ("product", "amount", "code")
 
 
-class OrderSerializer(serializers.Serializer):
+class OrderSerializer(serializers.ModelSerializer):
     products = OrderItemSerializer(many=True)
-    phone = serializers.CharField(required=False)
-    address = serializers.CharField(required=False)
-    comments = serializers.CharField(required=False)
-    email = serializers.EmailField(required=False)
-    status = serializers.CharField(required=False)
-    order_number = serializers.CharField(required=False)
+
+    class Meta:
+        model = OrderCart
+        fields = ('products', 'phone', 'address', 'comments', 'email', 'status', 'order_number')
 
     def validate_products(self, products):
         products_count = len(products)
@@ -149,40 +145,13 @@ class OrderSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         products_data = validated_data.pop("products")
-        print('products_data = ', products_data)
-        #order_cart = OrderCart.objects.create(**validated_data)
-
-        order_number = validated_data['order_number']
-        address = validated_data['address']
-        phone = validated_data['phone']
-        email = validated_data['email']
-        comments = validated_data['comments']
-        status = validated_data['status']
-
-        order_cart = OrderCart(
-            pk=1, #если явно передавать pk, order_cart сохраняется, и метод дальше идет работать
-            # без явной передачи, order_cart не сохраняется, и метод падает с ошибкой
-            order_number=order_number,
-            address=address,
-            phone=phone,
-            email=email,
-            comments=comments,
-            status=status
-        )
-        order_cart.save()
-        print(order_cart)
-
+        order_cart = OrderCart.objects.create(**validated_data)
         bulk_inserts = []
         for product_data in products_data:
-            product = product_data['product']
-            item = OrderCartItem.objects.create(order_cart=order_cart, product=product)
-
-        #for product_data in products_data:
-        #    bulk_inserts.append(OrderCartItem(order_cart=order_cart, **product_data))
-        #OrderCartItem.objects.bulk_create(bulk_inserts)
+            bulk_inserts.append(OrderCartItem(order_cart=order_cart, **product_data))
         # TODO: item_data = OrderItemSerializer(item_data, many=True).data
         # need call save() bulk_create do *not* call save()
-        #order_cart.save()
+        OrderCartItem.objects.bulk_create(bulk_inserts)
         return order_cart
 
     def to_representation(self, instance):
