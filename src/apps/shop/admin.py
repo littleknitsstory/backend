@@ -21,6 +21,7 @@ class AdminBaseMixin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin, AdminBaseMixin):
     list_display = ("title", "slug", "created_at", "updated_at")
+    prepopulated_fields = {"slug": ("title",)}
     fieldsets = (
         (_("Content"), {"fields": ("title",)}),
         (_("Main"), {"fields": ("slug",)}),

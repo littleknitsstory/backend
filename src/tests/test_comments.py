@@ -18,7 +18,7 @@ def token(client, django_user_model):
 def test_get_comments(client):
     res = client.get("/api/v1/comments/")
     assert res.status_code == 200
-    assert res.json().get("count") == 0
+    assert res.json().count == 0
 
 
 @pytest.mark.django_db

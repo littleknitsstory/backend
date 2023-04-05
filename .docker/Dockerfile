@@ -15,5 +15,5 @@ ARG ENVIRONMENT
 RUN pip install -r requirements/development.txt
 
 COPY . /app
-RUN chmod +x .docker/entrypoint.sh
+
 ENTRYPOINT [".docker/entrypoint.sh"]

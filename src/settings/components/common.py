@@ -31,3 +31,4 @@ AUTH_PASSWORD_VALIDATORS = config("AUTH_PASSWORD_VALIDATORS", A_P_V)
 OPTIMIZED_IMAGE_METHOD = "pillow"
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+AUTOSLUG_SLUGIFY_FUNCTION = "some_app.slugify_func"
