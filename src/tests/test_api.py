@@ -18,8 +18,8 @@ def test_get_menu_url(client):
 @pytest.mark.django_db
 @pytest.mark.urls("apps.blog.urls")
 def test_get_blog_url(client):
-    assert client.get("/posts/").status_code == 200
-    assert client.get("/posts/prosto-zapis-v-blog/").status_code == 200
+    assert client.get("/articles/").status_code == 200
+    assert client.get("/articles/prosto-zapis-v-blog/").status_code == 200
 
 
 @pytest.mark.django_db
