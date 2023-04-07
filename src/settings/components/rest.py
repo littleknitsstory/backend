@@ -13,7 +13,7 @@ REST_FRAMEWORK = {
         "rest_framework.parsers.FileUploadParser",
     ),
     "DATETIME_FORMAT": "%d-%m-%Y %H:%M",
-    "PAGE_SIZE": 10, # TODO: temp comments
+    "PAGE_SIZE": 10,  # TODO: temp comments
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.URLPathVersioning",
     "DEFAULT_FILTER_BACKENDS": [

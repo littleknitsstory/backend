@@ -68,7 +68,7 @@ def test_get_product_and_lang_product_url(client, settings):
     res_1 = client.get("/products/test_slug/")
     assert res_1.status_code == 200
     assert res_1.json().get("title") == "test_title_ru"
-    assert res_1.json().get("price") == "10.00" 
+    assert res_1.json().get("price") == "10.00"
     # test_product_get_money save rate
     settings.LANGUAGE_CODE = "en"
     res_2 = client.get("/products/test_slug/")
