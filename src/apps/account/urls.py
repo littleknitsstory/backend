@@ -11,7 +11,7 @@ from src.apps.account.viewsets import (
 )
 
 router_user = routers.DefaultRouter()
-router_user.register(r"profile", ProfileViewSet, basename="profile")
+router_user.register(r"users", ProfileViewSet, basename="users")
 
 
 urlpatterns = [

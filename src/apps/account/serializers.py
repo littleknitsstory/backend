@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth import password_validation
 from django.core.validators import EmailValidator
 from django_countries.serializer_fields import CountryField
@@ -11,7 +12,8 @@ from rest_framework_simplejwt.serializers import (
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from src.apps.account.choices import AccountTypeChoices
-from src.apps.account.models import User
+
+User = get_user_model()
 
 
 class SignInSerializer(TokenObtainPairSerializer):
