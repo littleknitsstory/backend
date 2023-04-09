@@ -114,7 +114,7 @@ class ProductListSerializer(serializers.ModelSerializer):
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    code = serializers.CharField(source="product.code", required=False)
+    code = serializers.IntegerField(source="product.code", required=False)
 
     class Meta:
         model = OrderCartItem
@@ -149,18 +149,18 @@ class OrderSerializer(serializers.Serializer):
         order_cart = OrderCart.objects.create(**validated_data)
         bulk_inserts = []
         for product_data in products_data:
+            print('products_data=', product_data)
             bulk_inserts.append(OrderCartItem(order_cart=order_cart, **product_data))
         OrderCartItem.objects.bulk_create(bulk_inserts)
         # TODO: item_data = OrderItemSerializer(item_data, many=True).data
         # need call save() bulk_create do *not* call save()
-        order_cart.save()
         return order_cart
 
     def to_representation(self, instance):
         return {
             "status": instance.status,
             "order_number": instance.order_number,
-            "products": [i for i in instance.products],
+            #"products": [i for i in instance.products],
         }
 
 
