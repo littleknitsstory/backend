@@ -1,0 +1,202 @@
+[
+  {
+    "model": "shop.product",
+    "pk": 1,
+    "fields": {
+        "image_preview": "Snapseed.jpg",
+        "image_alt": "test_image_alt",
+        "title": "test_title",
+        "title_ru": "test_title_ru",
+        "title_en": "test_title_en",
+        "code": 10001,
+        "slug": "test_slug",
+        "is_active": true,
+        "description": "test_description",
+        "description_ru": "test_description_ru",
+        "description_en": "test_description_en",
+        "price": "10.00",
+        "sale": "10.00",
+        "currency": "EUR",
+        "count": 1,
+        "type_product": "test_type_product",
+        "type_product_ru": "test_type_product_ru",
+        "type_product_en": "test_type_product_en",
+        "material": "test_material",
+        "material_ru": "test_material_ru",
+        "material_en": "test_material_en",
+        "included": "test_included",
+        "included_ru": "test_included_ru",
+        "included_en": "test_included_en",
+        "height": 120,
+        "weight": 20,
+        "is_shipping_required": true,
+        "is_digital": false,
+        "meta_title": "test_title_seo",
+        "meta_title_ru": "test_title_seo_ru",
+        "meta_title_en": "test_title_seo_en",
+        "meta_keywords": "test_meta_keywords",
+        "meta_keywords_ru": "test_meta_keywords_ru",
+        "meta_keywords_en": "test_meta_keywords_en",
+        "meta_description": "test_meta_description",
+        "meta_description_ru": "test_meta_description_ru",
+        "meta_description_en": "test_meta_description_en",
+        "created_at": "2023-04-07T08:07:37.062Z",
+        "updated_at": "2023-04-07T08:07:37.062Z",
+        "author": 1,
+        "colors": [
+            1
+        ],
+        "categories": [
+            1
+        ]
+    }
+},
+  {
+    "model": "shop.product",
+    "pk": 2,
+    "fields": {
+        "image_preview": "Snapseed_12.jpg",
+        "image_alt": "test_image_alt",
+        "title": "test_title",
+        "title_ru": "test_title_ru",
+        "title_en": "test_title_en",
+        "code": 10050,
+        "slug": "test_slug_2",
+        "is_active": true,
+        "description": "test_description",
+        "description_ru": "test_description_ru",
+        "description_en": "test_description_en",
+        "price": "150.00",
+        "sale": "15.00",
+        "currency": "EUR",
+        "count": 1,
+        "type_product": "test_type_product",
+        "type_product_ru": "test_type_product_ru",
+        "type_product_en": "test_type_product_en",
+        "material": "test_material",
+        "material_ru": "test_material_ru",
+        "material_en": "test_material_en",
+        "included": "test_included",
+        "included_ru": "test_included_ru",
+        "included_en": "test_included_en",
+        "height": 120,
+        "weight": 50,
+        "is_shipping_required": true,
+        "is_digital": false,
+        "meta_title": "test_title_seo",
+        "meta_title_ru": "test_title_seo_ru",
+        "meta_title_en": "test_title_seo_en",
+        "meta_keywords": "test_meta_keywords",
+        "meta_keywords_ru": "test_meta_keywords_ru",
+        "meta_keywords_en": "test_meta_keywords_en",
+        "meta_description": "test_meta_description",
+        "meta_description_ru": "test_meta_description_ru",
+        "meta_description_en": "test_meta_description_en",
+        "created_at": "2023-04-07T08:07:37.062Z",
+        "updated_at": "2023-04-07T08:07:37.062Z",
+        "author": 1,
+        "colors": [
+            1
+        ],
+        "categories": [
+            1
+        ]
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 3,
+    "fields": {
+        "image_preview": "Snapseed_5.jpg",
+        "image_alt": "test_image_alt",
+        "title": "test_title",
+        "title_ru": "test_title_ru",
+        "title_en": "test_title_en",
+        "code": 10010,
+        "slug": "test_slug_3",
+        "is_active": true,
+        "description": "test_description",
+        "description_ru": "test_description_ru",
+        "description_en": "test_description_en",
+        "price": "100.00",
+        "sale": "10.00",
+        "currency": "EUR",
+        "count": 1,
+        "type_product": "test_type_product",
+        "type_product_ru": "test_type_product_ru",
+        "type_product_en": "test_type_product_en",
+        "material": "test_material",
+        "material_ru": "test_material_ru",
+        "material_en": "test_material_en",
+        "included": "test_included",
+        "included_ru": "test_included_ru",
+        "included_en": "test_included_en",
+        "height": 120,
+        "weight": 20,
+        "is_shipping_required": true,
+        "is_digital": false,
+        "meta_title": "test_title_seo",
+        "meta_title_ru": "test_title_seo_ru",
+        "meta_title_en": "test_title_seo_en",
+        "meta_keywords": "test_meta_keywords",
+        "meta_keywords_ru": "test_meta_keywords_ru",
+        "meta_keywords_en": "test_meta_keywords_en",
+        "meta_description": "test_meta_description",
+        "meta_description_ru": "test_meta_description_ru",
+        "meta_description_en": "test_meta_description_en",
+        "created_at": "2023-04-07T08:07:37.062Z",
+        "updated_at": "2023-04-07T08:07:37.062Z",
+        "author": 1,
+        "colors": [
+            1, 
+            2
+        ],
+        "categories": [
+            1
+        ]
+    }
+  },
+  {
+    "model": "shop.productcolor",
+    "pk": 1,
+    "fields": {
+      "color": "#000000"
+    }
+  },
+  {
+    "model": "shop.productcolor",
+    "pk": 2,
+    "fields": {
+      "color": "#0433ff"
+    }
+  },
+  {
+    "model": "shop.productcolor",
+    "pk": 3,
+    "fields": {
+      "color": "#00f900"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+      "created_at": "2020-01-05T18:58:08.540Z",
+      "updated_at": "2020-01-05T18:58:08.540Z",
+      "title_ru": "\u0418\u0433\u0440\u0443\u0448\u043a\u0438",
+      "title_en": "Toys",
+      "slug": "Toys"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+      "created_at": "2020-01-06T09:21:03.376Z",
+      "updated_at": "2020-01-06T09:21:03.376Z",
+      "title_ru": "\u041f\u0440\u044f\u0436\u0430",
+      "title_en": "Knits",
+      "slug": "Knits"
+    }
+  }
+]

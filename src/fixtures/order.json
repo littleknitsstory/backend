@@ -1,0 +1,18 @@
+[
+{
+    "model": "shop.ordercart",
+    "pk": 1,
+    "fields": {
+        "order_number": "htgayHU8WsUgCbrtuMhjSF",
+        "address": "test",
+        "phone": "+79041212345",
+        "email": "test_4@test.ru",
+        "comments": "test",
+        "created_at": "2023-04-07T08:45:01.740Z",
+        "updated_at": "2023-04-07T08:45:15.319Z",
+        "status": "NEW",
+        "order_total_cost": "0.00",
+        "currency": "EUR"
+    }
+}
+]

@@ -160,7 +160,7 @@ class OrderSerializer(serializers.Serializer):
         return {
             "status": instance.status,
             "order_number": instance.order_number,
-            "products": [i for i in instance.products],
+            # "products": [i for i in instance.products],
         }
 
 
