@@ -9,7 +9,7 @@ pytest-cov==3.0.0
 django-extensions==3.2.1
 pytest-django==4.5.2
 pyflakes==2.5.0
-pycodestyle==2.9.1
+pycodestyle==2.10.0
 pytest-redis==2.4.0
 mccabe==0.7.0
 
