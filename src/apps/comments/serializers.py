@@ -1,7 +1,9 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from src.apps.account.models import User
 from src.apps.comments.models import Comment
+
+User = get_user_model()
 
 
 class AuthorSerializer(serializers.ModelSerializer):
