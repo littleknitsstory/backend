@@ -152,15 +152,12 @@ class OrderSerializer(serializers.Serializer):
             print('products_data=', product_data)
             bulk_inserts.append(OrderCartItem(order_cart=order_cart, **product_data))
         OrderCartItem.objects.bulk_create(bulk_inserts)
-        # TODO: item_data = OrderItemSerializer(item_data, many=True).data
-        # need call save() bulk_create do *not* call save()
         return order_cart
 
     def to_representation(self, instance):
         return {
             "status": instance.status,
             "order_number": instance.order_number,
-            #"products": [i for i in instance.products],
         }
 
 
