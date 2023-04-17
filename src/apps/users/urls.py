@@ -2,16 +2,16 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from src.apps.account.viewsets import (
+from src.apps.users.viewsets import (
     SignUpView,
     SignInView,
     SignOutView,
     #    ConfirmView,
-    ProfileViewSet,
+    UsersViewSet,
 )
 
 router_user = routers.DefaultRouter()
-router_user.register(r"users", ProfileViewSet, basename="users")
+router_user.register(r"users", UsersViewSet, basename="users")
 
 
 urlpatterns = [

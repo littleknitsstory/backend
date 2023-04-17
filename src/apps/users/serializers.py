@@ -11,7 +11,7 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from src.apps.account.choices import AccountTypeChoices
+from src.apps.users.choices import AccountTypeChoices
 
 User = get_user_model()
 
@@ -81,7 +81,7 @@ class SignOutSerializer(serializers.Serializer):
             raise serializers.ValidationError("Bad refresh token")
 
 
-class ProfileSerializer(serializers.ModelSerializer):
+class UsersSerializer(serializers.ModelSerializer):
     username = serializers.CharField(read_only=True)
     country = CountryField(required=False)
     email = serializers.CharField(validators=[EmailValidator()], required=False)
