@@ -1,17 +1,17 @@
-from django.db import models
-
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.conf import settings
 
 from src.apps.reactions.choices import ReactionAssociationChoices, ReactionChoices
+
+User = get_user_model()
 
 
 class Reaction(models.Model):
     """Reaction model"""
 
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         related_name="reactions",
         on_delete=models.CASCADE,
         verbose_name=_("Author"),
