@@ -9,7 +9,7 @@ class PatternSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pattern
         fields = (
-            "pattern_number",
+            "pattern_uuid",
             "prompt",
             "created_up",
         )

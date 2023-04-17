@@ -7,12 +7,12 @@ from src.apps.patterns.models import Pattern
 class PatternAdmin(admin.ModelAdmin):
     list_display = (
         "id",
-        "pattern_number",
+        "pattern_uuid",
         "prompt",
         "author",
     )
-    list_display_links = ("pattern_number",)
+    list_display_links = ("pattern_uuid",)
     readonly_fields = (
-        "pattern_number",
+        "pattern_uuid",
         "author",
     )

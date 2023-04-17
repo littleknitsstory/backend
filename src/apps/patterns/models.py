@@ -8,7 +8,7 @@ User = get_user_model()
 
 
 class Pattern(models.Model):
-    pattern_number = ShortUUIDField(_("Pattern number"))
+    pattern_number = ShortUUIDField(_("Pattern_uuid"))
     prompt = models.TextField("Users text")
     author = models.ForeignKey(
         User,
