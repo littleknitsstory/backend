@@ -8,14 +8,14 @@ User = get_user_model()
 
 
 class Pattern(models.Model):
-    pattern_number = ShortUUIDField(_("Pattern_uuid"))
-    prompt = models.TextField("Users text")
+    uuid = ShortUUIDField(_("pattern_uuid"))
+    prompt = models.TextField("pattern_prompt")
     author = models.ForeignKey(
         User,
-        related_name="pattern_user",
+        related_name="pattern_author",
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        verbose_name=_("Author"),
+        verbose_name=_("author"),
     )
     created_up = models.DateTimeField("request time", auto_now_add=True)

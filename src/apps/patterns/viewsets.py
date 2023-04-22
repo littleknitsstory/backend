@@ -8,7 +8,7 @@ class PatternViewset(ModelViewSet):
     permission_classes = (AllowAny,)
     queryset = Pattern.objects.all()
     http_method_names = ["post", "get"]
-    lookup_field = "pattern_uuid"
+    lookup_field = "uuid"
     serializer_classes = {
         "create": PatternSerializer,
     }
