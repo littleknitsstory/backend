@@ -1,8 +1,10 @@
+from django.contrib.auth import get_user_model
+from django.db.models import Count
 from rest_framework import serializers
 
-from src.apps.account.models import User
 from src.apps.reactions.models import Reaction
-from django.db.models import Count
+
+User = get_user_model()
 
 
 class AuthorReactionSerializer(serializers.ModelSerializer):
