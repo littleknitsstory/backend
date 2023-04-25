@@ -1,9 +1,10 @@
-from jinja2 import Template
-import pdfkit
 import json
 import tempfile
 import uuid
 from pathlib import Path
+
+import pdfkit
+from jinja2 import Template
 
 
 def generate_pdf_from_json(json_file, template_file):

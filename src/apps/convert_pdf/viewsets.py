@@ -1,7 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from rest_framework import status
 from django.template import Template, Context
+from jinja2 import Template
+from rest_framework import status
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.viewsets import ViewSet
 
