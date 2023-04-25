@@ -1,7 +1,7 @@
 from decouple import config
 
 SECRET_KEY = config("SECRET_KEY", "BAD_SECRET_KEY_73812732478324783274823")
-AUTH_USER_MODEL = "account.User"
+AUTH_USER_MODEL = "users.User"
 
 PAGINATION_BY = 6
 SITE_ID = 1

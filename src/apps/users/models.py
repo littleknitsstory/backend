@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField, Country
 from optimized_image.fields import OptimizedImageField
 
-from src.apps.account.choices import AccountTypeChoices
+from src.apps.users.choices import AccountTypeChoices
 
 
 class User(AbstractUser):
