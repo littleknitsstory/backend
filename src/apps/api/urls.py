@@ -1,5 +1,6 @@
 from django.urls import include, path
 
+
 urlpatterns = [
     path("", include("src.apps.blog.urls")),
     path("", include("src.apps.shop.urls")),
@@ -13,5 +14,6 @@ urlpatterns = [
     path("", include("src.apps.comments.urls")),
     path("", include("src.apps.feature_flags.urls")),
     path("", include("src.apps.reactions.urls")),
+    path("", include("src.apps.patterns.urls")),
     path("", include("src.apps.convert_pdf.urls")),
 ]
