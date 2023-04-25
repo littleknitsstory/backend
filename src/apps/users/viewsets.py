@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from rest_framework import generics
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -5,14 +6,15 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenViewBase
 
-from src.apps.account.models import User
-from src.apps.account.permissions import IsOwner
-from src.apps.account.serializers import (
+from src.apps.users.permissions import IsOwner
+from src.apps.users.serializers import (
     SignUpSerializer,
     SignInSerializer,
     SignOutSerializer,
-    ProfileSerializer,
+    UsersSerializer,
 )
+
+User = get_user_model()
 
 
 class SignUpView(generics.CreateAPIView):
@@ -36,11 +38,10 @@ class SignOutView(GenericAPIView):
         return Response(status=200)
 
 
-class ProfileViewSet(ModelViewSet):
+class UsersViewSet(ModelViewSet):
     queryset = User.objects.all()
     http_method_names = ["get", "put"]
-    lookup_field = "username"
-    serializer_class = ProfileSerializer
+    serializer_class = UsersSerializer
     pagination_class = None
 
     def get_queryset(self):

@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt.token_blacklist",
     "drf_yasg2",
     # Apps project
-    "src.apps.account",
+    "src.apps.users",
     "src.apps.api",
     "src.apps.blog",
     "src.apps.contacts",
