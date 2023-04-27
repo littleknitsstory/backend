@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "src.apps.api",
     "src.apps.blog",
     "src.apps.contacts",
+    "src.apps.convert_pdf",
     "src.apps.menu",
     "src.apps.shop",
     "src.apps.shorter",
