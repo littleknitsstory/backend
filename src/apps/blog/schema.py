@@ -1,11 +1,13 @@
 import graphene
+from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from graphene import ObjectType
 from graphene_django import DjangoObjectType
 
-from src.apps.account.models import User
-from src.apps.blog.models import Tag, Article
+from src.apps.blog.models.models import Tag, Article
 from src.apps.blog.services import copy_image_to_media_folder
+
+User = get_user_model()
 
 TARGET_COPY_IMAGE_PATH = "media/articles/"
 
