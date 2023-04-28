@@ -6,6 +6,8 @@ from src.apps.blog.models.models import Article, Tag
 
 User = get_user_model()
 
+READING_SYMBOL_IN_SECOND = 17
+
 
 class AuthorArticleSerializer(serializers.ModelSerializer):
     class Meta:
@@ -78,6 +80,13 @@ class ArticleRetrieveSerializer(serializers.ModelSerializer):
             is_bookmarked = Bookmark.objects.filter(user=user, article=article).exists()
             return is_bookmarked
         return False
+
+    def to_representation(self, instance):
+        data = super(ArticleRetrieveSerializer, self).to_representation(instance)
+        data.update(
+            {"time_for_read": len(instance.content) // READING_SYMBOL_IN_SECOND}
+        )
+        return data
 
 
 class BookmarkSerializer(serializers.ModelSerializer):
