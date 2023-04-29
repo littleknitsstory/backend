@@ -39,6 +39,8 @@ class CommentRetrieveSerializer(serializers.ModelSerializer):
 
 
 class CommentCreateSerializer(serializers.ModelSerializer):
+    text = serializers.CharField()
+
     class Meta:
         model = Comment
         fields = (
