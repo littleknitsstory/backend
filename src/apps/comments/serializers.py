@@ -35,6 +35,7 @@ class CommentRetrieveSerializer(serializers.ModelSerializer):
             "author",
             "text",
             "created_at",
+            "updated_at",
         )
 
 

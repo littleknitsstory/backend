@@ -11,4 +11,6 @@ class CommentAdmin(admin.ModelAdmin):
         "model_type",
         "model_id",
         "is_deleted",
+        "created_at",
+        "updated_at",
     )
