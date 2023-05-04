@@ -28,6 +28,8 @@ class ReactionListSerializer(serializers.ModelSerializer):
             "id",
             "author",
             "reaction",
+            "model_type",
+            "model_id",
         )
 
     def get_reaction(self, obj):
@@ -47,6 +49,8 @@ class ReactionRetrieveSerializer(serializers.ModelSerializer):
             "id",
             "author",
             "reaction",
+            "model_type",
+            "model_id",
         )
 
 
