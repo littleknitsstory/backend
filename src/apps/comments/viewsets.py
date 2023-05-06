@@ -16,6 +16,7 @@ from src.apps.comments.serializers import (
 class CommentList(ModelViewSet):
     queryset = Comment.objects.filter(is_deleted=False).prefetch_related("author")
     http_method_names = ["get", "post", "put", "delete"]
+    lookup_field = "id"
     filter_backends = [
         DjangoFilterBackend,
         SearchFilter,
@@ -38,7 +39,7 @@ class CommentList(ModelViewSet):
     }
 
     def get_serializer_class(self):
-        return self.serializer_classes.get(self.action, CommentListSerializer)
+        return self.serializer_classes.get(self.action, CommentCreateSerializer)
 
     def get_permissions(self):
         if self.action in ["list", "retrieve"]:

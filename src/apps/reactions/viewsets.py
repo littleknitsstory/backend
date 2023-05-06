@@ -40,7 +40,7 @@ class ReactionList(ModelViewSet):
     }
 
     def get_serializer_class(self):
-        return self.serializer_classes.get(self.action, ReactionListSerializer)
+        return self.serializer_classes.get(self.action, ReactionCreateSerializer)
 
     def get_permissions(self):
         if self.action in ["list", "retrieve"]:

@@ -35,10 +35,13 @@ class CommentRetrieveSerializer(serializers.ModelSerializer):
             "author",
             "text",
             "created_at",
+            "updated_at",
         )
 
 
 class CommentCreateSerializer(serializers.ModelSerializer):
+    text = serializers.CharField()
+
     class Meta:
         model = Comment
         fields = (
