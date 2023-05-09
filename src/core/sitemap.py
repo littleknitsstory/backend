@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 
-from src.apps.blog.models import Article
+from src.apps.blog.models.models import Article
 from src.apps.shop.models import Category
 from src.apps.shop.models import Product
 

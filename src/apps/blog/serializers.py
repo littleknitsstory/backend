@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from src.apps.blog.models import Article
-from src.apps.blog.models import Tag
+from src.apps.blog.models.bookmark import Bookmark
+from src.apps.blog.models.models import Article, Tag
 
 User = get_user_model()
+
+READING_SYMBOL_IN_SECOND = 17
 
 
 class AuthorArticleSerializer(serializers.ModelSerializer):
@@ -51,6 +53,7 @@ class ArticleRetrieveSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
     image_preview = serializers.CharField(source="get_image")
     author = AuthorArticleSerializer(read_only=True)
+    is_bookmarked = serializers.SerializerMethodField()
 
     class Meta:
         model = Article
@@ -68,4 +71,31 @@ class ArticleRetrieveSerializer(serializers.ModelSerializer):
             "meta_description",
             "created_at",
             "updated_at",
+            "is_bookmarked",
         )
+
+    def get_is_bookmarked(self, article):
+        user = self.context["request"].user
+        if user.is_authenticated:
+            is_bookmarked = Bookmark.objects.filter(user=user, article=article).exists()
+            return is_bookmarked
+        return False
+
+    def to_representation(self, instance):
+        data = super(ArticleRetrieveSerializer, self).to_representation(instance)
+        data.update(
+            {"time_for_read": len(instance.content) // READING_SYMBOL_IN_SECOND}
+        )
+        return data
+
+
+class BookmarkSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    article = serializers.SlugRelatedField(
+        slug_field="slug", queryset=Article.objects.all()
+    )
+
+    class Meta:
+        model = Bookmark
+        fields = ["id", "user", "article"]
+        read_only_fields = ["id"]

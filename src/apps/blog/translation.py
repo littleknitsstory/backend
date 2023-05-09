@@ -1,5 +1,6 @@
-from modeltranslation.translator import TranslationOptions, register, translator
-from src.apps.blog.models import Tag, Article
+from modeltranslation.translator import TranslationOptions, register
+
+from src.apps.blog.models.models import Tag, Article
 
 
 @register(Tag)

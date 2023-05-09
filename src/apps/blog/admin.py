@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
-from src.apps.blog.models import Article, Tag
+from src.apps.blog.models.bookmark import Bookmark
+from src.apps.blog.models.models import Article, Tag
 
 
 @admin.register(Tag)
@@ -49,3 +50,12 @@ class ArticleAdmin(TranslationAdmin):
             },
         ),
     )
+
+
+@admin.register(Bookmark)
+class BookmarkAdmin(admin.ModelAdmin):
+    list_display = (
+        "user",
+        "article",
+    )
+    list_display_links = ("article",)
