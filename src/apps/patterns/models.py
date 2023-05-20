@@ -18,4 +18,5 @@ class Pattern(models.Model):
         null=True,
         verbose_name=_("author"),
     )
+    response = models.JSONField(_("pattern_response"))
     created_up = models.DateTimeField("request time", auto_now_add=True)
