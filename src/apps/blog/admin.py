@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
 from src.apps.blog.models.bookmark import Bookmark
@@ -41,25 +40,12 @@ class ArticleAdmin(TranslationAdmin):
                     "description",
                     "slug",
                     "is_active",
-                    # "image_preview",
                     "author",
                     "tags",
                     "contents",
                 )
             },
         ),
-        # (_("Content"), {"fields": ("content",)}),
-        # (
-        #     _("SEO"),
-        #     {
-        #         "fields": (
-        #             "meta_title",
-        #             "meta_keywords",
-        #             "meta_description",
-        #             "image_alt",
-        #         )
-        #     },
-        # ),
     )
 
 

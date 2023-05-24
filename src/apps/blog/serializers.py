@@ -56,8 +56,6 @@ class ArticleListSerializer(serializers.ModelSerializer):
             "contents",
             "author",
             "tags",
-            # "image_preview",
-            # "image_alt",
             "created_at",
         )
 
@@ -65,7 +63,6 @@ class ArticleListSerializer(serializers.ModelSerializer):
 class ArticleRetrieveSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
     contents = ArticleContentSerializer(many=True, read_only=True)
-    # image_preview = serializers.CharField(source="get_image")
     author = AuthorArticleSerializer(read_only=True)
     is_bookmarked = serializers.SerializerMethodField()
 
@@ -78,8 +75,6 @@ class ArticleRetrieveSerializer(serializers.ModelSerializer):
             "is_active",
             "author",
             "tags",
-            # "image_preview",
-            # "image_alt",
             "meta_title",
             "meta_keywords",
             "meta_description",

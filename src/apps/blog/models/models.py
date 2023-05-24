@@ -64,8 +64,6 @@ class Article(models.Model):
     meta_description = models.TextField(_("Description"), blank=True, null=True)
     created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
-    # image_preview = OptimizedImageField(_("Images"), blank=True)
-    # image_alt = models.CharField(_("Images Alt"), blank=True, max_length=255)
 
     def __str__(self):
         return self.title
