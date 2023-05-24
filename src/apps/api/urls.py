@@ -15,5 +15,4 @@ urlpatterns = [
     path("", include("src.apps.feature_flags.urls")),
     path("", include("src.apps.reactions.urls")),
     path("", include("src.apps.patterns.urls")),
-    path("", include("src.apps.convert_pdf.urls")),
 ]

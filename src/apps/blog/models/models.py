@@ -22,6 +22,18 @@ class Tag(models.Model):
         return self.title
 
 
+class ArticleContent(models.Model):
+    """ArticleContent model"""
+
+    text = models.TextField(_("Text content"), blank=False)
+    image = OptimizedImageField(_("Images"), blank=True)
+    image_alt = models.CharField(_("Images Alt"), blank=True, max_length=255)
+
+    class Meta:
+        verbose_name = _("content")
+        verbose_name_plural = _("contents")
+
+
 class Article(models.Model):
     """Article model"""
 
@@ -29,6 +41,12 @@ class Article(models.Model):
     description = models.CharField(_("Description"), max_length=63, null=True)
     slug = AutoSlugField(_("slug"), populate_from="title", editable=True)
     content = RichTextUploadingField(_("Content"), blank=True, config_name="default")
+    contents = models.ManyToManyField(
+        "ArticleContent",
+        verbose_name=_("ArticleContent"),
+        related_name="contents",
+        blank=True,
+    )
     is_active = models.BooleanField(_("Active"), default=True)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -46,8 +64,8 @@ class Article(models.Model):
     meta_description = models.TextField(_("Description"), blank=True, null=True)
     created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
-    image_preview = OptimizedImageField(_("Images"), blank=True)
-    image_alt = models.CharField(_("Images Alt"), blank=True, max_length=255)
+    #image_preview = OptimizedImageField(_("Images"), blank=True)
+    #image_alt = models.CharField(_("Images Alt"), blank=True, max_length=255)
 
     def __str__(self):
         return self.title

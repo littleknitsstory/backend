@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from src.apps.blog.models.bookmark import Bookmark
-from src.apps.blog.models.models import Article, Tag
+from src.apps.blog.models.models import Article, ArticleContent, Tag
 
 User = get_user_model()
 
@@ -30,9 +30,21 @@ class TagsForArticleSerializer(serializers.ModelSerializer):
         )
 
 
+class ArticleContentSerializer(serializers.ModelSerializer):
+    image_alt = serializers.CharField()
+    class Meta:
+        model = ArticleContent
+        fields = (
+            "text",
+            "image",
+            "image_alt",
+        )
+
+
 class ArticleListSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
-    image_preview = serializers.CharField(source="get_image")
+    contents = ArticleContentSerializer(many=True, read_only=True)
+    #image_preview = serializers.CharField(source="get_image")
     author = AuthorArticleSerializer(read_only=True)
 
     class Meta:
@@ -40,18 +52,19 @@ class ArticleListSerializer(serializers.ModelSerializer):
         fields = (
             "title",
             "slug",
-            "content",
+            "contents",
             "author",
             "tags",
-            "image_preview",
-            "image_alt",
+            #"image_preview",
+            #"image_alt",
             "created_at",
         )
 
 
 class ArticleRetrieveSerializer(serializers.ModelSerializer):
     tags = TagsForArticleSerializer(many=True, read_only=True)
-    image_preview = serializers.CharField(source="get_image")
+    contents = ArticleContentSerializer(many=True, read_only=True)
+    #image_preview = serializers.CharField(source="get_image")
     author = AuthorArticleSerializer(read_only=True)
     is_bookmarked = serializers.SerializerMethodField()
 
@@ -60,12 +73,12 @@ class ArticleRetrieveSerializer(serializers.ModelSerializer):
         fields = (
             "title",
             "slug",
-            "content",
+            "contents",
             "is_active",
             "author",
             "tags",
-            "image_preview",
-            "image_alt",
+            #"image_preview",
+            #"image_alt",
             "meta_title",
             "meta_keywords",
             "meta_description",
