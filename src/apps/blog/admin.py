@@ -41,7 +41,7 @@ class ArticleAdmin(TranslationAdmin):
                     "description",
                     "slug",
                     "is_active",
-                    #"image_preview",
+                    # "image_preview",
                     "author",
                     "tags",
                     "contents",
