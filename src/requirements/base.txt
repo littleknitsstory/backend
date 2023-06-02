@@ -1,6 +1,6 @@
 certifi==2022.6.15
 celery==5.2.7
-cryptography==37.0.4
+cryptography==41.0.1
 Django==4.1.2
 django-countries==7.4.2
 django-ckeditor==6.5.1
